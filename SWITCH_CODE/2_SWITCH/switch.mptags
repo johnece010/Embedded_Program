@@ -1,0 +1,14 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+LED1::RB2	E:\Embedded\SWITCH_CODE\2_SWITCH\switch.c	5;"	d	line:5	file:
+LED2::RB3	E:\Embedded\SWITCH_CODE\2_SWITCH\switch.c	6;"	d	line:6	file:
+delay	E:\Embedded\SWITCH_CODE\2_SWITCH\switch.c	8;"	f	line:8	signature:(unsigned int x)
+main	E:\Embedded\SWITCH_CODE\2_SWITCH\switch.c	13;"	f	line:13
+sw1::RB0	E:\Embedded\SWITCH_CODE\2_SWITCH\switch.c	3;"	d	line:3	file:
+sw2::RB1	E:\Embedded\SWITCH_CODE\2_SWITCH\switch.c	4;"	d	line:4	file:

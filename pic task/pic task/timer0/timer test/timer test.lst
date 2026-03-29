@@ -1,0 +1,417 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
+                                                                                               Tue Oct 11 18:34:13 2022
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNCALL	_main,_delay
+    43                           	FNROOT	_main
+    44                           	global	_PORTB
+    45                           psect	text60,local,class=CODE,delta=2
+    46                           global __ptext60
+    47  0000                     __ptext60:
+    48  0006                     _PORTB	set	6
+    49                           	global	_TMR0
+    50  0001                     _TMR0	set	1
+    51                           	global	_T0IF
+    52  005A                     _T0IF	set	90
+    53                           	global	_TRISB
+    54  0086                     _TRISB	set	134
+    55                           	global	_PS0
+    56  0408                     _PS0	set	1032
+    57                           	global	_PS1
+    58  0409                     _PS1	set	1033
+    59                           	global	_PS2
+    60  040A                     _PS2	set	1034
+    61                           	global	_PSA
+    62  040B                     _PSA	set	1035
+    63                           	global	_T0CS
+    64  040D                     _T0CS	set	1037
+    65                           	global	_T0SE
+    66  040C                     _T0SE	set	1036
+    67                           	file	"timer test.as"
+    68                           	line	#
+    69                           psect cinit,class=CODE,delta=2
+    70                           global start_initialization
+    71  07CF                     start_initialization:
+    72                           
+    73                           psect cinit,class=CODE,delta=2
+    74                           global end_of_initialization
+    75                           
+    76                           ;End of C runtime variable initialization code
+    77                           
+    78  07CF                     end_of_initialization:
+    79  07CF  0183               clrf status
+    80  07D0  120A  118A  2FE7   ljmp _main	;jump to C main() function
+    81                           psect	cstackCOMMON,class=COMMON,space=1
+    82                           global __pcstackCOMMON
+    83  0000                     __pcstackCOMMON:
+    84                           	global	?_delay
+    85  0000                     ?_delay:	; 0 bytes @ 0x0
+    86                           	global	??_delay
+    87  0000                     ??_delay:	; 0 bytes @ 0x0
+    88                           	global	?_main
+    89  0000                     ?_main:	; 0 bytes @ 0x0
+    90                           	global	??_main
+    91  0000                     ??_main:	; 0 bytes @ 0x0
+    92 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+    93 ;;Auto spaces:   Size  Autos    Used
+    94 ;; COMMON          14      0       0
+    95 ;; BANK0           80      0       0
+    96 ;; BANK1           80      0       0
+    97 ;; BANK3           96      0       0
+    98 ;; BANK2           96      0       0
+    99                           
+   100 ;;
+   101 ;; Pointer list with targets:
+   102                           
+   103                           
+   104                           
+   105 ;;
+   106 ;; Critical Paths under _main in COMMON
+   107 ;;
+   108 ;;   None.
+   109 ;;
+   110 ;; Critical Paths under _main in BANK0
+   111 ;;
+   112 ;;   None.
+   113 ;;
+   114 ;; Critical Paths under _main in BANK1
+   115 ;;
+   116 ;;   None.
+   117 ;;
+   118 ;; Critical Paths under _main in BANK3
+   119 ;;
+   120 ;;   None.
+   121 ;;
+   122 ;; Critical Paths under _main in BANK2
+   123 ;;
+   124 ;;   None.
+   125                           
+   126 ;;
+   127 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   128 ;;
+   129                           
+   130 ;;
+   131 ;;Call Graph Tables:
+   132 ;;
+   133 ;; ---------------------------------------------------------------------------------
+   134 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   135 ;; ---------------------------------------------------------------------------------
+   136 ;; (0) _main                                                 0     0      0       0
+   137 ;;                              _delay
+   138 ;; ---------------------------------------------------------------------------------
+   139 ;; (1) _delay                                                0     0      0       0
+   140 ;; ---------------------------------------------------------------------------------
+   141 ;; Estimated maximum stack depth 1
+   142 ;; ---------------------------------------------------------------------------------
+   143                           
+   144 ;; Call Graph Graphs:
+   145                           
+   146 ;; _main (ROOT)
+   147 ;;   _delay
+   148 ;;
+   149                           
+   150 ;; Address spaces:
+   151                           
+   152 ;;Name               Size   Autos  Total    Cost      Usage
+   153 ;;BITCOMMON            E      0       0       0        0.0%
+   154 ;;EEDATA             100      0       0       0        0.0%
+   155 ;;NULL                 0      0       0       0        0.0%
+   156 ;;CODE                 0      0       0       0        0.0%
+   157 ;;COMMON               E      0       0       1        0.0%
+   158 ;;BITSFR0              0      0       0       1        0.0%
+   159 ;;SFR0                 0      0       0       1        0.0%
+   160 ;;BITSFR1              0      0       0       2        0.0%
+   161 ;;SFR1                 0      0       0       2        0.0%
+   162 ;;STACK                0      0       1       2        0.0%
+   163 ;;ABS                  0      0       0       3        0.0%
+   164 ;;BITBANK0            50      0       0       4        0.0%
+   165 ;;BITSFR3              0      0       0       4        0.0%
+   166 ;;SFR3                 0      0       0       4        0.0%
+   167 ;;BANK0               50      0       0       5        0.0%
+   168 ;;BITSFR2              0      0       0       5        0.0%
+   169 ;;SFR2                 0      0       0       5        0.0%
+   170 ;;BITBANK1            50      0       0       6        0.0%
+   171 ;;BANK1               50      0       0       7        0.0%
+   172 ;;BITBANK3            60      0       0       8        0.0%
+   173 ;;BANK3               60      0       0       9        0.0%
+   174 ;;BITBANK2            60      0       0      10        0.0%
+   175 ;;BANK2               60      0       0      11        0.0%
+   176 ;;DATA                 0      0       0      12        0.0%
+   177                           
+   178                           	global	_main
+   179                           psect	maintext,global,class=CODE,delta=2
+   180                           global __pmaintext
+   181  07E7                     __pmaintext:
+   182                           
+   183 ;; *************** function _main *****************
+   184 ;; Defined at:
+   185 ;;		line 16 in file "C:\Users\TECH\Desktop\madhu pic folder\timer\timer test\timer test.c"
+   186 ;; Parameters:    Size  Location     Type
+   187 ;;		None
+   188 ;; Auto vars:     Size  Location     Type
+   189 ;;		None
+   190 ;; Return value:  Size  Location     Type
+   191 ;;		None               void
+   192 ;; Registers used:
+   193 ;;		wreg, status,2, status,0, pclath, cstack
+   194 ;; Tracked objects:
+   195 ;;		On entry : 17F/0
+   196 ;;		On exit  : 0/0
+   197 ;;		Unchanged: 0/0
+   198 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   199 ;;      Params:         0       0       0       0       0
+   200 ;;      Locals:         0       0       0       0       0
+   201 ;;      Temps:          0       0       0       0       0
+   202 ;;      Totals:         0       0       0       0       0
+   203 ;;Total ram usage:        0 bytes
+   204 ;; Hardware stack levels required when called:    1
+   205 ;; This function calls:
+   206 ;;		_delay
+   207 ;; This function is called by:
+   208 ;;		Startup code after reset
+   209 ;; This function uses a non-reentrant model
+   210 ;;
+   211                           psect	maintext
+   212                           	file	"C:\Users\TECH\Desktop\madhu pic folder\timer\timer test\timer test.c"
+   213                           	line	16
+   214                           	global	__size_of_main
+   215  0019                     	__size_of_main	equ	__end_of_main-_main
+   216                           	
+   217  07E7                     _main:	
+   218                           	opt	stack 8
+   219                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   220                           	line	17
+   221                           	
+   222  07E7                     l1729:	
+   223                           ;timer test.c: 17: TRISB=0X00;
+   224  07E7  1683               	bsf	status, 5	;RP0=1, select bank1
+   225  07E8  1303               	bcf	status, 6	;RP1=0, select bank1
+   226  07E9  0186               	clrf	(134)^080h	;volatile
+   227                           	line	18
+   228                           ;timer test.c: 18: PORTB=0X00;
+   229  07EA  1283               	bcf	status, 5	;RP0=0, select bank0
+   230  07EB  1303               	bcf	status, 6	;RP1=0, select bank0
+   231  07EC  0186               	clrf	(6)	;volatile
+   232                           	line	19
+   233                           ;timer test.c: 19: while(1)
+   234                           	
+   235  07ED                     l565:	
+   236                           	line	21
+   237                           	
+   238  07ED                     l1731:	
+   239                           ;timer test.c: 20: {
+   240                           ;timer test.c: 21: PORTB=0X01;
+   241  07ED  3001               	movlw	(01h)
+   242  07EE  0086               	movwf	(6)	;volatile
+   243                           	line	22
+   244                           	
+   245  07EF                     l1733:	
+   246                           ;timer test.c: 22: delay();
+   247  07EF  120A  118A  27D3   	fcall	_delay
+              120A  118A         
+   248                           	line	23
+   249                           	
+   250  07F4                     l1735:	
+   251                           ;timer test.c: 23: PORTB=0X00;
+   252  07F4  1283               	bcf	status, 5	;RP0=0, select bank0
+   253  07F5  1303               	bcf	status, 6	;RP1=0, select bank0
+   254  07F6  0186               	clrf	(6)	;volatile
+   255                           	line	24
+   256                           	
+   257  07F7                     l1737:	
+   258                           ;timer test.c: 24: delay();
+   259  07F7  120A  118A  27D3   	fcall	_delay
+              120A  118A         
+   260                           	line	25
+   261                           	
+   262  07FC                     l566:	
+   263                           	line	19
+   264  07FC  2FED               	goto	l565
+   265                           	
+   266  07FD                     l567:	
+   267                           	line	26
+   268                           	
+   269  07FD                     l568:	
+   270                           	global	start
+   271  07FD  120A  118A  2800   	ljmp	start
+   272                           	opt stack 0
+   273                           GLOBAL	__end_of_main
+   274  0800                     	__end_of_main:
+   275 ;; =============== function _main ends ============
+   276                           
+   277                           	signat	_main,88
+   278                           	global	_delay
+   279                           psect	text61,local,class=CODE,delta=2
+   280                           global __ptext61
+   281  07D3                     __ptext61:
+   282                           
+   283 ;; *************** function _delay *****************
+   284 ;; Defined at:
+   285 ;;		line 3 in file "C:\Users\TECH\Desktop\madhu pic folder\timer\timer test\timer test.c"
+   286 ;; Parameters:    Size  Location     Type
+   287 ;;		None
+   288 ;; Auto vars:     Size  Location     Type
+   289 ;;		None
+   290 ;; Return value:  Size  Location     Type
+   291 ;;		None               void
+   292 ;; Registers used:
+   293 ;;		wreg, status,2
+   294 ;; Tracked objects:
+   295 ;;		On entry : 0/0
+   296 ;;		On exit  : 0/0
+   297 ;;		Unchanged: 0/0
+   298 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   299 ;;      Params:         0       0       0       0       0
+   300 ;;      Locals:         0       0       0       0       0
+   301 ;;      Temps:          0       0       0       0       0
+   302 ;;      Totals:         0       0       0       0       0
+   303 ;;Total ram usage:        0 bytes
+   304 ;; Hardware stack levels used:    1
+   305 ;; This function calls:
+   306 ;;		Nothing
+   307 ;; This function is called by:
+   308 ;;		_main
+   309 ;; This function uses a non-reentrant model
+   310 ;;
+   311                           psect	text61
+   312                           	file	"C:\Users\TECH\Desktop\madhu pic folder\timer\timer test\timer test.c"
+   313                           	line	3
+   314                           	global	__size_of_delay
+   315  0014                     	__size_of_delay	equ	__end_of_delay-_delay
+   316                           	
+   317  07D3                     _delay:	
+   318                           	opt	stack 7
+   319                           ; Regs used in _delay: [wreg+status,2]
+   320                           	line	4
+   321                           	
+   322  07D3                     l937:	
+   323                           ;timer test.c: 4: T0CS=0;
+   324  07D3  1683               	bsf	status, 5	;RP0=1, select bank1
+   325  07D4  1303               	bcf	status, 6	;RP1=0, select bank1
+   326  07D5  1281               	bcf	(1037/8)^080h,(1037)&7
+   327                           	line	5
+   328                           ;timer test.c: 5: T0SE=0;
+   329  07D6  1201               	bcf	(1036/8)^080h,(1036)&7
+   330                           	line	6
+   331                           ;timer test.c: 6: PSA=0;
+   332  07D7  1181               	bcf	(1035/8)^080h,(1035)&7
+   333                           	line	7
+   334                           ;timer test.c: 7: PS0=1;
+   335  07D8  1401               	bsf	(1032/8)^080h,(1032)&7
+   336                           	line	8
+   337                           ;timer test.c: 8: PS1=1;
+   338  07D9  1481               	bsf	(1033/8)^080h,(1033)&7
+   339                           	line	9
+   340                           ;timer test.c: 9: PS2=1;
+   341  07DA  1501               	bsf	(1034/8)^080h,(1034)&7
+   342                           	line	10
+   343                           	
+   344  07DB                     l939:	
+   345                           ;timer test.c: 10: TMR0=60;
+   346  07DB  303C               	movlw	(03Ch)
+   347  07DC  1283               	bcf	status, 5	;RP0=0, select bank0
+   348  07DD  1303               	bcf	status, 6	;RP1=0, select bank0
+   349  07DE  0081               	movwf	(1)	;volatile
+   350                           	line	11
+   351                           ;timer test.c: 11: while(T0IF==0);
+   352  07DF  2FE0               	goto	l559
+   353                           	
+   354  07E0                     l560:	
+   355                           	
+   356  07E0                     l559:	
+   357  07E0  1D0B               	btfss	(90/8),(90)&7
+   358  07E1  2FE3               	goto	u11
+   359  07E2  2FE4               	goto	u10
+   360  07E3                     u11:
+   361  07E3  2FE0               	goto	l560
+   362  07E4                     u10:
+   363                           	
+   364  07E4                     l561:	
+   365                           	line	12
+   366                           ;timer test.c: 12: T0IF=0;
+   367  07E4  110B               	bcf	(90/8),(90)&7
+   368                           	line	13
+   369                           	
+   370  07E5                     l941:	
+   371                           ;timer test.c: 13: TMR0=0;
+   372  07E5  0181               	clrf	(1)	;volatile
+   373                           	line	14
+   374                           	
+   375  07E6                     l562:	
+   376  07E6  0008               	return
+   377                           	opt stack 0
+   378                           GLOBAL	__end_of_delay
+   379  07E7                     	__end_of_delay:
+   380 ;; =============== function _delay ends ============
+   381                           
+   382                           	signat	_delay,88
+   383                           psect	text62,local,class=CODE,delta=2
+   384                           global __ptext62
+   385  0000                     __ptext62:
+   386                           	global	btemp
+   387  007E                     	btemp set 07Eh
+   388                           
+   389                           	DABS	1,126,2	;btemp
+   390                           	global	wtemp0
+   391  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.71a build 6446 
+Symbol Table                                                                                   Tue Oct 11 18:34:13 2022
+
+                  u10 07E4                    u11 07E3                   l560 07E0                   l561 07E4  
+                 l562 07E6                   l565 07ED                   l566 07FC                   l559 07E0  
+                 l567 07FD                   l568 07FD                   l941 07E5                   l937 07D3  
+                 l939 07DB                   _PS0 0408                   _PS1 0409                   _PS2 040A  
+                 _PSA 040B                  l1731 07ED                  l1733 07EF                  l1735 07F4  
+                l1737 07F7                  l1729 07E7                  _T0IF 005A                  _T0CS 040D  
+                _T0SE 040C                  _TMR0 0001                  _main 07E7                  btemp 007E  
+                start 0000                 ?_main 0000                 _PORTB 0006                 _TRISB 0086  
+               _delay 07D3                 status 0003                 wtemp0 007E          __end_of_main 0800  
+              ??_main 0000                ?_delay 0000        __pcstackCOMMON 0000         __end_of_delay 07E7  
+             ??_delay 0000            __pmaintext 07E7  end_of_initialization 07CF   start_initialization 07CF  
+      __size_of_delay 0014              __ptext60 0000              __ptext61 07D3              __ptext62 0000  
+       __size_of_main 0019  

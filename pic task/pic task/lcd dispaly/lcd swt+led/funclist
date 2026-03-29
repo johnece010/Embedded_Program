@@ -1,0 +1,7 @@
+_lcd_command: CODE, 1716 0 21
+_delay: CODE, 1698 0 18
+_lcd_data: CODE, 1737 0 21
+_lcd_display: CODE, 1783 0 39
+_main: CODE, 1822 0 226
+_lcd_init: CODE, 1758 0 25
+Total: 350

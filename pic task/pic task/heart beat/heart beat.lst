@@ -1,0 +1,1815 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
+                                                                                               Fri Nov 25 13:33:54 2022
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNCALL	_main,_lcd_init
+    43                           	FNCALL	_main,_lcd_command
+    44                           	FNCALL	_main,_lcd_display
+    45                           	FNCALL	_main,_delay
+    46                           	FNCALL	_main,___awdiv
+    47                           	FNCALL	_main,___awmod
+    48                           	FNCALL	_main,_lcd_data
+    49                           	FNCALL	_lcd_init,_lcd_command
+    50                           	FNCALL	_lcd_display,_lcd_data
+    51                           	FNCALL	_lcd_data,_delay
+    52                           	FNCALL	_lcd_command,_delay
+    53                           	FNROOT	_main
+    54                           	global	_i
+    55                           	global	_PORTB
+    56                           psect	text178,local,class=CODE,delta=2
+    57                           global __ptext178
+    58  0000                     __ptext178:
+    59  0006                     _PORTB	set	6
+    60                           	global	_PORTC
+    61  0007                     _PORTC	set	7
+    62                           	global	_PORTD
+    63  0008                     _PORTD	set	8
+    64                           	global	_T1CON
+    65  0010                     _T1CON	set	16
+    66                           	global	_TMR0
+    67  0001                     _TMR0	set	1
+    68                           	global	_TMR1H
+    69  000F                     _TMR1H	set	15
+    70                           	global	_TMR1L
+    71  000E                     _TMR1L	set	14
+    72                           	global	_RB0
+    73  0030                     _RB0	set	48
+    74                           	global	_RB1
+    75  0031                     _RB1	set	49
+    76                           	global	_RB2
+    77  0032                     _RB2	set	50
+    78                           	global	_TMR1IF
+    79  0060                     _TMR1IF	set	96
+    80                           	global	_TRISB
+    81  0086                     _TRISB	set	134
+    82                           	global	_TRISC
+    83  0087                     _TRISC	set	135
+    84                           	global	_TRISD
+    85  0088                     _TRISD	set	136
+    86                           	global	_T0CS
+    87  040D                     _T0CS	set	1037
+    88                           psect	strings,class=STRING,delta=2
+    89                           global __pstrings
+    90  0003                     __pstrings:
+    91                           ;	global	stringdir,stringtab,__stringbase
+    92  0003                     stringtab:
+    93                           ;	String table - string pointers are 1 byte each
+    94  0003                     stringcode:stringdir:
+      + 0003                     stringdir:	
+    95  0003  3000               movlw high(stringdir)
+    96  0004  008A               movwf pclath
+    97  0005  0804               movf fsr,w
+    98  0006  0A84               incf fsr
+    99  0007  0782               	addwf pc
+   100  0008                     __stringbase:
+   101  0008  3400               	retlw	0
+   102                           psect	strings
+   103                           	
+   104  0009                     STR_1:	
+   105  0009  3468               	retlw	104	;'h'
+   106  000A  3465               	retlw	101	;'e'
+   107  000B  3461               	retlw	97	;'a'
+   108  000C  3472               	retlw	114	;'r'
+   109  000D  3474               	retlw	116	;'t'
+   110  000E  3420               	retlw	32	;' '
+   111  000F  3462               	retlw	98	;'b'
+   112  0010  3465               	retlw	101	;'e'
+   113  0011  3461               	retlw	97	;'a'
+   114  0012  3474               	retlw	116	;'t'
+   115  0013  3400               	retlw	0
+   116                           psect	strings
+   117                           	file	"heart beat.as"
+   118                           	line	#
+   119                           psect cinit,class=CODE,delta=2
+   120                           global start_initialization
+   121  05CE                     start_initialization:
+   122                           
+   123                           psect	bssBANK0,class=BANK0,space=1
+   124                           global __pbssBANK0
+   125  002A                     __pbssBANK0:
+   126  002A                     _i:
+   127  002A                            ds      2
+   128                           
+   129                           ; Clear objects allocated to BANK0
+   130                           psect cinit,class=CODE,delta=2
+   131  05CE  01AA               	clrf	((__pbssBANK0)+0)&07Fh
+   132  05CF  01AB               	clrf	((__pbssBANK0)+1)&07Fh
+   133                           psect cinit,class=CODE,delta=2
+   134                           global end_of_initialization
+   135                           
+   136                           ;End of C runtime variable initialization code
+   137                           
+   138  05D0                     end_of_initialization:
+   139  05D0  0183               clrf status
+   140  05D1  120A  118A  2F1F   ljmp _main	;jump to C main() function
+   141                           psect	cstackCOMMON,class=COMMON,space=1
+   142                           global __pcstackCOMMON
+   143  0070                     __pcstackCOMMON:
+   144                           	global	?_delay
+   145  0070                     ?_delay:	; 0 bytes @ 0x0
+   146                           	global	?_lcd_command
+   147  0070                     ?_lcd_command:	; 0 bytes @ 0x0
+   148                           	global	?_lcd_data
+   149  0070                     ?_lcd_data:	; 0 bytes @ 0x0
+   150                           	global	?_lcd_display
+   151  0070                     ?_lcd_display:	; 0 bytes @ 0x0
+   152                           	global	?_lcd_init
+   153  0070                     ?_lcd_init:	; 0 bytes @ 0x0
+   154                           	global	?_main
+   155  0070                     ?_main:	; 2 bytes @ 0x0
+   156                           	global	?___awdiv
+   157  0070                     ?___awdiv:	; 2 bytes @ 0x0
+   158                           	global	?___awmod
+   159  0070                     ?___awmod:	; 2 bytes @ 0x0
+   160                           	global	___awdiv@divisor
+   161  0070                     ___awdiv@divisor:	; 2 bytes @ 0x0
+   162                           	global	___awmod@divisor
+   163  0070                     ___awmod@divisor:	; 2 bytes @ 0x0
+   164  0070                     	ds	2
+   165                           	global	??_delay
+   166  0072                     ??_delay:	; 0 bytes @ 0x2
+   167                           	global	??_lcd_command
+   168  0072                     ??_lcd_command:	; 0 bytes @ 0x2
+   169                           	global	??_lcd_data
+   170  0072                     ??_lcd_data:	; 0 bytes @ 0x2
+   171                           	global	lcd_command@com
+   172  0072                     lcd_command@com:	; 1 bytes @ 0x2
+   173                           	global	lcd_data@data
+   174  0072                     lcd_data@data:	; 1 bytes @ 0x2
+   175                           	global	___awdiv@dividend
+   176  0072                     ___awdiv@dividend:	; 2 bytes @ 0x2
+   177                           	global	___awmod@dividend
+   178  0072                     ___awmod@dividend:	; 2 bytes @ 0x2
+   179  0072                     	ds	1
+   180                           	global	??_lcd_display
+   181  0073                     ??_lcd_display:	; 0 bytes @ 0x3
+   182                           	global	??_lcd_init
+   183  0073                     ??_lcd_init:	; 0 bytes @ 0x3
+   184                           	global	lcd_display@m
+   185  0073                     lcd_display@m:	; 1 bytes @ 0x3
+   186  0073                     	ds	1
+   187                           	global	??___awdiv
+   188  0074                     ??___awdiv:	; 0 bytes @ 0x4
+   189                           	global	??___awmod
+   190  0074                     ??___awmod:	; 0 bytes @ 0x4
+   191                           	global	lcd_display@i
+   192  0074                     lcd_display@i:	; 2 bytes @ 0x4
+   193  0074                     	ds	1
+   194                           	global	___awdiv@counter
+   195  0075                     ___awdiv@counter:	; 1 bytes @ 0x5
+   196                           	global	___awmod@counter
+   197  0075                     ___awmod@counter:	; 1 bytes @ 0x5
+   198  0075                     	ds	1
+   199                           	global	___awdiv@sign
+   200  0076                     ___awdiv@sign:	; 1 bytes @ 0x6
+   201                           	global	___awmod@sign
+   202  0076                     ___awmod@sign:	; 1 bytes @ 0x6
+   203  0076                     	ds	1
+   204                           	global	___awdiv@quotient
+   205  0077                     ___awdiv@quotient:	; 2 bytes @ 0x7
+   206  0077                     	ds	2
+   207                           	global	??_main
+   208  0079                     ??_main:	; 0 bytes @ 0x9
+   209  0079                     	ds	2
+   210                           psect	cstackBANK0,class=BANK0,space=1
+   211                           global __pcstackBANK0
+   212  0020                     __pcstackBANK0:
+   213                           	global	main@a
+   214  0020                     main@a:	; 2 bytes @ 0x0
+   215  0020                     	ds	2
+   216                           	global	main@c
+   217  0022                     main@c:	; 2 bytes @ 0x2
+   218  0022                     	ds	2
+   219                           	global	main@d
+   220  0024                     main@d:	; 2 bytes @ 0x4
+   221  0024                     	ds	2
+   222                           	global	main@b
+   223  0026                     main@b:	; 2 bytes @ 0x6
+   224  0026                     	ds	2
+   225                           	global	main@temp
+   226  0028                     main@temp:	; 2 bytes @ 0x8
+   227  0028                     	ds	2
+   228 ;;Data sizes: Strings 11, constant 0, data 0, bss 2, persistent 0 stack 0
+   229 ;;Auto spaces:   Size  Autos    Used
+   230 ;; COMMON          14     11      11
+   231 ;; BANK0           80     10      12
+   232 ;; BANK1           80      0       0
+   233 ;; BANK3           96      0       0
+   234 ;; BANK2           96      0       0
+   235                           
+   236 ;;
+   237 ;; Pointer list with targets:
+   238                           
+   239 ;; ?___awmod	int  size(1) Largest target is 0
+   240 ;;
+   241 ;; ?___awdiv	int  size(1) Largest target is 0
+   242 ;;
+   243 ;; lcd_display@m	PTR unsigned char  size(1) Largest target is 11
+   244 ;;		 -> STR_1(CODE[11]), 
+   245 ;;
+   246                           
+   247                           
+   248 ;;
+   249 ;; Critical Paths under _main in COMMON
+   250 ;;
+   251 ;;   _main->___awdiv
+   252 ;;   _lcd_init->_lcd_command
+   253 ;;   _lcd_display->_lcd_data
+   254 ;;   _lcd_data->_delay
+   255 ;;   _lcd_command->_delay
+   256 ;;
+   257 ;; Critical Paths under _main in BANK0
+   258 ;;
+   259 ;;   None.
+   260 ;;
+   261 ;; Critical Paths under _main in BANK1
+   262 ;;
+   263 ;;   None.
+   264 ;;
+   265 ;; Critical Paths under _main in BANK3
+   266 ;;
+   267 ;;   None.
+   268 ;;
+   269 ;; Critical Paths under _main in BANK2
+   270 ;;
+   271 ;;   None.
+   272                           
+   273 ;;
+   274 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
+   275 ;;
+   276                           
+   277 ;;
+   278 ;;Call Graph Tables:
+   279 ;;
+   280 ;; ---------------------------------------------------------------------------------
+   281 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   282 ;; ---------------------------------------------------------------------------------
+   283 ;; (0) _main                                                12    12      0     933
+   284 ;;                                              9 COMMON     2     2      0
+   285 ;;                                              0 BANK0     10    10      0
+   286 ;;                           _lcd_init
+   287 ;;                        _lcd_command
+   288 ;;                        _lcd_display
+   289 ;;                              _delay
+   290 ;;                            ___awdiv
+   291 ;;                            ___awmod
+   292 ;;                           _lcd_data
+   293 ;; ---------------------------------------------------------------------------------
+   294 ;; (1) _lcd_init                                             0     0      0      22
+   295 ;;                        _lcd_command
+   296 ;; ---------------------------------------------------------------------------------
+   297 ;; (1) _lcd_display                                          3     3      0     112
+   298 ;;                                              3 COMMON     3     3      0
+   299 ;;                           _lcd_data
+   300 ;; ---------------------------------------------------------------------------------
+   301 ;; (1) _lcd_data                                             1     1      0      22
+   302 ;;                                              2 COMMON     1     1      0
+   303 ;;                              _delay
+   304 ;; ---------------------------------------------------------------------------------
+   305 ;; (1) _lcd_command                                          1     1      0      22
+   306 ;;                                              2 COMMON     1     1      0
+   307 ;;                              _delay
+   308 ;; ---------------------------------------------------------------------------------
+   309 ;; (1) ___awmod                                              7     3      4     296
+   310 ;;                                              0 COMMON     7     3      4
+   311 ;; ---------------------------------------------------------------------------------
+   312 ;; (1) ___awdiv                                              9     5      4     300
+   313 ;;                                              0 COMMON     9     5      4
+   314 ;; ---------------------------------------------------------------------------------
+   315 ;; (2) _delay                                                2     0      2       0
+   316 ;;                                              0 COMMON     2     0      2
+   317 ;; ---------------------------------------------------------------------------------
+   318 ;; Estimated maximum stack depth 2
+   319 ;; ---------------------------------------------------------------------------------
+   320                           
+   321 ;; Call Graph Graphs:
+   322                           
+   323 ;; _main (ROOT)
+   324 ;;   _lcd_init
+   325 ;;     _lcd_command
+   326 ;;       _delay
+   327 ;;   _lcd_command
+   328 ;;     _delay
+   329 ;;   _lcd_display
+   330 ;;     _lcd_data
+   331 ;;       _delay
+   332 ;;   _delay
+   333 ;;   ___awdiv
+   334 ;;   ___awmod
+   335 ;;   _lcd_data
+   336 ;;     _delay
+   337 ;;
+   338                           
+   339 ;; Address spaces:
+   340                           
+   341 ;;Name               Size   Autos  Total    Cost      Usage
+   342 ;;BITCOMMON            E      0       0       0        0.0%
+   343 ;;EEDATA             100      0       0       0        0.0%
+   344 ;;NULL                 0      0       0       0        0.0%
+   345 ;;CODE                 0      0       0       0        0.0%
+   346 ;;COMMON               E      B       B       1       78.6%
+   347 ;;BITSFR0              0      0       0       1        0.0%
+   348 ;;SFR0                 0      0       0       1        0.0%
+   349 ;;BITSFR1              0      0       0       2        0.0%
+   350 ;;SFR1                 0      0       0       2        0.0%
+   351 ;;STACK                0      0       3       2        0.0%
+   352 ;;ABS                  0      0      17       3        0.0%
+   353 ;;BITBANK0            50      0       0       4        0.0%
+   354 ;;BITSFR3              0      0       0       4        0.0%
+   355 ;;SFR3                 0      0       0       4        0.0%
+   356 ;;BANK0               50      A       C       5       15.0%
+   357 ;;BITSFR2              0      0       0       5        0.0%
+   358 ;;SFR2                 0      0       0       5        0.0%
+   359 ;;BITBANK1            50      0       0       6        0.0%
+   360 ;;BANK1               50      0       0       7        0.0%
+   361 ;;BITBANK3            60      0       0       8        0.0%
+   362 ;;BANK3               60      0       0       9        0.0%
+   363 ;;BITBANK2            60      0       0      10        0.0%
+   364 ;;BANK2               60      0       0      11        0.0%
+   365 ;;DATA                 0      0      1A      12        0.0%
+   366                           
+   367                           	global	_main
+   368                           psect	maintext,global,class=CODE,delta=2
+   369                           global __pmaintext
+   370  071F                     __pmaintext:
+   371                           
+   372 ;; *************** function _main *****************
+   373 ;; Defined at:
+   374 ;;		line 50 in file "C:\Users\TECH\Desktop\madhu pic folder\heart beat\heart beat.c"
+   375 ;; Parameters:    Size  Location     Type
+   376 ;;		None
+   377 ;; Auto vars:     Size  Location     Type
+   378 ;;  temp            2    8[BANK0 ] int 
+   379 ;;  b               2    6[BANK0 ] int 
+   380 ;;  d               2    4[BANK0 ] int 
+   381 ;;  c               2    2[BANK0 ] int 
+   382 ;;  a               2    0[BANK0 ] int 
+   383 ;; Return value:  Size  Location     Type
+   384 ;;                  2  581[COMMON] int 
+   385 ;; Registers used:
+   386 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+0, pclath, cstack
+   387 ;; Tracked objects:
+   388 ;;		On entry : 17F/0
+   389 ;;		On exit  : 0/0
+   390 ;;		Unchanged: 0/0
+   391 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   392 ;;      Params:         0       0       0       0       0
+   393 ;;      Locals:         0      10       0       0       0
+   394 ;;      Temps:          2       0       0       0       0
+   395 ;;      Totals:         2      10       0       0       0
+   396 ;;Total ram usage:       12 bytes
+   397 ;; Hardware stack levels required when called:    3
+   398 ;; This function calls:
+   399 ;;		_lcd_init
+   400 ;;		_lcd_command
+   401 ;;		_lcd_display
+   402 ;;		_delay
+   403 ;;		___awdiv
+   404 ;;		___awmod
+   405 ;;		_lcd_data
+   406 ;; This function is called by:
+   407 ;;		Startup code after reset
+   408 ;; This function uses a non-reentrant model
+   409 ;;
+   410                           psect	maintext
+   411                           	file	"C:\Users\TECH\Desktop\madhu pic folder\heart beat\heart beat.c"
+   412                           	line	50
+   413                           	global	__size_of_main
+   414  00E1                     	__size_of_main	equ	__end_of_main-_main
+   415                           	
+   416  071F                     _main:	
+   417                           	opt	stack 8
+   418                           ; Regs used in _main: [wreg-fsr0h+status,2-btemp+0+pclath+cstack]
+   419                           	line	51
+   420                           	
+   421  071F                     l2008:	
+   422                           ;heart beat.c: 51: TRISB=0X00;
+   423  071F  1683               	bsf	status, 5	;RP0=1, select bank1
+   424  0720  1303               	bcf	status, 6	;RP1=0, select bank1
+   425  0721  0186               	clrf	(134)^080h	;volatile
+   426                           	line	52
+   427                           ;heart beat.c: 52: PORTB=0X00;
+   428  0722  1283               	bcf	status, 5	;RP0=0, select bank0
+   429  0723  1303               	bcf	status, 6	;RP1=0, select bank0
+   430  0724  0186               	clrf	(6)	;volatile
+   431                           	line	53
+   432                           ;heart beat.c: 53: TRISC=0X00;
+   433  0725  1683               	bsf	status, 5	;RP0=1, select bank1
+   434  0726  1303               	bcf	status, 6	;RP1=0, select bank1
+   435  0727  0187               	clrf	(135)^080h	;volatile
+   436                           	line	54
+   437                           ;heart beat.c: 54: PORTC=0X00;
+   438  0728  1283               	bcf	status, 5	;RP0=0, select bank0
+   439  0729  1303               	bcf	status, 6	;RP1=0, select bank0
+   440  072A  0187               	clrf	(7)	;volatile
+   441                           	line	55
+   442                           ;heart beat.c: 55: TRISD=0X00;
+   443  072B  1683               	bsf	status, 5	;RP0=1, select bank1
+   444  072C  1303               	bcf	status, 6	;RP1=0, select bank1
+   445  072D  0188               	clrf	(136)^080h	;volatile
+   446                           	line	56
+   447                           ;heart beat.c: 56: PORTD=0X00;
+   448  072E  1283               	bcf	status, 5	;RP0=0, select bank0
+   449  072F  1303               	bcf	status, 6	;RP1=0, select bank0
+   450  0730  0188               	clrf	(8)	;volatile
+   451                           	line	57
+   452                           	
+   453  0731                     l2010:	
+   454                           ;heart beat.c: 57: lcd_init();
+   455  0731  120A  118A  260F   	fcall	_lcd_init
+              120A  118A         
+   456                           	line	58
+   457                           	
+   458  0736                     l2012:	
+   459                           ;heart beat.c: 58: T0CS=1;
+   460  0736  1683               	bsf	status, 5	;RP0=1, select bank1
+   461  0737  1303               	bcf	status, 6	;RP1=0, select bank1
+   462  0738  1681               	bsf	(1037/8)^080h,(1037)&7
+   463                           	line	59
+   464                           	
+   465  0739                     l2014:	
+   466                           ;heart beat.c: 59: TMR0=0;
+   467  0739  1283               	bcf	status, 5	;RP0=0, select bank0
+   468  073A  1303               	bcf	status, 6	;RP1=0, select bank0
+   469  073B  0181               	clrf	(1)	;volatile
+   470                           	line	60
+   471                           ;heart beat.c: 60: while(1)
+   472                           	
+   473  073C                     l582:	
+   474                           	line	62
+   475                           ;heart beat.c: 61: {
+   476                           ;heart beat.c: 62: lcd_command(0x80);
+   477  073C  3080               	movlw	(080h)
+   478  073D  120A  118A  25E5   	fcall	_lcd_command
+              120A  118A         
+   479                           	line	63
+   480                           	
+   481  0742                     l2016:	
+   482                           ;heart beat.c: 63: lcd_display("heart beat");
+   483  0742  3001               	movlw	((STR_1-__stringbase))&0ffh
+   484  0743  120A  118A  2628   	fcall	_lcd_display
+              120A  118A         
+   485                           	line	64
+   486                           	
+   487  0748                     l2018:	
+   488                           ;heart beat.c: 64: for(i=0;i<=100;i++)
+   489  0748  3000               	movlw	low(0)
+   490  0749  1283               	bcf	status, 5	;RP0=0, select bank0
+   491  074A  1303               	bcf	status, 6	;RP1=0, select bank0
+   492  074B  00AA               	movwf	(_i)
+   493  074C  3000               	movlw	high(0)
+   494  074D  00AB               	movwf	((_i))+1
+   495                           	
+   496  074E                     l2020:	
+   497  074E  082B               	movf	(_i+1),w
+   498  074F  3A80               	xorlw	80h
+   499  0750  00FE               	movwf	btemp+0
+   500  0751  3080               	movlw	(high(065h))^80h
+   501  0752  027E               	subwf	btemp+0,w
+   502  0753  1D03               	skipz
+   503  0754  2F57               	goto	u2395
+   504  0755  3065               	movlw	low(065h)
+   505  0756  022A               	subwf	(_i),w
+   506  0757                     u2395:
+   507                           
+   508  0757  1C03               	skipc
+   509  0758  2F5A               	goto	u2391
+   510  0759  2F5B               	goto	u2390
+   511  075A                     u2391:
+   512  075A  2F5C               	goto	l583
+   513  075B                     u2390:
+   514                           	
+   515  075B                     l2022:	
+   516  075B  2F76               	goto	l584
+   517                           	line	65
+   518                           	
+   519  075C                     l583:	
+   520                           	line	66
+   521                           	
+   522  075C                     l2024:	
+   523                           ;heart beat.c: 65: {
+   524                           ;heart beat.c: 66: delay();
+   525  075C  120A  118A  25D4   	fcall	_delay
+              120A  118A         
+   526                           	line	64
+   527                           	
+   528  0761                     l2026:	
+   529  0761  3001               	movlw	low(01h)
+   530  0762  1283               	bcf	status, 5	;RP0=0, select bank0
+   531  0763  1303               	bcf	status, 6	;RP1=0, select bank0
+   532  0764  07AA               	addwf	(_i),f
+   533  0765  1803               	skipnc
+   534  0766  0AAB               	incf	(_i+1),f
+   535  0767  3000               	movlw	high(01h)
+   536  0768  07AB               	addwf	(_i+1),f
+   537                           	
+   538  0769                     l2028:	
+   539  0769  082B               	movf	(_i+1),w
+   540  076A  3A80               	xorlw	80h
+   541  076B  00FE               	movwf	btemp+0
+   542  076C  3080               	movlw	(high(065h))^80h
+   543  076D  027E               	subwf	btemp+0,w
+   544  076E  1D03               	skipz
+   545  076F  2F72               	goto	u2405
+   546  0770  3065               	movlw	low(065h)
+   547  0771  022A               	subwf	(_i),w
+   548  0772                     u2405:
+   549                           
+   550  0772  1C03               	skipc
+   551  0773  2F75               	goto	u2401
+   552  0774  2F76               	goto	u2400
+   553  0775                     u2401:
+   554  0775  2F5C               	goto	l583
+   555  0776                     u2400:
+   556                           	
+   557  0776                     l584:	
+   558                           	line	70
+   559                           	
+   560  0776                     l2030:	
+   561                           ;heart beat.c: 67: }
+   562                           ;heart beat.c: 69: int a,b,c,d,temp;
+   563                           ;heart beat.c: 70: temp=TMR0;
+   564  0776  1283               	bcf	status, 5	;RP0=0, select bank0
+   565  0777  1303               	bcf	status, 6	;RP1=0, select bank0
+   566  0778  0801               	movf	(1),w	;volatile
+   567  0779  00F9               	movwf	(??_main+0)+0
+   568  077A  01FA               	clrf	(??_main+0)+0+1
+   569  077B  0879               	movf	0+(??_main+0)+0,w
+   570  077C  00A8               	movwf	(main@temp)
+   571  077D  087A               	movf	1+(??_main+0)+0,w
+   572  077E  00A9               	movwf	(main@temp+1)
+   573                           	line	71
+   574                           	
+   575  077F                     l2032:	
+   576                           ;heart beat.c: 71: a=temp/100;
+   577  077F  3064               	movlw	low(064h)
+   578  0780  00F0               	movwf	(?___awdiv)
+   579  0781  3000               	movlw	high(064h)
+   580  0782  00F1               	movwf	((?___awdiv))+1
+   581  0783  0829               	movf	(main@temp+1),w
+   582  0784  01F3               	clrf	1+(?___awdiv)+02h
+   583  0785  07F3               	addwf	1+(?___awdiv)+02h
+   584  0786  0828               	movf	(main@temp),w
+   585  0787  01F2               	clrf	0+(?___awdiv)+02h
+   586  0788  07F2               	addwf	0+(?___awdiv)+02h
+   587                           
+   588  0789  120A  118A  26AF   	fcall	___awdiv
+              120A  118A         
+   589  078E  0871               	movf	(1+(?___awdiv)),w
+   590  078F  1283               	bcf	status, 5	;RP0=0, select bank0
+   591  0790  1303               	bcf	status, 6	;RP1=0, select bank0
+   592  0791  01A1               	clrf	(main@a+1)
+   593  0792  07A1               	addwf	(main@a+1)
+   594  0793  0870               	movf	(0+(?___awdiv)),w
+   595  0794  01A0               	clrf	(main@a)
+   596  0795  07A0               	addwf	(main@a)
+   597                           
+   598                           	line	72
+   599                           	
+   600  0796                     l2034:	
+   601                           ;heart beat.c: 72: b=temp%100;
+   602  0796  3064               	movlw	low(064h)
+   603  0797  00F0               	movwf	(?___awmod)
+   604  0798  3000               	movlw	high(064h)
+   605  0799  00F1               	movwf	((?___awmod))+1
+   606  079A  0829               	movf	(main@temp+1),w
+   607  079B  01F3               	clrf	1+(?___awmod)+02h
+   608  079C  07F3               	addwf	1+(?___awmod)+02h
+   609  079D  0828               	movf	(main@temp),w
+   610  079E  01F2               	clrf	0+(?___awmod)+02h
+   611  079F  07F2               	addwf	0+(?___awmod)+02h
+   612                           
+   613  07A0  120A  118A  264F   	fcall	___awmod
+              120A  118A         
+   614  07A5  0871               	movf	(1+(?___awmod)),w
+   615  07A6  1283               	bcf	status, 5	;RP0=0, select bank0
+   616  07A7  1303               	bcf	status, 6	;RP1=0, select bank0
+   617  07A8  01A7               	clrf	(main@b+1)
+   618  07A9  07A7               	addwf	(main@b+1)
+   619  07AA  0870               	movf	(0+(?___awmod)),w
+   620  07AB  01A6               	clrf	(main@b)
+   621  07AC  07A6               	addwf	(main@b)
+   622                           
+   623                           	line	73
+   624                           	
+   625  07AD                     l2036:	
+   626                           ;heart beat.c: 73: c=b/10;
+   627  07AD  300A               	movlw	low(0Ah)
+   628  07AE  00F0               	movwf	(?___awdiv)
+   629  07AF  3000               	movlw	high(0Ah)
+   630  07B0  00F1               	movwf	((?___awdiv))+1
+   631  07B1  0827               	movf	(main@b+1),w
+   632  07B2  01F3               	clrf	1+(?___awdiv)+02h
+   633  07B3  07F3               	addwf	1+(?___awdiv)+02h
+   634  07B4  0826               	movf	(main@b),w
+   635  07B5  01F2               	clrf	0+(?___awdiv)+02h
+   636  07B6  07F2               	addwf	0+(?___awdiv)+02h
+   637                           
+   638  07B7  120A  118A  26AF   	fcall	___awdiv
+              120A  118A         
+   639  07BC  0871               	movf	(1+(?___awdiv)),w
+   640  07BD  1283               	bcf	status, 5	;RP0=0, select bank0
+   641  07BE  1303               	bcf	status, 6	;RP1=0, select bank0
+   642  07BF  01A3               	clrf	(main@c+1)
+   643  07C0  07A3               	addwf	(main@c+1)
+   644  07C1  0870               	movf	(0+(?___awdiv)),w
+   645  07C2  01A2               	clrf	(main@c)
+   646  07C3  07A2               	addwf	(main@c)
+   647                           
+   648                           	line	74
+   649                           	
+   650  07C4                     l2038:	
+   651                           ;heart beat.c: 74: d=b%10;
+   652  07C4  300A               	movlw	low(0Ah)
+   653  07C5  00F0               	movwf	(?___awmod)
+   654  07C6  3000               	movlw	high(0Ah)
+   655  07C7  00F1               	movwf	((?___awmod))+1
+   656  07C8  0827               	movf	(main@b+1),w
+   657  07C9  01F3               	clrf	1+(?___awmod)+02h
+   658  07CA  07F3               	addwf	1+(?___awmod)+02h
+   659  07CB  0826               	movf	(main@b),w
+   660  07CC  01F2               	clrf	0+(?___awmod)+02h
+   661  07CD  07F2               	addwf	0+(?___awmod)+02h
+   662                           
+   663  07CE  120A  118A  264F   	fcall	___awmod
+              120A  118A         
+   664  07D3  0871               	movf	(1+(?___awmod)),w
+   665  07D4  1283               	bcf	status, 5	;RP0=0, select bank0
+   666  07D5  1303               	bcf	status, 6	;RP1=0, select bank0
+   667  07D6  01A5               	clrf	(main@d+1)
+   668  07D7  07A5               	addwf	(main@d+1)
+   669  07D8  0870               	movf	(0+(?___awmod)),w
+   670  07D9  01A4               	clrf	(main@d)
+   671  07DA  07A4               	addwf	(main@d)
+   672                           
+   673                           	line	77
+   674                           	
+   675  07DB                     l2040:	
+   676                           ;heart beat.c: 77: lcd_command(0xc0);
+   677  07DB  30C0               	movlw	(0C0h)
+   678  07DC  120A  118A  25E5   	fcall	_lcd_command
+              120A  118A         
+   679                           	line	78
+   680                           	
+   681  07E1                     l2042:	
+   682                           ;heart beat.c: 78: lcd_data(a+0x30);
+   683  07E1  1283               	bcf	status, 5	;RP0=0, select bank0
+   684  07E2  1303               	bcf	status, 6	;RP1=0, select bank0
+   685  07E3  0820               	movf	(main@a),w
+   686  07E4  3E30               	addlw	030h
+   687  07E5  120A  118A  25FA   	fcall	_lcd_data
+              120A  118A         
+   688                           	line	79
+   689                           	
+   690  07EA                     l2044:	
+   691                           ;heart beat.c: 79: lcd_data(c+0x30);
+   692  07EA  1283               	bcf	status, 5	;RP0=0, select bank0
+   693  07EB  1303               	bcf	status, 6	;RP1=0, select bank0
+   694  07EC  0822               	movf	(main@c),w
+   695  07ED  3E30               	addlw	030h
+   696  07EE  120A  118A  25FA   	fcall	_lcd_data
+              120A  118A         
+   697                           	line	80
+   698                           	
+   699  07F3                     l2046:	
+   700                           ;heart beat.c: 80: lcd_data(d+0x30);
+   701  07F3  1283               	bcf	status, 5	;RP0=0, select bank0
+   702  07F4  1303               	bcf	status, 6	;RP1=0, select bank0
+   703  07F5  0824               	movf	(main@d),w
+   704  07F6  3E30               	addlw	030h
+   705  07F7  120A  118A  25FA   	fcall	_lcd_data
+              120A  118A         
+   706                           	line	81
+   707                           	
+   708  07FC                     l585:	
+   709                           	line	60
+   710  07FC  2F3C               	goto	l582
+   711                           	
+   712  07FD                     l586:	
+   713                           	line	82
+   714                           	
+   715  07FD                     l587:	
+   716                           	global	start
+   717  07FD  120A  118A  2800   	ljmp	start
+   718                           	opt stack 0
+   719                           GLOBAL	__end_of_main
+   720  0800                     	__end_of_main:
+   721 ;; =============== function _main ends ============
+   722                           
+   723                           	signat	_main,90
+   724                           	global	_lcd_init
+   725                           psect	text179,local,class=CODE,delta=2
+   726                           global __ptext179
+   727  060F                     __ptext179:
+   728                           
+   729 ;; *************** function _lcd_init *****************
+   730 ;; Defined at:
+   731 ;;		line 43 in file "C:\Users\TECH\Desktop\madhu pic folder\heart beat\heart beat.c"
+   732 ;; Parameters:    Size  Location     Type
+   733 ;;		None
+   734 ;; Auto vars:     Size  Location     Type
+   735 ;;		None
+   736 ;; Return value:  Size  Location     Type
+   737 ;;		None               void
+   738 ;; Registers used:
+   739 ;;		wreg, status,2, status,0, pclath, cstack
+   740 ;; Tracked objects:
+   741 ;;		On entry : 0/0
+   742 ;;		On exit  : 0/0
+   743 ;;		Unchanged: 0/0
+   744 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   745 ;;      Params:         0       0       0       0       0
+   746 ;;      Locals:         0       0       0       0       0
+   747 ;;      Temps:          0       0       0       0       0
+   748 ;;      Totals:         0       0       0       0       0
+   749 ;;Total ram usage:        0 bytes
+   750 ;; Hardware stack levels used:    1
+   751 ;; Hardware stack levels required when called:    2
+   752 ;; This function calls:
+   753 ;;		_lcd_command
+   754 ;; This function is called by:
+   755 ;;		_main
+   756 ;; This function uses a non-reentrant model
+   757 ;;
+   758                           psect	text179
+   759                           	file	"C:\Users\TECH\Desktop\madhu pic folder\heart beat\heart beat.c"
+   760                           	line	43
+   761                           	global	__size_of_lcd_init
+   762  0019                     	__size_of_lcd_init	equ	__end_of_lcd_init-_lcd_init
+   763                           	
+   764  060F                     _lcd_init:	
+   765                           	opt	stack 7
+   766                           ; Regs used in _lcd_init: [wreg+status,2+status,0+pclath+cstack]
+   767                           	line	44
+   768                           	
+   769  060F                     l2006:	
+   770                           ;heart beat.c: 44: lcd_command(0x38);
+   771  060F  3038               	movlw	(038h)
+   772  0610  120A  118A  25E5   	fcall	_lcd_command
+              120A  118A         
+   773                           	line	45
+   774                           ;heart beat.c: 45: lcd_command(0x0C);
+   775  0615  300C               	movlw	(0Ch)
+   776  0616  120A  118A  25E5   	fcall	_lcd_command
+              120A  118A         
+   777                           	line	46
+   778                           ;heart beat.c: 46: lcd_command(0x01);
+   779  061B  3001               	movlw	(01h)
+   780  061C  120A  118A  25E5   	fcall	_lcd_command
+              120A  118A         
+   781                           	line	47
+   782                           ;heart beat.c: 47: lcd_command(0x06);
+   783  0621  3006               	movlw	(06h)
+   784  0622  120A  118A  25E5   	fcall	_lcd_command
+              120A  118A         
+   785                           	line	48
+   786                           	
+   787  0627                     l579:	
+   788  0627  0008               	return
+   789                           	opt stack 0
+   790                           GLOBAL	__end_of_lcd_init
+   791  0628                     	__end_of_lcd_init:
+   792 ;; =============== function _lcd_init ends ============
+   793                           
+   794                           	signat	_lcd_init,88
+   795                           	global	_lcd_display
+   796                           psect	text180,local,class=CODE,delta=2
+   797                           global __ptext180
+   798  0628                     __ptext180:
+   799                           
+   800 ;; *************** function _lcd_display *****************
+   801 ;; Defined at:
+   802 ;;		line 35 in file "C:\Users\TECH\Desktop\madhu pic folder\heart beat\heart beat.c"
+   803 ;; Parameters:    Size  Location     Type
+   804 ;;  m               1    wreg     PTR unsigned char 
+   805 ;;		 -> STR_1(11), 
+   806 ;; Auto vars:     Size  Location     Type
+   807 ;;  m               1    3[COMMON] PTR unsigned char 
+   808 ;;		 -> STR_1(11), 
+   809 ;;  i               2    4[COMMON] int 
+   810 ;; Return value:  Size  Location     Type
+   811 ;;		None               void
+   812 ;; Registers used:
+   813 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   814 ;; Tracked objects:
+   815 ;;		On entry : 0/0
+   816 ;;		On exit  : 0/0
+   817 ;;		Unchanged: 0/0
+   818 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   819 ;;      Params:         0       0       0       0       0
+   820 ;;      Locals:         3       0       0       0       0
+   821 ;;      Temps:          0       0       0       0       0
+   822 ;;      Totals:         3       0       0       0       0
+   823 ;;Total ram usage:        3 bytes
+   824 ;; Hardware stack levels used:    1
+   825 ;; Hardware stack levels required when called:    2
+   826 ;; This function calls:
+   827 ;;		_lcd_data
+   828 ;; This function is called by:
+   829 ;;		_main
+   830 ;; This function uses a non-reentrant model
+   831 ;;
+   832                           psect	text180
+   833                           	file	"C:\Users\TECH\Desktop\madhu pic folder\heart beat\heart beat.c"
+   834                           	line	35
+   835                           	global	__size_of_lcd_display
+   836  0027                     	__size_of_lcd_display	equ	__end_of_lcd_display-_lcd_display
+   837                           	
+   838  0628                     _lcd_display:	
+   839                           	opt	stack 7
+   840                           ; Regs used in _lcd_display: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   841                           ;lcd_display@m stored from wreg
+   842  0628  00F3               	movwf	(lcd_display@m)
+   843                           	line	36
+   844                           	
+   845  0629                     l1998:	
+   846                           ;heart beat.c: 36: for(int i=0;m[i]!=0;i++)
+   847  0629  3000               	movlw	low(0)
+   848  062A  00F4               	movwf	(lcd_display@i)
+   849  062B  3000               	movlw	high(0)
+   850  062C  00F5               	movwf	((lcd_display@i))+1
+   851  062D  2E41               	goto	l573
+   852                           	line	37
+   853                           	
+   854  062E                     l574:	
+   855                           	line	38
+   856                           	
+   857  062E                     l2000:	
+   858                           ;heart beat.c: 37: {
+   859                           ;heart beat.c: 38: lcd_data(m[i]);
+   860  062E  0874               	movf	(lcd_display@i),w
+   861  062F  0773               	addwf	(lcd_display@m),w
+   862  0630  0084               	movwf	fsr0
+   863  0631  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+   864  0636  120A  118A  25FA   	fcall	_lcd_data
+              120A  118A         
+   865                           	line	36
+   866                           	
+   867  063B                     l2002:	
+   868  063B  3001               	movlw	low(01h)
+   869  063C  07F4               	addwf	(lcd_display@i),f
+   870  063D  1803               	skipnc
+   871  063E  0AF5               	incf	(lcd_display@i+1),f
+   872  063F  3000               	movlw	high(01h)
+   873  0640  07F5               	addwf	(lcd_display@i+1),f
+   874                           	
+   875  0641                     l573:	
+   876                           	
+   877  0641                     l2004:	
+   878  0641  0874               	movf	(lcd_display@i),w
+   879  0642  0773               	addwf	(lcd_display@m),w
+   880  0643  0084               	movwf	fsr0
+   881  0644  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+   882  0649  3800               	iorlw	0
+   883  064A  1D03               	skipz
+   884  064B  2E4D               	goto	u2381
+   885  064C  2E4E               	goto	u2380
+   886  064D                     u2381:
+   887  064D  2E2E               	goto	l574
+   888  064E                     u2380:
+   889                           	
+   890  064E                     l575:	
+   891                           	line	40
+   892                           	
+   893  064E                     l576:	
+   894  064E  0008               	return
+   895                           	opt stack 0
+   896                           GLOBAL	__end_of_lcd_display
+   897  064F                     	__end_of_lcd_display:
+   898 ;; =============== function _lcd_display ends ============
+   899                           
+   900                           	signat	_lcd_display,4216
+   901                           	global	_lcd_data
+   902                           psect	text181,local,class=CODE,delta=2
+   903                           global __ptext181
+   904  05FA                     __ptext181:
+   905                           
+   906 ;; *************** function _lcd_data *****************
+   907 ;; Defined at:
+   908 ;;		line 25 in file "C:\Users\TECH\Desktop\madhu pic folder\heart beat\heart beat.c"
+   909 ;; Parameters:    Size  Location     Type
+   910 ;;  data            1    wreg     unsigned char 
+   911 ;; Auto vars:     Size  Location     Type
+   912 ;;  data            1    2[COMMON] unsigned char 
+   913 ;; Return value:  Size  Location     Type
+   914 ;;		None               void
+   915 ;; Registers used:
+   916 ;;		wreg, status,2, status,0, pclath, cstack
+   917 ;; Tracked objects:
+   918 ;;		On entry : 0/0
+   919 ;;		On exit  : 0/0
+   920 ;;		Unchanged: 0/0
+   921 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   922 ;;      Params:         0       0       0       0       0
+   923 ;;      Locals:         1       0       0       0       0
+   924 ;;      Temps:          0       0       0       0       0
+   925 ;;      Totals:         1       0       0       0       0
+   926 ;;Total ram usage:        1 bytes
+   927 ;; Hardware stack levels used:    1
+   928 ;; Hardware stack levels required when called:    1
+   929 ;; This function calls:
+   930 ;;		_delay
+   931 ;; This function is called by:
+   932 ;;		_lcd_display
+   933 ;;		_main
+   934 ;; This function uses a non-reentrant model
+   935 ;;
+   936                           psect	text181
+   937                           	file	"C:\Users\TECH\Desktop\madhu pic folder\heart beat\heart beat.c"
+   938                           	line	25
+   939                           	global	__size_of_lcd_data
+   940  0015                     	__size_of_lcd_data	equ	__end_of_lcd_data-_lcd_data
+   941                           	
+   942  05FA                     _lcd_data:	
+   943                           	opt	stack 7
+   944                           ; Regs used in _lcd_data: [wreg+status,2+status,0+pclath+cstack]
+   945                           ;lcd_data@data stored from wreg
+   946  05FA  00F2               	movwf	(lcd_data@data)
+   947                           	line	26
+   948                           	
+   949  05FB                     l1986:	
+   950                           ;heart beat.c: 26: PORTD=data;
+   951  05FB  0872               	movf	(lcd_data@data),w
+   952  05FC  1283               	bcf	status, 5	;RP0=0, select bank0
+   953  05FD  1303               	bcf	status, 6	;RP1=0, select bank0
+   954  05FE  0088               	movwf	(8)	;volatile
+   955                           	line	27
+   956                           	
+   957  05FF                     l1988:	
+   958                           ;heart beat.c: 27: RB0=1;
+   959  05FF  1406               	bsf	(48/8),(48)&7
+   960                           	line	28
+   961                           	
+   962  0600                     l1990:	
+   963                           ;heart beat.c: 28: RB1=0;
+   964  0600  1086               	bcf	(49/8),(49)&7
+   965                           	line	29
+   966                           	
+   967  0601                     l1992:	
+   968                           ;heart beat.c: 29: RB2=1;
+   969  0601  1506               	bsf	(50/8),(50)&7
+   970                           	line	30
+   971                           	
+   972  0602                     l1994:	
+   973                           ;heart beat.c: 30: delay(100);
+   974  0602  3064               	movlw	low(064h)
+   975  0603  00F0               	movwf	(?_delay)
+   976  0604  3000               	movlw	high(064h)
+   977  0605  00F1               	movwf	((?_delay))+1
+   978  0606  120A  118A  25D4   	fcall	_delay
+              120A  118A         
+   979                           	line	31
+   980                           	
+   981  060B                     l1996:	
+   982                           ;heart beat.c: 31: RB2=0;
+   983  060B  1283               	bcf	status, 5	;RP0=0, select bank0
+   984  060C  1303               	bcf	status, 6	;RP1=0, select bank0
+   985  060D  1106               	bcf	(50/8),(50)&7
+   986                           	line	32
+   987                           	
+   988  060E                     l570:	
+   989  060E  0008               	return
+   990                           	opt stack 0
+   991                           GLOBAL	__end_of_lcd_data
+   992  060F                     	__end_of_lcd_data:
+   993 ;; =============== function _lcd_data ends ============
+   994                           
+   995                           	signat	_lcd_data,4216
+   996                           	global	_lcd_command
+   997                           psect	text182,local,class=CODE,delta=2
+   998                           global __ptext182
+   999  05E5                     __ptext182:
+  1000                           
+  1001 ;; *************** function _lcd_command *****************
+  1002 ;; Defined at:
+  1003 ;;		line 16 in file "C:\Users\TECH\Desktop\madhu pic folder\heart beat\heart beat.c"
+  1004 ;; Parameters:    Size  Location     Type
+  1005 ;;  com             1    wreg     unsigned char 
+  1006 ;; Auto vars:     Size  Location     Type
+  1007 ;;  com             1    2[COMMON] unsigned char 
+  1008 ;; Return value:  Size  Location     Type
+  1009 ;;		None               void
+  1010 ;; Registers used:
+  1011 ;;		wreg, status,2, status,0, pclath, cstack
+  1012 ;; Tracked objects:
+  1013 ;;		On entry : 0/0
+  1014 ;;		On exit  : 0/0
+  1015 ;;		Unchanged: 0/0
+  1016 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1017 ;;      Params:         0       0       0       0       0
+  1018 ;;      Locals:         1       0       0       0       0
+  1019 ;;      Temps:          0       0       0       0       0
+  1020 ;;      Totals:         1       0       0       0       0
+  1021 ;;Total ram usage:        1 bytes
+  1022 ;; Hardware stack levels used:    1
+  1023 ;; Hardware stack levels required when called:    1
+  1024 ;; This function calls:
+  1025 ;;		_delay
+  1026 ;; This function is called by:
+  1027 ;;		_lcd_init
+  1028 ;;		_main
+  1029 ;; This function uses a non-reentrant model
+  1030 ;;
+  1031                           psect	text182
+  1032                           	file	"C:\Users\TECH\Desktop\madhu pic folder\heart beat\heart beat.c"
+  1033                           	line	16
+  1034                           	global	__size_of_lcd_command
+  1035  0015                     	__size_of_lcd_command	equ	__end_of_lcd_command-_lcd_command
+  1036                           	
+  1037  05E5                     _lcd_command:	
+  1038                           	opt	stack 7
+  1039                           ; Regs used in _lcd_command: [wreg+status,2+status,0+pclath+cstack]
+  1040                           ;lcd_command@com stored from wreg
+  1041  05E5  00F2               	movwf	(lcd_command@com)
+  1042                           	line	17
+  1043                           	
+  1044  05E6                     l1974:	
+  1045                           ;heart beat.c: 17: PORTD=com;
+  1046  05E6  0872               	movf	(lcd_command@com),w
+  1047  05E7  1283               	bcf	status, 5	;RP0=0, select bank0
+  1048  05E8  1303               	bcf	status, 6	;RP1=0, select bank0
+  1049  05E9  0088               	movwf	(8)	;volatile
+  1050                           	line	18
+  1051                           	
+  1052  05EA                     l1976:	
+  1053                           ;heart beat.c: 18: RB0=0;
+  1054  05EA  1006               	bcf	(48/8),(48)&7
+  1055                           	line	19
+  1056                           	
+  1057  05EB                     l1978:	
+  1058                           ;heart beat.c: 19: RB1=0;
+  1059  05EB  1086               	bcf	(49/8),(49)&7
+  1060                           	line	20
+  1061                           	
+  1062  05EC                     l1980:	
+  1063                           ;heart beat.c: 20: RB2=1;
+  1064  05EC  1506               	bsf	(50/8),(50)&7
+  1065                           	line	21
+  1066                           	
+  1067  05ED                     l1982:	
+  1068                           ;heart beat.c: 21: delay(100);
+  1069  05ED  3064               	movlw	low(064h)
+  1070  05EE  00F0               	movwf	(?_delay)
+  1071  05EF  3000               	movlw	high(064h)
+  1072  05F0  00F1               	movwf	((?_delay))+1
+  1073  05F1  120A  118A  25D4   	fcall	_delay
+              120A  118A         
+  1074                           	line	22
+  1075                           	
+  1076  05F6                     l1984:	
+  1077                           ;heart beat.c: 22: RB2=0;
+  1078  05F6  1283               	bcf	status, 5	;RP0=0, select bank0
+  1079  05F7  1303               	bcf	status, 6	;RP1=0, select bank0
+  1080  05F8  1106               	bcf	(50/8),(50)&7
+  1081                           	line	23
+  1082                           	
+  1083  05F9                     l567:	
+  1084  05F9  0008               	return
+  1085                           	opt stack 0
+  1086                           GLOBAL	__end_of_lcd_command
+  1087  05FA                     	__end_of_lcd_command:
+  1088 ;; =============== function _lcd_command ends ============
+  1089                           
+  1090                           	signat	_lcd_command,4216
+  1091                           	global	___awmod
+  1092                           psect	text183,local,class=CODE,delta=2
+  1093                           global __ptext183
+  1094  064F                     __ptext183:
+  1095                           
+  1096 ;; *************** function ___awmod *****************
+  1097 ;; Defined at:
+  1098 ;;		line 5 in file "C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\sources\awmod.c"
+  1099 ;; Parameters:    Size  Location     Type
+  1100 ;;  divisor         2    0[COMMON] int 
+  1101 ;;  dividend        2    2[COMMON] int 
+  1102 ;; Auto vars:     Size  Location     Type
+  1103 ;;  sign            1    6[COMMON] unsigned char 
+  1104 ;;  counter         1    5[COMMON] unsigned char 
+  1105 ;; Return value:  Size  Location     Type
+  1106 ;;                  2    0[COMMON] int 
+  1107 ;; Registers used:
+  1108 ;;		wreg, status,2, status,0
+  1109 ;; Tracked objects:
+  1110 ;;		On entry : 0/0
+  1111 ;;		On exit  : 0/0
+  1112 ;;		Unchanged: 0/0
+  1113 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1114 ;;      Params:         4       0       0       0       0
+  1115 ;;      Locals:         2       0       0       0       0
+  1116 ;;      Temps:          1       0       0       0       0
+  1117 ;;      Totals:         7       0       0       0       0
+  1118 ;;Total ram usage:        7 bytes
+  1119 ;; Hardware stack levels used:    1
+  1120 ;; This function calls:
+  1121 ;;		Nothing
+  1122 ;; This function is called by:
+  1123 ;;		_main
+  1124 ;; This function uses a non-reentrant model
+  1125 ;;
+  1126                           psect	text183
+  1127                           	file	"C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\sources\awmod.c"
+  1128                           	line	5
+  1129                           	global	__size_of___awmod
+  1130  0060                     	__size_of___awmod	equ	__end_of___awmod-___awmod
+  1131                           	
+  1132  064F                     ___awmod:	
+  1133                           	opt	stack 7
+  1134                           ; Regs used in ___awmod: [wreg+status,2+status,0]
+  1135                           	line	8
+  1136                           	
+  1137  064F                     l1938:	
+  1138  064F  1003               	clrc
+  1139  0650  3000               	movlw	0
+  1140  0651  1803               	btfsc	status,0
+  1141  0652  3001               	movlw	1
+  1142  0653  00F6               	movwf	(___awmod@sign)
+  1143                           	line	9
+  1144                           	
+  1145  0654                     l1940:	
+  1146  0654  1FF3               	btfss	(___awmod@dividend+1),7
+  1147  0655  2E57               	goto	u2291
+  1148  0656  2E58               	goto	u2290
+  1149  0657                     u2291:
+  1150  0657  2E60               	goto	l804
+  1151  0658                     u2290:
+  1152                           	line	10
+  1153                           	
+  1154  0658                     l1942:	
+  1155  0658  09F2               	comf	(___awmod@dividend),f
+  1156  0659  09F3               	comf	(___awmod@dividend+1),f
+  1157  065A  0AF2               	incf	(___awmod@dividend),f
+  1158  065B  1903               	skipnz
+  1159  065C  0AF3               	incf	(___awmod@dividend+1),f
+  1160                           	line	11
+  1161  065D  01F6               	clrf	(___awmod@sign)
+  1162  065E  1403               	bsf	status,0
+  1163  065F  0DF6               	rlf	(___awmod@sign),f
+  1164                           	line	12
+  1165                           	
+  1166  0660                     l804:	
+  1167                           	line	13
+  1168                           	
+  1169  0660                     l1944:	
+  1170  0660  1FF1               	btfss	(___awmod@divisor+1),7
+  1171  0661  2E63               	goto	u2301
+  1172  0662  2E64               	goto	u2300
+  1173  0663                     u2301:
+  1174  0663  2E69               	goto	l805
+  1175  0664                     u2300:
+  1176                           	line	14
+  1177                           	
+  1178  0664                     l1946:	
+  1179  0664  09F0               	comf	(___awmod@divisor),f
+  1180  0665  09F1               	comf	(___awmod@divisor+1),f
+  1181  0666  0AF0               	incf	(___awmod@divisor),f
+  1182  0667  1903               	skipnz
+  1183  0668  0AF1               	incf	(___awmod@divisor+1),f
+  1184                           	
+  1185  0669                     l805:	
+  1186                           	line	15
+  1187                           	
+  1188  0669                     l1948:	
+  1189  0669  0871               	movf	(___awmod@divisor+1),w
+  1190  066A  0470               	iorwf	(___awmod@divisor),w
+  1191  066B  1903               	skipnz
+  1192  066C  2E6E               	goto	u2311
+  1193  066D  2E6F               	goto	u2310
+  1194  066E                     u2311:
+  1195  066E  2E9F               	goto	l806
+  1196  066F                     u2310:
+  1197                           	line	16
+  1198                           	
+  1199  066F                     l1950:	
+  1200  066F  01F5               	clrf	(___awmod@counter)
+  1201  0670  1403               	bsf	status,0
+  1202  0671  0DF5               	rlf	(___awmod@counter),f
+  1203                           	line	17
+  1204  0672  2E7E               	goto	l807
+  1205                           	
+  1206  0673                     l808:	
+  1207                           	line	18
+  1208                           	
+  1209  0673                     l1952:	
+  1210  0673  3001               	movlw	01h
+  1211                           	
+  1212  0674                     u2325:
+  1213  0674  1003               	clrc
+  1214  0675  0DF0               	rlf	(___awmod@divisor),f
+  1215  0676  0DF1               	rlf	(___awmod@divisor+1),f
+  1216  0677  3EFF               	addlw	-1
+  1217  0678  1D03               	skipz
+  1218  0679  2E74               	goto	u2325
+  1219                           	line	19
+  1220                           	
+  1221  067A                     l1954:	
+  1222  067A  3001               	movlw	(01h)
+  1223  067B  00F4               	movwf	(??___awmod+0)+0
+  1224  067C  0874               	movf	(??___awmod+0)+0,w
+  1225  067D  07F5               	addwf	(___awmod@counter),f
+  1226                           	line	20
+  1227                           	
+  1228  067E                     l807:	
+  1229                           	line	17
+  1230                           	
+  1231  067E                     l1956:	
+  1232  067E  1FF1               	btfss	(___awmod@divisor+1),(15)&7
+  1233  067F  2E81               	goto	u2331
+  1234  0680  2E82               	goto	u2330
+  1235  0681                     u2331:
+  1236  0681  2E73               	goto	l808
+  1237  0682                     u2330:
+  1238                           	
+  1239  0682                     l809:	
+  1240                           	line	21
+  1241                           	
+  1242  0682                     l810:	
+  1243                           	line	22
+  1244                           	
+  1245  0682                     l1958:	
+  1246  0682  0871               	movf	(___awmod@divisor+1),w
+  1247  0683  0273               	subwf	(___awmod@dividend+1),w
+  1248  0684  1D03               	skipz
+  1249  0685  2E88               	goto	u2345
+  1250  0686  0870               	movf	(___awmod@divisor),w
+  1251  0687  0272               	subwf	(___awmod@dividend),w
+  1252  0688                     u2345:
+  1253  0688  1C03               	skipc
+  1254  0689  2E8B               	goto	u2341
+  1255  068A  2E8C               	goto	u2340
+  1256  068B                     u2341:
+  1257  068B  2E92               	goto	l811
+  1258  068C                     u2340:
+  1259                           	line	23
+  1260                           	
+  1261  068C                     l1960:	
+  1262  068C  0870               	movf	(___awmod@divisor),w
+  1263  068D  02F2               	subwf	(___awmod@dividend),f
+  1264  068E  0871               	movf	(___awmod@divisor+1),w
+  1265  068F  1C03               	skipc
+  1266  0690  03F3               	decf	(___awmod@dividend+1),f
+  1267  0691  02F3               	subwf	(___awmod@dividend+1),f
+  1268                           	
+  1269  0692                     l811:	
+  1270                           	line	24
+  1271                           	
+  1272  0692                     l1962:	
+  1273  0692  3001               	movlw	01h
+  1274                           	
+  1275  0693                     u2355:
+  1276  0693  1003               	clrc
+  1277  0694  0CF1               	rrf	(___awmod@divisor+1),f
+  1278  0695  0CF0               	rrf	(___awmod@divisor),f
+  1279  0696  3EFF               	addlw	-1
+  1280  0697  1D03               	skipz
+  1281  0698  2E93               	goto	u2355
+  1282                           	line	25
+  1283                           	
+  1284  0699                     l1964:	
+  1285  0699  3001               	movlw	low(01h)
+  1286  069A  02F5               	subwf	(___awmod@counter),f
+  1287  069B  1D03               	btfss	status,2
+  1288  069C  2E9E               	goto	u2361
+  1289  069D  2E9F               	goto	u2360
+  1290  069E                     u2361:
+  1291  069E  2E82               	goto	l810
+  1292  069F                     u2360:
+  1293                           	
+  1294  069F                     l812:	
+  1295                           	line	26
+  1296                           	
+  1297  069F                     l806:	
+  1298                           	line	27
+  1299                           	
+  1300  069F                     l1966:	
+  1301  069F  0876               	movf	(___awmod@sign),w
+  1302  06A0  1D03               	skipz
+  1303  06A1  2EA3               	goto	u2370
+  1304  06A2  2EA8               	goto	l813
+  1305  06A3                     u2370:
+  1306                           	line	28
+  1307                           	
+  1308  06A3                     l1968:	
+  1309  06A3  09F2               	comf	(___awmod@dividend),f
+  1310  06A4  09F3               	comf	(___awmod@dividend+1),f
+  1311  06A5  0AF2               	incf	(___awmod@dividend),f
+  1312  06A6  1903               	skipnz
+  1313  06A7  0AF3               	incf	(___awmod@dividend+1),f
+  1314                           	
+  1315  06A8                     l813:	
+  1316                           	line	29
+  1317                           	
+  1318  06A8                     l1970:	
+  1319  06A8  0873               	movf	(___awmod@dividend+1),w
+  1320  06A9  01F1               	clrf	(?___awmod+1)
+  1321  06AA  07F1               	addwf	(?___awmod+1)
+  1322  06AB  0872               	movf	(___awmod@dividend),w
+  1323  06AC  01F0               	clrf	(?___awmod)
+  1324  06AD  07F0               	addwf	(?___awmod)
+  1325                           
+  1326                           	
+  1327  06AE                     l1972:	
+  1328                           	line	30
+  1329                           	
+  1330  06AE                     l814:	
+  1331  06AE  0008               	return
+  1332                           	opt stack 0
+  1333                           GLOBAL	__end_of___awmod
+  1334  06AF                     	__end_of___awmod:
+  1335 ;; =============== function ___awmod ends ============
+  1336                           
+  1337                           	signat	___awmod,8314
+  1338                           	global	___awdiv
+  1339                           psect	text184,local,class=CODE,delta=2
+  1340                           global __ptext184
+  1341  06AF                     __ptext184:
+  1342                           
+  1343 ;; *************** function ___awdiv *****************
+  1344 ;; Defined at:
+  1345 ;;		line 5 in file "C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\sources\awdiv.c"
+  1346 ;; Parameters:    Size  Location     Type
+  1347 ;;  divisor         2    0[COMMON] int 
+  1348 ;;  dividend        2    2[COMMON] int 
+  1349 ;; Auto vars:     Size  Location     Type
+  1350 ;;  quotient        2    7[COMMON] int 
+  1351 ;;  sign            1    6[COMMON] unsigned char 
+  1352 ;;  counter         1    5[COMMON] unsigned char 
+  1353 ;; Return value:  Size  Location     Type
+  1354 ;;                  2    0[COMMON] int 
+  1355 ;; Registers used:
+  1356 ;;		wreg, status,2, status,0
+  1357 ;; Tracked objects:
+  1358 ;;		On entry : 0/0
+  1359 ;;		On exit  : 0/0
+  1360 ;;		Unchanged: 0/0
+  1361 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1362 ;;      Params:         4       0       0       0       0
+  1363 ;;      Locals:         4       0       0       0       0
+  1364 ;;      Temps:          1       0       0       0       0
+  1365 ;;      Totals:         9       0       0       0       0
+  1366 ;;Total ram usage:        9 bytes
+  1367 ;; Hardware stack levels used:    1
+  1368 ;; This function calls:
+  1369 ;;		Nothing
+  1370 ;; This function is called by:
+  1371 ;;		_main
+  1372 ;; This function uses a non-reentrant model
+  1373 ;;
+  1374                           psect	text184
+  1375                           	file	"C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\sources\awdiv.c"
+  1376                           	line	5
+  1377                           	global	__size_of___awdiv
+  1378  0070                     	__size_of___awdiv	equ	__end_of___awdiv-___awdiv
+  1379                           	
+  1380  06AF                     ___awdiv:	
+  1381                           	opt	stack 7
+  1382                           ; Regs used in ___awdiv: [wreg+status,2+status,0]
+  1383                           	line	9
+  1384                           	
+  1385  06AF                     l1900:	
+  1386  06AF  1003               	clrc
+  1387  06B0  3000               	movlw	0
+  1388  06B1  1803               	btfsc	status,0
+  1389  06B2  3001               	movlw	1
+  1390  06B3  00F6               	movwf	(___awdiv@sign)
+  1391                           	line	10
+  1392                           	
+  1393  06B4                     l1902:	
+  1394  06B4  1FF1               	btfss	(___awdiv@divisor+1),7
+  1395  06B5  2EB7               	goto	u2191
+  1396  06B6  2EB8               	goto	u2190
+  1397  06B7                     u2191:
+  1398  06B7  2EC0               	goto	l736
+  1399  06B8                     u2190:
+  1400                           	line	11
+  1401                           	
+  1402  06B8                     l1904:	
+  1403  06B8  09F0               	comf	(___awdiv@divisor),f
+  1404  06B9  09F1               	comf	(___awdiv@divisor+1),f
+  1405  06BA  0AF0               	incf	(___awdiv@divisor),f
+  1406  06BB  1903               	skipnz
+  1407  06BC  0AF1               	incf	(___awdiv@divisor+1),f
+  1408                           	line	12
+  1409  06BD  01F6               	clrf	(___awdiv@sign)
+  1410  06BE  1403               	bsf	status,0
+  1411  06BF  0DF6               	rlf	(___awdiv@sign),f
+  1412                           	line	13
+  1413                           	
+  1414  06C0                     l736:	
+  1415                           	line	14
+  1416                           	
+  1417  06C0                     l1906:	
+  1418  06C0  1FF3               	btfss	(___awdiv@dividend+1),7
+  1419  06C1  2EC3               	goto	u2201
+  1420  06C2  2EC4               	goto	u2200
+  1421  06C3                     u2201:
+  1422  06C3  2ECD               	goto	l737
+  1423  06C4                     u2200:
+  1424                           	line	15
+  1425                           	
+  1426  06C4                     l1908:	
+  1427  06C4  09F2               	comf	(___awdiv@dividend),f
+  1428  06C5  09F3               	comf	(___awdiv@dividend+1),f
+  1429  06C6  0AF2               	incf	(___awdiv@dividend),f
+  1430  06C7  1903               	skipnz
+  1431  06C8  0AF3               	incf	(___awdiv@dividend+1),f
+  1432                           	line	16
+  1433                           	
+  1434  06C9                     l1910:	
+  1435  06C9  3001               	movlw	(01h)
+  1436  06CA  00F4               	movwf	(??___awdiv+0)+0
+  1437  06CB  0874               	movf	(??___awdiv+0)+0,w
+  1438  06CC  06F6               	xorwf	(___awdiv@sign),f
+  1439                           	line	17
+  1440                           	
+  1441  06CD                     l737:	
+  1442                           	line	18
+  1443  06CD  3000               	movlw	low(0)
+  1444  06CE  00F7               	movwf	(___awdiv@quotient)
+  1445  06CF  3000               	movlw	high(0)
+  1446  06D0  00F8               	movwf	((___awdiv@quotient))+1
+  1447                           	line	19
+  1448  06D1  0871               	movf	(___awdiv@divisor+1),w
+  1449  06D2  0470               	iorwf	(___awdiv@divisor),w
+  1450  06D3  1903               	skipnz
+  1451  06D4  2ED6               	goto	u2211
+  1452  06D5  2ED7               	goto	u2210
+  1453  06D6                     u2211:
+  1454  06D6  2F0F               	goto	l738
+  1455  06D7                     u2210:
+  1456                           	line	20
+  1457                           	
+  1458  06D7                     l1912:	
+  1459  06D7  01F5               	clrf	(___awdiv@counter)
+  1460  06D8  1403               	bsf	status,0
+  1461  06D9  0DF5               	rlf	(___awdiv@counter),f
+  1462                           	line	21
+  1463  06DA  2EE6               	goto	l739
+  1464                           	
+  1465  06DB                     l740:	
+  1466                           	line	22
+  1467                           	
+  1468  06DB                     l1914:	
+  1469  06DB  3001               	movlw	01h
+  1470                           	
+  1471  06DC                     u2225:
+  1472  06DC  1003               	clrc
+  1473  06DD  0DF0               	rlf	(___awdiv@divisor),f
+  1474  06DE  0DF1               	rlf	(___awdiv@divisor+1),f
+  1475  06DF  3EFF               	addlw	-1
+  1476  06E0  1D03               	skipz
+  1477  06E1  2EDC               	goto	u2225
+  1478                           	line	23
+  1479                           	
+  1480  06E2                     l1916:	
+  1481  06E2  3001               	movlw	(01h)
+  1482  06E3  00F4               	movwf	(??___awdiv+0)+0
+  1483  06E4  0874               	movf	(??___awdiv+0)+0,w
+  1484  06E5  07F5               	addwf	(___awdiv@counter),f
+  1485                           	line	24
+  1486                           	
+  1487  06E6                     l739:	
+  1488                           	line	21
+  1489                           	
+  1490  06E6                     l1918:	
+  1491  06E6  1FF1               	btfss	(___awdiv@divisor+1),(15)&7
+  1492  06E7  2EE9               	goto	u2231
+  1493  06E8  2EEA               	goto	u2230
+  1494  06E9                     u2231:
+  1495  06E9  2EDB               	goto	l740
+  1496  06EA                     u2230:
+  1497                           	
+  1498  06EA                     l741:	
+  1499                           	line	25
+  1500                           	
+  1501  06EA                     l742:	
+  1502                           	line	26
+  1503                           	
+  1504  06EA                     l1920:	
+  1505  06EA  3001               	movlw	01h
+  1506                           	
+  1507  06EB                     u2245:
+  1508  06EB  1003               	clrc
+  1509  06EC  0DF7               	rlf	(___awdiv@quotient),f
+  1510  06ED  0DF8               	rlf	(___awdiv@quotient+1),f
+  1511  06EE  3EFF               	addlw	-1
+  1512  06EF  1D03               	skipz
+  1513  06F0  2EEB               	goto	u2245
+  1514                           	line	27
+  1515  06F1  0871               	movf	(___awdiv@divisor+1),w
+  1516  06F2  0273               	subwf	(___awdiv@dividend+1),w
+  1517  06F3  1D03               	skipz
+  1518  06F4  2EF7               	goto	u2255
+  1519  06F5  0870               	movf	(___awdiv@divisor),w
+  1520  06F6  0272               	subwf	(___awdiv@dividend),w
+  1521  06F7                     u2255:
+  1522  06F7  1C03               	skipc
+  1523  06F8  2EFA               	goto	u2251
+  1524  06F9  2EFB               	goto	u2250
+  1525  06FA                     u2251:
+  1526  06FA  2F02               	goto	l743
+  1527  06FB                     u2250:
+  1528                           	line	28
+  1529                           	
+  1530  06FB                     l1922:	
+  1531  06FB  0870               	movf	(___awdiv@divisor),w
+  1532  06FC  02F2               	subwf	(___awdiv@dividend),f
+  1533  06FD  0871               	movf	(___awdiv@divisor+1),w
+  1534  06FE  1C03               	skipc
+  1535  06FF  03F3               	decf	(___awdiv@dividend+1),f
+  1536  0700  02F3               	subwf	(___awdiv@dividend+1),f
+  1537                           	line	29
+  1538                           	
+  1539  0701                     l1924:	
+  1540  0701  1477               	bsf	(___awdiv@quotient)+(0/8),(0)&7
+  1541                           	line	30
+  1542                           	
+  1543  0702                     l743:	
+  1544                           	line	31
+  1545                           	
+  1546  0702                     l1926:	
+  1547  0702  3001               	movlw	01h
+  1548                           	
+  1549  0703                     u2265:
+  1550  0703  1003               	clrc
+  1551  0704  0CF1               	rrf	(___awdiv@divisor+1),f
+  1552  0705  0CF0               	rrf	(___awdiv@divisor),f
+  1553  0706  3EFF               	addlw	-1
+  1554  0707  1D03               	skipz
+  1555  0708  2F03               	goto	u2265
+  1556                           	line	32
+  1557                           	
+  1558  0709                     l1928:	
+  1559  0709  3001               	movlw	low(01h)
+  1560  070A  02F5               	subwf	(___awdiv@counter),f
+  1561  070B  1D03               	btfss	status,2
+  1562  070C  2F0E               	goto	u2271
+  1563  070D  2F0F               	goto	u2270
+  1564  070E                     u2271:
+  1565  070E  2EEA               	goto	l742
+  1566  070F                     u2270:
+  1567                           	
+  1568  070F                     l744:	
+  1569                           	line	33
+  1570                           	
+  1571  070F                     l738:	
+  1572                           	line	34
+  1573                           	
+  1574  070F                     l1930:	
+  1575  070F  0876               	movf	(___awdiv@sign),w
+  1576  0710  1D03               	skipz
+  1577  0711  2F13               	goto	u2280
+  1578  0712  2F18               	goto	l745
+  1579  0713                     u2280:
+  1580                           	line	35
+  1581                           	
+  1582  0713                     l1932:	
+  1583  0713  09F7               	comf	(___awdiv@quotient),f
+  1584  0714  09F8               	comf	(___awdiv@quotient+1),f
+  1585  0715  0AF7               	incf	(___awdiv@quotient),f
+  1586  0716  1903               	skipnz
+  1587  0717  0AF8               	incf	(___awdiv@quotient+1),f
+  1588                           	
+  1589  0718                     l745:	
+  1590                           	line	36
+  1591                           	
+  1592  0718                     l1934:	
+  1593  0718  0878               	movf	(___awdiv@quotient+1),w
+  1594  0719  01F1               	clrf	(?___awdiv+1)
+  1595  071A  07F1               	addwf	(?___awdiv+1)
+  1596  071B  0877               	movf	(___awdiv@quotient),w
+  1597  071C  01F0               	clrf	(?___awdiv)
+  1598  071D  07F0               	addwf	(?___awdiv)
+  1599                           
+  1600                           	
+  1601  071E                     l1936:	
+  1602                           	line	37
+  1603                           	
+  1604  071E                     l746:	
+  1605  071E  0008               	return
+  1606                           	opt stack 0
+  1607                           GLOBAL	__end_of___awdiv
+  1608  071F                     	__end_of___awdiv:
+  1609 ;; =============== function ___awdiv ends ============
+  1610                           
+  1611                           	signat	___awdiv,8314
+  1612                           	global	_delay
+  1613                           psect	text185,local,class=CODE,delta=2
+  1614                           global __ptext185
+  1615  05D4                     __ptext185:
+  1616                           
+  1617 ;; *************** function _delay *****************
+  1618 ;; Defined at:
+  1619 ;;		line 7 in file "C:\Users\TECH\Desktop\madhu pic folder\heart beat\heart beat.c"
+  1620 ;; Parameters:    Size  Location     Type
+  1621 ;;		None
+  1622 ;; Auto vars:     Size  Location     Type
+  1623 ;;		None
+  1624 ;; Return value:  Size  Location     Type
+  1625 ;;		None               void
+  1626 ;; Registers used:
+  1627 ;;		wreg
+  1628 ;; Tracked objects:
+  1629 ;;		On entry : 0/0
+  1630 ;;		On exit  : 0/0
+  1631 ;;		Unchanged: 0/0
+  1632 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1633 ;;      Params:         2       0       0       0       0
+  1634 ;;      Locals:         0       0       0       0       0
+  1635 ;;      Temps:          0       0       0       0       0
+  1636 ;;      Totals:         2       0       0       0       0
+  1637 ;;Total ram usage:        2 bytes
+  1638 ;; Hardware stack levels used:    1
+  1639 ;; This function calls:
+  1640 ;;		Nothing
+  1641 ;; This function is called by:
+  1642 ;;		_lcd_command
+  1643 ;;		_lcd_data
+  1644 ;;		_main
+  1645 ;; This function uses a non-reentrant model
+  1646 ;;
+  1647                           psect	text185
+  1648                           	file	"C:\Users\TECH\Desktop\madhu pic folder\heart beat\heart beat.c"
+  1649                           	line	7
+  1650                           	global	__size_of_delay
+  1651  0011                     	__size_of_delay	equ	__end_of_delay-_delay
+  1652                           	
+  1653  05D4                     _delay:	
+  1654                           	opt	stack 6
+  1655                           ; Regs used in _delay: [wreg]
+  1656                           	line	8
+  1657                           	
+  1658  05D4                     l1894:	
+  1659                           ;heart beat.c: 8: TMR1H=0xCF;
+  1660  05D4  30CF               	movlw	(0CFh)
+  1661  05D5  1283               	bcf	status, 5	;RP0=0, select bank0
+  1662  05D6  1303               	bcf	status, 6	;RP1=0, select bank0
+  1663  05D7  008F               	movwf	(15)	;volatile
+  1664                           	line	9
+  1665                           ;heart beat.c: 9: TMR1L=0x2B;
+  1666  05D8  302B               	movlw	(02Bh)
+  1667  05D9  008E               	movwf	(14)	;volatile
+  1668                           	line	10
+  1669                           ;heart beat.c: 10: T1CON=0x39;
+  1670  05DA  3039               	movlw	(039h)
+  1671  05DB  0090               	movwf	(16)	;volatile
+  1672                           	line	11
+  1673                           ;heart beat.c: 11: while(TMR1IF==0);
+  1674  05DC  2DDD               	goto	l561
+  1675                           	
+  1676  05DD                     l562:	
+  1677                           	
+  1678  05DD                     l561:	
+  1679  05DD  1C0C               	btfss	(96/8),(96)&7
+  1680  05DE  2DE0               	goto	u2181
+  1681  05DF  2DE1               	goto	u2180
+  1682  05E0                     u2181:
+  1683  05E0  2DDD               	goto	l562
+  1684  05E1                     u2180:
+  1685                           	
+  1686  05E1                     l563:	
+  1687                           	line	12
+  1688                           	
+  1689  05E1                     l1896:	
+  1690                           ;heart beat.c: 12: T1CON=0x38;
+  1691  05E1  3038               	movlw	(038h)
+  1692  05E2  0090               	movwf	(16)	;volatile
+  1693                           	line	13
+  1694                           	
+  1695  05E3                     l1898:	
+  1696                           ;heart beat.c: 13: TMR1IF=0;
+  1697  05E3  100C               	bcf	(96/8),(96)&7
+  1698                           	line	14
+  1699                           	
+  1700  05E4                     l564:	
+  1701  05E4  0008               	return
+  1702                           	opt stack 0
+  1703                           GLOBAL	__end_of_delay
+  1704  05E5                     	__end_of_delay:
+  1705 ;; =============== function _delay ends ============
+  1706                           
+  1707                           	signat	_delay,88
+  1708                           psect	text186,local,class=CODE,delta=2
+  1709                           global __ptext186
+  1710  0000                     __ptext186:
+  1711                           	global	btemp
+  1712  007E                     	btemp set 07Eh
+  1713                           
+  1714                           	DABS	1,126,2	;btemp
+  1715                           	global	wtemp0
+  1716  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.71a build 6446 
+Symbol Table                                                                                   Fri Nov 25 13:33:54 2022
+
+                   _i 002A                     pc 0002          lcd_data@data 0072          ___awdiv@sign 0076  
+                  fsr 0004                   l561 05DD                   l562 05DD                   l810 0682  
+                 l570 060E                   l563 05E1                   l811 0692                   l564 05E4  
+                 l740 06DB                   l812 069F                   l804 0660                   l741 06EA  
+                 l813 06A8                   l805 0669                   l573 0641                   l742 06EA  
+                 l814 06AE                   l806 069F                   l574 062E                   l582 073C  
+                 l743 0702                   l807 067E                   l567 05F9                   l575 064E  
+                 l583 075C                   l744 070F                   l736 06C0                   l808 0673  
+                 l576 064E                   l584 0776                   l745 0718                   l737 06CD  
+                 l809 0682                   l585 07FC                   l746 071E                   l738 070F  
+                 l586 07FD                   l739 06E6                   l579 0627                   l587 07FD  
+                 _RB0 0030                   _RB1 0031                   _RB2 0032                   fsr0 0004  
+        ___awmod@sign 0076          lcd_display@i 0074                  l2000 062E                  l2002 063B  
+                l2010 0731          lcd_display@m 0073                  l2004 0641                  l2020 074E  
+                l2012 0736                  l2006 060F                  l2030 0776                  l2022 075B  
+                l2014 0739                  l2040 07DB                  l2032 077F                  l2024 075C  
+                l2016 0742                  l2008 071F                  l2042 07E1                  l2034 0796  
+                l2026 0761                  l2018 0748                  l2044 07EA                  l2036 07AD  
+                l2028 0769                  l2046 07F3                  l2038 07C4                  l1900 06AF  
+                l1910 06C9                  l1902 06B4                  l1920 06EA                  l1912 06D7  
+                l1904 06B8                  l1930 070F                  l1922 06FB                  l1914 06DB  
+                l1906 06C0                  l1932 0713                  l1924 0701                  l1916 06E2  
+                l1908 06C4                  l1940 0654                  l1934 0718                  l1926 0702  
+                l1918 06E6                  l1950 066F                  l1942 0658                  l1936 071E  
+                l1928 0709                  l1960 068C                  l1952 0673                  l1944 0660  
+                l1970 06A8                  l1962 0692                  l1954 067A                  l1946 0664  
+                l1938 064F                  l1972 06AE                  l1964 0699                  l1956 067E  
+                l1948 0669                  l1980 05EC                  l1894 05D4                  l1966 069F  
+                l1958 0682                  l1982 05ED                  l1974 05E6                  l1990 0600  
+                l1896 05E1                  l1968 06A3                  l1984 05F6                  l1976 05EA  
+                l1992 0601                  l1898 05E3                  l1978 05EB                  l1994 0602  
+                l1986 05FB                  l1996 060B                  l1988 05FF                  l1998 0629  
+                STR_1 0009                  _T0CS 040D                  u2200 06C4                  u2201 06C3  
+                u2210 06D7                  u2211 06D6                  u2300 0664                  u2301 0663  
+                u2230 06EA                  u2310 066F                  u2231 06E9                  u2311 066E  
+                u2400 0776                  u2225 06DC                  u2401 0775                  u2250 06FB  
+                u2330 0682                  u2251 06FA                  u2331 0681                  u2180 05E1  
+                u2340 068C                  u2181 05E0                  u2245 06EB                  u2341 068B  
+                u2325 0674                  u2405 0772                  u2270 070F                  u2190 06B8  
+                u2271 070E                  u2255 06F7                  u2191 06B7                  u2280 0713  
+                u2360 069F                  u2265 0703                  u2361 069E                  u2345 0688  
+                u2370 06A3                  u2290 0658                  u2355 0693                  u2291 0657  
+                u2380 064E                  u2381 064D                  u2390 075B                  u2391 075A  
+                u2395 0757                  _TMR0 0001                  _main 071F                  btemp 007E  
+                start 0000                 ?_main 0070       __end_of___awdiv 071F       __end_of___awmod 06AF  
+     ___awdiv@divisor 0070                 _T1CON 0010       ___awdiv@counter 0075                 _TMR1H 000F  
+               _TMR1L 000E                 _PORTB 0006                 _PORTC 0007                 _PORTD 0008  
+               _TRISB 0086                 _TRISC 0087                 _TRISD 0088                 _delay 05D4  
+               main@a 0020                 main@b 0026                 main@c 0022                 main@d 0024  
+               pclath 000A                 status 0003                 wtemp0 007E          __end_of_main 0800  
+              ??_main 0079        lcd_command@com 0072                ?_delay 0070      ___awdiv@dividend 0072  
+              _TMR1IF 0060      __end_of_lcd_data 060F      __end_of_lcd_init 0628  __size_of_lcd_command 0015  
+__size_of_lcd_display 0027             ??___awdiv 0074             ??___awmod 0074      ___awdiv@quotient 0077  
+     ___awmod@divisor 0070       ___awmod@counter 0075        __pcstackCOMMON 0070         __end_of_delay 05E5  
+             ??_delay 0072            __pbssBANK0 002A            __pmaintext 071F             ?_lcd_data 0070  
+           ?_lcd_init 0070               ___awdiv 06AF               ___awmod 064F      ___awmod@dividend 0072  
+          ??_lcd_data 0072            ??_lcd_init 0073  end_of_initialization 05D0         ??_lcd_command 0072  
+       ??_lcd_display 0073   start_initialization 05CE   __end_of_lcd_command 05FA   __end_of_lcd_display 064F  
+       __pcstackBANK0 0020     __size_of_lcd_data 0015     __size_of_lcd_init 0019              ?___awdiv 0070  
+           __ptext180 0628             __ptext181 05FA             __ptext182 05E5             __ptext183 064F  
+           __ptext184 06AF             __ptext185 05D4             __ptext186 0000             __ptext178 0000  
+           __ptext179 060F              ?___awmod 0070             __pstrings 0003        __size_of_delay 0011  
+         _lcd_command 05E5           _lcd_display 0628           __stringbase 0008      __size_of___awdiv 0070  
+    __size_of___awmod 0060              _lcd_data 05FA              _lcd_init 060F         __size_of_main 00E1  
+            main@temp 0028             stringcode 0003              stringdir 0003              stringtab 0003  
+        ?_lcd_command 0070          ?_lcd_display 0070  

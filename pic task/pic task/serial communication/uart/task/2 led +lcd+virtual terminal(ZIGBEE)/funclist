@@ -1,0 +1,9 @@
+_delay: CODE, 677 0 20
+_lcd_cmd: CODE, 468 0 54
+_lcd_data: CODE, 414 0 54
+_serial: CODE, 522 0 50
+_lcd_display: CODE, 572 0 43
+_main: CODE, 67 0 347
+_rcx: CODE, 652 0 25
+_lcd_init: CODE, 615 0 37
+Total: 630

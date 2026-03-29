@@ -163,7 +163,7 @@ psect	maintext
 
 ;; *************** function _main *****************
 ;; Defined at:
-;;		line 14 in file "E:\Embedded\SWITCH_CODE\2_SWITCH\switch.c"
+;;		line 14 in file "E:\Embedded_Program\SWITCH_CODE\2_SWITCH\switch.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -189,7 +189,7 @@ psect	maintext
 ;; This function uses a non-reentrant model
 ;;
 psect	maintext
-	file	"E:\Embedded\SWITCH_CODE\2_SWITCH\switch.c"
+	file	"E:\Embedded_Program\SWITCH_CODE\2_SWITCH\switch.c"
 	line	14
 	global	__size_of_main
 	__size_of_main	equ	__end_of_main-_main
@@ -200,8 +200,8 @@ _main:
 	line	15
 	
 l945:	
-;switch.c: 15: TRISB=0x03;
-	movlw	(03h)
+;switch.c: 15: TRISB=0x05;
+	movlw	(05h)
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	movwf	(134)^080h	;volatile

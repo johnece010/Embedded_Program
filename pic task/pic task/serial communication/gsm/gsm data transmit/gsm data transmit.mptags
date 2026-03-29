@@ -1,0 +1,21 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+EN::RD3	E:\Embedded_Program\pic task\pic task\serial communication\gsm\gsm data transmit\gsm data transmit.c	6;"	d	line:6	file:
+RS::RD1	E:\Embedded_Program\pic task\pic task\serial communication\gsm\gsm data transmit\gsm data transmit.c	4;"	d	line:4	file:
+RW::RD2	E:\Embedded_Program\pic task\pic task\serial communication\gsm\gsm data transmit\gsm data transmit.c	5;"	d	line:5	file:
+delay	E:\Embedded_Program\pic task\pic task\serial communication\gsm\gsm data transmit\gsm data transmit.c	7;"	f	line:7	signature:(unsigned int x)
+lcd_command	E:\Embedded_Program\pic task\pic task\serial communication\gsm\gsm data transmit\gsm data transmit.c	12;"	f	line:12	signature:(unsigned char com)
+lcd_data	E:\Embedded_Program\pic task\pic task\serial communication\gsm\gsm data transmit\gsm data transmit.c	28;"	f	line:28	signature:(unsigned char dat)
+lcd_display	E:\Embedded_Program\pic task\pic task\serial communication\gsm\gsm data transmit\gsm data transmit.c	44;"	f	line:44	signature:(const unsigned char *m)
+lcd_init	E:\Embedded_Program\pic task\pic task\serial communication\gsm\gsm data transmit\gsm data transmit.c	51;"	f	line:51
+main	E:\Embedded_Program\pic task\pic task\serial communication\gsm\gsm data transmit\gsm data transmit.c	71;"	f	line:71
+serial	E:\Embedded_Program\pic task\pic task\serial communication\gsm\gsm data transmit\gsm data transmit.c	62;"	f	line:62	signature:(unsigned char *a)
+sw::RB0	E:\Embedded_Program\pic task\pic task\serial communication\gsm\gsm data transmit\gsm data transmit.c	3;"	d	line:3	file:
+temp	E:\Embedded_Program\pic task\pic task\serial communication\gsm\gsm data transmit\gsm data transmit.c	20;"	l	line:20
+temp	E:\Embedded_Program\pic task\pic task\serial communication\gsm\gsm data transmit\gsm data transmit.c	36;"	l	line:36

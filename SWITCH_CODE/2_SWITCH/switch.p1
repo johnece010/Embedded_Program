@@ -839,7 +839,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eeprom_routines.h: 41: extern void eeprom_write(unsigned char addr, unsigned char value);
 [; ;eeprom_routines.h: 42: extern unsigned char eeprom_read(unsigned char addr);
 [; ;pic.h: 626: extern void _delay(unsigned long);
-"9 E:\Embedded\SWITCH_CODE\2_SWITCH\switch.c
+"9 E:\Embedded_Program\SWITCH_CODE\2_SWITCH\switch.c
 [v _delay `(v 1 ef1`ui ]
 {
 [; ;switch.c: 8: void delay (unsigned int x)
@@ -865,9 +865,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;switch.c: 14: {
 [e :U _main ]
 [f ]
-[; ;switch.c: 15: TRISB=0x03;
+[; ;switch.c: 15: TRISB=0x05;
 "15
-[e = _TRISB -> -> 3 `i `uc ]
+[e = _TRISB -> -> 5 `i `uc ]
 [; ;switch.c: 16: PORTB=0x00;
 "16
 [e = _PORTB -> -> 0 `i `uc ]

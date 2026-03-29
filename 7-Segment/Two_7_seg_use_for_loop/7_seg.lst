@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
-                                                                                               Wed Oct 15 15:56:50 2025
+                                                                                               Sun Oct 26 17:57:26 2025
 
 HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
      1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
@@ -53,7 +53,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
     47                           psect	idataBANK0,class=CODE,space=0,delta=2
     48                           global __pidataBANK0
     49  067D                     __pidataBANK0:
-    50                           	file	"E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
+    50                           	file	"E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
     51                           	line	11
     52                           
     53                           ;initializer for _seg
@@ -129,7 +129,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
    123                           psect	dataBANK0,class=BANK0,space=1
    124                           global __pdataBANK0
    125  0020                     __pdataBANK0:
-   126                           	file	"E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
+   126                           	file	"E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
    127  0020                     _seg:
    128  0020                            ds      20
    129                           
@@ -345,7 +345,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
    338                           
    339 ;; *************** function _main *****************
    340 ;; Defined at:
-   341 ;;		line 15 in file "E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
+   341 ;;		line 15 in file "E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
    342 ;; Parameters:    Size  Location     Type
    343 ;;		None
    344 ;; Auto vars:     Size  Location     Type
@@ -374,7 +374,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
    367 ;; This function uses a non-reentrant model
    368 ;;
    369                           psect	maintext
-   370                           	file	"E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
+   370                           	file	"E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
    371                           	line	15
    372                           	global	__size_of_main
    373  0089                     	__size_of_main	equ	__end_of_main-_main
@@ -516,10 +516,10 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
    507                           	line	32
    508                           	
    509  07CB                     l1891:	
-   510                           ;7_seg.c: 32: delay(10000);
-   511  07CB  3010               	movlw	low(02710h)
+   510                           ;7_seg.c: 32: delay(50000);
+   511  07CB  3050               	movlw	low(0C350h)
    512  07CC  00F0               	movwf	(?_delay)
-   513  07CD  3027               	movlw	high(02710h)
+   513  07CD  30C3               	movlw	high(0C350h)
    514  07CE  00F1               	movwf	((?_delay))+1
    515  07CF  120A  118A  266B   	fcall	_delay
               120A  118A         
@@ -548,10 +548,10 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
    538                           	line	38
    539                           	
    540  07E0                     l1897:	
-   541                           ;7_seg.c: 38: delay(10000);
-   542  07E0  3010               	movlw	low(02710h)
+   541                           ;7_seg.c: 38: delay(50000);
+   542  07E0  3050               	movlw	low(0C350h)
    543  07E1  00F0               	movwf	(?_delay)
-   544  07E2  3027               	movlw	high(02710h)
+   544  07E2  30C3               	movlw	high(0C350h)
    545  07E3  00F1               	movwf	((?_delay))+1
    546  07E4  120A  118A  266B   	fcall	_delay
               120A  118A         
@@ -1131,7 +1131,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
   1120                           
   1121 ;; *************** function _delay *****************
   1122 ;; Defined at:
-  1123 ;;		line 7 in file "E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
+  1123 ;;		line 7 in file "E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
   1124 ;; Parameters:    Size  Location     Type
   1125 ;;  x               2    0[COMMON] unsigned int 
   1126 ;; Auto vars:     Size  Location     Type
@@ -1158,7 +1158,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
   1147 ;; This function uses a non-reentrant model
   1148 ;;
   1149                           psect	text97
-  1150                           	file	"E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
+  1150                           	file	"E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
   1151                           	line	7
   1152                           	global	__size_of_delay
   1153  0012                     	__size_of_delay	equ	__end_of_delay-_delay
@@ -1221,7 +1221,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
 
 
 HI-TECH Software PICC Macro Assembler V9.71a build 6446 
-Symbol Table                                                                                   Wed Oct 15 15:56:50 2025
+Symbol Table                                                                                   Sun Oct 26 17:57:26 2025
 
                    _a 007C                     _b 0034                     _i 007A                     pc 0002  
         ___awdiv@sign 0076                    fsr 0004                   l800 06DA                   l801 06DA  

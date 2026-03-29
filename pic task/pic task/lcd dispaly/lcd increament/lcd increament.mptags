@@ -1,0 +1,20 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+EN::RC2	E:\Embedded_Program\pic task\pic task\lcd dispaly\lcd increament\lcd increament.c	4;"	d	line:4	file:
+RS::RC0	E:\Embedded_Program\pic task\pic task\lcd dispaly\lcd increament\lcd increament.c	2;"	d	line:2	file:
+RW::RC1	E:\Embedded_Program\pic task\pic task\lcd dispaly\lcd increament\lcd increament.c	3;"	d	line:3	file:
+a	E:\Embedded_Program\pic task\pic task\lcd dispaly\lcd increament\lcd increament.c	51;"	l	line:51
+b	E:\Embedded_Program\pic task\pic task\lcd dispaly\lcd increament\lcd increament.c	52;"	l	line:52
+c	E:\Embedded_Program\pic task\pic task\lcd dispaly\lcd increament\lcd increament.c	53;"	l	line:53
+d	E:\Embedded_Program\pic task\pic task\lcd dispaly\lcd increament\lcd increament.c	54;"	l	line:54
+delay	E:\Embedded_Program\pic task\pic task\lcd dispaly\lcd increament\lcd increament.c	5;"	f	line:5	signature:(unsigned int x)
+lcd_command	E:\Embedded_Program\pic task\pic task\lcd dispaly\lcd increament\lcd increament.c	10;"	f	line:10	signature:(unsigned char com)
+lcd_data	E:\Embedded_Program\pic task\pic task\lcd dispaly\lcd increament\lcd increament.c	19;"	f	line:19	signature:(unsigned char data)
+lcd_init	E:\Embedded_Program\pic task\pic task\lcd dispaly\lcd increament\lcd increament.c	28;"	f	line:28
+main	E:\Embedded_Program\pic task\pic task\lcd dispaly\lcd increament\lcd increament.c	35;"	f	line:35

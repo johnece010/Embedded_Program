@@ -90,7 +90,7 @@ startup.obj
 startup.as
 64 0 0 CODE
 switch.obj
-E:\Embedded\SWITCH_CODE\2_SWITCH\switch.c
+E:\Embedded_Program\SWITCH_CODE\2_SWITCH\switch.c
 15 7E7 0 CODE
 16 7EB 0 CODE
 20 7EE 0 CODE

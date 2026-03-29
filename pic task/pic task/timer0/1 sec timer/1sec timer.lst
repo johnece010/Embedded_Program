@@ -1,0 +1,562 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
+                                                                                               Wed Oct 19 18:37:04 2022
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           # 2 "C:\Users\TECH\Desktop\madhu pic folder\timer0\1 sec timer\1sec timer.c"
+    43                           	psect config,class=CONFIG,delta=2 ;#
+    44                           # 2 "C:\Users\TECH\Desktop\madhu pic folder\timer0\1 sec timer\1sec timer.c"
+    45  2007  3F72               	dw 0X3F72 ;#
+    46                           	FNCALL	_main,_delay1
+    47                           	FNCALL	_delay1,_delay
+    48                           	FNROOT	_main
+    49                           	global	_PORTB
+    50                           psect	text66,local,class=CODE,delta=2
+    51                           global __ptext66
+    52  0000                     __ptext66:
+    53  0006                     _PORTB	set	6
+    54                           	global	_TMR0
+    55  0001                     _TMR0	set	1
+    56                           	global	_T0IF
+    57  005A                     _T0IF	set	90
+    58                           	global	_TRISB
+    59  0086                     _TRISB	set	134
+    60                           	global	_PS0
+    61  0408                     _PS0	set	1032
+    62                           	global	_PS1
+    63  0409                     _PS1	set	1033
+    64                           	global	_PS2
+    65  040A                     _PS2	set	1034
+    66                           	global	_PSA
+    67  040B                     _PSA	set	1035
+    68                           	global	_T0CS
+    69  040D                     _T0CS	set	1037
+    70                           	global	_T0SE
+    71  040C                     _T0SE	set	1036
+    72                           	file	"1sec timer.as"
+    73                           	line	#
+    74                           psect cinit,class=CODE,delta=2
+    75                           global start_initialization
+    76  07A4                     start_initialization:
+    77                           
+    78                           psect cinit,class=CODE,delta=2
+    79                           global end_of_initialization
+    80                           
+    81                           ;End of C runtime variable initialization code
+    82                           
+    83  07A4                     end_of_initialization:
+    84  07A4  0183               clrf status
+    85  07A5  120A  118A  2FBC   ljmp _main	;jump to C main() function
+    86                           psect	cstackCOMMON,class=COMMON,space=1
+    87                           global __pcstackCOMMON
+    88  0070                     __pcstackCOMMON:
+    89                           	global	?_delay
+    90  0070                     ?_delay:	; 0 bytes @ 0x0
+    91                           	global	??_delay
+    92  0070                     ??_delay:	; 0 bytes @ 0x0
+    93                           	global	?_delay1
+    94  0070                     ?_delay1:	; 0 bytes @ 0x0
+    95                           	global	??_delay1
+    96  0070                     ??_delay1:	; 0 bytes @ 0x0
+    97                           	global	?_main
+    98  0070                     ?_main:	; 0 bytes @ 0x0
+    99                           	global	delay1@i
+   100  0070                     delay1@i:	; 2 bytes @ 0x0
+   101  0070                     	ds	2
+   102                           	global	??_main
+   103  0072                     ??_main:	; 0 bytes @ 0x2
+   104 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+   105 ;;Auto spaces:   Size  Autos    Used
+   106 ;; COMMON          14      2       2
+   107 ;; BANK0           80      0       0
+   108 ;; BANK1           80      0       0
+   109 ;; BANK3           96      0       0
+   110 ;; BANK2           96      0       0
+   111                           
+   112 ;;
+   113 ;; Pointer list with targets:
+   114                           
+   115                           
+   116                           
+   117 ;;
+   118 ;; Critical Paths under _main in COMMON
+   119 ;;
+   120 ;;   _main->_delay1
+   121 ;;
+   122 ;; Critical Paths under _main in BANK0
+   123 ;;
+   124 ;;   None.
+   125 ;;
+   126 ;; Critical Paths under _main in BANK1
+   127 ;;
+   128 ;;   None.
+   129 ;;
+   130 ;; Critical Paths under _main in BANK3
+   131 ;;
+   132 ;;   None.
+   133 ;;
+   134 ;; Critical Paths under _main in BANK2
+   135 ;;
+   136 ;;   None.
+   137                           
+   138 ;;
+   139 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   140 ;;
+   141                           
+   142 ;;
+   143 ;;Call Graph Tables:
+   144 ;;
+   145 ;; ---------------------------------------------------------------------------------
+   146 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   147 ;; ---------------------------------------------------------------------------------
+   148 ;; (0) _main                                                 0     0      0      30
+   149 ;;                             _delay1
+   150 ;; ---------------------------------------------------------------------------------
+   151 ;; (1) _delay1                                               2     2      0      30
+   152 ;;                                              0 COMMON     2     2      0
+   153 ;;                              _delay
+   154 ;; ---------------------------------------------------------------------------------
+   155 ;; (2) _delay                                                0     0      0       0
+   156 ;; ---------------------------------------------------------------------------------
+   157 ;; Estimated maximum stack depth 2
+   158 ;; ---------------------------------------------------------------------------------
+   159                           
+   160 ;; Call Graph Graphs:
+   161                           
+   162 ;; _main (ROOT)
+   163 ;;   _delay1
+   164 ;;     _delay
+   165 ;;
+   166                           
+   167 ;; Address spaces:
+   168                           
+   169 ;;Name               Size   Autos  Total    Cost      Usage
+   170 ;;BITCOMMON            E      0       0       0        0.0%
+   171 ;;EEDATA             100      0       0       0        0.0%
+   172 ;;NULL                 0      0       0       0        0.0%
+   173 ;;CODE                 0      0       0       0        0.0%
+   174 ;;COMMON               E      2       2       1       14.3%
+   175 ;;BITSFR0              0      0       0       1        0.0%
+   176 ;;SFR0                 0      0       0       1        0.0%
+   177 ;;BITSFR1              0      0       0       2        0.0%
+   178 ;;SFR1                 0      0       0       2        0.0%
+   179 ;;STACK                0      0       2       2        0.0%
+   180 ;;ABS                  0      0       0       3        0.0%
+   181 ;;BITBANK0            50      0       0       4        0.0%
+   182 ;;BITSFR3              0      0       0       4        0.0%
+   183 ;;SFR3                 0      0       0       4        0.0%
+   184 ;;BANK0               50      0       0       5        0.0%
+   185 ;;BITSFR2              0      0       0       5        0.0%
+   186 ;;SFR2                 0      0       0       5        0.0%
+   187 ;;BITBANK1            50      0       0       6        0.0%
+   188 ;;BANK1               50      0       0       7        0.0%
+   189 ;;BITBANK3            60      0       0       8        0.0%
+   190 ;;BANK3               60      0       0       9        0.0%
+   191 ;;BITBANK2            60      0       0      10        0.0%
+   192 ;;BANK2               60      0       0      11        0.0%
+   193 ;;DATA                 0      0       0      12        0.0%
+   194                           
+   195                           	global	_main
+   196                           psect	maintext,global,class=CODE,delta=2
+   197                           global __pmaintext
+   198  07BC                     __pmaintext:
+   199                           
+   200 ;; *************** function _main *****************
+   201 ;; Defined at:
+   202 ;;		line 24 in file "C:\Users\TECH\Desktop\madhu pic folder\timer0\1 sec timer\1sec timer.c"
+   203 ;; Parameters:    Size  Location     Type
+   204 ;;		None
+   205 ;; Auto vars:     Size  Location     Type
+   206 ;;		None
+   207 ;; Return value:  Size  Location     Type
+   208 ;;		None               void
+   209 ;; Registers used:
+   210 ;;		wreg, status,2, status,0, btemp+0, pclath, cstack
+   211 ;; Tracked objects:
+   212 ;;		On entry : 17F/0
+   213 ;;		On exit  : 0/0
+   214 ;;		Unchanged: 0/0
+   215 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   216 ;;      Params:         0       0       0       0       0
+   217 ;;      Locals:         0       0       0       0       0
+   218 ;;      Temps:          0       0       0       0       0
+   219 ;;      Totals:         0       0       0       0       0
+   220 ;;Total ram usage:        0 bytes
+   221 ;; Hardware stack levels required when called:    2
+   222 ;; This function calls:
+   223 ;;		_delay1
+   224 ;; This function is called by:
+   225 ;;		Startup code after reset
+   226 ;; This function uses a non-reentrant model
+   227 ;;
+   228                           psect	maintext
+   229                           	file	"C:\Users\TECH\Desktop\madhu pic folder\timer0\1 sec timer\1sec timer.c"
+   230                           	line	24
+   231                           	global	__size_of_main
+   232  0019                     	__size_of_main	equ	__end_of_main-_main
+   233                           	
+   234  07BC                     _main:	
+   235                           	opt	stack 8
+   236                           ; Regs used in _main: [wreg+status,2-btemp+0+pclath+cstack]
+   237                           	line	25
+   238                           	
+   239  07BC                     l1746:	
+   240                           ;1sec timer.c: 25: TRISB=0X00;
+   241  07BC  1683               	bsf	status, 5	;RP0=1, select bank1
+   242  07BD  1303               	bcf	status, 6	;RP1=0, select bank1
+   243  07BE  0186               	clrf	(134)^080h	;volatile
+   244                           	line	26
+   245                           ;1sec timer.c: 26: PORTB=0X00;
+   246  07BF  1283               	bcf	status, 5	;RP0=0, select bank0
+   247  07C0  1303               	bcf	status, 6	;RP1=0, select bank0
+   248  07C1  0186               	clrf	(6)	;volatile
+   249                           	line	27
+   250                           ;1sec timer.c: 27: while(1)
+   251                           	
+   252  07C2                     l570:	
+   253                           	line	29
+   254                           	
+   255  07C2                     l1748:	
+   256                           ;1sec timer.c: 28: {
+   257                           ;1sec timer.c: 29: PORTB=0X01;
+   258  07C2  3001               	movlw	(01h)
+   259  07C3  0086               	movwf	(6)	;volatile
+   260                           	line	30
+   261                           	
+   262  07C4                     l1750:	
+   263                           ;1sec timer.c: 30: delay1();
+   264  07C4  120A  118A  27D5   	fcall	_delay1
+              120A  118A         
+   265                           	line	31
+   266                           	
+   267  07C9                     l1752:	
+   268                           ;1sec timer.c: 31: PORTB=0X00;
+   269  07C9  1283               	bcf	status, 5	;RP0=0, select bank0
+   270  07CA  1303               	bcf	status, 6	;RP1=0, select bank0
+   271  07CB  0186               	clrf	(6)	;volatile
+   272                           	line	32
+   273                           	
+   274  07CC                     l1754:	
+   275                           ;1sec timer.c: 32: delay1();
+   276  07CC  120A  118A  27D5   	fcall	_delay1
+              120A  118A         
+   277                           	line	33
+   278                           	
+   279  07D1                     l571:	
+   280                           	line	27
+   281  07D1  2FC2               	goto	l570
+   282                           	
+   283  07D2                     l572:	
+   284                           	line	34
+   285                           	
+   286  07D2                     l573:	
+   287                           	global	start
+   288  07D2  120A  118A  2800   	ljmp	start
+   289                           	opt stack 0
+   290                           GLOBAL	__end_of_main
+   291  07D5                     	__end_of_main:
+   292 ;; =============== function _main ends ============
+   293                           
+   294                           	signat	_main,88
+   295                           	global	_delay1
+   296                           psect	text67,local,class=CODE,delta=2
+   297                           global __ptext67
+   298  07D5                     __ptext67:
+   299                           
+   300 ;; *************** function _delay1 *****************
+   301 ;; Defined at:
+   302 ;;		line 17 in file "C:\Users\TECH\Desktop\madhu pic folder\timer0\1 sec timer\1sec timer.c"
+   303 ;; Parameters:    Size  Location     Type
+   304 ;;		None
+   305 ;; Auto vars:     Size  Location     Type
+   306 ;;  i               2    0[COMMON] int 
+   307 ;; Return value:  Size  Location     Type
+   308 ;;		None               void
+   309 ;; Registers used:
+   310 ;;		wreg, status,2, status,0, btemp+0, pclath, cstack
+   311 ;; Tracked objects:
+   312 ;;		On entry : 0/0
+   313 ;;		On exit  : 0/0
+   314 ;;		Unchanged: 0/0
+   315 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   316 ;;      Params:         0       0       0       0       0
+   317 ;;      Locals:         2       0       0       0       0
+   318 ;;      Temps:          0       0       0       0       0
+   319 ;;      Totals:         2       0       0       0       0
+   320 ;;Total ram usage:        2 bytes
+   321 ;; Hardware stack levels used:    1
+   322 ;; Hardware stack levels required when called:    1
+   323 ;; This function calls:
+   324 ;;		_delay
+   325 ;; This function is called by:
+   326 ;;		_main
+   327 ;; This function uses a non-reentrant model
+   328 ;;
+   329                           psect	text67
+   330                           	file	"C:\Users\TECH\Desktop\madhu pic folder\timer0\1 sec timer\1sec timer.c"
+   331                           	line	17
+   332                           	global	__size_of_delay1
+   333  002B                     	__size_of_delay1	equ	__end_of_delay1-_delay1
+   334                           	
+   335  07D5                     _delay1:	
+   336                           	opt	stack 7
+   337                           ; Regs used in _delay1: [wreg+status,2-btemp+0+pclath+cstack]
+   338                           	line	18
+   339                           	
+   340  07D5                     l1734:	
+   341                           ;1sec timer.c: 18: for(int i=0;i<=20;i++)
+   342  07D5  3000               	movlw	low(0)
+   343  07D6  00F0               	movwf	(delay1@i)
+   344  07D7  3000               	movlw	high(0)
+   345  07D8  00F1               	movwf	((delay1@i))+1
+   346                           	
+   347  07D9                     l1736:	
+   348  07D9  0871               	movf	(delay1@i+1),w
+   349  07DA  3A80               	xorlw	80h
+   350  07DB  00FE               	movwf	btemp+0
+   351  07DC  3080               	movlw	(high(015h))^80h
+   352  07DD  027E               	subwf	btemp+0,w
+   353  07DE  1D03               	skipz
+   354  07DF  2FE2               	goto	u2155
+   355  07E0  3015               	movlw	low(015h)
+   356  07E1  0270               	subwf	(delay1@i),w
+   357  07E2                     u2155:
+   358                           
+   359  07E2  1C03               	skipc
+   360  07E3  2FE5               	goto	u2151
+   361  07E4  2FE6               	goto	u2150
+   362  07E5                     u2151:
+   363  07E5  2FE7               	goto	l565
+   364  07E6                     u2150:
+   365                           	
+   366  07E6                     l1738:	
+   367  07E6  2FFF               	goto	l566
+   368                           	line	19
+   369                           	
+   370  07E7                     l565:	
+   371                           	line	20
+   372                           	
+   373  07E7                     l1740:	
+   374                           ;1sec timer.c: 19: {
+   375                           ;1sec timer.c: 20: delay();
+   376  07E7  120A  118A  27A8   	fcall	_delay
+              120A  118A         
+   377                           	line	18
+   378                           	
+   379  07EC                     l1742:	
+   380  07EC  3001               	movlw	low(01h)
+   381  07ED  07F0               	addwf	(delay1@i),f
+   382  07EE  1803               	skipnc
+   383  07EF  0AF1               	incf	(delay1@i+1),f
+   384  07F0  3000               	movlw	high(01h)
+   385  07F1  07F1               	addwf	(delay1@i+1),f
+   386                           	
+   387  07F2                     l1744:	
+   388  07F2  0871               	movf	(delay1@i+1),w
+   389  07F3  3A80               	xorlw	80h
+   390  07F4  00FE               	movwf	btemp+0
+   391  07F5  3080               	movlw	(high(015h))^80h
+   392  07F6  027E               	subwf	btemp+0,w
+   393  07F7  1D03               	skipz
+   394  07F8  2FFB               	goto	u2165
+   395  07F9  3015               	movlw	low(015h)
+   396  07FA  0270               	subwf	(delay1@i),w
+   397  07FB                     u2165:
+   398                           
+   399  07FB  1C03               	skipc
+   400  07FC  2FFE               	goto	u2161
+   401  07FD  2FFF               	goto	u2160
+   402  07FE                     u2161:
+   403  07FE  2FE7               	goto	l565
+   404  07FF                     u2160:
+   405                           	
+   406  07FF                     l566:	
+   407                           	line	22
+   408                           	
+   409  07FF                     l567:	
+   410  07FF  0008               	return
+   411                           	opt stack 0
+   412                           GLOBAL	__end_of_delay1
+   413  0800                     	__end_of_delay1:
+   414 ;; =============== function _delay1 ends ============
+   415                           
+   416                           	signat	_delay1,88
+   417                           	global	_delay
+   418                           psect	text68,local,class=CODE,delta=2
+   419                           global __ptext68
+   420  07A8                     __ptext68:
+   421                           
+   422 ;; *************** function _delay *****************
+   423 ;; Defined at:
+   424 ;;		line 4 in file "C:\Users\TECH\Desktop\madhu pic folder\timer0\1 sec timer\1sec timer.c"
+   425 ;; Parameters:    Size  Location     Type
+   426 ;;		None
+   427 ;; Auto vars:     Size  Location     Type
+   428 ;;		None
+   429 ;; Return value:  Size  Location     Type
+   430 ;;		None               void
+   431 ;; Registers used:
+   432 ;;		wreg, status,2
+   433 ;; Tracked objects:
+   434 ;;		On entry : 0/0
+   435 ;;		On exit  : 0/0
+   436 ;;		Unchanged: 0/0
+   437 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   438 ;;      Params:         0       0       0       0       0
+   439 ;;      Locals:         0       0       0       0       0
+   440 ;;      Temps:          0       0       0       0       0
+   441 ;;      Totals:         0       0       0       0       0
+   442 ;;Total ram usage:        0 bytes
+   443 ;; Hardware stack levels used:    1
+   444 ;; This function calls:
+   445 ;;		Nothing
+   446 ;; This function is called by:
+   447 ;;		_delay1
+   448 ;; This function uses a non-reentrant model
+   449 ;;
+   450                           psect	text68
+   451                           	file	"C:\Users\TECH\Desktop\madhu pic folder\timer0\1 sec timer\1sec timer.c"
+   452                           	line	4
+   453                           	global	__size_of_delay
+   454  0014                     	__size_of_delay	equ	__end_of_delay-_delay
+   455                           	
+   456  07A8                     _delay:	
+   457                           	opt	stack 6
+   458                           ; Regs used in _delay: [wreg+status,2]
+   459                           	line	5
+   460                           	
+   461  07A8                     l942:	
+   462                           ;1sec timer.c: 5: T0CS=0;
+   463  07A8  1683               	bsf	status, 5	;RP0=1, select bank1
+   464  07A9  1303               	bcf	status, 6	;RP1=0, select bank1
+   465  07AA  1281               	bcf	(1037/8)^080h,(1037)&7
+   466                           	line	6
+   467                           ;1sec timer.c: 6: T0SE=0;
+   468  07AB  1201               	bcf	(1036/8)^080h,(1036)&7
+   469                           	line	7
+   470                           ;1sec timer.c: 7: PSA=0;
+   471  07AC  1181               	bcf	(1035/8)^080h,(1035)&7
+   472                           	line	8
+   473                           ;1sec timer.c: 8: PS0=1;
+   474  07AD  1401               	bsf	(1032/8)^080h,(1032)&7
+   475                           	line	9
+   476                           ;1sec timer.c: 9: PS1=1;
+   477  07AE  1481               	bsf	(1033/8)^080h,(1033)&7
+   478                           	line	10
+   479                           ;1sec timer.c: 10: PS2=1;
+   480  07AF  1501               	bsf	(1034/8)^080h,(1034)&7
+   481                           	line	11
+   482                           	
+   483  07B0                     l944:	
+   484                           ;1sec timer.c: 11: TMR0=60;
+   485  07B0  303C               	movlw	(03Ch)
+   486  07B1  1283               	bcf	status, 5	;RP0=0, select bank0
+   487  07B2  1303               	bcf	status, 6	;RP1=0, select bank0
+   488  07B3  0081               	movwf	(1)	;volatile
+   489                           	line	12
+   490                           ;1sec timer.c: 12: while(T0IF==0);
+   491  07B4  2FB5               	goto	l559
+   492                           	
+   493  07B5                     l560:	
+   494                           	
+   495  07B5                     l559:	
+   496  07B5  1D0B               	btfss	(90/8),(90)&7
+   497  07B6  2FB8               	goto	u11
+   498  07B7  2FB9               	goto	u10
+   499  07B8                     u11:
+   500  07B8  2FB5               	goto	l560
+   501  07B9                     u10:
+   502                           	
+   503  07B9                     l561:	
+   504                           	line	13
+   505                           ;1sec timer.c: 13: T0IF=0;
+   506  07B9  110B               	bcf	(90/8),(90)&7
+   507                           	line	14
+   508                           	
+   509  07BA                     l946:	
+   510                           ;1sec timer.c: 14: TMR0=0;
+   511  07BA  0181               	clrf	(1)	;volatile
+   512                           	line	15
+   513                           	
+   514  07BB                     l562:	
+   515  07BB  0008               	return
+   516                           	opt stack 0
+   517                           GLOBAL	__end_of_delay
+   518  07BC                     	__end_of_delay:
+   519 ;; =============== function _delay ends ============
+   520                           
+   521                           	signat	_delay,88
+   522                           psect	text69,local,class=CODE,delta=2
+   523                           global __ptext69
+   524  0000                     __ptext69:
+   525                           	global	btemp
+   526  007E                     	btemp set 07Eh
+   527                           
+   528                           	DABS	1,126,2	;btemp
+   529                           	global	wtemp0
+   530  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.71a build 6446 
+Symbol Table                                                                                   Wed Oct 19 18:37:04 2022
+
+                  u10 07B9                    u11 07B8                   l560 07B5                   l561 07B9  
+                 l562 07BB                   l570 07C2                   l571 07D1                   l572 07D2  
+                 l565 07E7                   l573 07D2                   l566 07FF                   l559 07B5  
+                 l567 07FF                   l942 07A8                   l944 07B0                   l946 07BA  
+                 _PS0 0408                   _PS1 0409                   _PS2 040A                   _PSA 040B  
+                l1740 07E7                  l1742 07EC                  l1734 07D5                  l1750 07C4  
+                l1744 07F2                  l1736 07D9                  l1752 07C9                  l1738 07E6  
+                l1754 07CC                  l1746 07BC                  l1748 07C2                  _T0IF 005A  
+                _T0CS 040D                  _T0SE 040C                  u2150 07E6                  u2151 07E5  
+                u2160 07FF                  u2161 07FE                  u2155 07E2                  u2165 07FB  
+                _TMR0 0001                  _main 07BC                  btemp 007E                  start 0000  
+               ?_main 0070                 _PORTB 0006                 _TRISB 0086                 _delay 07A8  
+               status 0003                 wtemp0 007E          __end_of_main 07D5                ??_main 0072  
+              ?_delay 0070                _delay1 07D5        __pcstackCOMMON 0070         __end_of_delay 07BC  
+             ??_delay 0070            __pmaintext 07BC               ?_delay1 0070       __size_of_delay1 002B  
+             delay1@i 0070  end_of_initialization 07A4        __end_of_delay1 0800   start_initialization 07A4  
+            ??_delay1 0070        __size_of_delay 0014              __ptext66 0000              __ptext67 07D5  
+            __ptext68 07A8              __ptext69 0000         __size_of_main 0019  

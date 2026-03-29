@@ -1,0 +1,14 @@
+___awdiv: CODE, 718 0 112
+_delay: CODE, 332 0 18
+_lcd_cmd: CODE, 514 0 54
+_lcd_data: CODE, 568 0 54
+_serial: CODE, 469 0 45
+___awmod: CODE, 622 0 96
+_lcd_display: CODE, 387 0 39
+_main: CODE, 1469 0 579
+_gsm_command: CODE, 426 0 43
+_sms1: CODE, 1144 0 325
+_txs: CODE, 305 0 12
+_sms2: CODE, 830 0 314
+_lcd_init: CODE, 350 0 37
+Total: 1728

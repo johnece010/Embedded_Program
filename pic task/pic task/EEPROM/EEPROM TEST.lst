@@ -1,0 +1,1057 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
+                                                                                               Mon Nov 07 18:44:53 2022
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNCALL	_main,_lcd_init
+    43                           	FNCALL	_main,_delay
+    44                           	FNCALL	_main,_lcd_command
+    45                           	FNCALL	_main,_lcd_data
+    46                           	FNCALL	_main,_write
+    47                           	FNCALL	_main,_read
+    48                           	FNCALL	_lcd_init,_lcd_command
+    49                           	FNCALL	_lcd_data,_delay
+    50                           	FNCALL	_lcd_command,_delay
+    51                           	FNROOT	_main
+    52                           	global	_byte
+    53                           	global	_m
+    54                           	global	_PORTC
+    55                           psect	text108,local,class=CODE,delta=2
+    56                           global __ptext108
+    57  0000                     __ptext108:
+    58  0007                     _PORTC	set	7
+    59                           	global	_PORTD
+    60  0008                     _PORTD	set	8
+    61                           	global	_EEIF
+    62  006C                     _EEIF	set	108
+    63                           	global	_RC0
+    64  0038                     _RC0	set	56
+    65                           	global	_RC1
+    66  0039                     _RC1	set	57
+    67                           	global	_RC2
+    68  003A                     _RC2	set	58
+    69                           	global	_TRISC
+    70  0087                     _TRISC	set	135
+    71                           	global	_TRISD
+    72  0088                     _TRISD	set	136
+    73                           	global	_EEADR
+    74  010D                     _EEADR	set	269
+    75                           	global	_EEDATA
+    76  010C                     _EEDATA	set	268
+    77                           	global	_EECON2
+    78  018D                     _EECON2	set	397
+    79                           	global	_EEPGD
+    80  0C67                     _EEPGD	set	3175
+    81                           	global	_RD
+    82  0C60                     _RD	set	3168
+    83                           	global	_WR
+    84  0C61                     _WR	set	3169
+    85                           	global	_WREN
+    86  0C62                     _WREN	set	3170
+    87                           	file	"EEPROM TEST.as"
+    88                           	line	#
+    89                           psect cinit,class=CODE,delta=2
+    90                           global start_initialization
+    91  0724                     start_initialization:
+    92                           
+    93                           psect	bssCOMMON,class=COMMON,space=1
+    94                           global __pbssCOMMON
+    95  0074                     __pbssCOMMON:
+    96  0074                     _byte:
+    97  0074                            ds      1
+    98                           
+    99  0075                     _m:
+   100  0075                            ds      1
+   101                           
+   102                           ; Clear objects allocated to COMMON
+   103                           psect cinit,class=CODE,delta=2
+   104  0724  01F4               	clrf	((__pbssCOMMON)+0)&07Fh
+   105  0725  01F5               	clrf	((__pbssCOMMON)+1)&07Fh
+   106                           psect cinit,class=CODE,delta=2
+   107                           global end_of_initialization
+   108                           
+   109                           ;End of C runtime variable initialization code
+   110                           
+   111  0726                     end_of_initialization:
+   112  0726  0183               clrf status
+   113  0727  120A  118A  2FA8   ljmp _main	;jump to C main() function
+   114                           psect	cstackCOMMON,class=COMMON,space=1
+   115                           global __pcstackCOMMON
+   116  0070                     __pcstackCOMMON:
+   117                           	global	?_delay
+   118  0070                     ?_delay:	; 0 bytes @ 0x0
+   119                           	global	?_lcd_command
+   120  0070                     ?_lcd_command:	; 0 bytes @ 0x0
+   121                           	global	?_lcd_init
+   122  0070                     ?_lcd_init:	; 0 bytes @ 0x0
+   123                           	global	?_lcd_data
+   124  0070                     ?_lcd_data:	; 0 bytes @ 0x0
+   125                           	global	?_write
+   126  0070                     ?_write:	; 0 bytes @ 0x0
+   127                           	global	?_read
+   128  0070                     ?_read:	; 0 bytes @ 0x0
+   129                           	global	??_read
+   130  0070                     ??_read:	; 0 bytes @ 0x0
+   131                           	global	?_main
+   132  0070                     ?_main:	; 0 bytes @ 0x0
+   133                           	global	write@data
+   134  0070                     write@data:	; 1 bytes @ 0x0
+   135                           	global	delay@x
+   136  0070                     delay@x:	; 2 bytes @ 0x0
+   137  0070                     	ds	1
+   138                           	global	??_write
+   139  0071                     ??_write:	; 0 bytes @ 0x1
+   140                           	global	write@addr
+   141  0071                     write@addr:	; 1 bytes @ 0x1
+   142                           	global	read@addr
+   143  0071                     read@addr:	; 1 bytes @ 0x1
+   144  0071                     	ds	1
+   145                           	global	??_delay
+   146  0072                     ??_delay:	; 0 bytes @ 0x2
+   147                           	global	??_lcd_command
+   148  0072                     ??_lcd_command:	; 0 bytes @ 0x2
+   149                           	global	??_lcd_data
+   150  0072                     ??_lcd_data:	; 0 bytes @ 0x2
+   151                           	global	lcd_command@com
+   152  0072                     lcd_command@com:	; 1 bytes @ 0x2
+   153                           	global	lcd_data@data
+   154  0072                     lcd_data@data:	; 1 bytes @ 0x2
+   155  0072                     	ds	1
+   156                           	global	??_lcd_init
+   157  0073                     ??_lcd_init:	; 0 bytes @ 0x3
+   158                           	global	??_main
+   159  0073                     ??_main:	; 0 bytes @ 0x3
+   160  0073                     	ds	1
+   161 ;;Data sizes: Strings 0, constant 0, data 0, bss 2, persistent 0 stack 0
+   162 ;;Auto spaces:   Size  Autos    Used
+   163 ;; COMMON          14      4       6
+   164 ;; BANK0           80      0       0
+   165 ;; BANK1           80      0       0
+   166 ;; BANK3           96      0       0
+   167 ;; BANK2           96      0       0
+   168                           
+   169 ;;
+   170 ;; Pointer list with targets:
+   171                           
+   172                           
+   173                           
+   174 ;;
+   175 ;; Critical Paths under _main in COMMON
+   176 ;;
+   177 ;;   _main->_lcd_command
+   178 ;;   _main->_lcd_data
+   179 ;;   _lcd_init->_lcd_command
+   180 ;;   _lcd_data->_delay
+   181 ;;   _lcd_command->_delay
+   182 ;;
+   183 ;; Critical Paths under _main in BANK0
+   184 ;;
+   185 ;;   None.
+   186 ;;
+   187 ;; Critical Paths under _main in BANK1
+   188 ;;
+   189 ;;   None.
+   190 ;;
+   191 ;; Critical Paths under _main in BANK3
+   192 ;;
+   193 ;;   None.
+   194 ;;
+   195 ;; Critical Paths under _main in BANK2
+   196 ;;
+   197 ;;   None.
+   198                           
+   199 ;;
+   200 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   201 ;;
+   202                           
+   203 ;;
+   204 ;;Call Graph Tables:
+   205 ;;
+   206 ;; ---------------------------------------------------------------------------------
+   207 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   208 ;; ---------------------------------------------------------------------------------
+   209 ;; (0) _main                                                 1     1      0     150
+   210 ;;                                              3 COMMON     1     1      0
+   211 ;;                           _lcd_init
+   212 ;;                              _delay
+   213 ;;                        _lcd_command
+   214 ;;                           _lcd_data
+   215 ;;                              _write
+   216 ;;                               _read
+   217 ;; ---------------------------------------------------------------------------------
+   218 ;; (1) _lcd_init                                             0     0      0      30
+   219 ;;                        _lcd_command
+   220 ;; ---------------------------------------------------------------------------------
+   221 ;; (1) _lcd_data                                             1     1      0      30
+   222 ;;                                              2 COMMON     1     1      0
+   223 ;;                              _delay
+   224 ;; ---------------------------------------------------------------------------------
+   225 ;; (1) _lcd_command                                          1     1      0      30
+   226 ;;                                              2 COMMON     1     1      0
+   227 ;;                              _delay
+   228 ;; ---------------------------------------------------------------------------------
+   229 ;; (1) _read                                                 2     2      0      15
+   230 ;;                                              0 COMMON     2     2      0
+   231 ;; ---------------------------------------------------------------------------------
+   232 ;; (1) _write                                                2     1      1      30
+   233 ;;                                              0 COMMON     2     1      1
+   234 ;; ---------------------------------------------------------------------------------
+   235 ;; (2) _delay                                                2     0      2      15
+   236 ;;                                              0 COMMON     2     0      2
+   237 ;; ---------------------------------------------------------------------------------
+   238 ;; Estimated maximum stack depth 2
+   239 ;; ---------------------------------------------------------------------------------
+   240                           
+   241 ;; Call Graph Graphs:
+   242                           
+   243 ;; _main (ROOT)
+   244 ;;   _lcd_init
+   245 ;;     _lcd_command
+   246 ;;       _delay
+   247 ;;   _delay
+   248 ;;   _lcd_command
+   249 ;;     _delay
+   250 ;;   _lcd_data
+   251 ;;     _delay
+   252 ;;   _write
+   253 ;;   _read
+   254 ;;
+   255                           
+   256 ;; Address spaces:
+   257                           
+   258 ;;Name               Size   Autos  Total    Cost      Usage
+   259 ;;BITCOMMON            E      0       0       0        0.0%
+   260 ;;EEDATA             100      0       0       0        0.0%
+   261 ;;NULL                 0      0       0       0        0.0%
+   262 ;;CODE                 0      0       0       0        0.0%
+   263 ;;COMMON               E      4       6       1       42.9%
+   264 ;;BITSFR0              0      0       0       1        0.0%
+   265 ;;SFR0                 0      0       0       1        0.0%
+   266 ;;BITSFR1              0      0       0       2        0.0%
+   267 ;;SFR1                 0      0       0       2        0.0%
+   268 ;;STACK                0      0       3       2        0.0%
+   269 ;;ABS                  0      0       6       3        0.0%
+   270 ;;BITBANK0            50      0       0       4        0.0%
+   271 ;;BITSFR3              0      0       0       4        0.0%
+   272 ;;SFR3                 0      0       0       4        0.0%
+   273 ;;BANK0               50      0       0       5        0.0%
+   274 ;;BITSFR2              0      0       0       5        0.0%
+   275 ;;SFR2                 0      0       0       5        0.0%
+   276 ;;BITBANK1            50      0       0       6        0.0%
+   277 ;;BANK1               50      0       0       7        0.0%
+   278 ;;BITBANK3            60      0       0       8        0.0%
+   279 ;;BANK3               60      0       0       9        0.0%
+   280 ;;BITBANK2            60      0       0      10        0.0%
+   281 ;;BANK2               60      0       0      11        0.0%
+   282 ;;DATA                 0      0       9      12        0.0%
+   283                           
+   284                           	global	_main
+   285                           psect	maintext,global,class=CODE,delta=2
+   286                           global __pmaintext
+   287  07A8                     __pmaintext:
+   288                           
+   289 ;; *************** function _main *****************
+   290 ;; Defined at:
+   291 ;;		line 55 in file "C:\Users\TECH\Desktop\madhu pic folder\EEPROM\EEPROM TEST.C"
+   292 ;; Parameters:    Size  Location     Type
+   293 ;;		None
+   294 ;; Auto vars:     Size  Location     Type
+   295 ;;		None
+   296 ;; Return value:  Size  Location     Type
+   297 ;;		None               void
+   298 ;; Registers used:
+   299 ;;		wreg, status,2, status,0, pclath, cstack
+   300 ;; Tracked objects:
+   301 ;;		On entry : 17F/0
+   302 ;;		On exit  : 0/0
+   303 ;;		Unchanged: 0/0
+   304 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   305 ;;      Params:         0       0       0       0       0
+   306 ;;      Locals:         0       0       0       0       0
+   307 ;;      Temps:          1       0       0       0       0
+   308 ;;      Totals:         1       0       0       0       0
+   309 ;;Total ram usage:        1 bytes
+   310 ;; Hardware stack levels required when called:    3
+   311 ;; This function calls:
+   312 ;;		_lcd_init
+   313 ;;		_delay
+   314 ;;		_lcd_command
+   315 ;;		_lcd_data
+   316 ;;		_write
+   317 ;;		_read
+   318 ;; This function is called by:
+   319 ;;		Startup code after reset
+   320 ;; This function uses a non-reentrant model
+   321 ;;
+   322                           psect	maintext
+   323                           	file	"C:\Users\TECH\Desktop\madhu pic folder\EEPROM\EEPROM TEST.C"
+   324                           	line	55
+   325                           	global	__size_of_main
+   326  0058                     	__size_of_main	equ	__end_of_main-_main
+   327                           	
+   328  07A8                     _main:	
+   329                           	opt	stack 8
+   330                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   331                           	line	56
+   332                           	
+   333  07A8                     l1789:	
+   334                           ;EEPROM TEST.C: 56: TRISD=0X00;
+   335  07A8  1683               	bsf	status, 5	;RP0=1, select bank1
+   336  07A9  1303               	bcf	status, 6	;RP1=0, select bank1
+   337  07AA  0188               	clrf	(136)^080h	;volatile
+   338                           	line	57
+   339                           ;EEPROM TEST.C: 57: PORTD=0X00;
+   340  07AB  1283               	bcf	status, 5	;RP0=0, select bank0
+   341  07AC  1303               	bcf	status, 6	;RP1=0, select bank0
+   342  07AD  0188               	clrf	(8)	;volatile
+   343                           	line	58
+   344                           ;EEPROM TEST.C: 58: TRISC=0X00;
+   345  07AE  1683               	bsf	status, 5	;RP0=1, select bank1
+   346  07AF  1303               	bcf	status, 6	;RP1=0, select bank1
+   347  07B0  0187               	clrf	(135)^080h	;volatile
+   348                           	line	59
+   349                           ;EEPROM TEST.C: 59: PORTC=0X00;
+   350  07B1  1283               	bcf	status, 5	;RP0=0, select bank0
+   351  07B2  1303               	bcf	status, 6	;RP1=0, select bank0
+   352  07B3  0187               	clrf	(7)	;volatile
+   353                           	line	60
+   354                           	
+   355  07B4                     l1791:	
+   356                           ;EEPROM TEST.C: 60: lcd_init();
+   357  07B4  120A  118A  278F   	fcall	_lcd_init
+              120A  118A         
+   358                           	line	61
+   359                           	
+   360  07B9                     l1793:	
+   361                           ;EEPROM TEST.C: 61: delay(100);
+   362  07B9  3064               	movlw	low(064h)
+   363  07BA  00F0               	movwf	(?_delay)
+   364  07BB  3000               	movlw	high(064h)
+   365  07BC  00F1               	movwf	((?_delay))+1
+   366  07BD  120A  118A  273A   	fcall	_delay
+              120A  118A         
+   367                           	line	62
+   368                           	
+   369  07C2                     l1795:	
+   370                           ;EEPROM TEST.C: 62: lcd_command(0x80);
+   371  07C2  3080               	movlw	(080h)
+   372  07C3  120A  118A  274C   	fcall	_lcd_command
+              120A  118A         
+   373                           	line	63
+   374                           	
+   375  07C8                     l1797:	
+   376                           ;EEPROM TEST.C: 63: lcd_data('a');
+   377  07C8  3061               	movlw	(061h)
+   378  07C9  120A  118A  2761   	fcall	_lcd_data
+              120A  118A         
+   379                           	line	64
+   380                           	
+   381  07CE                     l1799:	
+   382                           ;EEPROM TEST.C: 64: delay(500000);
+   383  07CE  3020               	movlw	low(0A120h)
+   384  07CF  00F0               	movwf	(?_delay)
+   385  07D0  30A1               	movlw	high(0A120h)
+   386  07D1  00F1               	movwf	((?_delay))+1
+   387  07D2  120A  118A  273A   	fcall	_delay
+              120A  118A         
+   388                           	line	65
+   389                           ;EEPROM TEST.C: 65: while(1)
+   390                           	
+   391  07D7                     l587:	
+   392                           	line	67
+   393                           	
+   394  07D7                     l1801:	
+   395                           ;EEPROM TEST.C: 66: {
+   396                           ;EEPROM TEST.C: 67: write(0x07,'M');
+   397  07D7  304D               	movlw	(04Dh)
+   398  07D8  00F3               	movwf	(??_main+0)+0
+   399  07D9  0873               	movf	(??_main+0)+0,w
+   400  07DA  00F0               	movwf	(?_write)
+   401  07DB  3007               	movlw	(07h)
+   402  07DC  120A  118A  2776   	fcall	_write
+              120A  118A         
+   403                           	line	68
+   404                           	
+   405  07E1                     l1803:	
+   406                           ;EEPROM TEST.C: 68: read(0x07);
+   407  07E1  3007               	movlw	(07h)
+   408  07E2  120A  118A  272A   	fcall	_read
+              120A  118A         
+   409                           	line	69
+   410                           	
+   411  07E7                     l1805:	
+   412                           ;EEPROM TEST.C: 69: lcd_command(0xC0);
+   413  07E7  30C0               	movlw	(0C0h)
+   414  07E8  120A  118A  274C   	fcall	_lcd_command
+              120A  118A         
+   415                           	line	70
+   416                           	
+   417  07ED                     l1807:	
+   418                           ;EEPROM TEST.C: 70: lcd_data(byte);
+   419  07ED  0874               	movf	(_byte),w
+   420  07EE  120A  118A  2761   	fcall	_lcd_data
+              120A  118A         
+   421                           	line	71
+   422                           	
+   423  07F3                     l1809:	
+   424                           ;EEPROM TEST.C: 71: delay(1000);
+   425  07F3  30E8               	movlw	low(03E8h)
+   426  07F4  00F0               	movwf	(?_delay)
+   427  07F5  3003               	movlw	high(03E8h)
+   428  07F6  00F1               	movwf	((?_delay))+1
+   429  07F7  120A  118A  273A   	fcall	_delay
+              120A  118A         
+   430                           	line	72
+   431                           	
+   432  07FC                     l588:	
+   433                           	line	65
+   434  07FC  2FD7               	goto	l587
+   435                           	
+   436  07FD                     l589:	
+   437                           	line	73
+   438                           	
+   439  07FD                     l590:	
+   440                           	global	start
+   441  07FD  120A  118A  2800   	ljmp	start
+   442                           	opt stack 0
+   443                           GLOBAL	__end_of_main
+   444  0800                     	__end_of_main:
+   445 ;; =============== function _main ends ============
+   446                           
+   447                           	signat	_main,88
+   448                           	global	_lcd_init
+   449                           psect	text109,local,class=CODE,delta=2
+   450                           global __ptext109
+   451  078F                     __ptext109:
+   452                           
+   453 ;; *************** function _lcd_init *****************
+   454 ;; Defined at:
+   455 ;;		line 20 in file "C:\Users\TECH\Desktop\madhu pic folder\EEPROM\EEPROM TEST.C"
+   456 ;; Parameters:    Size  Location     Type
+   457 ;;		None
+   458 ;; Auto vars:     Size  Location     Type
+   459 ;;		None
+   460 ;; Return value:  Size  Location     Type
+   461 ;;		None               void
+   462 ;; Registers used:
+   463 ;;		wreg, status,2, status,0, pclath, cstack
+   464 ;; Tracked objects:
+   465 ;;		On entry : 0/0
+   466 ;;		On exit  : 0/0
+   467 ;;		Unchanged: 0/0
+   468 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   469 ;;      Params:         0       0       0       0       0
+   470 ;;      Locals:         0       0       0       0       0
+   471 ;;      Temps:          0       0       0       0       0
+   472 ;;      Totals:         0       0       0       0       0
+   473 ;;Total ram usage:        0 bytes
+   474 ;; Hardware stack levels used:    1
+   475 ;; Hardware stack levels required when called:    2
+   476 ;; This function calls:
+   477 ;;		_lcd_command
+   478 ;; This function is called by:
+   479 ;;		_main
+   480 ;; This function uses a non-reentrant model
+   481 ;;
+   482                           psect	text109
+   483                           	file	"C:\Users\TECH\Desktop\madhu pic folder\EEPROM\EEPROM TEST.C"
+   484                           	line	20
+   485                           	global	__size_of_lcd_init
+   486  0019                     	__size_of_lcd_init	equ	__end_of_lcd_init-_lcd_init
+   487                           	
+   488  078F                     _lcd_init:	
+   489                           	opt	stack 7
+   490                           ; Regs used in _lcd_init: [wreg+status,2+status,0+pclath+cstack]
+   491                           	line	21
+   492                           	
+   493  078F                     l1787:	
+   494                           ;EEPROM TEST.C: 21: lcd_command(0x38);
+   495  078F  3038               	movlw	(038h)
+   496  0790  120A  118A  274C   	fcall	_lcd_command
+              120A  118A         
+   497                           	line	22
+   498                           ;EEPROM TEST.C: 22: lcd_command(0x06);
+   499  0795  3006               	movlw	(06h)
+   500  0796  120A  118A  274C   	fcall	_lcd_command
+              120A  118A         
+   501                           	line	23
+   502                           ;EEPROM TEST.C: 23: lcd_command(0x0c);
+   503  079B  300C               	movlw	(0Ch)
+   504  079C  120A  118A  274C   	fcall	_lcd_command
+              120A  118A         
+   505                           	line	24
+   506                           ;EEPROM TEST.C: 24: lcd_command(0x01);
+   507  07A1  3001               	movlw	(01h)
+   508  07A2  120A  118A  274C   	fcall	_lcd_command
+              120A  118A         
+   509                           	line	25
+   510                           	
+   511  07A7                     l572:	
+   512  07A7  0008               	return
+   513                           	opt stack 0
+   514                           GLOBAL	__end_of_lcd_init
+   515  07A8                     	__end_of_lcd_init:
+   516 ;; =============== function _lcd_init ends ============
+   517                           
+   518                           	signat	_lcd_init,88
+   519                           	global	_lcd_data
+   520                           psect	text110,local,class=CODE,delta=2
+   521                           global __ptext110
+   522  0761                     __ptext110:
+   523                           
+   524 ;; *************** function _lcd_data *****************
+   525 ;; Defined at:
+   526 ;;		line 27 in file "C:\Users\TECH\Desktop\madhu pic folder\EEPROM\EEPROM TEST.C"
+   527 ;; Parameters:    Size  Location     Type
+   528 ;;  data            1    wreg     unsigned char 
+   529 ;; Auto vars:     Size  Location     Type
+   530 ;;  data            1    2[COMMON] unsigned char 
+   531 ;; Return value:  Size  Location     Type
+   532 ;;		None               void
+   533 ;; Registers used:
+   534 ;;		wreg, status,2, status,0, pclath, cstack
+   535 ;; Tracked objects:
+   536 ;;		On entry : 0/0
+   537 ;;		On exit  : 0/0
+   538 ;;		Unchanged: 0/0
+   539 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   540 ;;      Params:         0       0       0       0       0
+   541 ;;      Locals:         1       0       0       0       0
+   542 ;;      Temps:          0       0       0       0       0
+   543 ;;      Totals:         1       0       0       0       0
+   544 ;;Total ram usage:        1 bytes
+   545 ;; Hardware stack levels used:    1
+   546 ;; Hardware stack levels required when called:    1
+   547 ;; This function calls:
+   548 ;;		_delay
+   549 ;; This function is called by:
+   550 ;;		_main
+   551 ;; This function uses a non-reentrant model
+   552 ;;
+   553                           psect	text110
+   554                           	file	"C:\Users\TECH\Desktop\madhu pic folder\EEPROM\EEPROM TEST.C"
+   555                           	line	27
+   556                           	global	__size_of_lcd_data
+   557  0015                     	__size_of_lcd_data	equ	__end_of_lcd_data-_lcd_data
+   558                           	
+   559  0761                     _lcd_data:	
+   560                           	opt	stack 7
+   561                           ; Regs used in _lcd_data: [wreg+status,2+status,0+pclath+cstack]
+   562                           ;lcd_data@data stored from wreg
+   563  0761  00F2               	movwf	(lcd_data@data)
+   564                           	line	28
+   565                           	
+   566  0762                     l1775:	
+   567                           ;EEPROM TEST.C: 28: PORTD=data;
+   568  0762  0872               	movf	(lcd_data@data),w
+   569  0763  1283               	bcf	status, 5	;RP0=0, select bank0
+   570  0764  1303               	bcf	status, 6	;RP1=0, select bank0
+   571  0765  0088               	movwf	(8)	;volatile
+   572                           	line	29
+   573                           	
+   574  0766                     l1777:	
+   575                           ;EEPROM TEST.C: 29: RC0=1;
+   576  0766  1407               	bsf	(56/8),(56)&7
+   577                           	line	30
+   578                           	
+   579  0767                     l1779:	
+   580                           ;EEPROM TEST.C: 30: RC1=0;
+   581  0767  1087               	bcf	(57/8),(57)&7
+   582                           	line	31
+   583                           	
+   584  0768                     l1781:	
+   585                           ;EEPROM TEST.C: 31: RC2=1;
+   586  0768  1507               	bsf	(58/8),(58)&7
+   587                           	line	32
+   588                           	
+   589  0769                     l1783:	
+   590                           ;EEPROM TEST.C: 32: delay(100);
+   591  0769  3064               	movlw	low(064h)
+   592  076A  00F0               	movwf	(?_delay)
+   593  076B  3000               	movlw	high(064h)
+   594  076C  00F1               	movwf	((?_delay))+1
+   595  076D  120A  118A  273A   	fcall	_delay
+              120A  118A         
+   596                           	line	33
+   597                           	
+   598  0772                     l1785:	
+   599                           ;EEPROM TEST.C: 33: RC2=0;
+   600  0772  1283               	bcf	status, 5	;RP0=0, select bank0
+   601  0773  1303               	bcf	status, 6	;RP1=0, select bank0
+   602  0774  1107               	bcf	(58/8),(58)&7
+   603                           	line	34
+   604                           	
+   605  0775                     l575:	
+   606  0775  0008               	return
+   607                           	opt stack 0
+   608                           GLOBAL	__end_of_lcd_data
+   609  0776                     	__end_of_lcd_data:
+   610 ;; =============== function _lcd_data ends ============
+   611                           
+   612                           	signat	_lcd_data,4216
+   613                           	global	_lcd_command
+   614                           psect	text111,local,class=CODE,delta=2
+   615                           global __ptext111
+   616  074C                     __ptext111:
+   617                           
+   618 ;; *************** function _lcd_command *****************
+   619 ;; Defined at:
+   620 ;;		line 11 in file "C:\Users\TECH\Desktop\madhu pic folder\EEPROM\EEPROM TEST.C"
+   621 ;; Parameters:    Size  Location     Type
+   622 ;;  com             1    wreg     unsigned char 
+   623 ;; Auto vars:     Size  Location     Type
+   624 ;;  com             1    2[COMMON] unsigned char 
+   625 ;; Return value:  Size  Location     Type
+   626 ;;		None               void
+   627 ;; Registers used:
+   628 ;;		wreg, status,2, status,0, pclath, cstack
+   629 ;; Tracked objects:
+   630 ;;		On entry : 0/0
+   631 ;;		On exit  : 0/0
+   632 ;;		Unchanged: 0/0
+   633 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   634 ;;      Params:         0       0       0       0       0
+   635 ;;      Locals:         1       0       0       0       0
+   636 ;;      Temps:          0       0       0       0       0
+   637 ;;      Totals:         1       0       0       0       0
+   638 ;;Total ram usage:        1 bytes
+   639 ;; Hardware stack levels used:    1
+   640 ;; Hardware stack levels required when called:    1
+   641 ;; This function calls:
+   642 ;;		_delay
+   643 ;; This function is called by:
+   644 ;;		_lcd_init
+   645 ;;		_main
+   646 ;; This function uses a non-reentrant model
+   647 ;;
+   648                           psect	text111
+   649                           	file	"C:\Users\TECH\Desktop\madhu pic folder\EEPROM\EEPROM TEST.C"
+   650                           	line	11
+   651                           	global	__size_of_lcd_command
+   652  0015                     	__size_of_lcd_command	equ	__end_of_lcd_command-_lcd_command
+   653                           	
+   654  074C                     _lcd_command:	
+   655                           	opt	stack 7
+   656                           ; Regs used in _lcd_command: [wreg+status,2+status,0+pclath+cstack]
+   657                           ;lcd_command@com stored from wreg
+   658  074C  00F2               	movwf	(lcd_command@com)
+   659                           	line	12
+   660                           	
+   661  074D                     l1763:	
+   662                           ;EEPROM TEST.C: 12: PORTD=com;
+   663  074D  0872               	movf	(lcd_command@com),w
+   664  074E  1283               	bcf	status, 5	;RP0=0, select bank0
+   665  074F  1303               	bcf	status, 6	;RP1=0, select bank0
+   666  0750  0088               	movwf	(8)	;volatile
+   667                           	line	13
+   668                           	
+   669  0751                     l1765:	
+   670                           ;EEPROM TEST.C: 13: RC0=0;
+   671  0751  1007               	bcf	(56/8),(56)&7
+   672                           	line	14
+   673                           	
+   674  0752                     l1767:	
+   675                           ;EEPROM TEST.C: 14: RC1=0;
+   676  0752  1087               	bcf	(57/8),(57)&7
+   677                           	line	15
+   678                           	
+   679  0753                     l1769:	
+   680                           ;EEPROM TEST.C: 15: RC2=1;
+   681  0753  1507               	bsf	(58/8),(58)&7
+   682                           	line	16
+   683                           	
+   684  0754                     l1771:	
+   685                           ;EEPROM TEST.C: 16: delay(100);
+   686  0754  3064               	movlw	low(064h)
+   687  0755  00F0               	movwf	(?_delay)
+   688  0756  3000               	movlw	high(064h)
+   689  0757  00F1               	movwf	((?_delay))+1
+   690  0758  120A  118A  273A   	fcall	_delay
+              120A  118A         
+   691                           	line	17
+   692                           	
+   693  075D                     l1773:	
+   694                           ;EEPROM TEST.C: 17: RC2=0;
+   695  075D  1283               	bcf	status, 5	;RP0=0, select bank0
+   696  075E  1303               	bcf	status, 6	;RP1=0, select bank0
+   697  075F  1107               	bcf	(58/8),(58)&7
+   698                           	line	18
+   699                           	
+   700  0760                     l569:	
+   701  0760  0008               	return
+   702                           	opt stack 0
+   703                           GLOBAL	__end_of_lcd_command
+   704  0761                     	__end_of_lcd_command:
+   705 ;; =============== function _lcd_command ends ============
+   706                           
+   707                           	signat	_lcd_command,4216
+   708                           	global	_read
+   709                           psect	text112,local,class=CODE,delta=2
+   710                           global __ptext112
+   711  072A                     __ptext112:
+   712                           
+   713 ;; *************** function _read *****************
+   714 ;; Defined at:
+   715 ;;		line 48 in file "C:\Users\TECH\Desktop\madhu pic folder\EEPROM\EEPROM TEST.C"
+   716 ;; Parameters:    Size  Location     Type
+   717 ;;  addr            1    wreg     unsigned char 
+   718 ;; Auto vars:     Size  Location     Type
+   719 ;;  addr            1    1[COMMON] unsigned char 
+   720 ;; Return value:  Size  Location     Type
+   721 ;;		None               void
+   722 ;; Registers used:
+   723 ;;		wreg
+   724 ;; Tracked objects:
+   725 ;;		On entry : 0/0
+   726 ;;		On exit  : 0/0
+   727 ;;		Unchanged: 0/0
+   728 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   729 ;;      Params:         0       0       0       0       0
+   730 ;;      Locals:         1       0       0       0       0
+   731 ;;      Temps:          1       0       0       0       0
+   732 ;;      Totals:         2       0       0       0       0
+   733 ;;Total ram usage:        2 bytes
+   734 ;; Hardware stack levels used:    1
+   735 ;; This function calls:
+   736 ;;		Nothing
+   737 ;; This function is called by:
+   738 ;;		_main
+   739 ;; This function uses a non-reentrant model
+   740 ;;
+   741                           psect	text112
+   742                           	file	"C:\Users\TECH\Desktop\madhu pic folder\EEPROM\EEPROM TEST.C"
+   743                           	line	48
+   744                           	global	__size_of_read
+   745  0010                     	__size_of_read	equ	__end_of_read-_read
+   746                           	
+   747  072A                     _read:	
+   748                           	opt	stack 7
+   749                           ; Regs used in _read: [wreg]
+   750                           ;read@addr stored from wreg
+   751  072A  00F1               	movwf	(read@addr)
+   752                           	line	49
+   753                           	
+   754  072B                     l971:	
+   755                           ;EEPROM TEST.C: 49: EEADR=addr;
+   756  072B  0871               	movf	(read@addr),w
+   757  072C  1283               	bcf	status, 5	;RP0=0, select bank2
+   758  072D  1703               	bsf	status, 6	;RP1=1, select bank2
+   759  072E  008D               	movwf	(269)^0100h	;volatile
+   760                           	line	50
+   761                           	
+   762  072F                     l973:	
+   763                           ;EEPROM TEST.C: 50: EEPGD=0;
+   764  072F  1683               	bsf	status, 5	;RP0=1, select bank3
+   765  0730  1703               	bsf	status, 6	;RP1=1, select bank3
+   766  0731  138C               	bcf	(3175/8)^0180h,(3175)&7
+   767                           	line	51
+   768                           	
+   769  0732                     l975:	
+   770                           ;EEPROM TEST.C: 51: RD=1;
+   771  0732  140C               	bsf	(3168/8)^0180h,(3168)&7
+   772                           	line	52
+   773                           ;EEPROM TEST.C: 52: byte=EEDATA;
+   774  0733  1283               	bcf	status, 5	;RP0=0, select bank2
+   775  0734  1703               	bsf	status, 6	;RP1=1, select bank2
+   776  0735  080C               	movf	(268)^0100h,w	;volatile
+   777  0736  00F0               	movwf	(??_read+0)+0
+   778  0737  0870               	movf	(??_read+0)+0,w
+   779  0738  00F4               	movwf	(_byte)
+   780                           	line	53
+   781                           	
+   782  0739                     l584:	
+   783  0739  0008               	return
+   784                           	opt stack 0
+   785                           GLOBAL	__end_of_read
+   786  073A                     	__end_of_read:
+   787 ;; =============== function _read ends ============
+   788                           
+   789                           	signat	_read,4216
+   790                           	global	_write
+   791                           psect	text113,local,class=CODE,delta=2
+   792                           global __ptext113
+   793  0776                     __ptext113:
+   794                           
+   795 ;; *************** function _write *****************
+   796 ;; Defined at:
+   797 ;;		line 36 in file "C:\Users\TECH\Desktop\madhu pic folder\EEPROM\EEPROM TEST.C"
+   798 ;; Parameters:    Size  Location     Type
+   799 ;;  addr            1    wreg     unsigned char 
+   800 ;;  data            1    0[COMMON] unsigned char 
+   801 ;; Auto vars:     Size  Location     Type
+   802 ;;  addr            1    1[COMMON] unsigned char 
+   803 ;; Return value:  Size  Location     Type
+   804 ;;		None               void
+   805 ;; Registers used:
+   806 ;;		wreg
+   807 ;; Tracked objects:
+   808 ;;		On entry : 0/0
+   809 ;;		On exit  : 0/0
+   810 ;;		Unchanged: 0/0
+   811 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   812 ;;      Params:         1       0       0       0       0
+   813 ;;      Locals:         1       0       0       0       0
+   814 ;;      Temps:          0       0       0       0       0
+   815 ;;      Totals:         2       0       0       0       0
+   816 ;;Total ram usage:        2 bytes
+   817 ;; Hardware stack levels used:    1
+   818 ;; This function calls:
+   819 ;;		Nothing
+   820 ;; This function is called by:
+   821 ;;		_main
+   822 ;; This function uses a non-reentrant model
+   823 ;;
+   824                           psect	text113
+   825                           	file	"C:\Users\TECH\Desktop\madhu pic folder\EEPROM\EEPROM TEST.C"
+   826                           	line	36
+   827                           	global	__size_of_write
+   828  0019                     	__size_of_write	equ	__end_of_write-_write
+   829                           	
+   830  0776                     _write:	
+   831                           	opt	stack 7
+   832                           ; Regs used in _write: [wreg]
+   833                           ;write@addr stored from wreg
+   834  0776  00F1               	movwf	(write@addr)
+   835                           	line	37
+   836                           	
+   837  0777                     l963:	
+   838                           ;EEPROM TEST.C: 37: EEADR=addr;
+   839  0777  0871               	movf	(write@addr),w
+   840  0778  1283               	bcf	status, 5	;RP0=0, select bank2
+   841  0779  1703               	bsf	status, 6	;RP1=1, select bank2
+   842  077A  008D               	movwf	(269)^0100h	;volatile
+   843                           	line	38
+   844                           ;EEPROM TEST.C: 38: EEDATA=data;
+   845  077B  0870               	movf	(write@data),w
+   846  077C  008C               	movwf	(268)^0100h	;volatile
+   847                           	line	39
+   848                           	
+   849  077D                     l965:	
+   850                           ;EEPROM TEST.C: 39: EEPGD=0;
+   851  077D  1683               	bsf	status, 5	;RP0=1, select bank3
+   852  077E  1703               	bsf	status, 6	;RP1=1, select bank3
+   853  077F  138C               	bcf	(3175/8)^0180h,(3175)&7
+   854                           	line	40
+   855                           	
+   856  0780                     l967:	
+   857                           ;EEPROM TEST.C: 40: WREN=1;
+   858  0780  150C               	bsf	(3170/8)^0180h,(3170)&7
+   859                           	line	41
+   860                           ;EEPROM TEST.C: 41: EECON2=0X55;
+   861  0781  3055               	movlw	(055h)
+   862  0782  008D               	movwf	(397)^0180h	;volatile
+   863                           	line	42
+   864                           ;EEPROM TEST.C: 42: EECON2=0XAA;
+   865  0783  30AA               	movlw	(0AAh)
+   866  0784  008D               	movwf	(397)^0180h	;volatile
+   867                           	line	43
+   868                           	
+   869  0785                     l969:	
+   870                           ;EEPROM TEST.C: 43: WR=1;
+   871  0785  148C               	bsf	(3169/8)^0180h,(3169)&7
+   872                           	line	44
+   873                           ;EEPROM TEST.C: 44: while(EEIF==0);
+   874  0786  2F87               	goto	l578
+   875                           	
+   876  0787                     l579:	
+   877                           	
+   878  0787                     l578:	
+   879  0787  1283               	bcf	status, 5	;RP0=0, select bank0
+   880  0788  1303               	bcf	status, 6	;RP1=0, select bank0
+   881  0789  1E0D               	btfss	(108/8),(108)&7
+   882  078A  2F8C               	goto	u21
+   883  078B  2F8D               	goto	u20
+   884  078C                     u21:
+   885  078C  2F87               	goto	l579
+   886  078D                     u20:
+   887                           	
+   888  078D                     l580:	
+   889                           	line	45
+   890                           ;EEPROM TEST.C: 45: EEIF=0;
+   891  078D  120D               	bcf	(108/8),(108)&7
+   892                           	line	46
+   893                           	
+   894  078E                     l581:	
+   895  078E  0008               	return
+   896                           	opt stack 0
+   897                           GLOBAL	__end_of_write
+   898  078F                     	__end_of_write:
+   899 ;; =============== function _write ends ============
+   900                           
+   901                           	signat	_write,8312
+   902                           	global	_delay
+   903                           psect	text114,local,class=CODE,delta=2
+   904                           global __ptext114
+   905  073A                     __ptext114:
+   906                           
+   907 ;; *************** function _delay *****************
+   908 ;; Defined at:
+   909 ;;		line 6 in file "C:\Users\TECH\Desktop\madhu pic folder\EEPROM\EEPROM TEST.C"
+   910 ;; Parameters:    Size  Location     Type
+   911 ;;  x               2    0[COMMON] unsigned int 
+   912 ;; Auto vars:     Size  Location     Type
+   913 ;;		None
+   914 ;; Return value:  Size  Location     Type
+   915 ;;		None               void
+   916 ;; Registers used:
+   917 ;;		wreg
+   918 ;; Tracked objects:
+   919 ;;		On entry : 0/0
+   920 ;;		On exit  : 0/0
+   921 ;;		Unchanged: 0/0
+   922 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   923 ;;      Params:         2       0       0       0       0
+   924 ;;      Locals:         0       0       0       0       0
+   925 ;;      Temps:          0       0       0       0       0
+   926 ;;      Totals:         2       0       0       0       0
+   927 ;;Total ram usage:        2 bytes
+   928 ;; Hardware stack levels used:    1
+   929 ;; This function calls:
+   930 ;;		Nothing
+   931 ;; This function is called by:
+   932 ;;		_lcd_command
+   933 ;;		_lcd_data
+   934 ;;		_main
+   935 ;; This function uses a non-reentrant model
+   936 ;;
+   937                           psect	text114
+   938                           	file	"C:\Users\TECH\Desktop\madhu pic folder\EEPROM\EEPROM TEST.C"
+   939                           	line	6
+   940                           	global	__size_of_delay
+   941  0012                     	__size_of_delay	equ	__end_of_delay-_delay
+   942                           	
+   943  073A                     _delay:	
+   944                           	opt	stack 6
+   945                           ; Regs used in _delay: [wreg]
+   946                           	line	7
+   947                           	
+   948  073A                     l959:	
+   949                           ;EEPROM TEST.C: 7: while(x--);
+   950  073A  2F3B               	goto	l563
+   951                           	
+   952  073B                     l564:	
+   953                           	
+   954  073B                     l563:	
+   955                           	
+   956  073B                     l961:	
+   957  073B  3001               	movlw	low(01h)
+   958  073C  02F0               	subwf	(delay@x),f
+   959  073D  3000               	movlw	high(01h)
+   960  073E  1C03               	skipc
+   961  073F  03F1               	decf	(delay@x+1),f
+   962  0740  02F1               	subwf	(delay@x+1),f
+   963  0741  30FF               	movlw	high(0FFFFh)
+   964  0742  0671               	xorwf	((delay@x+1)),w
+   965  0743  1D03               	skipz
+   966  0744  2F47               	goto	u15
+   967  0745  30FF               	movlw	low(0FFFFh)
+   968  0746  0670               	xorwf	((delay@x)),w
+   969  0747                     u15:
+   970                           
+   971  0747  1D03               	skipz
+   972  0748  2F4A               	goto	u11
+   973  0749  2F4B               	goto	u10
+   974  074A                     u11:
+   975  074A  2F3B               	goto	l564
+   976  074B                     u10:
+   977                           	
+   978  074B                     l565:	
+   979                           	line	8
+   980                           	
+   981  074B                     l566:	
+   982  074B  0008               	return
+   983                           	opt stack 0
+   984                           GLOBAL	__end_of_delay
+   985  074C                     	__end_of_delay:
+   986 ;; =============== function _delay ends ============
+   987                           
+   988                           	signat	_delay,4216
+   989                           psect	text115,local,class=CODE,delta=2
+   990                           global __ptext115
+   991  0000                     __ptext115:
+   992                           	global	btemp
+   993  007E                     	btemp set 07Eh
+   994                           
+   995                           	DABS	1,126,2	;btemp
+   996                           	global	wtemp0
+   997  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.71a build 6446 
+Symbol Table                                                                                   Mon Nov 07 18:44:53 2022
+
+                   _m 0075          lcd_data@data 0072                    _RD 0C60                    u10 074B  
+                  u11 074A                    u20 078D                    u21 078C                    u15 0747  
+                  _WR 0C61                   l563 073B                   l564 073B                   l580 078D  
+                 l572 07A7                   l565 074B                   l581 078E                   l566 074B  
+                 l590 07FD                   l575 0775                   l584 0739                   l569 0760  
+                 l578 0787                   l579 0787                   l587 07D7                   l588 07FC  
+                 l589 07FD                   l961 073B                   l963 0777                   l971 072B  
+                 l965 077D                   l973 072F                   l959 073A                   l967 0780  
+                 l975 0732                   l969 0785                   _RC0 0038                   _RC1 0039  
+                 _RC2 003A                  l1801 07D7                  l1803 07E1                  l1805 07E7  
+                l1807 07ED                  l1809 07F3                  l1771 0754                  l1763 074D  
+                l1773 075D                  l1765 0751                  l1781 0768                  l1767 0752  
+                l1783 0769                  l1775 0762                  l1791 07B4                  l1769 0753  
+                l1785 0772                  l1777 0766                  l1793 07B9                  l1779 0767  
+                l1787 078F                  l1795 07C2                  l1797 07C8                  l1789 07A8  
+                l1799 07CE                  _EEIF 006C                  _WREN 0C62                  _main 07A8  
+                _byte 0074                  _read 072A                  btemp 007E                  start 0000  
+               ?_main 0070                 ?_read 0070                 _EEADR 010D                 _EEPGD 0C67  
+               _PORTC 0007                 _PORTD 0008                 _TRISC 0087                 _TRISD 0088  
+               _delay 073A                 _write 0776                 status 0003                 wtemp0 007E  
+        __end_of_main 0800          __end_of_read 073A                ??_main 0073                ??_read 0070  
+      lcd_command@com 0072                ?_delay 0070                _EEDATA 010C                _EECON2 018D  
+              ?_write 0070      __end_of_lcd_data 0776      __end_of_lcd_init 07A8  __size_of_lcd_command 0015  
+              delay@x 0070        __pcstackCOMMON 0070         __end_of_delay 074C         __end_of_write 078F  
+             ??_delay 0072               ??_write 0071            __pmaintext 07A8             ?_lcd_data 0070  
+           ?_lcd_init 0070            ??_lcd_data 0072            ??_lcd_init 0073  end_of_initialization 0726  
+       ??_lcd_command 0072   start_initialization 0724   __end_of_lcd_command 0761           __pbssCOMMON 0074  
+   __size_of_lcd_data 0015     __size_of_lcd_init 0019             __ptext110 0761             __ptext111 074C  
+           __ptext112 072A             __ptext113 0776             __ptext114 073A             __ptext115 0000  
+           __ptext108 0000             __ptext109 078F        __size_of_delay 0012        __size_of_write 0019  
+         _lcd_command 074C              _lcd_data 0761              _lcd_init 078F         __size_of_main 0058  
+       __size_of_read 0010              read@addr 0071             write@addr 0071             write@data 0070  
+        ?_lcd_command 0070  

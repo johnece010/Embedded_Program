@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC Macro Assembler V9.71a build 6446 
-                                                                                                           Wed Oct 15 21:43:14 2025
+                                                                                                           Fri Oct 24 19:03:20 2025
 
 
      1                           
@@ -67,12 +67,12 @@ HI-TECH Software PIC Macro Assembler V9.71a build 6446
     61  0000                     _exit
     62                           	psect	end_init
     63                           	global start_initialization
-    64  0000  120A  118A  2F87   	ljmp start_initialization	;jump to C runtime clear & initialization
+    64  0000  120A  118A  2C4C   	ljmp start_initialization	;jump to C runtime clear & initialization
 
 
 HI-TECH Software PICC Macro Assembler V9.71a build 6446 
-Symbol Table                                                                                               Wed Oct 15 21:43:14 2025
+Symbol Table                                                                                               Fri Oct 24 19:03:20 2025
 
-               _main 07BC                 _exit 0000                 start 0000  start_initialization 0787  
+               _main 0679                 _exit 0000                 start 0000  start_initialization 044C  
            intlevel0 0000             intlevel1 0000             intlevel2 0000             intlevel3 0000  
            intlevel4 0000             intlevel5 0000             reset_vec 0000  

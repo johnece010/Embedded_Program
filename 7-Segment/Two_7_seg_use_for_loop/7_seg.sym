@@ -149,7 +149,7 @@ startup.obj
 startup.as
 64 0 0 CODE
 7_seg.obj
-E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c
+E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c
 11 67D 0 CODE
 132 691 0 CODE
 133 692 0 CODE
@@ -246,6 +246,6 @@ C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\sources\awdiv.c
 35 76B 0 CODE
 36 770 0 CODE
 37 776 0 CODE
-E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c
+E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c
 8 66B 0 CODE
 9 67C 0 CODE

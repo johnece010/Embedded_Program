@@ -1,5 +1,5 @@
 
-# 1 "E:\Embedded\LCD_Display_Code\Welcome_display\LCD.c"
+# 1 "E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c"
 
 # 19 "C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\include\pic168xa.h"
 volatile unsigned char INDF @ 0x00;
@@ -384,61 +384,141 @@ extern unsigned char eeprom_read(unsigned char addr);
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
-# 6 "E:\Embedded\LCD_Display_Code\Welcome_display\LCD.c"
+# 2 "E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c"
+asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0X3F72");
+
+
+
+
+unsigned int temp,temp1,temp2;
+
+int a,b,c,d,e,f,i;
+
 void delay(unsigned int x)
 {
 while(x--);
 }
 
-char i;
-char da[] = {"WELCOME"};
-
-void lcd_cmd(unsigned char cmd)
+void lcd_command(unsigned char com)
 {
-PORTD = cmd;
-RC0 = 0;
-RC1 = 0;
-RC2 = 1;
-delay(10000);
-RC2 = 0;
-}
-
-void lcd_data(unsigned char data)
-{
-PORTD = data;
-RC0 = 1;
-RC1 = 0;
-RC2 = 1;
-delay(10000);
-RC2 = 0;
+PORTD=com&0XF0;
+RD1=0;
+RD2=0;
+RD3=1;
+delay(100);
+RD3=0;
+temp2=com<<4;
+PORTD=temp2&0XF0;
+RD1=0;
+RD2=0;
+RD3=1;
+delay(100);
+RD3=0;
 }
 
 void lcd_init()
 {
-lcd_cmd(0x38);
-lcd_cmd(0x06);
-lcd_cmd(0x0C);
-lcd_cmd(0x01);
-lcd_cmd(0x80);
+lcd_command(0X02);
+lcd_command(0X2C);
+lcd_command(0X06);
+lcd_command(0X0C);
+lcd_command(0X01);
 }
 
-void main()
+
+void lcd_data(unsigned char data)
 {
-TRISC = 0x00;
-PORTC = 0x00;
-TRISD = 0x00;
-PORTD = 0x00;
+PORTD=data&0XF0;
+RD1=1;
+RD2=0;
+RD3=1;
+delay(100);
+RD3=0;
+temp1=data<<4;
+PORTD=temp1&0XF0;
+RD1=1;
+RD2=0;
+RD3=1;
+delay(100);
+RD3=0;
+}
+
+void lcd_display(unsigned char *m)
+{
+for(i=0;m[i]!=0;i++)
+{
+lcd_data(m[i]);
+}
+}
+
+
+
+main()
+{
+TRISD=0X00;
+PORTD=0X00;
+
+TRISA=0x01;
+PORTA=0x00;
+
+
+TRISC=0X00;
+PORTC=0X00;
+
+
+ADCON1=0X80;
+ADCON0=0X40;
 
 lcd_init();
+delay(100);
+
+lcd_command(0X84);
+lcd_display("WELCOME");
+delay(50000);delay(50000);
+delay(50000);
+lcd_command(0X01);
+
+
+
 
 while(1)
 {
-lcd_cmd(0x80);
-for(i = 0; i < 7; i++)
-{
-lcd_data(da[i]);
-delay(50000);
-}
-while(1);
+
+CHS2=0;
+CHS1=0;
+CHS0=0;
+ADON=1;
+delay(600);
+ADCON0=(ADCON0|0X04);
+delay(600);
+temp=ADRESH<<8;
+
+delay(600);
+temp=(temp+ADRESL);
+delay(600);
+temp;
+delay(600);
+
+lcd_command(0X80);
+
+lcd_command(0X8A);
+a=temp/1000;
+b=temp%1000;
+c=b/100;
+d=b%100;
+e=d/10;
+f=d%10;
+
+
+lcd_data(a+0x30);
+delay(1000);
+lcd_data(c+0x30);
+delay(1000);
+lcd_data(e+0x30);
+delay(1000);
+lcd_data(f+0x30);
+delay(1000);
+
+
 }
 }

@@ -1,0 +1,16 @@
+___awdiv: CODE, 591 0 112
+_lcd_command: CODE, 213 0 21
+_delay: CODE, 195 0 18
+_lcd_data: CODE, 234 0 21
+___ftpack: CODE, 703 0 117
+___awmod: CODE, 495 0 96
+_lcd_display: CODE, 322 0 39
+_main: CODE, 1397 0 651
+___lwtoft: CODE, 255 0 30
+___lwdiv: CODE, 422 0 73
+___lwmod: CODE, 361 0 61
+_ply: CODE, 1170 0 227
+___fttol: CODE, 820 0 156
+_lcd_init: CODE, 285 0 37
+___ftdiv: CODE, 976 0 194
+Total: 1853

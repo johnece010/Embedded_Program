@@ -1,0 +1,719 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
+                                                                                               Thu Sep 15 13:12:03 2022
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNCALL	_main,_delay
+    43                           	FNROOT	_main
+    44                           	global	_PORTB
+    45                           psect	maintext,global,class=CODE,delta=2
+    46                           global __pmaintext
+    47  06F5                     __pmaintext:
+    48  0006                     _PORTB	set	6
+    49                           	global	_TRISB
+    50  0086                     _TRISB	set	134
+    51                           	file	"ASCENDING DECENDING CENTER LED.as"
+    52                           	line	#
+    53                           psect cinit,class=CODE,delta=2
+    54                           global start_initialization
+    55  06DF                     start_initialization:
+    56                           
+    57                           psect cinit,class=CODE,delta=2
+    58                           global end_of_initialization
+    59                           
+    60                           ;End of C runtime variable initialization code
+    61                           
+    62  06DF                     end_of_initialization:
+    63  06DF  0183               clrf status
+    64  06E0  120A  118A  2EF5   ljmp _main	;jump to C main() function
+    65                           psect	cstackCOMMON,class=COMMON,space=1
+    66                           global __pcstackCOMMON
+    67  0070                     __pcstackCOMMON:
+    68                           	global	?_delay
+    69  0070                     ?_delay:	; 0 bytes @ 0x0
+    70                           	global	?_main
+    71  0070                     ?_main:	; 2 bytes @ 0x0
+    72                           	global	delay@x
+    73  0070                     delay@x:	; 2 bytes @ 0x0
+    74  0070                     	ds	2
+    75                           	global	??_delay
+    76  0072                     ??_delay:	; 0 bytes @ 0x2
+    77                           	global	??_main
+    78  0072                     ??_main:	; 0 bytes @ 0x2
+    79 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+    80 ;;Auto spaces:   Size  Autos    Used
+    81 ;; COMMON          14      2       2
+    82 ;; BANK0           80      0       0
+    83 ;; BANK1           80      0       0
+    84 ;; BANK3           96      0       0
+    85 ;; BANK2           96      0       0
+    86                           
+    87 ;;
+    88 ;; Pointer list with targets:
+    89                           
+    90                           
+    91                           
+    92 ;;
+    93 ;; Critical Paths under _main in COMMON
+    94 ;;
+    95 ;;   _main->_delay
+    96 ;;
+    97 ;; Critical Paths under _main in BANK0
+    98 ;;
+    99 ;;   None.
+   100 ;;
+   101 ;; Critical Paths under _main in BANK1
+   102 ;;
+   103 ;;   None.
+   104 ;;
+   105 ;; Critical Paths under _main in BANK3
+   106 ;;
+   107 ;;   None.
+   108 ;;
+   109 ;; Critical Paths under _main in BANK2
+   110 ;;
+   111 ;;   None.
+   112                           
+   113 ;;
+   114 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   115 ;;
+   116                           
+   117 ;;
+   118 ;;Call Graph Tables:
+   119 ;;
+   120 ;; ---------------------------------------------------------------------------------
+   121 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   122 ;; ---------------------------------------------------------------------------------
+   123 ;; (0) _main                                                 0     0      0      15
+   124 ;;                              _delay
+   125 ;; ---------------------------------------------------------------------------------
+   126 ;; (1) _delay                                                2     0      2      15
+   127 ;;                                              0 COMMON     2     0      2
+   128 ;; ---------------------------------------------------------------------------------
+   129 ;; Estimated maximum stack depth 1
+   130 ;; ---------------------------------------------------------------------------------
+   131                           
+   132 ;; Call Graph Graphs:
+   133                           
+   134 ;; _main (ROOT)
+   135 ;;   _delay
+   136 ;;
+   137                           
+   138 ;; Address spaces:
+   139                           
+   140 ;;Name               Size   Autos  Total    Cost      Usage
+   141 ;;BITCOMMON            E      0       0       0        0.0%
+   142 ;;EEDATA             100      0       0       0        0.0%
+   143 ;;NULL                 0      0       0       0        0.0%
+   144 ;;CODE                 0      0       0       0        0.0%
+   145 ;;COMMON               E      2       2       1       14.3%
+   146 ;;BITSFR0              0      0       0       1        0.0%
+   147 ;;SFR0                 0      0       0       1        0.0%
+   148 ;;BITSFR1              0      0       0       2        0.0%
+   149 ;;SFR1                 0      0       0       2        0.0%
+   150 ;;STACK                0      0       1       2        0.0%
+   151 ;;ABS                  0      0       0       3        0.0%
+   152 ;;BITBANK0            50      0       0       4        0.0%
+   153 ;;BITSFR3              0      0       0       4        0.0%
+   154 ;;SFR3                 0      0       0       4        0.0%
+   155 ;;BANK0               50      0       0       5        0.0%
+   156 ;;BITSFR2              0      0       0       5        0.0%
+   157 ;;SFR2                 0      0       0       5        0.0%
+   158 ;;BITBANK1            50      0       0       6        0.0%
+   159 ;;BANK1               50      0       0       7        0.0%
+   160 ;;BITBANK3            60      0       0       8        0.0%
+   161 ;;BANK3               60      0       0       9        0.0%
+   162 ;;BITBANK2            60      0       0      10        0.0%
+   163 ;;BANK2               60      0       0      11        0.0%
+   164 ;;DATA                 0      0       0      12        0.0%
+   165                           
+   166                           	global	_main
+   167                           psect	maintext
+   168                           
+   169 ;; *************** function _main *****************
+   170 ;; Defined at:
+   171 ;;		line 7 in file "C:\Users\TECH\Desktop\madhu pic folder\led\ASCENDING DECENDING CENTER LED\ASCENDING DECENDING CENTER
+        LED.C"
+   172 ;; Parameters:    Size  Location     Type
+   173 ;;		None
+   174 ;; Auto vars:     Size  Location     Type
+   175 ;;		None
+   176 ;; Return value:  Size  Location     Type
+   177 ;;                  2  564[COMMON] int 
+   178 ;; Registers used:
+   179 ;;		wreg, status,2, status,0, pclath, cstack
+   180 ;; Tracked objects:
+   181 ;;		On entry : 17F/0
+   182 ;;		On exit  : 0/0
+   183 ;;		Unchanged: 0/0
+   184 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   185 ;;      Params:         0       0       0       0       0
+   186 ;;      Locals:         0       0       0       0       0
+   187 ;;      Temps:          0       0       0       0       0
+   188 ;;      Totals:         0       0       0       0       0
+   189 ;;Total ram usage:        0 bytes
+   190 ;; Hardware stack levels required when called:    1
+   191 ;; This function calls:
+   192 ;;		_delay
+   193 ;; This function is called by:
+   194 ;;		Startup code after reset
+   195 ;; This function uses a non-reentrant model
+   196 ;;
+   197                           psect	maintext
+   198                           	file	"C:\Users\TECH\Desktop\madhu pic folder\led\ASCENDING DECENDING CENTER LED\ASCENDI
+                                 NG DECENDING CENTER LED.C"
+   199                           	line	7
+   200                           	global	__size_of_main
+   201  010B                     	__size_of_main	equ	__end_of_main-_main
+   202                           	
+   203  06F5                     _main:	
+   204                           	opt	stack 8
+   205                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   206                           	line	8
+   207                           	
+   208  06F5                     l1727:	
+   209                           ;ASCENDING DECENDING CENTER LED.C: 8: TRISB=0X00;
+   210  06F5  1683               	bsf	status, 5	;RP0=1, select bank1
+   211  06F6  1303               	bcf	status, 6	;RP1=0, select bank1
+   212  06F7  0186               	clrf	(134)^080h	;volatile
+   213                           	line	9
+   214                           ;ASCENDING DECENDING CENTER LED.C: 9: PORTB=0X00;
+   215  06F8  1283               	bcf	status, 5	;RP0=0, select bank0
+   216  06F9  1303               	bcf	status, 6	;RP1=0, select bank0
+   217  06FA  0186               	clrf	(6)	;volatile
+   218                           	line	10
+   219                           ;ASCENDING DECENDING CENTER LED.C: 10: while(1)
+   220                           	
+   221  06FB                     l565:	
+   222                           	line	12
+   223                           	
+   224  06FB                     l1729:	
+   225                           ;ASCENDING DECENDING CENTER LED.C: 11: {
+   226                           ;ASCENDING DECENDING CENTER LED.C: 12: PORTB=0X01;
+   227  06FB  3001               	movlw	(01h)
+   228  06FC  0086               	movwf	(6)	;volatile
+   229                           	line	13
+   230                           	
+   231  06FD                     l1731:	
+   232                           ;ASCENDING DECENDING CENTER LED.C: 13: delay(50000);
+   233  06FD  3050               	movlw	low(0C350h)
+   234  06FE  00F0               	movwf	(?_delay)
+   235  06FF  30C3               	movlw	high(0C350h)
+   236  0700  00F1               	movwf	((?_delay))+1
+   237  0701  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   238                           	line	14
+   239                           	
+   240  0706                     l1733:	
+   241                           ;ASCENDING DECENDING CENTER LED.C: 14: PORTB=0X02;
+   242  0706  3002               	movlw	(02h)
+   243  0707  1283               	bcf	status, 5	;RP0=0, select bank0
+   244  0708  1303               	bcf	status, 6	;RP1=0, select bank0
+   245  0709  0086               	movwf	(6)	;volatile
+   246                           	line	15
+   247                           	
+   248  070A                     l1735:	
+   249                           ;ASCENDING DECENDING CENTER LED.C: 15: delay(50000);
+   250  070A  3050               	movlw	low(0C350h)
+   251  070B  00F0               	movwf	(?_delay)
+   252  070C  30C3               	movlw	high(0C350h)
+   253  070D  00F1               	movwf	((?_delay))+1
+   254  070E  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   255                           	line	16
+   256                           	
+   257  0713                     l1737:	
+   258                           ;ASCENDING DECENDING CENTER LED.C: 16: PORTB=0X04;
+   259  0713  3004               	movlw	(04h)
+   260  0714  1283               	bcf	status, 5	;RP0=0, select bank0
+   261  0715  1303               	bcf	status, 6	;RP1=0, select bank0
+   262  0716  0086               	movwf	(6)	;volatile
+   263                           	line	17
+   264                           	
+   265  0717                     l1739:	
+   266                           ;ASCENDING DECENDING CENTER LED.C: 17: delay(50000);
+   267  0717  3050               	movlw	low(0C350h)
+   268  0718  00F0               	movwf	(?_delay)
+   269  0719  30C3               	movlw	high(0C350h)
+   270  071A  00F1               	movwf	((?_delay))+1
+   271  071B  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   272                           	line	18
+   273                           	
+   274  0720                     l1741:	
+   275                           ;ASCENDING DECENDING CENTER LED.C: 18: PORTB=0X08;
+   276  0720  3008               	movlw	(08h)
+   277  0721  1283               	bcf	status, 5	;RP0=0, select bank0
+   278  0722  1303               	bcf	status, 6	;RP1=0, select bank0
+   279  0723  0086               	movwf	(6)	;volatile
+   280                           	line	19
+   281                           	
+   282  0724                     l1743:	
+   283                           ;ASCENDING DECENDING CENTER LED.C: 19: delay(50000);
+   284  0724  3050               	movlw	low(0C350h)
+   285  0725  00F0               	movwf	(?_delay)
+   286  0726  30C3               	movlw	high(0C350h)
+   287  0727  00F1               	movwf	((?_delay))+1
+   288  0728  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   289                           	line	20
+   290                           	
+   291  072D                     l1745:	
+   292                           ;ASCENDING DECENDING CENTER LED.C: 20: PORTB=0X10;
+   293  072D  3010               	movlw	(010h)
+   294  072E  1283               	bcf	status, 5	;RP0=0, select bank0
+   295  072F  1303               	bcf	status, 6	;RP1=0, select bank0
+   296  0730  0086               	movwf	(6)	;volatile
+   297                           	line	21
+   298                           	
+   299  0731                     l1747:	
+   300                           ;ASCENDING DECENDING CENTER LED.C: 21: delay(50000);
+   301  0731  3050               	movlw	low(0C350h)
+   302  0732  00F0               	movwf	(?_delay)
+   303  0733  30C3               	movlw	high(0C350h)
+   304  0734  00F1               	movwf	((?_delay))+1
+   305  0735  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   306                           	line	22
+   307                           	
+   308  073A                     l1749:	
+   309                           ;ASCENDING DECENDING CENTER LED.C: 22: PORTB=0X20;
+   310  073A  3020               	movlw	(020h)
+   311  073B  1283               	bcf	status, 5	;RP0=0, select bank0
+   312  073C  1303               	bcf	status, 6	;RP1=0, select bank0
+   313  073D  0086               	movwf	(6)	;volatile
+   314                           	line	23
+   315                           	
+   316  073E                     l1751:	
+   317                           ;ASCENDING DECENDING CENTER LED.C: 23: delay(50000);
+   318  073E  3050               	movlw	low(0C350h)
+   319  073F  00F0               	movwf	(?_delay)
+   320  0740  30C3               	movlw	high(0C350h)
+   321  0741  00F1               	movwf	((?_delay))+1
+   322  0742  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   323                           	line	24
+   324                           	
+   325  0747                     l1753:	
+   326                           ;ASCENDING DECENDING CENTER LED.C: 24: PORTB=0X40;
+   327  0747  3040               	movlw	(040h)
+   328  0748  1283               	bcf	status, 5	;RP0=0, select bank0
+   329  0749  1303               	bcf	status, 6	;RP1=0, select bank0
+   330  074A  0086               	movwf	(6)	;volatile
+   331                           	line	25
+   332                           	
+   333  074B                     l1755:	
+   334                           ;ASCENDING DECENDING CENTER LED.C: 25: delay(50000);
+   335  074B  3050               	movlw	low(0C350h)
+   336  074C  00F0               	movwf	(?_delay)
+   337  074D  30C3               	movlw	high(0C350h)
+   338  074E  00F1               	movwf	((?_delay))+1
+   339  074F  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   340                           	line	26
+   341                           	
+   342  0754                     l1757:	
+   343                           ;ASCENDING DECENDING CENTER LED.C: 26: PORTB=0X80;
+   344  0754  3080               	movlw	(080h)
+   345  0755  1283               	bcf	status, 5	;RP0=0, select bank0
+   346  0756  1303               	bcf	status, 6	;RP1=0, select bank0
+   347  0757  0086               	movwf	(6)	;volatile
+   348                           	line	27
+   349                           	
+   350  0758                     l1759:	
+   351                           ;ASCENDING DECENDING CENTER LED.C: 27: delay(50000);
+   352  0758  3050               	movlw	low(0C350h)
+   353  0759  00F0               	movwf	(?_delay)
+   354  075A  30C3               	movlw	high(0C350h)
+   355  075B  00F1               	movwf	((?_delay))+1
+   356  075C  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   357                           	line	28
+   358                           	
+   359  0761                     l1761:	
+   360                           ;ASCENDING DECENDING CENTER LED.C: 28: PORTB=0X40;
+   361  0761  3040               	movlw	(040h)
+   362  0762  1283               	bcf	status, 5	;RP0=0, select bank0
+   363  0763  1303               	bcf	status, 6	;RP1=0, select bank0
+   364  0764  0086               	movwf	(6)	;volatile
+   365                           	line	29
+   366                           	
+   367  0765                     l1763:	
+   368                           ;ASCENDING DECENDING CENTER LED.C: 29: delay(50000);
+   369  0765  3050               	movlw	low(0C350h)
+   370  0766  00F0               	movwf	(?_delay)
+   371  0767  30C3               	movlw	high(0C350h)
+   372  0768  00F1               	movwf	((?_delay))+1
+   373  0769  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   374                           	line	30
+   375                           	
+   376  076E                     l1765:	
+   377                           ;ASCENDING DECENDING CENTER LED.C: 30: PORTB=0X20;
+   378  076E  3020               	movlw	(020h)
+   379  076F  1283               	bcf	status, 5	;RP0=0, select bank0
+   380  0770  1303               	bcf	status, 6	;RP1=0, select bank0
+   381  0771  0086               	movwf	(6)	;volatile
+   382                           	line	31
+   383                           	
+   384  0772                     l1767:	
+   385                           ;ASCENDING DECENDING CENTER LED.C: 31: delay(50000);
+   386  0772  3050               	movlw	low(0C350h)
+   387  0773  00F0               	movwf	(?_delay)
+   388  0774  30C3               	movlw	high(0C350h)
+   389  0775  00F1               	movwf	((?_delay))+1
+   390  0776  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   391                           	line	32
+   392                           	
+   393  077B                     l1769:	
+   394                           ;ASCENDING DECENDING CENTER LED.C: 32: PORTB=0X10;
+   395  077B  3010               	movlw	(010h)
+   396  077C  1283               	bcf	status, 5	;RP0=0, select bank0
+   397  077D  1303               	bcf	status, 6	;RP1=0, select bank0
+   398  077E  0086               	movwf	(6)	;volatile
+   399                           	line	33
+   400                           	
+   401  077F                     l1771:	
+   402                           ;ASCENDING DECENDING CENTER LED.C: 33: delay(50000);
+   403  077F  3050               	movlw	low(0C350h)
+   404  0780  00F0               	movwf	(?_delay)
+   405  0781  30C3               	movlw	high(0C350h)
+   406  0782  00F1               	movwf	((?_delay))+1
+   407  0783  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   408                           	line	34
+   409                           	
+   410  0788                     l1773:	
+   411                           ;ASCENDING DECENDING CENTER LED.C: 34: PORTB=0X08;
+   412  0788  3008               	movlw	(08h)
+   413  0789  1283               	bcf	status, 5	;RP0=0, select bank0
+   414  078A  1303               	bcf	status, 6	;RP1=0, select bank0
+   415  078B  0086               	movwf	(6)	;volatile
+   416                           	line	35
+   417                           	
+   418  078C                     l1775:	
+   419                           ;ASCENDING DECENDING CENTER LED.C: 35: delay(50000);
+   420  078C  3050               	movlw	low(0C350h)
+   421  078D  00F0               	movwf	(?_delay)
+   422  078E  30C3               	movlw	high(0C350h)
+   423  078F  00F1               	movwf	((?_delay))+1
+   424  0790  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   425                           	line	36
+   426                           	
+   427  0795                     l1777:	
+   428                           ;ASCENDING DECENDING CENTER LED.C: 36: PORTB=0X04;
+   429  0795  3004               	movlw	(04h)
+   430  0796  1283               	bcf	status, 5	;RP0=0, select bank0
+   431  0797  1303               	bcf	status, 6	;RP1=0, select bank0
+   432  0798  0086               	movwf	(6)	;volatile
+   433                           	line	37
+   434                           	
+   435  0799                     l1779:	
+   436                           ;ASCENDING DECENDING CENTER LED.C: 37: delay(50000);
+   437  0799  3050               	movlw	low(0C350h)
+   438  079A  00F0               	movwf	(?_delay)
+   439  079B  30C3               	movlw	high(0C350h)
+   440  079C  00F1               	movwf	((?_delay))+1
+   441  079D  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   442                           	line	38
+   443                           	
+   444  07A2                     l1781:	
+   445                           ;ASCENDING DECENDING CENTER LED.C: 38: PORTB=0X02;
+   446  07A2  3002               	movlw	(02h)
+   447  07A3  1283               	bcf	status, 5	;RP0=0, select bank0
+   448  07A4  1303               	bcf	status, 6	;RP1=0, select bank0
+   449  07A5  0086               	movwf	(6)	;volatile
+   450                           	line	39
+   451                           	
+   452  07A6                     l1783:	
+   453                           ;ASCENDING DECENDING CENTER LED.C: 39: delay(50000);
+   454  07A6  3050               	movlw	low(0C350h)
+   455  07A7  00F0               	movwf	(?_delay)
+   456  07A8  30C3               	movlw	high(0C350h)
+   457  07A9  00F1               	movwf	((?_delay))+1
+   458  07AA  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   459                           	line	40
+   460                           	
+   461  07AF                     l1785:	
+   462                           ;ASCENDING DECENDING CENTER LED.C: 40: PORTB=0X01;
+   463  07AF  3001               	movlw	(01h)
+   464  07B0  1283               	bcf	status, 5	;RP0=0, select bank0
+   465  07B1  1303               	bcf	status, 6	;RP1=0, select bank0
+   466  07B2  0086               	movwf	(6)	;volatile
+   467                           	line	41
+   468                           	
+   469  07B3                     l1787:	
+   470                           ;ASCENDING DECENDING CENTER LED.C: 41: delay(50000);
+   471  07B3  3050               	movlw	low(0C350h)
+   472  07B4  00F0               	movwf	(?_delay)
+   473  07B5  30C3               	movlw	high(0C350h)
+   474  07B6  00F1               	movwf	((?_delay))+1
+   475  07B7  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   476                           	line	42
+   477                           	
+   478  07BC                     l1789:	
+   479                           ;ASCENDING DECENDING CENTER LED.C: 42: PORTB=0X00;
+   480  07BC  1283               	bcf	status, 5	;RP0=0, select bank0
+   481  07BD  1303               	bcf	status, 6	;RP1=0, select bank0
+   482  07BE  0186               	clrf	(6)	;volatile
+   483                           	line	43
+   484                           	
+   485  07BF                     l1791:	
+   486                           ;ASCENDING DECENDING CENTER LED.C: 43: delay(50000);
+   487  07BF  3050               	movlw	low(0C350h)
+   488  07C0  00F0               	movwf	(?_delay)
+   489  07C1  30C3               	movlw	high(0C350h)
+   490  07C2  00F1               	movwf	((?_delay))+1
+   491  07C3  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   492                           	line	44
+   493                           ;ASCENDING DECENDING CENTER LED.C: 44: PORTB=0X18;
+   494  07C8  3018               	movlw	(018h)
+   495  07C9  1283               	bcf	status, 5	;RP0=0, select bank0
+   496  07CA  1303               	bcf	status, 6	;RP1=0, select bank0
+   497  07CB  0086               	movwf	(6)	;volatile
+   498                           	line	45
+   499                           	
+   500  07CC                     l1793:	
+   501                           ;ASCENDING DECENDING CENTER LED.C: 45: delay(50000);
+   502  07CC  3050               	movlw	low(0C350h)
+   503  07CD  00F0               	movwf	(?_delay)
+   504  07CE  30C3               	movlw	high(0C350h)
+   505  07CF  00F1               	movwf	((?_delay))+1
+   506  07D0  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   507                           	line	46
+   508                           	
+   509  07D5                     l1795:	
+   510                           ;ASCENDING DECENDING CENTER LED.C: 46: PORTB=0X24;
+   511  07D5  3024               	movlw	(024h)
+   512  07D6  1283               	bcf	status, 5	;RP0=0, select bank0
+   513  07D7  1303               	bcf	status, 6	;RP1=0, select bank0
+   514  07D8  0086               	movwf	(6)	;volatile
+   515                           	line	47
+   516                           ;ASCENDING DECENDING CENTER LED.C: 47: delay(50000);
+   517  07D9  3050               	movlw	low(0C350h)
+   518  07DA  00F0               	movwf	(?_delay)
+   519  07DB  30C3               	movlw	high(0C350h)
+   520  07DC  00F1               	movwf	((?_delay))+1
+   521  07DD  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   522                           	line	48
+   523                           	
+   524  07E2                     l1797:	
+   525                           ;ASCENDING DECENDING CENTER LED.C: 48: PORTB=0X42;
+   526  07E2  3042               	movlw	(042h)
+   527  07E3  1283               	bcf	status, 5	;RP0=0, select bank0
+   528  07E4  1303               	bcf	status, 6	;RP1=0, select bank0
+   529  07E5  0086               	movwf	(6)	;volatile
+   530                           	line	49
+   531                           	
+   532  07E6                     l1799:	
+   533                           ;ASCENDING DECENDING CENTER LED.C: 49: delay(50000);
+   534  07E6  3050               	movlw	low(0C350h)
+   535  07E7  00F0               	movwf	(?_delay)
+   536  07E8  30C3               	movlw	high(0C350h)
+   537  07E9  00F1               	movwf	((?_delay))+1
+   538  07EA  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   539                           	line	50
+   540                           ;ASCENDING DECENDING CENTER LED.C: 50: PORTB=0X81;
+   541  07EF  3081               	movlw	(081h)
+   542  07F0  1283               	bcf	status, 5	;RP0=0, select bank0
+   543  07F1  1303               	bcf	status, 6	;RP1=0, select bank0
+   544  07F2  0086               	movwf	(6)	;volatile
+   545                           	line	51
+   546                           	
+   547  07F3                     l1801:	
+   548                           ;ASCENDING DECENDING CENTER LED.C: 51: delay(50000);
+   549  07F3  3050               	movlw	low(0C350h)
+   550  07F4  00F0               	movwf	(?_delay)
+   551  07F5  30C3               	movlw	high(0C350h)
+   552  07F6  00F1               	movwf	((?_delay))+1
+   553  07F7  120A  118A  26E3   	fcall	_delay
+              120A  118A         
+   554                           	line	52
+   555                           	
+   556  07FC                     l566:	
+   557                           	line	10
+   558  07FC  2EFB               	goto	l565
+   559                           	
+   560  07FD                     l567:	
+   561                           	line	53
+   562                           	
+   563  07FD                     l568:	
+   564                           	global	start
+   565  07FD  120A  118A  2800   	ljmp	start
+   566                           	opt stack 0
+   567                           GLOBAL	__end_of_main
+   568  0800                     	__end_of_main:
+   569 ;; =============== function _main ends ============
+   570                           
+   571                           	signat	_main,90
+   572                           	global	_delay
+   573                           psect	text55,local,class=CODE,delta=2
+   574                           global __ptext55
+   575  06E3                     __ptext55:
+   576                           
+   577 ;; *************** function _delay *****************
+   578 ;; Defined at:
+   579 ;;		line 3 in file "C:\Users\TECH\Desktop\madhu pic folder\led\ASCENDING DECENDING CENTER LED\ASCENDING DECENDING CENTER
+        LED.C"
+   580 ;; Parameters:    Size  Location     Type
+   581 ;;  x               2    0[COMMON] unsigned int 
+   582 ;; Auto vars:     Size  Location     Type
+   583 ;;		None
+   584 ;; Return value:  Size  Location     Type
+   585 ;;		None               void
+   586 ;; Registers used:
+   587 ;;		wreg
+   588 ;; Tracked objects:
+   589 ;;		On entry : 0/0
+   590 ;;		On exit  : 0/0
+   591 ;;		Unchanged: 0/0
+   592 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   593 ;;      Params:         2       0       0       0       0
+   594 ;;      Locals:         0       0       0       0       0
+   595 ;;      Temps:          0       0       0       0       0
+   596 ;;      Totals:         2       0       0       0       0
+   597 ;;Total ram usage:        2 bytes
+   598 ;; Hardware stack levels used:    1
+   599 ;; This function calls:
+   600 ;;		Nothing
+   601 ;; This function is called by:
+   602 ;;		_main
+   603 ;; This function uses a non-reentrant model
+   604 ;;
+   605                           psect	text55
+   606                           	file	"C:\Users\TECH\Desktop\madhu pic folder\led\ASCENDING DECENDING CENTER LED\ASCENDI
+                                 NG DECENDING CENTER LED.C"
+   607                           	line	3
+   608                           	global	__size_of_delay
+   609  0012                     	__size_of_delay	equ	__end_of_delay-_delay
+   610                           	
+   611  06E3                     _delay:	
+   612                           	opt	stack 7
+   613                           ; Regs used in _delay: [wreg]
+   614                           	line	4
+   615                           	
+   616  06E3                     l937:	
+   617                           ;ASCENDING DECENDING CENTER LED.C: 4: while(x--);
+   618  06E3  2EE4               	goto	l559
+   619                           	
+   620  06E4                     l560:	
+   621                           	
+   622  06E4                     l559:	
+   623                           	
+   624  06E4                     l939:	
+   625  06E4  3001               	movlw	low(01h)
+   626  06E5  02F0               	subwf	(delay@x),f
+   627  06E6  3000               	movlw	high(01h)
+   628  06E7  1C03               	skipc
+   629  06E8  03F1               	decf	(delay@x+1),f
+   630  06E9  02F1               	subwf	(delay@x+1),f
+   631  06EA  30FF               	movlw	high(0FFFFh)
+   632  06EB  0671               	xorwf	((delay@x+1)),w
+   633  06EC  1D03               	skipz
+   634  06ED  2EF0               	goto	u15
+   635  06EE  30FF               	movlw	low(0FFFFh)
+   636  06EF  0670               	xorwf	((delay@x)),w
+   637  06F0                     u15:
+   638                           
+   639  06F0  1D03               	skipz
+   640  06F1  2EF3               	goto	u11
+   641  06F2  2EF4               	goto	u10
+   642  06F3                     u11:
+   643  06F3  2EE4               	goto	l560
+   644  06F4                     u10:
+   645                           	
+   646  06F4                     l561:	
+   647                           	line	5
+   648                           	
+   649  06F4                     l562:	
+   650  06F4  0008               	return
+   651                           	opt stack 0
+   652                           GLOBAL	__end_of_delay
+   653  06F5                     	__end_of_delay:
+   654 ;; =============== function _delay ends ============
+   655                           
+   656                           	signat	_delay,4216
+   657                           psect	text56,local,class=CODE,delta=2
+   658                           global __ptext56
+   659  0000                     __ptext56:
+   660                           	global	btemp
+   661  007E                     	btemp set 07Eh
+   662                           
+   663                           	DABS	1,126,2	;btemp
+   664                           	global	wtemp0
+   665  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.71a build 6446 
+Symbol Table                                                                                   Thu Sep 15 13:12:03 2022
+
+                  u10 06F4                    u11 06F3                    u15 06F0                   l560 06E4  
+                 l561 06F4                   l562 06F4                   l565 06FB                   l566 07FC  
+                 l559 06E4                   l567 07FD                   l568 07FD                   l937 06E3  
+                 l939 06E4                  l1801 07F3                  l1731 06FD                  l1741 0720  
+                l1733 0706                  l1751 073E                  l1743 0724                  l1735 070A  
+                l1727 06F5                  l1761 0761                  l1753 0747                  l1745 072D  
+                l1737 0713                  l1729 06FB                  l1771 077F                  l1763 0765  
+                l1755 074B                  l1747 0731                  l1739 0717                  l1781 07A2  
+                l1773 0788                  l1765 076E                  l1757 0754                  l1749 073A  
+                l1791 07BF                  l1783 07A6                  l1775 078C                  l1767 0772  
+                l1759 0758                  l1793 07CC                  l1785 07AF                  l1777 0795  
+                l1769 077B                  l1795 07D5                  l1787 07B3                  l1779 0799  
+                l1797 07E2                  l1789 07BC                  l1799 07E6                  _main 06F5  
+                btemp 007E                  start 0000                 ?_main 0070                 _PORTB 0006  
+               _TRISB 0086                 _delay 06E3                 status 0003                 wtemp0 007E  
+        __end_of_main 0800                ??_main 0072                ?_delay 0070                delay@x 0070  
+      __pcstackCOMMON 0070         __end_of_delay 06F5               ??_delay 0072            __pmaintext 06F5  
+end_of_initialization 06DF   start_initialization 06DF        __size_of_delay 0012              __ptext55 06E3  
+            __ptext56 0000         __size_of_main 010B  

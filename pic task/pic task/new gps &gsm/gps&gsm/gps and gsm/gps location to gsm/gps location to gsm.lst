@@ -1,0 +1,2154 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
+                                                                                               Thu Nov 17 12:09:04 2022
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           # 2 "C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps locatio
+                                 n to gsm\gps location to gsm.c"
+    43                           	psect config,class=CONFIG,delta=2 ;#
+    44                           # 2 "C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps locatio
+                                 n to gsm\gps location to gsm.c"
+    45  2007  3F72               	dw 0X3f72 ;#
+    46                           	FNCALL	_main,_lcd_init
+    47                           	FNCALL	_main,_delay
+    48                           	FNCALL	_main,_gps_init
+    49                           	FNCALL	_main,_lcd_cmd
+    50                           	FNCALL	_main,_lcd_display
+    51                           	FNCALL	_main,_gps_send
+    52                           	FNCALL	_gps_send,_lcd_cmd
+    53                           	FNCALL	_gps_send,_delay
+    54                           	FNCALL	_gps_send,_lcd_display
+    55                           	FNCALL	_gps_send,_lcd_data
+    56                           	FNCALL	_lcd_init,_lcd_cmd
+    57                           	FNCALL	_lcd_display,_lcd_data
+    58                           	FNCALL	_lcd_data,_delay
+    59                           	FNCALL	_lcd_cmd,_delay
+    60                           	FNROOT	_main
+    61                           	FNCALL	intlevel1,_rcx
+    62                           	global	intlevel1
+    63                           	FNROOT	intlevel1
+    64                           	global	_ser
+    65                           	global	_st
+    66                           psect	idataBANK0,class=CODE,space=0,delta=2
+    67                           global __pidataBANK0
+    68  030E                     __pidataBANK0:
+    69                           	file	"C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps locat
+                                 ion to gsm\gps location to gsm.c"
+    70                           	line	14
+    71                           
+    72                           ;initializer for _ser
+    73  030E  3437               	retlw	037h
+    74                           
+    75                           ;initializer for _st
+    76  030F  3401               	retlw	01h
+    77                           	global	_gpsdata
+    78                           	global	_A
+    79                           	global	_W
+    80                           	global	_c
+    81                           	global	_i
+    82                           	global	_j
+    83                           	global	_q
+    84                           	global	_r
+    85                           	global	_v
+    86                           	global	_w1
+    87                           	global	_data_cap
+    88                           	global	_T
+    89                           	global	_temp
+    90                           	global	_PORTB
+    91  0006                     _PORTB	set	6
+    92                           	global	_PORTC
+    93  0007                     _PORTC	set	7
+    94                           	global	_PORTD
+    95  0008                     _PORTD	set	8
+    96                           	global	_RCREG
+    97  001A                     _RCREG	set	26
+    98                           	global	_RCSTA
+    99  0018                     _RCSTA	set	24
+   100                           	global	_TXREG
+   101  0019                     _TXREG	set	25
+   102                           	global	_GIE
+   103  005F                     _GIE	set	95
+   104                           	global	_PEIE
+   105  005E                     _PEIE	set	94
+   106                           	global	_RCIF
+   107  0065                     _RCIF	set	101
+   108                           	global	_RD1
+   109  0041                     _RD1	set	65
+   110                           	global	_RD2
+   111  0042                     _RD2	set	66
+   112                           	global	_RD3
+   113  0043                     _RD3	set	67
+   114                           	global	_SPBRG
+   115  0099                     _SPBRG	set	153
+   116                           	global	_TRISB
+   117  0086                     _TRISB	set	134
+   118                           	global	_TRISC
+   119  0087                     _TRISC	set	135
+   120                           	global	_TRISD
+   121  0088                     _TRISD	set	136
+   122                           	global	_TXSTA
+   123  0098                     _TXSTA	set	152
+   124                           	global	_BRGH
+   125  04C2                     _BRGH	set	1218
+   126                           	global	_RCIE
+   127  0465                     _RCIE	set	1125
+   128                           psect	strings,class=STRING,delta=2
+   129                           global __pstrings
+   130  0013                     __pstrings:
+   131                           ;	global	stringdir,stringtab,__stringbase
+   132  0013                     stringtab:
+   133                           ;	String table - string pointers are 1 byte each
+   134  0013                     stringcode:stringdir:
+      + 0013                     stringdir:	
+   135  0013  3000               movlw high(stringdir)
+   136  0014  008A               movwf pclath
+   137  0015  0804               movf fsr,w
+   138  0016  0A84               incf fsr
+   139  0017  0782               	addwf pc
+   140  0018                     __stringbase:
+   141  0018  3400               	retlw	0
+   142                           psect	strings
+   143                           	
+   144  0019                     STR_2:	
+   145  0019  3457               	retlw	87	;'W'
+   146  001A  3445               	retlw	69	;'E'
+   147  001B  344C               	retlw	76	;'L'
+   148  001C  3443               	retlw	67	;'C'
+   149  001D  344F               	retlw	79	;'O'
+   150  001E  344D               	retlw	77	;'M'
+   151  001F  3445               	retlw	69	;'E'
+   152  0020  3400               	retlw	0
+   153                           psect	strings
+   154                           	
+   155  0021                     STR_1:	
+   156  0021  3467               	retlw	103	;'g'
+   157  0022  3470               	retlw	112	;'p'
+   158  0023  3473               	retlw	115	;'s'
+   159  0024  3400               	retlw	0
+   160                           psect	strings
+   161                           	file	"gps location to gsm.as"
+   162                           	line	#
+   163                           psect cinit,class=CODE,delta=2
+   164                           global start_initialization
+   165  02C4                     start_initialization:
+   166                           
+   167                           psect	bssCOMMON,class=COMMON,space=1
+   168                           global __pbssCOMMON
+   169  0075                     __pbssCOMMON:
+   170  0075                     _T:
+   171  0075                            ds      2
+   172                           
+   173  0077                     _temp:
+   174  0077                            ds      2
+   175                           
+   176                           psect	bssBANK0,class=BANK0,space=1
+   177                           global __pbssBANK0
+   178  0020                     __pbssBANK0:
+   179  0020                     _gpsdata:
+   180  0020                            ds      50
+   181                           
+   182  0052                     _A:
+   183  0052                            ds      2
+   184                           
+   185  0054                     _W:
+   186  0054                            ds      2
+   187                           
+   188  0056                     _c:
+   189  0056                            ds      2
+   190                           
+   191  0058                     _i:
+   192  0058                            ds      2
+   193                           
+   194  005A                     _j:
+   195  005A                            ds      2
+   196                           
+   197  005C                     _q:
+   198  005C                            ds      2
+   199                           
+   200  005E                     _r:
+   201  005E                            ds      2
+   202                           
+   203  0060                     _v:
+   204  0060                            ds      2
+   205                           
+   206  0062                     _w1:
+   207  0062                            ds      2
+   208                           
+   209  0064                     _data_cap:
+   210  0064                            ds      1
+   211                           
+   212                           psect	dataBANK0,class=BANK0,space=1
+   213                           global __pdataBANK0
+   214  006E                     __pdataBANK0:
+   215                           	file	"C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps locat
+                                 ion to gsm\gps location to gsm.c"
+   216  006E                     _ser:
+   217  006E                            ds      1
+   218                           
+   219                           psect	dataBANK0
+   220                           	file	"C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps locat
+                                 ion to gsm\gps location to gsm.c"
+   221  006F                     _st:
+   222  006F                            ds      1
+   223                           
+   224                           psect clrtext,class=CODE,delta=2
+   225                           global clear_ram
+   226                           ;	Called with FSR containing the base address, and
+   227                           ;	W with the last address+1
+   228  0306                     clear_ram:
+   229  0306  0064               	clrwdt			;clear the watchdog before getting into this loop
+   230  0307                     clrloop:
+   231  0307  0180               	clrf	indf		;clear RAM location pointed to by FSR
+   232  0308  0A84               	incf	fsr,f		;increment pointer
+   233  0309  0604               	xorwf	fsr,w		;XOR with final address
+   234  030A  1903               	btfsc	status,2	;have we reached the end yet?
+   235  030B  3400               	retlw	0		;all done for this memory range, return
+   236  030C  0604               	xorwf	fsr,w		;XOR again to restore value
+   237  030D  2B07               	goto	clrloop		;do the next byte
+   238                           
+   239                           ; Clear objects allocated to COMMON
+   240                           psect cinit,class=CODE,delta=2
+   241  02C4  01F5               	clrf	((__pbssCOMMON)+0)&07Fh
+   242  02C5  01F6               	clrf	((__pbssCOMMON)+1)&07Fh
+   243  02C6  01F7               	clrf	((__pbssCOMMON)+2)&07Fh
+   244  02C7  01F8               	clrf	((__pbssCOMMON)+3)&07Fh
+   245                           ; Clear objects allocated to BANK0
+   246                           psect cinit,class=CODE,delta=2
+   247  02C8  1383               	bcf	status, 7	;select IRP bank0
+   248  02C9  3020               	movlw	low(__pbssBANK0)
+   249  02CA  0084               	movwf	fsr
+   250  02CB  3065               	movlw	low((__pbssBANK0)+045h)
+   251  02CC  120A  118A  2306   	fcall	clear_ram
+              120A  118A         
+   252                           ; Initialize objects allocated to BANK0
+   253                           	global __pidataBANK0
+   254                           psect cinit,class=CODE,delta=2
+   255  02D1  120A  118A  230E   	fcall	__pidataBANK0+0		;fetch initializer
+              120A  118A         
+   256  02D6  00EE               	movwf	__pdataBANK0+0&07fh		
+   257  02D7  120A  118A  230F   	fcall	__pidataBANK0+1		;fetch initializer
+              120A  118A         
+   258  02DC  00EF               	movwf	__pdataBANK0+1&07fh		
+   259                           psect cinit,class=CODE,delta=2
+   260                           global end_of_initialization
+   261                           
+   262                           ;End of C runtime variable initialization code
+   263                           
+   264  02DD                     end_of_initialization:
+   265  02DD  0183               clrf status
+   266  02DE  120A  118A  2945   ljmp _main	;jump to C main() function
+   267                           psect	cstackCOMMON,class=COMMON,space=1
+   268                           global __pcstackCOMMON
+   269  0070                     __pcstackCOMMON:
+   270                           	global	?_gps_init
+   271  0070                     ?_gps_init:	; 0 bytes @ 0x0
+   272                           	global	?_lcd_cmd
+   273  0070                     ?_lcd_cmd:	; 0 bytes @ 0x0
+   274                           	global	?_lcd_data
+   275  0070                     ?_lcd_data:	; 0 bytes @ 0x0
+   276                           	global	?_lcd_display
+   277  0070                     ?_lcd_display:	; 0 bytes @ 0x0
+   278                           	global	?_lcd_init
+   279  0070                     ?_lcd_init:	; 0 bytes @ 0x0
+   280                           	global	?_rcx
+   281  0070                     ?_rcx:	; 0 bytes @ 0x0
+   282                           	global	??_rcx
+   283  0070                     ??_rcx:	; 0 bytes @ 0x0
+   284                           	global	?_gps_send
+   285  0070                     ?_gps_send:	; 0 bytes @ 0x0
+   286                           	global	?_main
+   287  0070                     ?_main:	; 0 bytes @ 0x0
+   288  0070                     	ds	5
+   289                           	global	??_delay
+   290  0075                     ??_delay:	; 0 bytes @ 0x5
+   291                           	global	??_gps_init
+   292  0075                     ??_gps_init:	; 0 bytes @ 0x5
+   293                           	global	??_lcd_display
+   294  0075                     ??_lcd_display:	; 0 bytes @ 0x5
+   295                           	global	??_lcd_init
+   296  0075                     ??_lcd_init:	; 0 bytes @ 0x5
+   297                           	global	??_main
+   298  0075                     ??_main:	; 0 bytes @ 0x5
+   299                           psect	cstackBANK0,class=BANK0,space=1
+   300                           global __pcstackBANK0
+   301  0065                     __pcstackBANK0:
+   302                           	global	?_delay
+   303  0065                     ?_delay:	; 0 bytes @ 0x0
+   304                           	global	delay@x
+   305  0065                     delay@x:	; 2 bytes @ 0x0
+   306  0065                     	ds	2
+   307                           	global	??_lcd_cmd
+   308  0067                     ??_lcd_cmd:	; 0 bytes @ 0x2
+   309                           	global	??_lcd_data
+   310  0067                     ??_lcd_data:	; 0 bytes @ 0x2
+   311  0067                     	ds	2
+   312                           	global	lcd_cmd@com
+   313  0069                     lcd_cmd@com:	; 1 bytes @ 0x4
+   314                           	global	lcd_data@dat
+   315  0069                     lcd_data@dat:	; 1 bytes @ 0x4
+   316  0069                     	ds	1
+   317                           	global	lcd_display@m
+   318  006A                     lcd_display@m:	; 1 bytes @ 0x5
+   319  006A                     	ds	1
+   320                           	global	lcd_display@k
+   321  006B                     lcd_display@k:	; 2 bytes @ 0x6
+   322  006B                     	ds	2
+   323                           	global	??_gps_send
+   324  006D                     ??_gps_send:	; 0 bytes @ 0x8
+   325  006D                     	ds	1
+   326 ;;Data sizes: Strings 12, constant 0, data 2, bss 73, persistent 0 stack 0
+   327 ;;Auto spaces:   Size  Autos    Used
+   328 ;; COMMON          14      5       9
+   329 ;; BANK0           80      9      80
+   330 ;; BANK1           80      0       0
+   331 ;; BANK3           96      0       0
+   332 ;; BANK2           96      0       0
+   333                           
+   334 ;;
+   335 ;; Pointer list with targets:
+   336                           
+   337 ;; lcd_display@m	PTR const unsigned char  size(1) Largest target is 8
+   338 ;;		 -> STR_2(CODE[8]), STR_1(CODE[4]), 
+   339 ;;
+   340                           
+   341                           
+   342 ;;
+   343 ;; Critical Paths under _main in COMMON
+   344 ;;
+   345 ;;   None.
+   346 ;;
+   347 ;; Critical Paths under _rcx in COMMON
+   348 ;;
+   349 ;;   None.
+   350 ;;
+   351 ;; Critical Paths under _main in BANK0
+   352 ;;
+   353 ;;   _main->_gps_send
+   354 ;;   _gps_send->_lcd_display
+   355 ;;   _lcd_init->_lcd_cmd
+   356 ;;   _lcd_display->_lcd_data
+   357 ;;   _lcd_data->_delay
+   358 ;;   _lcd_cmd->_delay
+   359 ;;
+   360 ;; Critical Paths under _rcx in BANK0
+   361 ;;
+   362 ;;   None.
+   363 ;;
+   364 ;; Critical Paths under _main in BANK1
+   365 ;;
+   366 ;;   None.
+   367 ;;
+   368 ;; Critical Paths under _rcx in BANK1
+   369 ;;
+   370 ;;   None.
+   371 ;;
+   372 ;; Critical Paths under _main in BANK3
+   373 ;;
+   374 ;;   None.
+   375 ;;
+   376 ;; Critical Paths under _rcx in BANK3
+   377 ;;
+   378 ;;   None.
+   379 ;;
+   380 ;; Critical Paths under _main in BANK2
+   381 ;;
+   382 ;;   None.
+   383 ;;
+   384 ;; Critical Paths under _rcx in BANK2
+   385 ;;
+   386 ;;   None.
+   387                           
+   388 ;;
+   389 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   390 ;;
+   391                           
+   392 ;;
+   393 ;;Call Graph Tables:
+   394 ;;
+   395 ;; ---------------------------------------------------------------------------------
+   396 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   397 ;; ---------------------------------------------------------------------------------
+   398 ;; (0) _main                                                 0     0      0     880
+   399 ;;                           _lcd_init
+   400 ;;                              _delay
+   401 ;;                           _gps_init
+   402 ;;                            _lcd_cmd
+   403 ;;                        _lcd_display
+   404 ;;                           _gps_send
+   405 ;; ---------------------------------------------------------------------------------
+   406 ;; (1) _gps_send                                             1     1      0     440
+   407 ;;                                              8 BANK0      1     1      0
+   408 ;;                            _lcd_cmd
+   409 ;;                              _delay
+   410 ;;                        _lcd_display
+   411 ;;                           _lcd_data
+   412 ;; ---------------------------------------------------------------------------------
+   413 ;; (1) _lcd_init                                             0     0      0      93
+   414 ;;                            _lcd_cmd
+   415 ;; ---------------------------------------------------------------------------------
+   416 ;; (2) _lcd_display                                          3     3      0     223
+   417 ;;                                              5 BANK0      3     3      0
+   418 ;;                           _lcd_data
+   419 ;; ---------------------------------------------------------------------------------
+   420 ;; (2) _lcd_data                                             3     3      0      93
+   421 ;;                                              2 BANK0      3     3      0
+   422 ;;                              _delay
+   423 ;; ---------------------------------------------------------------------------------
+   424 ;; (2) _lcd_cmd                                              3     3      0      93
+   425 ;;                                              2 BANK0      3     3      0
+   426 ;;                              _delay
+   427 ;; ---------------------------------------------------------------------------------
+   428 ;; (1) _gps_init                                             0     0      0       0
+   429 ;; ---------------------------------------------------------------------------------
+   430 ;; (3) _delay                                                2     0      2      31
+   431 ;;                                              0 BANK0      2     0      2
+   432 ;; ---------------------------------------------------------------------------------
+   433 ;; Estimated maximum stack depth 3
+   434 ;; ---------------------------------------------------------------------------------
+   435 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   436 ;; ---------------------------------------------------------------------------------
+   437 ;; (5) _rcx                                                  5     5      0       0
+   438 ;;                                              0 COMMON     5     5      0
+   439 ;; ---------------------------------------------------------------------------------
+   440 ;; Estimated maximum stack depth 5
+   441 ;; ---------------------------------------------------------------------------------
+   442                           
+   443 ;; Call Graph Graphs:
+   444                           
+   445 ;; _main (ROOT)
+   446 ;;   _lcd_init
+   447 ;;     _lcd_cmd
+   448 ;;       _delay
+   449 ;;   _delay
+   450 ;;   _gps_init
+   451 ;;   _lcd_cmd
+   452 ;;     _delay
+   453 ;;   _lcd_display
+   454 ;;     _lcd_data
+   455 ;;       _delay
+   456 ;;   _gps_send
+   457 ;;     _lcd_cmd
+   458 ;;       _delay
+   459 ;;     _delay
+   460 ;;     _lcd_display
+   461 ;;       _lcd_data
+   462 ;;         _delay
+   463 ;;     _lcd_data
+   464 ;;       _delay
+   465 ;;
+   466 ;; _rcx (ROOT)
+   467 ;;
+   468                           
+   469 ;; Address spaces:
+   470                           
+   471 ;;Name               Size   Autos  Total    Cost      Usage
+   472 ;;BANK3               60      0       0       9        0.0%
+   473 ;;BITBANK3            60      0       0       8        0.0%
+   474 ;;SFR3                 0      0       0       4        0.0%
+   475 ;;BITSFR3              0      0       0       4        0.0%
+   476 ;;BANK2               60      0       0      11        0.0%
+   477 ;;BITBANK2            60      0       0      10        0.0%
+   478 ;;SFR2                 0      0       0       5        0.0%
+   479 ;;BITSFR2              0      0       0       5        0.0%
+   480 ;;SFR1                 0      0       0       2        0.0%
+   481 ;;BITSFR1              0      0       0       2        0.0%
+   482 ;;BANK1               50      0       0       7        0.0%
+   483 ;;BITBANK1            50      0       0       6        0.0%
+   484 ;;CODE                 0      0       0       0        0.0%
+   485 ;;DATA                 0      0      5D      12        0.0%
+   486 ;;ABS                  0      0      59       3        0.0%
+   487 ;;NULL                 0      0       0       0        0.0%
+   488 ;;STACK                0      0       4       2        0.0%
+   489 ;;BANK0               50      9      50       5      100.0%
+   490 ;;BITBANK0            50      0       0       4        0.0%
+   491 ;;SFR0                 0      0       0       1        0.0%
+   492 ;;BITSFR0              0      0       0       1        0.0%
+   493 ;;COMMON               E      5       9       1       64.3%
+   494 ;;BITCOMMON            E      0       0       0        0.0%
+   495 ;;EEDATA             100      0       0       0        0.0%
+   496                           
+   497                           	global	_main
+   498                           psect	maintext,global,class=CODE,delta=2
+   499                           global __pmaintext
+   500  0145                     __pmaintext:
+   501                           
+   502 ;; *************** function _main *****************
+   503 ;; Defined at:
+   504 ;;		line 258 in file "C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps location to gsm\gps lo
+       cation to gsm.c"
+   505 ;; Parameters:    Size  Location     Type
+   506 ;;		None
+   507 ;; Auto vars:     Size  Location     Type
+   508 ;;		None
+   509 ;; Return value:  Size  Location     Type
+   510 ;;		None               void
+   511 ;; Registers used:
+   512 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+0, pclath, cstack
+   513 ;; Tracked objects:
+   514 ;;		On entry : 17F/0
+   515 ;;		On exit  : 0/0
+   516 ;;		Unchanged: 0/0
+   517 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   518 ;;      Params:         0       0       0       0       0
+   519 ;;      Locals:         0       0       0       0       0
+   520 ;;      Temps:          0       0       0       0       0
+   521 ;;      Totals:         0       0       0       0       0
+   522 ;;Total ram usage:        0 bytes
+   523 ;; Hardware stack levels required when called:    5
+   524 ;; This function calls:
+   525 ;;		_lcd_init
+   526 ;;		_delay
+   527 ;;		_gps_init
+   528 ;;		_lcd_cmd
+   529 ;;		_lcd_display
+   530 ;;		_gps_send
+   531 ;; This function is called by:
+   532 ;;		Startup code after reset
+   533 ;; This function uses a non-reentrant model
+   534 ;;
+   535                           psect	maintext
+   536                           	file	"C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps locat
+                                 ion to gsm\gps location to gsm.c"
+   537                           	line	258
+   538                           	global	__size_of_main
+   539  007A                     	__size_of_main	equ	__end_of_main-_main
+   540                           	
+   541  0145                     _main:	
+   542                           	opt	stack 8
+   543                           ; Regs used in _main: [wreg-fsr0h+status,2-btemp+0+pclath+cstack]
+   544                           	line	260
+   545                           	
+   546  0145                     l2327:	
+   547                           ;gps location to gsm.c: 260: TRISD=0x00;
+   548  0145  1683               	bsf	status, 5	;RP0=1, select bank1
+   549  0146  1303               	bcf	status, 6	;RP1=0, select bank1
+   550  0147  0188               	clrf	(136)^080h	;volatile
+   551                           	line	261
+   552                           ;gps location to gsm.c: 261: PORTD=0x00;
+   553  0148  1283               	bcf	status, 5	;RP0=0, select bank0
+   554  0149  1303               	bcf	status, 6	;RP1=0, select bank0
+   555  014A  0188               	clrf	(8)	;volatile
+   556                           	line	263
+   557                           ;gps location to gsm.c: 263: TRISC=0x00;
+   558  014B  1683               	bsf	status, 5	;RP0=1, select bank1
+   559  014C  1303               	bcf	status, 6	;RP1=0, select bank1
+   560  014D  0187               	clrf	(135)^080h	;volatile
+   561                           	line	264
+   562                           ;gps location to gsm.c: 264: PORTC=0x00;
+   563  014E  1283               	bcf	status, 5	;RP0=0, select bank0
+   564  014F  1303               	bcf	status, 6	;RP1=0, select bank0
+   565  0150  0187               	clrf	(7)	;volatile
+   566                           	line	266
+   567                           	
+   568  0151                     l2329:	
+   569                           ;gps location to gsm.c: 266: TRISB=0X01;
+   570  0151  3001               	movlw	(01h)
+   571  0152  1683               	bsf	status, 5	;RP0=1, select bank1
+   572  0153  1303               	bcf	status, 6	;RP1=0, select bank1
+   573  0154  0086               	movwf	(134)^080h	;volatile
+   574                           	line	267
+   575                           	
+   576  0155                     l2331:	
+   577                           ;gps location to gsm.c: 267: PORTB=0X00;
+   578  0155  1283               	bcf	status, 5	;RP0=0, select bank0
+   579  0156  1303               	bcf	status, 6	;RP1=0, select bank0
+   580  0157  0186               	clrf	(6)	;volatile
+   581                           	line	269
+   582                           	
+   583  0158                     l2333:	
+   584                           ;gps location to gsm.c: 269: lcd_init();
+   585  0158  120A  118A  229F   	fcall	_lcd_init
+              120A  118A         
+   586                           	line	270
+   587                           	
+   588  015D                     l2335:	
+   589                           ;gps location to gsm.c: 270: delay(100);
+   590  015D  3064               	movlw	low(064h)
+   591  015E  1283               	bcf	status, 5	;RP0=0, select bank0
+   592  015F  1303               	bcf	status, 6	;RP1=0, select bank0
+   593  0160  00E5               	movwf	(?_delay)
+   594  0161  3000               	movlw	high(064h)
+   595  0162  00E6               	movwf	((?_delay))+1
+   596  0163  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+   597                           	line	272
+   598                           	
+   599  0168                     l2337:	
+   600                           ;gps location to gsm.c: 272: gps_init();
+   601  0168  120A  118A  22F5   	fcall	_gps_init
+              120A  118A         
+   602                           	line	273
+   603                           	
+   604  016D                     l2339:	
+   605                           ;gps location to gsm.c: 273: delay(50000);
+   606  016D  3050               	movlw	low(0C350h)
+   607  016E  1283               	bcf	status, 5	;RP0=0, select bank0
+   608  016F  1303               	bcf	status, 6	;RP1=0, select bank0
+   609  0170  00E5               	movwf	(?_delay)
+   610  0171  30C3               	movlw	high(0C350h)
+   611  0172  00E6               	movwf	((?_delay))+1
+   612  0173  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+   613                           	line	275
+   614                           	
+   615  0178                     l2341:	
+   616                           ;gps location to gsm.c: 275: lcd_cmd(0x01);
+   617  0178  3001               	movlw	(01h)
+   618  0179  120A  118A  223E   	fcall	_lcd_cmd
+              120A  118A         
+   619                           	line	276
+   620                           	
+   621  017E                     l2343:	
+   622                           ;gps location to gsm.c: 276: lcd_cmd(0x80);
+   623  017E  3080               	movlw	(080h)
+   624  017F  120A  118A  223E   	fcall	_lcd_cmd
+              120A  118A         
+   625                           	line	277
+   626                           	
+   627  0184                     l2345:	
+   628                           ;gps location to gsm.c: 277: lcd_display("WELCOME");
+   629  0184  3001               	movlw	((STR_2-__stringbase))&0ffh
+   630  0185  120A  118A  2274   	fcall	_lcd_display
+              120A  118A         
+   631                           	line	278
+   632                           	
+   633  018A                     l2347:	
+   634                           ;gps location to gsm.c: 278: delay(50000);delay(50000);
+   635  018A  3050               	movlw	low(0C350h)
+   636  018B  1283               	bcf	status, 5	;RP0=0, select bank0
+   637  018C  1303               	bcf	status, 6	;RP1=0, select bank0
+   638  018D  00E5               	movwf	(?_delay)
+   639  018E  30C3               	movlw	high(0C350h)
+   640  018F  00E6               	movwf	((?_delay))+1
+   641  0190  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+   642                           	
+   643  0195                     l2349:	
+   644  0195  3050               	movlw	low(0C350h)
+   645  0196  1283               	bcf	status, 5	;RP0=0, select bank0
+   646  0197  1303               	bcf	status, 6	;RP1=0, select bank0
+   647  0198  00E5               	movwf	(?_delay)
+   648  0199  30C3               	movlw	high(0C350h)
+   649  019A  00E6               	movwf	((?_delay))+1
+   650  019B  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+   651                           	line	281
+   652                           	
+   653  01A0                     l2351:	
+   654                           ;gps location to gsm.c: 281: delay(50000);delay(50000);
+   655  01A0  3050               	movlw	low(0C350h)
+   656  01A1  1283               	bcf	status, 5	;RP0=0, select bank0
+   657  01A2  1303               	bcf	status, 6	;RP1=0, select bank0
+   658  01A3  00E5               	movwf	(?_delay)
+   659  01A4  30C3               	movlw	high(0C350h)
+   660  01A5  00E6               	movwf	((?_delay))+1
+   661  01A6  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+   662                           	
+   663  01AB                     l2353:	
+   664  01AB  3050               	movlw	low(0C350h)
+   665  01AC  1283               	bcf	status, 5	;RP0=0, select bank0
+   666  01AD  1303               	bcf	status, 6	;RP1=0, select bank0
+   667  01AE  00E5               	movwf	(?_delay)
+   668  01AF  30C3               	movlw	high(0C350h)
+   669  01B0  00E6               	movwf	((?_delay))+1
+   670  01B1  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+   671                           	line	284
+   672                           ;gps location to gsm.c: 284: while(1)
+   673                           	
+   674  01B6                     l633:	
+   675                           	line	287
+   676                           	
+   677  01B6                     l2355:	
+   678                           ;gps location to gsm.c: 285: {
+   679                           ;gps location to gsm.c: 287: gps_send();
+   680  01B6  120A  118A  2025   	fcall	_gps_send
+              120A  118A         
+   681                           	line	309
+   682                           	
+   683  01BB                     l634:	
+   684                           	line	284
+   685  01BB  29B6               	goto	l633
+   686                           	
+   687  01BC                     l635:	
+   688                           	line	310
+   689                           	
+   690  01BC                     l636:	
+   691                           	global	start
+   692  01BC  120A  118A  2810   	ljmp	start
+   693                           	opt stack 0
+   694                           GLOBAL	__end_of_main
+   695  01BF                     	__end_of_main:
+   696 ;; =============== function _main ends ============
+   697                           
+   698                           	signat	_main,88
+   699                           	global	_gps_send
+   700                           psect	text325,local,class=CODE,delta=2
+   701                           global __ptext325
+   702  0025                     __ptext325:
+   703                           
+   704 ;; *************** function _gps_send *****************
+   705 ;; Defined at:
+   706 ;;		line 112 in file "C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps location to gsm\gps lo
+       cation to gsm.c"
+   707 ;; Parameters:    Size  Location     Type
+   708 ;;		None
+   709 ;; Auto vars:     Size  Location     Type
+   710 ;;		None
+   711 ;; Return value:  Size  Location     Type
+   712 ;;		None               void
+   713 ;; Registers used:
+   714 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+0, pclath, cstack
+   715 ;; Tracked objects:
+   716 ;;		On entry : 0/0
+   717 ;;		On exit  : 0/0
+   718 ;;		Unchanged: 0/0
+   719 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   720 ;;      Params:         0       0       0       0       0
+   721 ;;      Locals:         0       0       0       0       0
+   722 ;;      Temps:          0       1       0       0       0
+   723 ;;      Totals:         0       1       0       0       0
+   724 ;;Total ram usage:        1 bytes
+   725 ;; Hardware stack levels used:    1
+   726 ;; Hardware stack levels required when called:    4
+   727 ;; This function calls:
+   728 ;;		_lcd_cmd
+   729 ;;		_delay
+   730 ;;		_lcd_display
+   731 ;;		_lcd_data
+   732 ;; This function is called by:
+   733 ;;		_main
+   734 ;; This function uses a non-reentrant model
+   735 ;;
+   736                           psect	text325
+   737                           	file	"C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps locat
+                                 ion to gsm\gps location to gsm.c"
+   738                           	line	112
+   739                           	global	__size_of_gps_send
+   740  0120                     	__size_of_gps_send	equ	__end_of_gps_send-_gps_send
+   741                           	
+   742  0025                     _gps_send:	
+   743                           	opt	stack 7
+   744                           ; Regs used in _gps_send: [wreg-fsr0h+status,2-btemp+0+pclath+cstack]
+   745                           	line	113
+   746                           	
+   747  0025                     l2261:	
+   748                           ;gps location to gsm.c: 113: lcd_cmd(0x01);
+   749  0025  3001               	movlw	(01h)
+   750  0026  120A  118A  223E   	fcall	_lcd_cmd
+              120A  118A         
+   751                           	line	114
+   752                           ;gps location to gsm.c: 114: lcd_cmd(0x87);
+   753  002B  3087               	movlw	(087h)
+   754  002C  120A  118A  223E   	fcall	_lcd_cmd
+              120A  118A         
+   755                           	line	115
+   756                           	
+   757  0031                     l2263:	
+   758                           ;gps location to gsm.c: 115: delay(100);
+   759  0031  3064               	movlw	low(064h)
+   760  0032  1283               	bcf	status, 5	;RP0=0, select bank0
+   761  0033  1303               	bcf	status, 6	;RP1=0, select bank0
+   762  0034  00E5               	movwf	(?_delay)
+   763  0035  3000               	movlw	high(064h)
+   764  0036  00E6               	movwf	((?_delay))+1
+   765  0037  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+   766                           	line	116
+   767                           	
+   768  003C                     l2265:	
+   769                           ;gps location to gsm.c: 116: lcd_display("gps");
+   770  003C  3009               	movlw	((STR_1-__stringbase))&0ffh
+   771  003D  120A  118A  2274   	fcall	_lcd_display
+              120A  118A         
+   772                           	line	118
+   773                           	
+   774  0042                     l2267:	
+   775                           ;gps location to gsm.c: 118: delay(50000);delay(50000);
+   776  0042  3050               	movlw	low(0C350h)
+   777  0043  1283               	bcf	status, 5	;RP0=0, select bank0
+   778  0044  1303               	bcf	status, 6	;RP1=0, select bank0
+   779  0045  00E5               	movwf	(?_delay)
+   780  0046  30C3               	movlw	high(0C350h)
+   781  0047  00E6               	movwf	((?_delay))+1
+   782  0048  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+   783                           	
+   784  004D                     l2269:	
+   785  004D  3050               	movlw	low(0C350h)
+   786  004E  1283               	bcf	status, 5	;RP0=0, select bank0
+   787  004F  1303               	bcf	status, 6	;RP1=0, select bank0
+   788  0050  00E5               	movwf	(?_delay)
+   789  0051  30C3               	movlw	high(0C350h)
+   790  0052  00E6               	movwf	((?_delay))+1
+   791  0053  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+   792                           	line	119
+   793                           	
+   794  0058                     l2271:	
+   795                           ;gps location to gsm.c: 119: lcd_cmd(0x01);
+   796  0058  3001               	movlw	(01h)
+   797  0059  120A  118A  223E   	fcall	_lcd_cmd
+              120A  118A         
+   798                           	line	120
+   799                           	
+   800  005E                     l2273:	
+   801                           ;gps location to gsm.c: 120: delay(100);
+   802  005E  3064               	movlw	low(064h)
+   803  005F  1283               	bcf	status, 5	;RP0=0, select bank0
+   804  0060  1303               	bcf	status, 6	;RP1=0, select bank0
+   805  0061  00E5               	movwf	(?_delay)
+   806  0062  3000               	movlw	high(064h)
+   807  0063  00E6               	movwf	((?_delay))+1
+   808  0064  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+   809                           	line	128
+   810                           	
+   811  0069                     l2275:	
+   812                           ;gps location to gsm.c: 128: if(i>43)
+   813  0069  3000               	movlw	high(02Ch)
+   814  006A  1283               	bcf	status, 5	;RP0=0, select bank0
+   815  006B  1303               	bcf	status, 6	;RP1=0, select bank0
+   816  006C  0259               	subwf	(_i+1),w
+   817  006D  302C               	movlw	low(02Ch)
+   818  006E  1903               	skipnz
+   819  006F  0258               	subwf	(_i),w
+   820  0070  1C03               	skipc
+   821  0071  2873               	goto	u2491
+   822  0072  2874               	goto	u2490
+   823  0073                     u2491:
+   824  0073  2944               	goto	l619
+   825  0074                     u2490:
+   826                           	line	131
+   827                           	
+   828  0074                     l2277:	
+   829                           ;gps location to gsm.c: 129: {
+   830                           ;gps location to gsm.c: 131: lcd_cmd(0x80);
+   831  0074  3080               	movlw	(080h)
+   832  0075  120A  118A  223E   	fcall	_lcd_cmd
+              120A  118A         
+   833                           	line	132
+   834                           	
+   835  007A                     l2279:	
+   836                           ;gps location to gsm.c: 132: delay(1000);
+   837  007A  30E8               	movlw	low(03E8h)
+   838  007B  1283               	bcf	status, 5	;RP0=0, select bank0
+   839  007C  1303               	bcf	status, 6	;RP1=0, select bank0
+   840  007D  00E5               	movwf	(?_delay)
+   841  007E  3003               	movlw	high(03E8h)
+   842  007F  00E6               	movwf	((?_delay))+1
+   843  0080  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+   844                           	line	134
+   845                           	
+   846  0085                     l2281:	
+   847                           ;gps location to gsm.c: 134: for(j=16;j<28;j++)
+   848  0085  3010               	movlw	low(010h)
+   849  0086  1283               	bcf	status, 5	;RP0=0, select bank0
+   850  0087  1303               	bcf	status, 6	;RP1=0, select bank0
+   851  0088  00DA               	movwf	(_j)
+   852  0089  3000               	movlw	high(010h)
+   853  008A  00DB               	movwf	((_j))+1
+   854                           	
+   855  008B                     l2283:	
+   856  008B  3000               	movlw	high(01Ch)
+   857  008C  025B               	subwf	(_j+1),w
+   858  008D  301C               	movlw	low(01Ch)
+   859  008E  1903               	skipnz
+   860  008F  025A               	subwf	(_j),w
+   861  0090  1C03               	skipc
+   862  0091  2893               	goto	u2501
+   863  0092  2894               	goto	u2500
+   864  0093                     u2501:
+   865  0093  2895               	goto	l620
+   866  0094                     u2500:
+   867                           	
+   868  0094                     l2285:	
+   869  0094  28C1               	goto	l621
+   870                           	line	135
+   871                           	
+   872  0095                     l620:	
+   873                           	line	137
+   874                           	
+   875  0095                     l2287:	
+   876                           ;gps location to gsm.c: 135: {
+   877                           ;gps location to gsm.c: 137: ser=(gpsdata[j]);
+   878  0095  085A               	movf	(_j),w
+   879  0096  3E20               	addlw	_gpsdata&0ffh
+   880  0097  0084               	movwf	fsr0
+   881  0098  1383               	bcf	status, 7	;select IRP bank0
+   882  0099  0800               	movf	indf,w
+   883  009A  00ED               	movwf	(??_gps_send+0)+0
+   884  009B  086D               	movf	(??_gps_send+0)+0,w
+   885  009C  00EE               	movwf	(_ser)
+   886                           	line	138
+   887                           	
+   888  009D                     l2289:	
+   889                           ;gps location to gsm.c: 138: lcd_data(ser);
+   890  009D  086E               	movf	(_ser),w
+   891  009E  120A  118A  2208   	fcall	_lcd_data
+              120A  118A         
+   892                           	line	139
+   893                           	
+   894  00A3                     l2291:	
+   895                           ;gps location to gsm.c: 139: TXREG=ser;
+   896  00A3  1283               	bcf	status, 5	;RP0=0, select bank0
+   897  00A4  1303               	bcf	status, 6	;RP1=0, select bank0
+   898  00A5  086E               	movf	(_ser),w
+   899  00A6  0099               	movwf	(25)	;volatile
+   900                           	line	141
+   901                           	
+   902  00A7                     l2293:	
+   903                           ;gps location to gsm.c: 141: delay(600);
+   904  00A7  3058               	movlw	low(0258h)
+   905  00A8  00E5               	movwf	(?_delay)
+   906  00A9  3002               	movlw	high(0258h)
+   907  00AA  00E6               	movwf	((?_delay))+1
+   908  00AB  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+   909                           	line	134
+   910                           	
+   911  00B0                     l2295:	
+   912  00B0  3001               	movlw	low(01h)
+   913  00B1  1283               	bcf	status, 5	;RP0=0, select bank0
+   914  00B2  1303               	bcf	status, 6	;RP1=0, select bank0
+   915  00B3  07DA               	addwf	(_j),f
+   916  00B4  1803               	skipnc
+   917  00B5  0ADB               	incf	(_j+1),f
+   918  00B6  3000               	movlw	high(01h)
+   919  00B7  07DB               	addwf	(_j+1),f
+   920                           	
+   921  00B8                     l2297:	
+   922  00B8  3000               	movlw	high(01Ch)
+   923  00B9  025B               	subwf	(_j+1),w
+   924  00BA  301C               	movlw	low(01Ch)
+   925  00BB  1903               	skipnz
+   926  00BC  025A               	subwf	(_j),w
+   927  00BD  1C03               	skipc
+   928  00BE  28C0               	goto	u2511
+   929  00BF  28C1               	goto	u2510
+   930  00C0                     u2511:
+   931  00C0  2895               	goto	l620
+   932  00C1                     u2510:
+   933                           	
+   934  00C1                     l621:	
+   935                           	line	143
+   936                           	
+   937  00C1                     l2299:	
+   938                           ;gps location to gsm.c: 142: }
+   939                           ;gps location to gsm.c: 143: lcd_cmd(0xc0);
+   940  00C1  30C0               	movlw	(0C0h)
+   941  00C2  120A  118A  223E   	fcall	_lcd_cmd
+              120A  118A         
+   942                           	line	145
+   943                           	
+   944  00C7                     l2301:	
+   945                           ;gps location to gsm.c: 145: for(j=30;j<41;j++)
+   946  00C7  301E               	movlw	low(01Eh)
+   947  00C8  1283               	bcf	status, 5	;RP0=0, select bank0
+   948  00C9  1303               	bcf	status, 6	;RP1=0, select bank0
+   949  00CA  00DA               	movwf	(_j)
+   950  00CB  3000               	movlw	high(01Eh)
+   951  00CC  00DB               	movwf	((_j))+1
+   952                           	
+   953  00CD                     l2303:	
+   954  00CD  3000               	movlw	high(029h)
+   955  00CE  025B               	subwf	(_j+1),w
+   956  00CF  3029               	movlw	low(029h)
+   957  00D0  1903               	skipnz
+   958  00D1  025A               	subwf	(_j),w
+   959  00D2  1C03               	skipc
+   960  00D3  28D5               	goto	u2521
+   961  00D4  28D6               	goto	u2520
+   962  00D5                     u2521:
+   963  00D5  28D7               	goto	l622
+   964  00D6                     u2520:
+   965                           	
+   966  00D6                     l2305:	
+   967  00D6  2903               	goto	l623
+   968                           	line	146
+   969                           	
+   970  00D7                     l622:	
+   971                           	line	148
+   972                           	
+   973  00D7                     l2307:	
+   974                           ;gps location to gsm.c: 146: {
+   975                           ;gps location to gsm.c: 148: ser=(gpsdata[j]);
+   976  00D7  085A               	movf	(_j),w
+   977  00D8  3E20               	addlw	_gpsdata&0ffh
+   978  00D9  0084               	movwf	fsr0
+   979  00DA  1383               	bcf	status, 7	;select IRP bank0
+   980  00DB  0800               	movf	indf,w
+   981  00DC  00ED               	movwf	(??_gps_send+0)+0
+   982  00DD  086D               	movf	(??_gps_send+0)+0,w
+   983  00DE  00EE               	movwf	(_ser)
+   984                           	line	149
+   985                           	
+   986  00DF                     l2309:	
+   987                           ;gps location to gsm.c: 149: lcd_data(ser);
+   988  00DF  086E               	movf	(_ser),w
+   989  00E0  120A  118A  2208   	fcall	_lcd_data
+              120A  118A         
+   990                           	line	150
+   991                           	
+   992  00E5                     l2311:	
+   993                           ;gps location to gsm.c: 150: TXREG=ser;
+   994  00E5  1283               	bcf	status, 5	;RP0=0, select bank0
+   995  00E6  1303               	bcf	status, 6	;RP1=0, select bank0
+   996  00E7  086E               	movf	(_ser),w
+   997  00E8  0099               	movwf	(25)	;volatile
+   998                           	line	152
+   999                           	
+  1000  00E9                     l2313:	
+  1001                           ;gps location to gsm.c: 152: delay(600);
+  1002  00E9  3058               	movlw	low(0258h)
+  1003  00EA  00E5               	movwf	(?_delay)
+  1004  00EB  3002               	movlw	high(0258h)
+  1005  00EC  00E6               	movwf	((?_delay))+1
+  1006  00ED  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+  1007                           	line	145
+  1008                           	
+  1009  00F2                     l2315:	
+  1010  00F2  3001               	movlw	low(01h)
+  1011  00F3  1283               	bcf	status, 5	;RP0=0, select bank0
+  1012  00F4  1303               	bcf	status, 6	;RP1=0, select bank0
+  1013  00F5  07DA               	addwf	(_j),f
+  1014  00F6  1803               	skipnc
+  1015  00F7  0ADB               	incf	(_j+1),f
+  1016  00F8  3000               	movlw	high(01h)
+  1017  00F9  07DB               	addwf	(_j+1),f
+  1018                           	
+  1019  00FA                     l2317:	
+  1020  00FA  3000               	movlw	high(029h)
+  1021  00FB  025B               	subwf	(_j+1),w
+  1022  00FC  3029               	movlw	low(029h)
+  1023  00FD  1903               	skipnz
+  1024  00FE  025A               	subwf	(_j),w
+  1025  00FF  1C03               	skipc
+  1026  0100  2902               	goto	u2531
+  1027  0101  2903               	goto	u2530
+  1028  0102                     u2531:
+  1029  0102  28D7               	goto	l622
+  1030  0103                     u2530:
+  1031                           	
+  1032  0103                     l623:	
+  1033                           	line	155
+  1034                           	
+  1035  0103                     l2319:	
+  1036                           ;gps location to gsm.c: 153: }
+  1037                           ;gps location to gsm.c: 155: delay(50000);delay(50000);
+  1038  0103  3050               	movlw	low(0C350h)
+  1039  0104  00E5               	movwf	(?_delay)
+  1040  0105  30C3               	movlw	high(0C350h)
+  1041  0106  00E6               	movwf	((?_delay))+1
+  1042  0107  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+  1043  010C  3050               	movlw	low(0C350h)
+  1044  010D  1283               	bcf	status, 5	;RP0=0, select bank0
+  1045  010E  1303               	bcf	status, 6	;RP1=0, select bank0
+  1046  010F  00E5               	movwf	(?_delay)
+  1047  0110  30C3               	movlw	high(0C350h)
+  1048  0111  00E6               	movwf	((?_delay))+1
+  1049  0112  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+  1050                           	line	156
+  1051                           ;gps location to gsm.c: 156: delay(50000);delay(50000);
+  1052  0117  3050               	movlw	low(0C350h)
+  1053  0118  1283               	bcf	status, 5	;RP0=0, select bank0
+  1054  0119  1303               	bcf	status, 6	;RP1=0, select bank0
+  1055  011A  00E5               	movwf	(?_delay)
+  1056  011B  30C3               	movlw	high(0C350h)
+  1057  011C  00E6               	movwf	((?_delay))+1
+  1058  011D  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+  1059  0122  3050               	movlw	low(0C350h)
+  1060  0123  1283               	bcf	status, 5	;RP0=0, select bank0
+  1061  0124  1303               	bcf	status, 6	;RP1=0, select bank0
+  1062  0125  00E5               	movwf	(?_delay)
+  1063  0126  30C3               	movlw	high(0C350h)
+  1064  0127  00E6               	movwf	((?_delay))+1
+  1065  0128  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+  1066                           	line	158
+  1067                           	
+  1068  012D                     l2321:	
+  1069                           ;gps location to gsm.c: 158: data_cap=0x00;
+  1070  012D  1003               	clrc
+  1071  012E  3000               	movlw	0
+  1072  012F  1803               	btfsc	status,0
+  1073  0130  3001               	movlw	1
+  1074  0131  1283               	bcf	status, 5	;RP0=0, select bank0
+  1075  0132  1303               	bcf	status, 6	;RP1=0, select bank0
+  1076  0133  00E4               	movwf	(_data_cap)
+  1077                           	line	159
+  1078                           	
+  1079  0134                     l2323:	
+  1080                           ;gps location to gsm.c: 159: st=0x01;
+  1081  0134  01EF               	clrf	(_st)
+  1082  0135  1403               	bsf	status,0
+  1083  0136  0DEF               	rlf	(_st),f
+  1084                           	line	160
+  1085                           	
+  1086  0137                     l2325:	
+  1087                           ;gps location to gsm.c: 160: i=0x00;
+  1088  0137  3000               	movlw	low(0)
+  1089  0138  00D8               	movwf	(_i)
+  1090  0139  3000               	movlw	high(0)
+  1091  013A  00D9               	movwf	((_i))+1
+  1092                           	line	162
+  1093                           ;gps location to gsm.c: 162: delay(35000);
+  1094  013B  30B8               	movlw	low(088B8h)
+  1095  013C  00E5               	movwf	(?_delay)
+  1096  013D  3088               	movlw	high(088B8h)
+  1097  013E  00E6               	movwf	((?_delay))+1
+  1098  013F  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+  1099                           	line	164
+  1100                           	
+  1101  0144                     l619:	
+  1102                           	line	165
+  1103                           	
+  1104  0144                     l624:	
+  1105  0144  0008               	return
+  1106                           	opt stack 0
+  1107                           GLOBAL	__end_of_gps_send
+  1108  0145                     	__end_of_gps_send:
+  1109 ;; =============== function _gps_send ends ============
+  1110                           
+  1111                           	signat	_gps_send,88
+  1112                           	global	_lcd_init
+  1113                           psect	text326,local,class=CODE,delta=2
+  1114                           global __ptext326
+  1115  029F                     __ptext326:
+  1116                           
+  1117 ;; *************** function _lcd_init *****************
+  1118 ;; Defined at:
+  1119 ;;		line 75 in file "C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps location to gsm\gps loc
+       ation to gsm.c"
+  1120 ;; Parameters:    Size  Location     Type
+  1121 ;;		None
+  1122 ;; Auto vars:     Size  Location     Type
+  1123 ;;		None
+  1124 ;; Return value:  Size  Location     Type
+  1125 ;;		None               void
+  1126 ;; Registers used:
+  1127 ;;		wreg, status,2, status,0, btemp+0, pclath, cstack
+  1128 ;; Tracked objects:
+  1129 ;;		On entry : 0/0
+  1130 ;;		On exit  : 0/0
+  1131 ;;		Unchanged: 0/0
+  1132 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1133 ;;      Params:         0       0       0       0       0
+  1134 ;;      Locals:         0       0       0       0       0
+  1135 ;;      Temps:          0       0       0       0       0
+  1136 ;;      Totals:         0       0       0       0       0
+  1137 ;;Total ram usage:        0 bytes
+  1138 ;; Hardware stack levels used:    1
+  1139 ;; Hardware stack levels required when called:    3
+  1140 ;; This function calls:
+  1141 ;;		_lcd_cmd
+  1142 ;; This function is called by:
+  1143 ;;		_main
+  1144 ;; This function uses a non-reentrant model
+  1145 ;;
+  1146                           psect	text326
+  1147                           	file	"C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps locat
+                                 ion to gsm\gps location to gsm.c"
+  1148                           	line	75
+  1149                           	global	__size_of_lcd_init
+  1150  0025                     	__size_of_lcd_init	equ	__end_of_lcd_init-_lcd_init
+  1151                           	
+  1152  029F                     _lcd_init:	
+  1153                           	opt	stack 7
+  1154                           ; Regs used in _lcd_init: [wreg+status,2-btemp+0+pclath+cstack]
+  1155                           	line	76
+  1156                           	
+  1157  029F                     l2259:	
+  1158                           ;gps location to gsm.c: 76: lcd_cmd(0x02);
+  1159  029F  3002               	movlw	(02h)
+  1160  02A0  120A  118A  223E   	fcall	_lcd_cmd
+              120A  118A         
+  1161                           	line	77
+  1162                           ;gps location to gsm.c: 77: lcd_cmd(0x2c);
+  1163  02A5  302C               	movlw	(02Ch)
+  1164  02A6  120A  118A  223E   	fcall	_lcd_cmd
+              120A  118A         
+  1165                           	line	78
+  1166                           ;gps location to gsm.c: 78: lcd_cmd(0x06);
+  1167  02AB  3006               	movlw	(06h)
+  1168  02AC  120A  118A  223E   	fcall	_lcd_cmd
+              120A  118A         
+  1169                           	line	79
+  1170                           ;gps location to gsm.c: 79: lcd_cmd(0x01);
+  1171  02B1  3001               	movlw	(01h)
+  1172  02B2  120A  118A  223E   	fcall	_lcd_cmd
+              120A  118A         
+  1173                           	line	80
+  1174                           ;gps location to gsm.c: 80: lcd_cmd(0x0c);
+  1175  02B7  300C               	movlw	(0Ch)
+  1176  02B8  120A  118A  223E   	fcall	_lcd_cmd
+              120A  118A         
+  1177                           	line	81
+  1178                           ;gps location to gsm.c: 81: lcd_cmd(0x80);
+  1179  02BD  3080               	movlw	(080h)
+  1180  02BE  120A  118A  223E   	fcall	_lcd_cmd
+              120A  118A         
+  1181                           	line	82
+  1182                           	
+  1183  02C3                     l610:	
+  1184  02C3  0008               	return
+  1185                           	opt stack 0
+  1186                           GLOBAL	__end_of_lcd_init
+  1187  02C4                     	__end_of_lcd_init:
+  1188 ;; =============== function _lcd_init ends ============
+  1189                           
+  1190                           	signat	_lcd_init,88
+  1191                           	global	_lcd_display
+  1192                           psect	text327,local,class=CODE,delta=2
+  1193                           global __ptext327
+  1194  0274                     __ptext327:
+  1195                           
+  1196 ;; *************** function _lcd_display *****************
+  1197 ;; Defined at:
+  1198 ;;		line 68 in file "C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps location to gsm\gps loc
+       ation to gsm.c"
+  1199 ;; Parameters:    Size  Location     Type
+  1200 ;;  m               1    wreg     PTR const unsigned char 
+  1201 ;;		 -> STR_2(8), STR_1(4), 
+  1202 ;; Auto vars:     Size  Location     Type
+  1203 ;;  m               1    5[BANK0 ] PTR const unsigned char 
+  1204 ;;		 -> STR_2(8), STR_1(4), 
+  1205 ;;  k               2    6[BANK0 ] int 
+  1206 ;; Return value:  Size  Location     Type
+  1207 ;;		None               void
+  1208 ;; Registers used:
+  1209 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+0, pclath, cstack
+  1210 ;; Tracked objects:
+  1211 ;;		On entry : 0/0
+  1212 ;;		On exit  : 0/0
+  1213 ;;		Unchanged: 0/0
+  1214 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1215 ;;      Params:         0       0       0       0       0
+  1216 ;;      Locals:         0       3       0       0       0
+  1217 ;;      Temps:          0       0       0       0       0
+  1218 ;;      Totals:         0       3       0       0       0
+  1219 ;;Total ram usage:        3 bytes
+  1220 ;; Hardware stack levels used:    1
+  1221 ;; Hardware stack levels required when called:    3
+  1222 ;; This function calls:
+  1223 ;;		_lcd_data
+  1224 ;; This function is called by:
+  1225 ;;		_gps_send
+  1226 ;;		_main
+  1227 ;; This function uses a non-reentrant model
+  1228 ;;
+  1229                           psect	text327
+  1230                           	file	"C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps locat
+                                 ion to gsm\gps location to gsm.c"
+  1231                           	line	68
+  1232                           	global	__size_of_lcd_display
+  1233  002B                     	__size_of_lcd_display	equ	__end_of_lcd_display-_lcd_display
+  1234                           	
+  1235  0274                     _lcd_display:	
+  1236                           	opt	stack 6
+  1237                           ; Regs used in _lcd_display: [wreg-fsr0h+status,2-btemp+0+pclath+cstack]
+  1238                           ;lcd_display@m stored from wreg
+  1239  0274  1283               	bcf	status, 5	;RP0=0, select bank0
+  1240  0275  1303               	bcf	status, 6	;RP1=0, select bank0
+  1241  0276  00EA               	movwf	(lcd_display@m)
+  1242                           	line	69
+  1243                           	
+  1244  0277                     l2251:	
+  1245                           ;gps location to gsm.c: 69: for(int k=0;m[k]!=0;k++)
+  1246  0277  3000               	movlw	low(0)
+  1247  0278  00EB               	movwf	(lcd_display@k)
+  1248  0279  3000               	movlw	high(0)
+  1249  027A  00EC               	movwf	((lcd_display@k))+1
+  1250  027B  2A91               	goto	l604
+  1251                           	line	70
+  1252                           	
+  1253  027C                     l605:	
+  1254                           	line	71
+  1255                           	
+  1256  027C                     l2253:	
+  1257                           ;gps location to gsm.c: 70: {
+  1258                           ;gps location to gsm.c: 71: lcd_data(m[k]);
+  1259  027C  086B               	movf	(lcd_display@k),w
+  1260  027D  076A               	addwf	(lcd_display@m),w
+  1261  027E  0084               	movwf	fsr0
+  1262  027F  120A  118A  2013   	fcall	stringdir
+              120A  118A         
+  1263  0284  120A  118A  2208   	fcall	_lcd_data
+              120A  118A         
+  1264                           	line	69
+  1265                           	
+  1266  0289                     l2255:	
+  1267  0289  3001               	movlw	low(01h)
+  1268  028A  1283               	bcf	status, 5	;RP0=0, select bank0
+  1269  028B  1303               	bcf	status, 6	;RP1=0, select bank0
+  1270  028C  07EB               	addwf	(lcd_display@k),f
+  1271  028D  1803               	skipnc
+  1272  028E  0AEC               	incf	(lcd_display@k+1),f
+  1273  028F  3000               	movlw	high(01h)
+  1274  0290  07EC               	addwf	(lcd_display@k+1),f
+  1275                           	
+  1276  0291                     l604:	
+  1277                           	
+  1278  0291                     l2257:	
+  1279  0291  086B               	movf	(lcd_display@k),w
+  1280  0292  076A               	addwf	(lcd_display@m),w
+  1281  0293  0084               	movwf	fsr0
+  1282  0294  120A  118A  2013   	fcall	stringdir
+              120A  118A         
+  1283  0299  3800               	iorlw	0
+  1284  029A  1D03               	skipz
+  1285  029B  2A9D               	goto	u2481
+  1286  029C  2A9E               	goto	u2480
+  1287  029D                     u2481:
+  1288  029D  2A7C               	goto	l605
+  1289  029E                     u2480:
+  1290                           	
+  1291  029E                     l606:	
+  1292                           	line	73
+  1293                           	
+  1294  029E                     l607:	
+  1295  029E  0008               	return
+  1296                           	opt stack 0
+  1297                           GLOBAL	__end_of_lcd_display
+  1298  029F                     	__end_of_lcd_display:
+  1299 ;; =============== function _lcd_display ends ============
+  1300                           
+  1301                           	signat	_lcd_display,4216
+  1302                           	global	_lcd_data
+  1303                           psect	text328,local,class=CODE,delta=2
+  1304                           global __ptext328
+  1305  0208                     __ptext328:
+  1306                           
+  1307 ;; *************** function _lcd_data *****************
+  1308 ;; Defined at:
+  1309 ;;		line 52 in file "C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps location to gsm\gps loc
+       ation to gsm.c"
+  1310 ;; Parameters:    Size  Location     Type
+  1311 ;;  dat             1    wreg     unsigned char 
+  1312 ;; Auto vars:     Size  Location     Type
+  1313 ;;  dat             1    4[BANK0 ] unsigned char 
+  1314 ;; Return value:  Size  Location     Type
+  1315 ;;		None               void
+  1316 ;; Registers used:
+  1317 ;;		wreg, status,2, status,0, btemp+0, pclath, cstack
+  1318 ;; Tracked objects:
+  1319 ;;		On entry : 0/0
+  1320 ;;		On exit  : 0/0
+  1321 ;;		Unchanged: 0/0
+  1322 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1323 ;;      Params:         0       0       0       0       0
+  1324 ;;      Locals:         0       1       0       0       0
+  1325 ;;      Temps:          0       2       0       0       0
+  1326 ;;      Totals:         0       3       0       0       0
+  1327 ;;Total ram usage:        3 bytes
+  1328 ;; Hardware stack levels used:    1
+  1329 ;; Hardware stack levels required when called:    2
+  1330 ;; This function calls:
+  1331 ;;		_delay
+  1332 ;; This function is called by:
+  1333 ;;		_lcd_display
+  1334 ;;		_gps_send
+  1335 ;; This function uses a non-reentrant model
+  1336 ;;
+  1337                           psect	text328
+  1338                           	file	"C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps locat
+                                 ion to gsm\gps location to gsm.c"
+  1339                           	line	52
+  1340                           	global	__size_of_lcd_data
+  1341  0036                     	__size_of_lcd_data	equ	__end_of_lcd_data-_lcd_data
+  1342                           	
+  1343  0208                     _lcd_data:	
+  1344                           	opt	stack 6
+  1345                           ; Regs used in _lcd_data: [wreg+status,2-btemp+0+pclath+cstack]
+  1346                           ;lcd_data@dat stored from wreg
+  1347  0208  1283               	bcf	status, 5	;RP0=0, select bank0
+  1348  0209  1303               	bcf	status, 6	;RP1=0, select bank0
+  1349  020A  00E9               	movwf	(lcd_data@dat)
+  1350                           	line	53
+  1351                           	
+  1352  020B                     l2225:	
+  1353                           ;gps location to gsm.c: 53: PORTD=(dat&0xf0);
+  1354  020B  0869               	movf	(lcd_data@dat),w
+  1355  020C  39F0               	andlw	0F0h
+  1356  020D  0088               	movwf	(8)	;volatile
+  1357                           	line	54
+  1358                           	
+  1359  020E                     l2227:	
+  1360                           ;gps location to gsm.c: 54: RD1=1;
+  1361  020E  1488               	bsf	(65/8),(65)&7
+  1362                           	line	55
+  1363                           	
+  1364  020F                     l2229:	
+  1365                           ;gps location to gsm.c: 55: RD2=0;
+  1366  020F  1108               	bcf	(66/8),(66)&7
+  1367                           	line	56
+  1368                           	
+  1369  0210                     l2231:	
+  1370                           ;gps location to gsm.c: 56: RD3=1;
+  1371  0210  1588               	bsf	(67/8),(67)&7
+  1372                           	line	57
+  1373                           	
+  1374  0211                     l2233:	
+  1375                           ;gps location to gsm.c: 57: delay(200);
+  1376  0211  30C8               	movlw	low(0C8h)
+  1377  0212  00E5               	movwf	(?_delay)
+  1378  0213  3000               	movlw	high(0C8h)
+  1379  0214  00E6               	movwf	((?_delay))+1
+  1380  0215  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+  1381                           	line	58
+  1382                           	
+  1383  021A                     l2235:	
+  1384                           ;gps location to gsm.c: 58: RD3=0;
+  1385  021A  1283               	bcf	status, 5	;RP0=0, select bank0
+  1386  021B  1303               	bcf	status, 6	;RP1=0, select bank0
+  1387  021C  1188               	bcf	(67/8),(67)&7
+  1388                           	line	59
+  1389                           	
+  1390  021D                     l2237:	
+  1391                           ;gps location to gsm.c: 59: temp=dat<<4;
+  1392  021D  0869               	movf	(lcd_data@dat),w
+  1393  021E  00E7               	movwf	(??_lcd_data+0)+0
+  1394  021F  01E8               	clrf	(??_lcd_data+0)+0+1
+  1395  0220  3004               	movlw	04h
+  1396  0221  00FE               	movwf	btemp+0
+  1397  0222                     u2475:
+  1398  0222  1003               	clrc
+  1399  0223  0DE7               	rlf	(??_lcd_data+0)+0,f
+  1400  0224  0DE8               	rlf	(??_lcd_data+0)+1,f
+  1401  0225  0BFE               	decfsz	btemp+0,f
+  1402  0226  2A22               	goto	u2475
+  1403  0227  0867               	movf	0+(??_lcd_data+0)+0,w
+  1404  0228  00F7               	movwf	(_temp)
+  1405  0229  0868               	movf	1+(??_lcd_data+0)+0,w
+  1406  022A  00F8               	movwf	(_temp+1)
+  1407                           	line	60
+  1408                           	
+  1409  022B                     l2239:	
+  1410                           ;gps location to gsm.c: 60: PORTD=(temp&0xf0);
+  1411  022B  0877               	movf	(_temp),w
+  1412  022C  39F0               	andlw	0F0h
+  1413  022D  0088               	movwf	(8)	;volatile
+  1414                           	line	61
+  1415                           	
+  1416  022E                     l2241:	
+  1417                           ;gps location to gsm.c: 61: RD1=1;
+  1418  022E  1488               	bsf	(65/8),(65)&7
+  1419                           	line	62
+  1420                           	
+  1421  022F                     l2243:	
+  1422                           ;gps location to gsm.c: 62: RD2=0;
+  1423  022F  1108               	bcf	(66/8),(66)&7
+  1424                           	line	63
+  1425                           	
+  1426  0230                     l2245:	
+  1427                           ;gps location to gsm.c: 63: RD3=1;
+  1428  0230  1588               	bsf	(67/8),(67)&7
+  1429                           	line	64
+  1430                           	
+  1431  0231                     l2247:	
+  1432                           ;gps location to gsm.c: 64: delay(200);
+  1433  0231  30C8               	movlw	low(0C8h)
+  1434  0232  00E5               	movwf	(?_delay)
+  1435  0233  3000               	movlw	high(0C8h)
+  1436  0234  00E6               	movwf	((?_delay))+1
+  1437  0235  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+  1438                           	line	65
+  1439                           	
+  1440  023A                     l2249:	
+  1441                           ;gps location to gsm.c: 65: RD3=0;
+  1442  023A  1283               	bcf	status, 5	;RP0=0, select bank0
+  1443  023B  1303               	bcf	status, 6	;RP1=0, select bank0
+  1444  023C  1188               	bcf	(67/8),(67)&7
+  1445                           	line	66
+  1446                           	
+  1447  023D                     l601:	
+  1448  023D  0008               	return
+  1449                           	opt stack 0
+  1450                           GLOBAL	__end_of_lcd_data
+  1451  023E                     	__end_of_lcd_data:
+  1452 ;; =============== function _lcd_data ends ============
+  1453                           
+  1454                           	signat	_lcd_data,4216
+  1455                           	global	_lcd_cmd
+  1456                           psect	text329,local,class=CODE,delta=2
+  1457                           global __ptext329
+  1458  023E                     __ptext329:
+  1459                           
+  1460 ;; *************** function _lcd_cmd *****************
+  1461 ;; Defined at:
+  1462 ;;		line 36 in file "C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps location to gsm\gps loc
+       ation to gsm.c"
+  1463 ;; Parameters:    Size  Location     Type
+  1464 ;;  com             1    wreg     unsigned char 
+  1465 ;; Auto vars:     Size  Location     Type
+  1466 ;;  com             1    4[BANK0 ] unsigned char 
+  1467 ;; Return value:  Size  Location     Type
+  1468 ;;		None               void
+  1469 ;; Registers used:
+  1470 ;;		wreg, status,2, status,0, btemp+0, pclath, cstack
+  1471 ;; Tracked objects:
+  1472 ;;		On entry : 0/0
+  1473 ;;		On exit  : 0/0
+  1474 ;;		Unchanged: 0/0
+  1475 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1476 ;;      Params:         0       0       0       0       0
+  1477 ;;      Locals:         0       1       0       0       0
+  1478 ;;      Temps:          0       2       0       0       0
+  1479 ;;      Totals:         0       3       0       0       0
+  1480 ;;Total ram usage:        3 bytes
+  1481 ;; Hardware stack levels used:    1
+  1482 ;; Hardware stack levels required when called:    2
+  1483 ;; This function calls:
+  1484 ;;		_delay
+  1485 ;; This function is called by:
+  1486 ;;		_lcd_init
+  1487 ;;		_gps_send
+  1488 ;;		_main
+  1489 ;; This function uses a non-reentrant model
+  1490 ;;
+  1491                           psect	text329
+  1492                           	file	"C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps locat
+                                 ion to gsm\gps location to gsm.c"
+  1493                           	line	36
+  1494                           	global	__size_of_lcd_cmd
+  1495  0036                     	__size_of_lcd_cmd	equ	__end_of_lcd_cmd-_lcd_cmd
+  1496                           	
+  1497  023E                     _lcd_cmd:	
+  1498                           	opt	stack 6
+  1499                           ; Regs used in _lcd_cmd: [wreg+status,2-btemp+0+pclath+cstack]
+  1500                           ;lcd_cmd@com stored from wreg
+  1501  023E  1283               	bcf	status, 5	;RP0=0, select bank0
+  1502  023F  1303               	bcf	status, 6	;RP1=0, select bank0
+  1503  0240  00E9               	movwf	(lcd_cmd@com)
+  1504                           	line	37
+  1505                           	
+  1506  0241                     l2199:	
+  1507                           ;gps location to gsm.c: 37: PORTD=(com&0xf0);
+  1508  0241  0869               	movf	(lcd_cmd@com),w
+  1509  0242  39F0               	andlw	0F0h
+  1510  0243  0088               	movwf	(8)	;volatile
+  1511                           	line	38
+  1512                           	
+  1513  0244                     l2201:	
+  1514                           ;gps location to gsm.c: 38: RD1=0;
+  1515  0244  1088               	bcf	(65/8),(65)&7
+  1516                           	line	39
+  1517                           	
+  1518  0245                     l2203:	
+  1519                           ;gps location to gsm.c: 39: RD2=0;
+  1520  0245  1108               	bcf	(66/8),(66)&7
+  1521                           	line	40
+  1522                           	
+  1523  0246                     l2205:	
+  1524                           ;gps location to gsm.c: 40: RD3=1;
+  1525  0246  1588               	bsf	(67/8),(67)&7
+  1526                           	line	41
+  1527                           	
+  1528  0247                     l2207:	
+  1529                           ;gps location to gsm.c: 41: delay(200);
+  1530  0247  30C8               	movlw	low(0C8h)
+  1531  0248  00E5               	movwf	(?_delay)
+  1532  0249  3000               	movlw	high(0C8h)
+  1533  024A  00E6               	movwf	((?_delay))+1
+  1534  024B  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+  1535                           	line	42
+  1536                           	
+  1537  0250                     l2209:	
+  1538                           ;gps location to gsm.c: 42: RD3=0;
+  1539  0250  1283               	bcf	status, 5	;RP0=0, select bank0
+  1540  0251  1303               	bcf	status, 6	;RP1=0, select bank0
+  1541  0252  1188               	bcf	(67/8),(67)&7
+  1542                           	line	43
+  1543                           	
+  1544  0253                     l2211:	
+  1545                           ;gps location to gsm.c: 43: temp=com<<4;
+  1546  0253  0869               	movf	(lcd_cmd@com),w
+  1547  0254  00E7               	movwf	(??_lcd_cmd+0)+0
+  1548  0255  01E8               	clrf	(??_lcd_cmd+0)+0+1
+  1549  0256  3004               	movlw	04h
+  1550  0257  00FE               	movwf	btemp+0
+  1551  0258                     u2465:
+  1552  0258  1003               	clrc
+  1553  0259  0DE7               	rlf	(??_lcd_cmd+0)+0,f
+  1554  025A  0DE8               	rlf	(??_lcd_cmd+0)+1,f
+  1555  025B  0BFE               	decfsz	btemp+0,f
+  1556  025C  2A58               	goto	u2465
+  1557  025D  0867               	movf	0+(??_lcd_cmd+0)+0,w
+  1558  025E  00F7               	movwf	(_temp)
+  1559  025F  0868               	movf	1+(??_lcd_cmd+0)+0,w
+  1560  0260  00F8               	movwf	(_temp+1)
+  1561                           	line	44
+  1562                           	
+  1563  0261                     l2213:	
+  1564                           ;gps location to gsm.c: 44: PORTD=(temp&0xf0);
+  1565  0261  0877               	movf	(_temp),w
+  1566  0262  39F0               	andlw	0F0h
+  1567  0263  0088               	movwf	(8)	;volatile
+  1568                           	line	45
+  1569                           	
+  1570  0264                     l2215:	
+  1571                           ;gps location to gsm.c: 45: RD1=0;
+  1572  0264  1088               	bcf	(65/8),(65)&7
+  1573                           	line	46
+  1574                           	
+  1575  0265                     l2217:	
+  1576                           ;gps location to gsm.c: 46: RD2=0;
+  1577  0265  1108               	bcf	(66/8),(66)&7
+  1578                           	line	47
+  1579                           	
+  1580  0266                     l2219:	
+  1581                           ;gps location to gsm.c: 47: RD3=1;
+  1582  0266  1588               	bsf	(67/8),(67)&7
+  1583                           	line	48
+  1584                           	
+  1585  0267                     l2221:	
+  1586                           ;gps location to gsm.c: 48: delay(200);
+  1587  0267  30C8               	movlw	low(0C8h)
+  1588  0268  00E5               	movwf	(?_delay)
+  1589  0269  3000               	movlw	high(0C8h)
+  1590  026A  00E6               	movwf	((?_delay))+1
+  1591  026B  120A  118A  22E1   	fcall	_delay
+              120A  118A         
+  1592                           	line	49
+  1593                           	
+  1594  0270                     l2223:	
+  1595                           ;gps location to gsm.c: 49: RD3=0;
+  1596  0270  1283               	bcf	status, 5	;RP0=0, select bank0
+  1597  0271  1303               	bcf	status, 6	;RP1=0, select bank0
+  1598  0272  1188               	bcf	(67/8),(67)&7
+  1599                           	line	50
+  1600                           	
+  1601  0273                     l598:	
+  1602  0273  0008               	return
+  1603                           	opt stack 0
+  1604                           GLOBAL	__end_of_lcd_cmd
+  1605  0274                     	__end_of_lcd_cmd:
+  1606 ;; =============== function _lcd_cmd ends ============
+  1607                           
+  1608                           	signat	_lcd_cmd,4216
+  1609                           	global	_gps_init
+  1610                           psect	text330,local,class=CODE,delta=2
+  1611                           global __ptext330
+  1612  02F5                     __ptext330:
+  1613                           
+  1614 ;; *************** function _gps_init *****************
+  1615 ;; Defined at:
+  1616 ;;		line 24 in file "C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps location to gsm\gps loc
+       ation to gsm.c"
+  1617 ;; Parameters:    Size  Location     Type
+  1618 ;;		None
+  1619 ;; Auto vars:     Size  Location     Type
+  1620 ;;		None
+  1621 ;; Return value:  Size  Location     Type
+  1622 ;;		None               void
+  1623 ;; Registers used:
+  1624 ;;		wreg
+  1625 ;; Tracked objects:
+  1626 ;;		On entry : 0/0
+  1627 ;;		On exit  : 0/0
+  1628 ;;		Unchanged: 0/0
+  1629 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1630 ;;      Params:         0       0       0       0       0
+  1631 ;;      Locals:         0       0       0       0       0
+  1632 ;;      Temps:          0       0       0       0       0
+  1633 ;;      Totals:         0       0       0       0       0
+  1634 ;;Total ram usage:        0 bytes
+  1635 ;; Hardware stack levels used:    1
+  1636 ;; Hardware stack levels required when called:    1
+  1637 ;; This function calls:
+  1638 ;;		Nothing
+  1639 ;; This function is called by:
+  1640 ;;		_main
+  1641 ;; This function uses a non-reentrant model
+  1642 ;;
+  1643                           psect	text330
+  1644                           	file	"C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps locat
+                                 ion to gsm\gps location to gsm.c"
+  1645                           	line	24
+  1646                           	global	__size_of_gps_init
+  1647  0011                     	__size_of_gps_init	equ	__end_of_gps_init-_gps_init
+  1648                           	
+  1649  02F5                     _gps_init:	
+  1650                           	opt	stack 7
+  1651                           ; Regs used in _gps_init: [wreg]
+  1652                           	line	25
+  1653                           	
+  1654  02F5                     l1013:	
+  1655                           ;gps location to gsm.c: 25: TXSTA=0X24;
+  1656  02F5  3024               	movlw	(024h)
+  1657  02F6  1683               	bsf	status, 5	;RP0=1, select bank1
+  1658  02F7  1303               	bcf	status, 6	;RP1=0, select bank1
+  1659  02F8  0098               	movwf	(152)^080h	;volatile
+  1660                           	line	26
+  1661                           ;gps location to gsm.c: 26: RCSTA=0X90;
+  1662  02F9  3090               	movlw	(090h)
+  1663  02FA  1283               	bcf	status, 5	;RP0=0, select bank0
+  1664  02FB  1303               	bcf	status, 6	;RP1=0, select bank0
+  1665  02FC  0098               	movwf	(24)	;volatile
+  1666                           	line	27
+  1667                           ;gps location to gsm.c: 27: SPBRG=25;
+  1668  02FD  3019               	movlw	(019h)
+  1669  02FE  1683               	bsf	status, 5	;RP0=1, select bank1
+  1670  02FF  1303               	bcf	status, 6	;RP1=0, select bank1
+  1671  0300  0099               	movwf	(153)^080h	;volatile
+  1672                           	line	28
+  1673                           	
+  1674  0301                     l1015:	
+  1675                           ;gps location to gsm.c: 28: BRGH=1;
+  1676  0301  1518               	bsf	(1218/8)^080h,(1218)&7
+  1677                           	line	29
+  1678                           	
+  1679  0302                     l1017:	
+  1680                           ;gps location to gsm.c: 29: GIE=1;
+  1681  0302  178B               	bsf	(95/8),(95)&7
+  1682                           	line	30
+  1683                           	
+  1684  0303                     l1019:	
+  1685                           ;gps location to gsm.c: 30: PEIE=1;
+  1686  0303  170B               	bsf	(94/8),(94)&7
+  1687                           	line	31
+  1688                           	
+  1689  0304                     l1021:	
+  1690                           ;gps location to gsm.c: 31: RCIE=1;
+  1691  0304  168C               	bsf	(1125/8)^080h,(1125)&7
+  1692                           	line	33
+  1693                           	
+  1694  0305                     l595:	
+  1695  0305  0008               	return
+  1696                           	opt stack 0
+  1697                           GLOBAL	__end_of_gps_init
+  1698  0306                     	__end_of_gps_init:
+  1699 ;; =============== function _gps_init ends ============
+  1700                           
+  1701                           	signat	_gps_init,88
+  1702                           	global	_delay
+  1703                           psect	text331,local,class=CODE,delta=2
+  1704                           global __ptext331
+  1705  02E1                     __ptext331:
+  1706                           
+  1707 ;; *************** function _delay *****************
+  1708 ;; Defined at:
+  1709 ;;		line 19 in file "C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps location to gsm\gps loc
+       ation to gsm.c"
+  1710 ;; Parameters:    Size  Location     Type
+  1711 ;;  x               2    0[BANK0 ] unsigned int 
+  1712 ;; Auto vars:     Size  Location     Type
+  1713 ;;		None
+  1714 ;; Return value:  Size  Location     Type
+  1715 ;;		None               void
+  1716 ;; Registers used:
+  1717 ;;		wreg
+  1718 ;; Tracked objects:
+  1719 ;;		On entry : 0/0
+  1720 ;;		On exit  : 0/0
+  1721 ;;		Unchanged: 0/0
+  1722 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1723 ;;      Params:         0       2       0       0       0
+  1724 ;;      Locals:         0       0       0       0       0
+  1725 ;;      Temps:          0       0       0       0       0
+  1726 ;;      Totals:         0       2       0       0       0
+  1727 ;;Total ram usage:        2 bytes
+  1728 ;; Hardware stack levels used:    1
+  1729 ;; Hardware stack levels required when called:    1
+  1730 ;; This function calls:
+  1731 ;;		Nothing
+  1732 ;; This function is called by:
+  1733 ;;		_lcd_cmd
+  1734 ;;		_lcd_data
+  1735 ;;		_gps_send
+  1736 ;;		_main
+  1737 ;;		_serial
+  1738 ;; This function uses a non-reentrant model
+  1739 ;;
+  1740                           psect	text331
+  1741                           	file	"C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps locat
+                                 ion to gsm\gps location to gsm.c"
+  1742                           	line	19
+  1743                           	global	__size_of_delay
+  1744  0014                     	__size_of_delay	equ	__end_of_delay-_delay
+  1745                           	
+  1746  02E1                     _delay:	
+  1747                           	opt	stack 5
+  1748                           ; Regs used in _delay: [wreg]
+  1749                           	line	20
+  1750                           	
+  1751  02E1                     l2185:	
+  1752                           ;gps location to gsm.c: 20: while(x--);
+  1753  02E1  2AE2               	goto	l589
+  1754                           	
+  1755  02E2                     l590:	
+  1756                           	
+  1757  02E2                     l589:	
+  1758                           	
+  1759  02E2                     l2187:	
+  1760  02E2  3001               	movlw	low(01h)
+  1761  02E3  1283               	bcf	status, 5	;RP0=0, select bank0
+  1762  02E4  1303               	bcf	status, 6	;RP1=0, select bank0
+  1763  02E5  02E5               	subwf	(delay@x),f
+  1764  02E6  3000               	movlw	high(01h)
+  1765  02E7  1C03               	skipc
+  1766  02E8  03E6               	decf	(delay@x+1),f
+  1767  02E9  02E6               	subwf	(delay@x+1),f
+  1768  02EA  30FF               	movlw	high(0FFFFh)
+  1769  02EB  0666               	xorwf	((delay@x+1)),w
+  1770  02EC  1D03               	skipz
+  1771  02ED  2AF0               	goto	u2445
+  1772  02EE  30FF               	movlw	low(0FFFFh)
+  1773  02EF  0665               	xorwf	((delay@x)),w
+  1774  02F0                     u2445:
+  1775                           
+  1776  02F0  1D03               	skipz
+  1777  02F1  2AF3               	goto	u2441
+  1778  02F2  2AF4               	goto	u2440
+  1779  02F3                     u2441:
+  1780  02F3  2AE2               	goto	l590
+  1781  02F4                     u2440:
+  1782                           	
+  1783  02F4                     l591:	
+  1784                           	line	21
+  1785                           	
+  1786  02F4                     l592:	
+  1787  02F4  0008               	return
+  1788                           	opt stack 0
+  1789                           GLOBAL	__end_of_delay
+  1790  02F5                     	__end_of_delay:
+  1791 ;; =============== function _delay ends ============
+  1792                           
+  1793                           	signat	_delay,4216
+  1794                           	global	_rcx
+  1795                           psect	text332,local,class=CODE,delta=2
+  1796                           global __ptext332
+  1797  01BF                     __ptext332:
+  1798                           
+  1799 ;; *************** function _rcx *****************
+  1800 ;; Defined at:
+  1801 ;;		line 86 in file "C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps location to gsm\gps loc
+       ation to gsm.c"
+  1802 ;; Parameters:    Size  Location     Type
+  1803 ;;		None
+  1804 ;; Auto vars:     Size  Location     Type
+  1805 ;;		None
+  1806 ;; Return value:  Size  Location     Type
+  1807 ;;		None               void
+  1808 ;; Registers used:
+  1809 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+  1810 ;; Tracked objects:
+  1811 ;;		On entry : 0/0
+  1812 ;;		On exit  : 0/0
+  1813 ;;		Unchanged: 0/0
+  1814 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1815 ;;      Params:         0       0       0       0       0
+  1816 ;;      Locals:         0       0       0       0       0
+  1817 ;;      Temps:          5       0       0       0       0
+  1818 ;;      Totals:         5       0       0       0       0
+  1819 ;;Total ram usage:        5 bytes
+  1820 ;; Hardware stack levels used:    1
+  1821 ;; This function calls:
+  1822 ;;		Nothing
+  1823 ;; This function is called by:
+  1824 ;;		Interrupt level 1
+  1825 ;; This function uses a non-reentrant model
+  1826 ;;
+  1827                           psect	text332
+  1828                           	file	"C:\Users\TECH\Desktop\madhu pic folder\new gps &gsm\gps&gsm\gps and gsm\gps locat
+                                 ion to gsm\gps location to gsm.c"
+  1829                           	line	86
+  1830                           	global	__size_of_rcx
+  1831  0049                     	__size_of_rcx	equ	__end_of_rcx-_rcx
+  1832                           	
+  1833  01BF                     _rcx:	
+  1834                           	opt	stack 3
+  1835                           ; Regs used in _rcx: [wreg-fsr0h+status,2+status,0]
+  1836                           psect	intentry,class=CODE,delta=2
+  1837                           global __pintentry
+  1838  0004                     __pintentry:
+  1839                           global interrupt_function
+  1840  0004                     interrupt_function:
+  1841                           	global saved_w
+  1842  007E                     	saved_w	set	btemp+0
+  1843  0004  00FE               	movwf	saved_w
+  1844  0005  0803               	movf	status,w
+  1845  0006  00F1               	movwf	(??_rcx+1)
+  1846  0007  0804               	movf	fsr0,w
+  1847  0008  00F2               	movwf	(??_rcx+2)
+  1848  0009  080A               	movf	pclath,w
+  1849  000A  00F3               	movwf	(??_rcx+3)
+  1850  000B  087F               	movf	btemp+1,w
+  1851  000C  00F4               	movwf	(??_rcx+4)
+  1852  000D  120A  118A  29BF   	ljmp	_rcx
+  1853                           psect	text332
+  1854                           	line	88
+  1855                           	
+  1856  01BF                     i1l1999:	
+  1857                           ;gps location to gsm.c: 88: if(RCIF==1)
+  1858  01BF  1283               	bcf	status, 5	;RP0=0, select bank0
+  1859  01C0  1303               	bcf	status, 6	;RP1=0, select bank0
+  1860  01C1  1E8C               	btfss	(101/8),(101)&7
+  1861  01C2  29C4               	goto	u230_21
+  1862  01C3  29C5               	goto	u230_20
+  1863  01C4                     u230_21:
+  1864  01C4  29FD               	goto	i1l613
+  1865  01C5                     u230_20:
+  1866                           	line	91
+  1867                           	
+  1868  01C5                     i1l2001:	
+  1869                           ;gps location to gsm.c: 89: {
+  1870                           ;gps location to gsm.c: 91: RCIF=0;
+  1871  01C5  128C               	bcf	(101/8),(101)&7
+  1872                           	line	92
+  1873                           	
+  1874  01C6                     i1l2003:	
+  1875                           ;gps location to gsm.c: 92: ser=RCREG;
+  1876  01C6  081A               	movf	(26),w	;volatile
+  1877  01C7  00F0               	movwf	(??_rcx+0)+0
+  1878  01C8  0870               	movf	(??_rcx+0)+0,w
+  1879  01C9  00EE               	movwf	(_ser)
+  1880                           	line	94
+  1881                           ;gps location to gsm.c: 94: if((ser==0x52)&&(st==0x01))
+  1882  01CA  086E               	movf	(_ser),w
+  1883  01CB  3A52               	xorlw	052h
+  1884  01CC  1D03               	skipz
+  1885  01CD  29CF               	goto	u231_21
+  1886  01CE  29D0               	goto	u231_20
+  1887  01CF                     u231_21:
+  1888  01CF  29DE               	goto	i1l614
+  1889  01D0                     u231_20:
+  1890                           	
+  1891  01D0                     i1l2005:	
+  1892  01D0  086F               	movf	(_st),w
+  1893  01D1  3A01               	xorlw	01h
+  1894  01D2  1D03               	skipz
+  1895  01D3  29D5               	goto	u232_21
+  1896  01D4  29D6               	goto	u232_20
+  1897  01D5                     u232_21:
+  1898  01D5  29DE               	goto	i1l614
+  1899  01D6                     u232_20:
+  1900                           	line	96
+  1901                           	
+  1902  01D6                     i1l2007:	
+  1903                           ;gps location to gsm.c: 95: {
+  1904                           ;gps location to gsm.c: 96: data_cap=0x01;
+  1905  01D6  01E4               	clrf	(_data_cap)
+  1906  01D7  1403               	bsf	status,0
+  1907  01D8  0DE4               	rlf	(_data_cap),f
+  1908                           	line	97
+  1909                           	
+  1910  01D9                     i1l2009:	
+  1911                           ;gps location to gsm.c: 97: st=0x00;
+  1912  01D9  1003               	clrc
+  1913  01DA  3000               	movlw	0
+  1914  01DB  1803               	btfsc	status,0
+  1915  01DC  3001               	movlw	1
+  1916  01DD  00EF               	movwf	(_st)
+  1917                           	line	98
+  1918                           	
+  1919  01DE                     i1l614:	
+  1920                           	line	99
+  1921                           ;gps location to gsm.c: 98: }
+  1922                           ;gps location to gsm.c: 99: if((data_cap==0x01)&&(i<45))
+  1923  01DE  0864               	movf	(_data_cap),w
+  1924  01DF  3A01               	xorlw	01h
+  1925  01E0  1D03               	skipz
+  1926  01E1  29E3               	goto	u233_21
+  1927  01E2  29E4               	goto	u233_20
+  1928  01E3                     u233_21:
+  1929  01E3  29FD               	goto	i1l615
+  1930  01E4                     u233_20:
+  1931                           	
+  1932  01E4                     i1l2011:	
+  1933  01E4  3000               	movlw	high(02Dh)
+  1934  01E5  0259               	subwf	(_i+1),w
+  1935  01E6  302D               	movlw	low(02Dh)
+  1936  01E7  1903               	skipnz
+  1937  01E8  0258               	subwf	(_i),w
+  1938  01E9  1803               	skipnc
+  1939  01EA  29EC               	goto	u234_21
+  1940  01EB  29ED               	goto	u234_20
+  1941  01EC                     u234_21:
+  1942  01EC  29FD               	goto	i1l615
+  1943  01ED                     u234_20:
+  1944                           	line	101
+  1945                           	
+  1946  01ED                     i1l2013:	
+  1947                           ;gps location to gsm.c: 100: {
+  1948                           ;gps location to gsm.c: 101: gpsdata[i]=ser;
+  1949  01ED  086E               	movf	(_ser),w
+  1950  01EE  00F0               	movwf	(??_rcx+0)+0
+  1951  01EF  0858               	movf	(_i),w
+  1952  01F0  3E20               	addlw	_gpsdata&0ffh
+  1953  01F1  0084               	movwf	fsr0
+  1954  01F2  0870               	movf	(??_rcx+0)+0,w
+  1955  01F3  1383               	bcf	status, 7	;select IRP bank0
+  1956  01F4  0080               	movwf	indf
+  1957                           	line	102
+  1958                           	
+  1959  01F5                     i1l2015:	
+  1960                           ;gps location to gsm.c: 102: i=i+1;
+  1961  01F5  0858               	movf	(_i),w
+  1962  01F6  3E01               	addlw	low(01h)
+  1963  01F7  00D8               	movwf	(_i)
+  1964  01F8  0859               	movf	(_i+1),w
+  1965  01F9  1803               	skipnc
+  1966  01FA  3E01               	addlw	1
+  1967  01FB  3E00               	addlw	high(01h)
+  1968  01FC  00D9               	movwf	1+(_i)
+  1969                           	line	103
+  1970                           	
+  1971  01FD                     i1l615:	
+  1972                           	line	104
+  1973                           	
+  1974  01FD                     i1l613:	
+  1975                           	line	105
+  1976                           	
+  1977  01FD                     i1l616:	
+  1978  01FD  0874               	movf	(??_rcx+4),w
+  1979  01FE  00FF               	movwf	btemp+1
+  1980  01FF  0873               	movf	(??_rcx+3),w
+  1981  0200  008A               	movwf	pclath
+  1982  0201  0872               	movf	(??_rcx+2),w
+  1983  0202  0084               	movwf	fsr0
+  1984  0203  0871               	movf	(??_rcx+1),w
+  1985  0204  0083               	movwf	status
+  1986  0205  0EFE               	swapf	saved_w,f
+  1987  0206  0E7E               	swapf	saved_w,w
+  1988  0207  0009               	retfie
+  1989                           	opt stack 0
+  1990                           GLOBAL	__end_of_rcx
+  1991  0208                     	__end_of_rcx:
+  1992 ;; =============== function _rcx ends ============
+  1993                           
+  1994                           	signat	_rcx,88
+  1995                           psect	text333,local,class=CODE,delta=2
+  1996                           global __ptext333
+  1997  0000                     __ptext333:
+  1998                           	global	btemp
+  1999  007E                     	btemp set 07Eh
+  2000                           
+  2001                           	DABS	1,126,2	;btemp
+  2002                           	global	wtemp0
+  2003  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.71a build 6446 
+Symbol Table                                                                                   Thu Nov 17 12:09:04 2022
+
+         lcd_data@dat 0069                     _A 0052                     _T 0075                     _W 0054  
+                   _c 0056                     _i 0058                     _j 005A                     _q 005C  
+                   _r 005E                     _v 0060                     pc 0002                    _w1 0062  
+                  _st 006F                    fsr 0004                   l601 023D                   l610 02C3  
+                 l604 0291                   l620 0095                   l605 027C                   l621 00C1  
+                 l606 029E                   l622 00D7                   l607 029E                   l623 0103  
+                 l624 0144                   l633 01B6                   l634 01BB                   l619 0144  
+                 l635 01BC                   l636 01BC                   l590 02E2                   l591 02F4  
+                 l592 02F4                   l595 0305                   l589 02E2                   l598 0273  
+                 _GIE 005F                   _RD1 0041                   _RD2 0042                   _RD3 0043  
+                 _rcx 01BF                   _ser 006E                   fsr0 0004                   indf 0000  
+                l1021 0304                  l1013 02F5                  l1015 0301                  l1017 0302  
+        lcd_display@k 006B                  l1019 0303          lcd_display@m 006A                  l2201 0244  
+                l2211 0253                  l2203 0245                  l2221 0267                  l2213 0261  
+                l2205 0246                  l2301 00C7                  l2223 0270                  l2215 0264  
+                l2207 0247                  l2231 0210                  l2311 00E5                  l2303 00CD  
+                l2217 0265                  l2209 0250                  l2241 022E                  l2233 0211  
+                l2225 020B                  l2321 012D                  l2313 00E9                  l2305 00D6  
+                l2219 0266                  l2243 022F                  l2235 021A                  l2227 020E  
+                l2251 0277                  l2323 0134                  l2315 00F2                  l2307 00D7  
+                l2331 0155                  l2245 0230                  l2237 021D                  l2229 020F  
+                l2253 027C                  l2325 0137                  l2317 00FA                  l2309 00DF  
+                l2261 0025                  l2341 0178                  l2333 0158                  l2247 0231  
+                l2239 022B                  l2255 0289                  l2319 0103                  l2271 0058  
+                l2263 0031                  l2351 01A0                  l2343 017E                  l2335 015D  
+                l2327 0145                  l2185 02E1                  l2249 023A                  l2257 0291  
+                l2281 0085                  l2273 005E                  l2265 003C                  l2353 01AB  
+                l2345 0184                  l2337 0168                  l2329 0151                  l2187 02E2  
+                l2259 029F                  l2291 00A3                  l2283 008B                  l2275 0069  
+                l2267 0042                  l2355 01B6                  l2347 018A                  l2339 016D  
+                l2293 00A7                  l2285 0094                  l2277 0074                  l2269 004D  
+                l2349 0195                  l2199 0241                  l2295 00B0                  l2287 0095  
+                l2279 007A                  l2297 00B8                  l2289 009D                  l2299 00C1  
+                ?_rcx 0070                  STR_1 0021                  STR_2 0019                  _BRGH 04C2  
+                u2500 0094                  u2501 0093                  u2510 00C1                  u2511 00C0  
+                u2440 02F4                  u2520 00D6                  u2441 02F3                  u2521 00D5  
+                u2530 0103                  u2531 0102                  u2445 02F0                  u2480 029E  
+                u2465 0258                  u2481 029D                  u2490 0074                  u2475 0222  
+                u2491 0073                  _PEIE 005E                  _RCIE 0465                  _RCIF 0065  
+                _main 0145                  _temp 0077                  btemp 007E                  start 0010  
+               ??_rcx 0070                 ?_main 0070                 i1l613 01FD                 i1l614 01DE  
+               i1l615 01FD                 i1l616 01FD                 _RCREG 001A                 _RCSTA 0018  
+               _SPBRG 0099                 _PORTB 0006                 _PORTC 0007                 _PORTD 0008  
+               _TRISB 0086                 _TRISC 0087                 _TRISD 0088                 _TXREG 0019  
+               _TXSTA 0098       __end_of_lcd_cmd 0274                 _delay 02E1                 pclath 000A  
+               status 0003                 wtemp0 007E          __end_of_main 01BF                ??_main 0075  
+              ?_delay 0065                i1l2001 01C5                i1l2011 01E4                i1l2003 01C6  
+              i1l2013 01ED                i1l2005 01D0                i1l2015 01F5                i1l2007 01D6  
+              i1l2009 01D9                i1l1999 01BF                u230_20 01C5                u230_21 01C4  
+              u231_20 01D0                u231_21 01CF                u232_20 01D6                u232_21 01D5  
+              u233_20 01E4                u233_21 01E3                u234_20 01ED                u234_21 01EC  
+    __end_of_lcd_data 023E      __end_of_lcd_init 02C4  __size_of_lcd_display 002B      __end_of_gps_init 0306  
+    __end_of_gps_send 0145                delay@x 0065             ??_lcd_cmd 0067                clrloop 0307  
+              saved_w 007E        __pcstackCOMMON 0070          __pidataBANK0 030E         __end_of_delay 02F5  
+             ??_delay 0075            __pbssBANK0 0020            __pmaintext 0145            __pintentry 0004  
+           ?_lcd_data 0070             ?_lcd_init 0070             ?_gps_init 0070             ?_gps_send 0070  
+             _lcd_cmd 023E               _gpsdata 0020          __size_of_rcx 0049            ??_lcd_data 0067  
+          ??_lcd_init 0075  end_of_initialization 02DD            ??_gps_init 0075            ??_gps_send 006D  
+          lcd_cmd@com 0069         ??_lcd_display 0075   start_initialization 02C4           __end_of_rcx 0208  
+ __end_of_lcd_display 029F           __pdataBANK0 006E           __pbssCOMMON 0075         __pcstackBANK0 0065  
+   __size_of_lcd_data 0036     __size_of_lcd_init 0025     __size_of_gps_init 0011     __size_of_gps_send 0120  
+           __ptext330 02F5             __ptext331 02E1             __ptext332 01BF             __ptext333 0000  
+           __ptext325 0025             __ptext326 029F             __ptext327 0274             __ptext328 0208  
+           __ptext329 023E             __pstrings 0013              ?_lcd_cmd 0070        __size_of_delay 0014  
+   interrupt_function 0004           _lcd_display 0274           __stringbase 0018      __size_of_lcd_cmd 0036  
+            _data_cap 0064              _lcd_data 0208              _lcd_init 029F              _gps_init 02F5  
+            _gps_send 0025         __size_of_main 007A              clear_ram 0306              intlevel1 0000  
+           stringcode 0013              stringdir 0013              stringtab 0013          ?_lcd_display 0070  

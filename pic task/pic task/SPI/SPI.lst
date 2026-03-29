@@ -1,0 +1,800 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
+                                                                                               Wed Aug 09 13:40:16 2023
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNCALL	_main,_delay
+    43                           	FNROOT	_main
+    44                           	global	_PORTC
+    45                           psect	maintext,global,class=CODE,delta=2
+    46                           global __pmaintext
+    47  0704                     __pmaintext:
+    48  0007                     _PORTC	set	7
+    49                           	global	_SSPBUF
+    50  0013                     _SSPBUF	set	19
+    51                           	global	_SSPCON
+    52  0014                     _SSPCON	set	20
+    53                           	global	_RC0
+    54  0038                     _RC0	set	56
+    55                           	global	_SSPIF
+    56  0063                     _SSPIF	set	99
+    57                           	global	_SSPSTAT
+    58  0094                     _SSPSTAT	set	148
+    59                           	global	_TRISC
+    60  0087                     _TRISC	set	135
+    61                           	global	_BF
+    62  04A0                     _BF	set	1184
+    63                           	file	"SPI.as"
+    64                           	line	#
+    65                           psect cinit,class=CODE,delta=2
+    66                           global start_initialization
+    67  06EE                     start_initialization:
+    68                           
+    69                           psect cinit,class=CODE,delta=2
+    70                           global end_of_initialization
+    71                           
+    72                           ;End of C runtime variable initialization code
+    73                           
+    74  06EE                     end_of_initialization:
+    75  06EE  0183               clrf status
+    76  06EF  120A  118A  2F04   ljmp _main	;jump to C main() function
+    77                           psect	cstackCOMMON,class=COMMON,space=1
+    78                           global __pcstackCOMMON
+    79  0070                     __pcstackCOMMON:
+    80                           	global	?_delay
+    81  0070                     ?_delay:	; 0 bytes @ 0x0
+    82                           	global	?_main
+    83  0070                     ?_main:	; 2 bytes @ 0x0
+    84                           	global	delay@x
+    85  0070                     delay@x:	; 2 bytes @ 0x0
+    86  0070                     	ds	2
+    87                           	global	??_delay
+    88  0072                     ??_delay:	; 0 bytes @ 0x2
+    89                           	global	??_main
+    90  0072                     ??_main:	; 0 bytes @ 0x2
+    91 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+    92 ;;Auto spaces:   Size  Autos    Used
+    93 ;; COMMON          14      2       2
+    94 ;; BANK0           80      0       0
+    95 ;; BANK1           80      0       0
+    96 ;; BANK3           96      0       0
+    97 ;; BANK2           96      0       0
+    98                           
+    99 ;;
+   100 ;; Pointer list with targets:
+   101                           
+   102                           
+   103                           
+   104 ;;
+   105 ;; Critical Paths under _main in COMMON
+   106 ;;
+   107 ;;   _main->_delay
+   108 ;;
+   109 ;; Critical Paths under _main in BANK0
+   110 ;;
+   111 ;;   None.
+   112 ;;
+   113 ;; Critical Paths under _main in BANK1
+   114 ;;
+   115 ;;   None.
+   116 ;;
+   117 ;; Critical Paths under _main in BANK3
+   118 ;;
+   119 ;;   None.
+   120 ;;
+   121 ;; Critical Paths under _main in BANK2
+   122 ;;
+   123 ;;   None.
+   124                           
+   125 ;;
+   126 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   127 ;;
+   128                           
+   129 ;;
+   130 ;;Call Graph Tables:
+   131 ;;
+   132 ;; ---------------------------------------------------------------------------------
+   133 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   134 ;; ---------------------------------------------------------------------------------
+   135 ;; (0) _main                                                 0     0      0      15
+   136 ;;                              _delay
+   137 ;; ---------------------------------------------------------------------------------
+   138 ;; (1) _delay                                                2     0      2      15
+   139 ;;                                              0 COMMON     2     0      2
+   140 ;; ---------------------------------------------------------------------------------
+   141 ;; Estimated maximum stack depth 1
+   142 ;; ---------------------------------------------------------------------------------
+   143                           
+   144 ;; Call Graph Graphs:
+   145                           
+   146 ;; _main (ROOT)
+   147 ;;   _delay
+   148 ;;
+   149                           
+   150 ;; Address spaces:
+   151                           
+   152 ;;Name               Size   Autos  Total    Cost      Usage
+   153 ;;BITCOMMON            E      0       0       0        0.0%
+   154 ;;EEDATA             100      0       0       0        0.0%
+   155 ;;NULL                 0      0       0       0        0.0%
+   156 ;;CODE                 0      0       0       0        0.0%
+   157 ;;COMMON               E      2       2       1       14.3%
+   158 ;;BITSFR0              0      0       0       1        0.0%
+   159 ;;SFR0                 0      0       0       1        0.0%
+   160 ;;BITSFR1              0      0       0       2        0.0%
+   161 ;;SFR1                 0      0       0       2        0.0%
+   162 ;;STACK                0      0       1       2        0.0%
+   163 ;;ABS                  0      0       0       3        0.0%
+   164 ;;BITBANK0            50      0       0       4        0.0%
+   165 ;;BITSFR3              0      0       0       4        0.0%
+   166 ;;SFR3                 0      0       0       4        0.0%
+   167 ;;BANK0               50      0       0       5        0.0%
+   168 ;;BITSFR2              0      0       0       5        0.0%
+   169 ;;SFR2                 0      0       0       5        0.0%
+   170 ;;BITBANK1            50      0       0       6        0.0%
+   171 ;;BANK1               50      0       0       7        0.0%
+   172 ;;BITBANK3            60      0       0       8        0.0%
+   173 ;;BANK3               60      0       0       9        0.0%
+   174 ;;BITBANK2            60      0       0      10        0.0%
+   175 ;;BANK2               60      0       0      11        0.0%
+   176 ;;DATA                 0      0       0      12        0.0%
+   177                           
+   178                           	global	_main
+   179                           psect	maintext
+   180                           
+   181 ;; *************** function _main *****************
+   182 ;; Defined at:
+   183 ;;		line 8 in file "D:\Madhu\madhu pic folder\pic task\SPI\SPI.C"
+   184 ;; Parameters:    Size  Location     Type
+   185 ;;		None
+   186 ;; Auto vars:     Size  Location     Type
+   187 ;;		None
+   188 ;; Return value:  Size  Location     Type
+   189 ;;                  2  564[COMMON] int 
+   190 ;; Registers used:
+   191 ;;		wreg, status,2, status,0, pclath, cstack
+   192 ;; Tracked objects:
+   193 ;;		On entry : 17F/0
+   194 ;;		On exit  : 0/0
+   195 ;;		Unchanged: 0/0
+   196 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   197 ;;      Params:         0       0       0       0       0
+   198 ;;      Locals:         0       0       0       0       0
+   199 ;;      Temps:          0       0       0       0       0
+   200 ;;      Totals:         0       0       0       0       0
+   201 ;;Total ram usage:        0 bytes
+   202 ;; Hardware stack levels required when called:    1
+   203 ;; This function calls:
+   204 ;;		_delay
+   205 ;; This function is called by:
+   206 ;;		Startup code after reset
+   207 ;; This function uses a non-reentrant model
+   208 ;;
+   209                           psect	maintext
+   210                           	file	"D:\Madhu\madhu pic folder\pic task\SPI\SPI.C"
+   211                           	line	8
+   212                           	global	__size_of_main
+   213  00FC                     	__size_of_main	equ	__end_of_main-_main
+   214                           	
+   215  0704                     _main:	
+   216                           	opt	stack 8
+   217                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   218                           	line	9
+   219                           	
+   220  0704                     l1751:	
+   221                           ;SPI.C: 9: TRISC=0X10;
+   222  0704  3010               	movlw	(010h)
+   223  0705  1683               	bsf	status, 5	;RP0=1, select bank1
+   224  0706  1303               	bcf	status, 6	;RP1=0, select bank1
+   225  0707  0087               	movwf	(135)^080h	;volatile
+   226                           	line	10
+   227                           	
+   228  0708                     l1753:	
+   229                           ;SPI.C: 10: PORTC=0X00;
+   230  0708  1283               	bcf	status, 5	;RP0=0, select bank0
+   231  0709  1303               	bcf	status, 6	;RP1=0, select bank0
+   232  070A  0187               	clrf	(7)	;volatile
+   233                           	line	11
+   234                           	
+   235  070B                     l1755:	
+   236                           ;SPI.C: 11: SSPSTAT=0X00;
+   237  070B  1683               	bsf	status, 5	;RP0=1, select bank1
+   238  070C  1303               	bcf	status, 6	;RP1=0, select bank1
+   239  070D  0194               	clrf	(148)^080h	;volatile
+   240                           	line	12
+   241                           ;SPI.C: 12: SSPCON=0X20;
+   242  070E  3020               	movlw	(020h)
+   243  070F  1283               	bcf	status, 5	;RP0=0, select bank0
+   244  0710  1303               	bcf	status, 6	;RP1=0, select bank0
+   245  0711  0094               	movwf	(20)	;volatile
+   246                           	line	16
+   247                           	
+   248  0712                     l1757:	
+   249                           ;SPI.C: 16: RC0=0;
+   250  0712  1007               	bcf	(56/8),(56)&7
+   251                           	line	17
+   252                           ;SPI.C: 17: SSPBUF=0X06;
+   253  0713  3006               	movlw	(06h)
+   254  0714  0093               	movwf	(19)	;volatile
+   255                           	line	18
+   256                           ;SPI.C: 18: while(SSPIF==0);
+   257  0715  2F16               	goto	l565
+   258                           	
+   259  0716                     l566:	
+   260                           	
+   261  0716                     l565:	
+   262  0716  1D8C               	btfss	(99/8),(99)&7
+   263  0717  2F19               	goto	u2151
+   264  0718  2F1A               	goto	u2150
+   265  0719                     u2151:
+   266  0719  2F16               	goto	l566
+   267  071A                     u2150:
+   268                           	
+   269  071A                     l567:	
+   270                           	line	19
+   271                           ;SPI.C: 19: SSPIF=0;
+   272  071A  118C               	bcf	(99/8),(99)&7
+   273                           	line	20
+   274                           ;SPI.C: 20: RC0=1;
+   275  071B  1407               	bsf	(56/8),(56)&7
+   276                           	line	21
+   277                           	
+   278  071C                     l1759:	
+   279                           ;SPI.C: 21: delay(10000);
+   280  071C  3010               	movlw	low(02710h)
+   281  071D  00F0               	movwf	(?_delay)
+   282  071E  3027               	movlw	high(02710h)
+   283  071F  00F1               	movwf	((?_delay))+1
+   284  0720  120A  118A  26F2   	fcall	_delay
+              120A  118A         
+   285                           	line	25
+   286                           	
+   287  0725                     l1761:	
+   288                           ;SPI.C: 25: RC0=0;
+   289  0725  1283               	bcf	status, 5	;RP0=0, select bank0
+   290  0726  1303               	bcf	status, 6	;RP1=0, select bank0
+   291  0727  1007               	bcf	(56/8),(56)&7
+   292                           	line	26
+   293                           	
+   294  0728                     l1763:	
+   295                           ;SPI.C: 26: SSPBUF=0X02;
+   296  0728  3002               	movlw	(02h)
+   297  0729  0093               	movwf	(19)	;volatile
+   298                           	line	27
+   299                           	
+   300  072A                     l1765:	
+   301                           ;SPI.C: 27: delay(1000);
+   302  072A  30E8               	movlw	low(03E8h)
+   303  072B  00F0               	movwf	(?_delay)
+   304  072C  3003               	movlw	high(03E8h)
+   305  072D  00F1               	movwf	((?_delay))+1
+   306  072E  120A  118A  26F2   	fcall	_delay
+              120A  118A         
+   307                           	line	28
+   308                           ;SPI.C: 28: while(SSPIF==0);
+   309  0733  2F34               	goto	l568
+   310                           	
+   311  0734                     l569:	
+   312                           	
+   313  0734                     l568:	
+   314  0734  1283               	bcf	status, 5	;RP0=0, select bank0
+   315  0735  1303               	bcf	status, 6	;RP1=0, select bank0
+   316  0736  1D8C               	btfss	(99/8),(99)&7
+   317  0737  2F39               	goto	u2161
+   318  0738  2F3A               	goto	u2160
+   319  0739                     u2161:
+   320  0739  2F34               	goto	l569
+   321  073A                     u2160:
+   322                           	
+   323  073A                     l570:	
+   324                           	line	29
+   325                           ;SPI.C: 29: SSPIF=0;
+   326  073A  118C               	bcf	(99/8),(99)&7
+   327                           	line	30
+   328                           	
+   329  073B                     l1767:	
+   330                           ;SPI.C: 30: delay(1000);
+   331  073B  30E8               	movlw	low(03E8h)
+   332  073C  00F0               	movwf	(?_delay)
+   333  073D  3003               	movlw	high(03E8h)
+   334  073E  00F1               	movwf	((?_delay))+1
+   335  073F  120A  118A  26F2   	fcall	_delay
+              120A  118A         
+   336                           	line	31
+   337                           	
+   338  0744                     l1769:	
+   339                           ;SPI.C: 31: SSPBUF=0XCF;
+   340  0744  30CF               	movlw	(0CFh)
+   341  0745  1283               	bcf	status, 5	;RP0=0, select bank0
+   342  0746  1303               	bcf	status, 6	;RP1=0, select bank0
+   343  0747  0093               	movwf	(19)	;volatile
+   344                           	line	32
+   345                           	
+   346  0748                     l1771:	
+   347                           ;SPI.C: 32: delay(1000);
+   348  0748  30E8               	movlw	low(03E8h)
+   349  0749  00F0               	movwf	(?_delay)
+   350  074A  3003               	movlw	high(03E8h)
+   351  074B  00F1               	movwf	((?_delay))+1
+   352  074C  120A  118A  26F2   	fcall	_delay
+              120A  118A         
+   353                           	line	33
+   354                           ;SPI.C: 33: while(SSPIF==0);
+   355  0751  2F52               	goto	l571
+   356                           	
+   357  0752                     l572:	
+   358                           	
+   359  0752                     l571:	
+   360  0752  1283               	bcf	status, 5	;RP0=0, select bank0
+   361  0753  1303               	bcf	status, 6	;RP1=0, select bank0
+   362  0754  1D8C               	btfss	(99/8),(99)&7
+   363  0755  2F57               	goto	u2171
+   364  0756  2F58               	goto	u2170
+   365  0757                     u2171:
+   366  0757  2F52               	goto	l572
+   367  0758                     u2170:
+   368                           	
+   369  0758                     l573:	
+   370                           	line	34
+   371                           ;SPI.C: 34: SSPIF=0;
+   372  0758  118C               	bcf	(99/8),(99)&7
+   373                           	line	35
+   374                           	
+   375  0759                     l1773:	
+   376                           ;SPI.C: 35: delay(1000);
+   377  0759  30E8               	movlw	low(03E8h)
+   378  075A  00F0               	movwf	(?_delay)
+   379  075B  3003               	movlw	high(03E8h)
+   380  075C  00F1               	movwf	((?_delay))+1
+   381  075D  120A  118A  26F2   	fcall	_delay
+              120A  118A         
+   382                           	line	36
+   383                           	
+   384  0762                     l1775:	
+   385                           ;SPI.C: 36: SSPBUF='M';
+   386  0762  304D               	movlw	(04Dh)
+   387  0763  1283               	bcf	status, 5	;RP0=0, select bank0
+   388  0764  1303               	bcf	status, 6	;RP1=0, select bank0
+   389  0765  0093               	movwf	(19)	;volatile
+   390                           	line	37
+   391                           ;SPI.C: 37: while(SSPIF==0);
+   392  0766  2F67               	goto	l574
+   393                           	
+   394  0767                     l575:	
+   395                           	
+   396  0767                     l574:	
+   397  0767  1D8C               	btfss	(99/8),(99)&7
+   398  0768  2F6A               	goto	u2181
+   399  0769  2F6B               	goto	u2180
+   400  076A                     u2181:
+   401  076A  2F67               	goto	l575
+   402  076B                     u2180:
+   403                           	
+   404  076B                     l576:	
+   405                           	line	38
+   406                           ;SPI.C: 38: SSPIF=0;
+   407  076B  118C               	bcf	(99/8),(99)&7
+   408                           	line	39
+   409                           	
+   410  076C                     l1777:	
+   411                           ;SPI.C: 39: delay(1000);
+   412  076C  30E8               	movlw	low(03E8h)
+   413  076D  00F0               	movwf	(?_delay)
+   414  076E  3003               	movlw	high(03E8h)
+   415  076F  00F1               	movwf	((?_delay))+1
+   416  0770  120A  118A  26F2   	fcall	_delay
+              120A  118A         
+   417                           	line	40
+   418                           	
+   419  0775                     l1779:	
+   420                           ;SPI.C: 40: RC0=1;
+   421  0775  1283               	bcf	status, 5	;RP0=0, select bank0
+   422  0776  1303               	bcf	status, 6	;RP1=0, select bank0
+   423  0777  1407               	bsf	(56/8),(56)&7
+   424                           	line	41
+   425                           ;SPI.C: 41: delay(10000);
+   426  0778  3010               	movlw	low(02710h)
+   427  0779  00F0               	movwf	(?_delay)
+   428  077A  3027               	movlw	high(02710h)
+   429  077B  00F1               	movwf	((?_delay))+1
+   430  077C  120A  118A  26F2   	fcall	_delay
+              120A  118A         
+   431                           	line	44
+   432                           	
+   433  0781                     l1781:	
+   434                           ;SPI.C: 44: RC0=0;
+   435  0781  1283               	bcf	status, 5	;RP0=0, select bank0
+   436  0782  1303               	bcf	status, 6	;RP1=0, select bank0
+   437  0783  1007               	bcf	(56/8),(56)&7
+   438                           	line	45
+   439                           	
+   440  0784                     l1783:	
+   441                           ;SPI.C: 45: SSPBUF=0X04;
+   442  0784  3004               	movlw	(04h)
+   443  0785  0093               	movwf	(19)	;volatile
+   444                           	line	46
+   445                           ;SPI.C: 46: while(SSPIF==0);
+   446  0786  2F87               	goto	l577
+   447                           	
+   448  0787                     l578:	
+   449                           	
+   450  0787                     l577:	
+   451  0787  1D8C               	btfss	(99/8),(99)&7
+   452  0788  2F8A               	goto	u2191
+   453  0789  2F8B               	goto	u2190
+   454  078A                     u2191:
+   455  078A  2F87               	goto	l578
+   456  078B                     u2190:
+   457                           	
+   458  078B                     l579:	
+   459                           	line	47
+   460                           ;SPI.C: 47: SSPIF=0;
+   461  078B  118C               	bcf	(99/8),(99)&7
+   462                           	line	48
+   463                           	
+   464  078C                     l1785:	
+   465                           ;SPI.C: 48: delay(1000);
+   466  078C  30E8               	movlw	low(03E8h)
+   467  078D  00F0               	movwf	(?_delay)
+   468  078E  3003               	movlw	high(03E8h)
+   469  078F  00F1               	movwf	((?_delay))+1
+   470  0790  120A  118A  26F2   	fcall	_delay
+              120A  118A         
+   471                           	line	49
+   472                           	
+   473  0795                     l1787:	
+   474                           ;SPI.C: 49: RC0=1;
+   475  0795  1283               	bcf	status, 5	;RP0=0, select bank0
+   476  0796  1303               	bcf	status, 6	;RP1=0, select bank0
+   477  0797  1407               	bsf	(56/8),(56)&7
+   478                           	line	50
+   479                           ;SPI.C: 50: delay(10000);
+   480  0798  3010               	movlw	low(02710h)
+   481  0799  00F0               	movwf	(?_delay)
+   482  079A  3027               	movlw	high(02710h)
+   483  079B  00F1               	movwf	((?_delay))+1
+   484  079C  120A  118A  26F2   	fcall	_delay
+              120A  118A         
+   485                           	line	53
+   486                           	
+   487  07A1                     l1789:	
+   488                           ;SPI.C: 53: RC0=0;
+   489  07A1  1283               	bcf	status, 5	;RP0=0, select bank0
+   490  07A2  1303               	bcf	status, 6	;RP1=0, select bank0
+   491  07A3  1007               	bcf	(56/8),(56)&7
+   492                           	line	54
+   493                           	
+   494  07A4                     l1791:	
+   495                           ;SPI.C: 54: SSPBUF=0X03;
+   496  07A4  3003               	movlw	(03h)
+   497  07A5  0093               	movwf	(19)	;volatile
+   498                           	line	55
+   499                           	
+   500  07A6                     l1793:	
+   501                           ;SPI.C: 55: delay(1000);
+   502  07A6  30E8               	movlw	low(03E8h)
+   503  07A7  00F0               	movwf	(?_delay)
+   504  07A8  3003               	movlw	high(03E8h)
+   505  07A9  00F1               	movwf	((?_delay))+1
+   506  07AA  120A  118A  26F2   	fcall	_delay
+              120A  118A         
+   507                           	line	56
+   508                           ;SPI.C: 56: while(SSPIF==0);
+   509  07AF  2FB0               	goto	l580
+   510                           	
+   511  07B0                     l581:	
+   512                           	
+   513  07B0                     l580:	
+   514  07B0  1283               	bcf	status, 5	;RP0=0, select bank0
+   515  07B1  1303               	bcf	status, 6	;RP1=0, select bank0
+   516  07B2  1D8C               	btfss	(99/8),(99)&7
+   517  07B3  2FB5               	goto	u2201
+   518  07B4  2FB6               	goto	u2200
+   519  07B5                     u2201:
+   520  07B5  2FB0               	goto	l581
+   521  07B6                     u2200:
+   522                           	
+   523  07B6                     l582:	
+   524                           	line	58
+   525                           ;SPI.C: 58: SSPIF=0;
+   526  07B6  118C               	bcf	(99/8),(99)&7
+   527                           	line	59
+   528                           	
+   529  07B7                     l1795:	
+   530                           ;SPI.C: 59: SSPBUF=0XCF;
+   531  07B7  30CF               	movlw	(0CFh)
+   532  07B8  0093               	movwf	(19)	;volatile
+   533                           	line	60
+   534                           	
+   535  07B9                     l1797:	
+   536                           ;SPI.C: 60: delay(1000);
+   537  07B9  30E8               	movlw	low(03E8h)
+   538  07BA  00F0               	movwf	(?_delay)
+   539  07BB  3003               	movlw	high(03E8h)
+   540  07BC  00F1               	movwf	((?_delay))+1
+   541  07BD  120A  118A  26F2   	fcall	_delay
+              120A  118A         
+   542                           	line	61
+   543                           ;SPI.C: 61: while(SSPIF==0);
+   544  07C2  2FC3               	goto	l583
+   545                           	
+   546  07C3                     l584:	
+   547                           	
+   548  07C3                     l583:	
+   549  07C3  1283               	bcf	status, 5	;RP0=0, select bank0
+   550  07C4  1303               	bcf	status, 6	;RP1=0, select bank0
+   551  07C5  1D8C               	btfss	(99/8),(99)&7
+   552  07C6  2FC8               	goto	u2211
+   553  07C7  2FC9               	goto	u2210
+   554  07C8                     u2211:
+   555  07C8  2FC3               	goto	l584
+   556  07C9                     u2210:
+   557                           	
+   558  07C9                     l585:	
+   559                           	line	63
+   560                           ;SPI.C: 63: SSPIF=0;
+   561  07C9  118C               	bcf	(99/8),(99)&7
+   562                           	line	64
+   563                           	
+   564  07CA                     l1799:	
+   565                           ;SPI.C: 64: delay(1000);
+   566  07CA  30E8               	movlw	low(03E8h)
+   567  07CB  00F0               	movwf	(?_delay)
+   568  07CC  3003               	movlw	high(03E8h)
+   569  07CD  00F1               	movwf	((?_delay))+1
+   570  07CE  120A  118A  26F2   	fcall	_delay
+              120A  118A         
+   571                           	line	65
+   572                           	
+   573  07D3                     l1801:	
+   574                           ;SPI.C: 65: SSPBUF=0X00;
+   575  07D3  1283               	bcf	status, 5	;RP0=0, select bank0
+   576  07D4  1303               	bcf	status, 6	;RP1=0, select bank0
+   577  07D5  0193               	clrf	(19)	;volatile
+   578                           	line	66
+   579                           	
+   580  07D6                     l1803:	
+   581                           ;SPI.C: 66: delay(1000);
+   582  07D6  30E8               	movlw	low(03E8h)
+   583  07D7  00F0               	movwf	(?_delay)
+   584  07D8  3003               	movlw	high(03E8h)
+   585  07D9  00F1               	movwf	((?_delay))+1
+   586  07DA  120A  118A  26F2   	fcall	_delay
+              120A  118A         
+   587                           	line	67
+   588                           ;SPI.C: 67: while(BF==0);
+   589  07DF  2FE0               	goto	l586
+   590                           	
+   591  07E0                     l587:	
+   592                           	
+   593  07E0                     l586:	
+   594  07E0  1683               	bsf	status, 5	;RP0=1, select bank1
+   595  07E1  1303               	bcf	status, 6	;RP1=0, select bank1
+   596  07E2  1C14               	btfss	(1184/8)^080h,(1184)&7
+   597  07E3  2FE5               	goto	u2221
+   598  07E4  2FE6               	goto	u2220
+   599  07E5                     u2221:
+   600  07E5  2FE0               	goto	l587
+   601  07E6                     u2220:
+   602                           	
+   603  07E6                     l588:	
+   604                           	line	68
+   605                           ;SPI.C: 68: BF=0;
+   606  07E6  1014               	bcf	(1184/8)^080h,(1184)&7
+   607                           	line	69
+   608                           	
+   609  07E7                     l1805:	
+   610                           ;SPI.C: 69: delay(1000);
+   611  07E7  30E8               	movlw	low(03E8h)
+   612  07E8  00F0               	movwf	(?_delay)
+   613  07E9  3003               	movlw	high(03E8h)
+   614  07EA  00F1               	movwf	((?_delay))+1
+   615  07EB  120A  118A  26F2   	fcall	_delay
+              120A  118A         
+   616                           	line	70
+   617                           	
+   618  07F0                     l1807:	
+   619                           ;SPI.C: 70: RC0=1;
+   620  07F0  1283               	bcf	status, 5	;RP0=0, select bank0
+   621  07F1  1303               	bcf	status, 6	;RP1=0, select bank0
+   622  07F2  1407               	bsf	(56/8),(56)&7
+   623                           	line	71
+   624                           ;SPI.C: 71: delay(1000);
+   625  07F3  30E8               	movlw	low(03E8h)
+   626  07F4  00F0               	movwf	(?_delay)
+   627  07F5  3003               	movlw	high(03E8h)
+   628  07F6  00F1               	movwf	((?_delay))+1
+   629  07F7  120A  118A  26F2   	fcall	_delay
+              120A  118A         
+   630                           	line	72
+   631                           ;SPI.C: 72: while(1)
+   632                           	
+   633  07FC                     l589:	
+   634                           	line	74
+   635                           ;SPI.C: 73: {
+   636                           	
+   637  07FC                     l590:	
+   638                           	line	72
+   639  07FC  2FFC               	goto	l589
+   640                           	
+   641  07FD                     l591:	
+   642                           	line	75
+   643                           	
+   644  07FD                     l592:	
+   645                           	global	start
+   646  07FD  120A  118A  2800   	ljmp	start
+   647                           	opt stack 0
+   648                           GLOBAL	__end_of_main
+   649  0800                     	__end_of_main:
+   650 ;; =============== function _main ends ============
+   651                           
+   652                           	signat	_main,90
+   653                           	global	_delay
+   654                           psect	text55,local,class=CODE,delta=2
+   655                           global __ptext55
+   656  06F2                     __ptext55:
+   657                           
+   658 ;; *************** function _delay *****************
+   659 ;; Defined at:
+   660 ;;		line 4 in file "D:\Madhu\madhu pic folder\pic task\SPI\SPI.C"
+   661 ;; Parameters:    Size  Location     Type
+   662 ;;  x               2    0[COMMON] unsigned int 
+   663 ;; Auto vars:     Size  Location     Type
+   664 ;;		None
+   665 ;; Return value:  Size  Location     Type
+   666 ;;		None               void
+   667 ;; Registers used:
+   668 ;;		wreg
+   669 ;; Tracked objects:
+   670 ;;		On entry : 0/0
+   671 ;;		On exit  : 0/0
+   672 ;;		Unchanged: 0/0
+   673 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   674 ;;      Params:         2       0       0       0       0
+   675 ;;      Locals:         0       0       0       0       0
+   676 ;;      Temps:          0       0       0       0       0
+   677 ;;      Totals:         2       0       0       0       0
+   678 ;;Total ram usage:        2 bytes
+   679 ;; Hardware stack levels used:    1
+   680 ;; This function calls:
+   681 ;;		Nothing
+   682 ;; This function is called by:
+   683 ;;		_main
+   684 ;; This function uses a non-reentrant model
+   685 ;;
+   686                           psect	text55
+   687                           	file	"D:\Madhu\madhu pic folder\pic task\SPI\SPI.C"
+   688                           	line	4
+   689                           	global	__size_of_delay
+   690  0012                     	__size_of_delay	equ	__end_of_delay-_delay
+   691                           	
+   692  06F2                     _delay:	
+   693                           	opt	stack 7
+   694                           ; Regs used in _delay: [wreg]
+   695                           	line	5
+   696                           	
+   697  06F2                     l961:	
+   698                           ;SPI.C: 5: while(x--);
+   699  06F2  2EF3               	goto	l559
+   700                           	
+   701  06F3                     l560:	
+   702                           	
+   703  06F3                     l559:	
+   704                           	
+   705  06F3                     l963:	
+   706  06F3  3001               	movlw	low(01h)
+   707  06F4  02F0               	subwf	(delay@x),f
+   708  06F5  3000               	movlw	high(01h)
+   709  06F6  1C03               	skipc
+   710  06F7  03F1               	decf	(delay@x+1),f
+   711  06F8  02F1               	subwf	(delay@x+1),f
+   712  06F9  30FF               	movlw	high(0FFFFh)
+   713  06FA  0671               	xorwf	((delay@x+1)),w
+   714  06FB  1D03               	skipz
+   715  06FC  2EFF               	goto	u15
+   716  06FD  30FF               	movlw	low(0FFFFh)
+   717  06FE  0670               	xorwf	((delay@x)),w
+   718  06FF                     u15:
+   719                           
+   720  06FF  1D03               	skipz
+   721  0700  2F02               	goto	u11
+   722  0701  2F03               	goto	u10
+   723  0702                     u11:
+   724  0702  2EF3               	goto	l560
+   725  0703                     u10:
+   726                           	
+   727  0703                     l561:	
+   728                           	line	6
+   729                           	
+   730  0703                     l562:	
+   731  0703  0008               	return
+   732                           	opt stack 0
+   733                           GLOBAL	__end_of_delay
+   734  0704                     	__end_of_delay:
+   735 ;; =============== function _delay ends ============
+   736                           
+   737                           	signat	_delay,4216
+   738                           psect	text56,local,class=CODE,delta=2
+   739                           global __ptext56
+   740  0000                     __ptext56:
+   741                           	global	btemp
+   742  007E                     	btemp set 07Eh
+   743                           
+   744                           	DABS	1,126,2	;btemp
+   745                           	global	wtemp0
+   746  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.71a build 6446 
+Symbol Table                                                                                   Wed Aug 09 13:40:16 2023
+
+                  _BF 04A0                    u10 0703                    u11 0702                    u15 06FF  
+                 l560 06F3                   l561 0703                   l562 0703                   l570 073A  
+                 l571 0752                   l580 07B0                   l572 0752                   l581 07B0  
+                 l573 0758                   l565 0716                   l590 07FC                   l582 07B6  
+                 l574 0767                   l566 0716                   l559 06F3                   l591 07FD  
+                 l583 07C3                   l575 0767                   l567 071A                   l592 07FD  
+                 l584 07C3                   l576 076B                   l568 0734                   l585 07C9  
+                 l577 0787                   l569 0734                   l586 07E0                   l578 0787  
+                 l587 07E0                   l579 078B                   l588 07E6                   l589 07FC  
+                 l961 06F2                   l963 06F3                   _RC0 0038                  l1801 07D3  
+                l1803 07D6                  l1805 07E7                  l1807 07F0                  l1751 0704  
+                l1761 0725                  l1753 0708                  l1771 0748                  l1763 0728  
+                l1755 070B                  l1781 0781                  l1773 0759                  l1765 072A  
+                l1757 0712                  l1791 07A4                  l1783 0784                  l1775 0762  
+                l1767 073B                  l1759 071C                  l1793 07A6                  l1785 078C  
+                l1777 076C                  l1769 0744                  l1795 07B7                  l1787 0795  
+                l1779 0775                  l1797 07B9                  l1789 07A1                  l1799 07CA  
+                u2200 07B6                  u2201 07B5                  u2210 07C9                  u2211 07C8  
+                u2220 07E6                  u2221 07E5                  u2150 071A                  u2151 0719  
+                u2160 073A                  u2161 0739                  u2170 0758                  u2171 0757  
+                u2180 076B                  u2181 076A                  u2190 078B                  u2191 078A  
+                _main 0704                  btemp 007E                  start 0000                 ?_main 0070  
+               _PORTC 0007                 _TRISC 0087                 _SSPIF 0063                 _delay 06F2  
+               status 0003                 wtemp0 007E          __end_of_main 0800                ??_main 0072  
+              ?_delay 0070                _SSPCON 0014                _SSPBUF 0013                delay@x 0070  
+      __pcstackCOMMON 0070         __end_of_delay 0704               ??_delay 0072            __pmaintext 0704  
+             _SSPSTAT 0094  end_of_initialization 06EE   start_initialization 06EE        __size_of_delay 0012  
+            __ptext55 06F2              __ptext56 0000         __size_of_main 00FC  

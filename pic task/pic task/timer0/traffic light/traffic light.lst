@@ -1,0 +1,1731 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
+                                                                                               Mon Jul 17 19:29:15 2023
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           # 2 "D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+    43                           	psect config,class=CONFIG,delta=2 ;#
+    44                           # 2 "D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+    45  2007  3F72               	dw 0X3F72 ;#
+    46                           	FNCALL	_main,_lcd_command
+    47                           	FNCALL	_main,_lcd_display
+    48                           	FNCALL	_main,_delay4
+    49                           	FNCALL	_main,_delay2
+    50                           	FNCALL	_main,_delay1
+    51                           	FNCALL	_lcd_display,_lcd_data
+    52                           	FNCALL	_lcd_display,_delay4
+    53                           	FNCALL	_delay2,_delay
+    54                           	FNCALL	_delay1,_delay
+    55                           	FNCALL	_lcd_data,_delay4
+    56                           	FNCALL	_lcd_command,_delay4
+    57                           	FNROOT	_main
+    58                           	global	_b
+    59                           	global	_ser1
+    60                           	global	_st1
+    61                           psect	idataBANK0,class=CODE,space=0,delta=2
+    62                           global __pidataBANK0
+    63  065B                     __pidataBANK0:
+    64                           	file	"D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+    65                           	line	26
+    66                           
+    67                           ;initializer for _b
+    68  065B  3401               	retlw	01h
+    69  065C  3400               	retlw	0
+    70                           
+    71  065D  3402               	retlw	02h
+    72  065E  3400               	retlw	0
+    73                           
+    74  065F  3403               	retlw	03h
+    75  0660  3400               	retlw	0
+    76                           
+    77  0661  3404               	retlw	04h
+    78  0662  3400               	retlw	0
+    79                           
+    80  0663  3400               	retlw	0
+    81  0664  3400               	retlw	0
+    82  0665  3400               	retlw	0
+    83  0666  3400               	retlw	0
+    84  0667  3400               	retlw	0
+    85  0668  3400               	retlw	0
+    86  0669  3400               	retlw	0
+    87  066A  3400               	retlw	0
+    88  066B  3400               	retlw	0
+    89  066C  3400               	retlw	0
+    90  066D  3400               	retlw	0
+    91  066E  3400               	retlw	0
+    92                           psect	idataCOMMON,class=CODE,space=0,delta=2
+    93                           global __pidataCOMMON
+    94  061B                     __pidataCOMMON:
+    95                           	line	22
+    96                           
+    97                           ;initializer for _ser1
+    98  061B  3452               	retlw	052h
+    99                           
+   100                           ;initializer for _st1
+   101                           psect	idataBANK0
+   102  066F  3401               	retlw	01h
+   103                           	global	_gpsdata
+   104                           	global	_a
+   105                           	global	_F
+   106                           	global	_T
+   107                           	global	_W
+   108                           	global	_W1
+   109                           	global	_Y
+   110                           	global	_Z
+   111                           	global	_i
+   112                           	global	_p
+   113                           	global	_temp
+   114                           	global	_data_cap1
+   115                           	global	_n
+   116                           	global	_o
+   117                           	global	_x
+   118                           	global	_PORTB
+   119  0006                     _PORTB	set	6
+   120                           	global	_PORTC
+   121  0007                     _PORTC	set	7
+   122                           	global	_PORTD
+   123  0008                     _PORTD	set	8
+   124                           	global	_TMR0
+   125  0001                     _TMR0	set	1
+   126                           	global	_RD1
+   127  0041                     _RD1	set	65
+   128                           	global	_RD2
+   129  0042                     _RD2	set	66
+   130                           	global	_RD3
+   131  0043                     _RD3	set	67
+   132                           	global	_T0IF
+   133  005A                     _T0IF	set	90
+   134                           	global	_TRISB
+   135  0086                     _TRISB	set	134
+   136                           	global	_TRISC
+   137  0087                     _TRISC	set	135
+   138                           	global	_PS0
+   139  0408                     _PS0	set	1032
+   140                           	global	_PS1
+   141  0409                     _PS1	set	1033
+   142                           	global	_PS2
+   143  040A                     _PS2	set	1034
+   144                           	global	_PSA
+   145  040B                     _PSA	set	1035
+   146                           	global	_T0CS
+   147  040D                     _T0CS	set	1037
+   148                           	global	_T0SE
+   149  040C                     _T0SE	set	1036
+   150                           psect	strings,class=STRING,delta=2
+   151                           global __pstrings
+   152  0003                     __pstrings:
+   153                           ;	global	stringdir,stringtab,__stringbase
+   154  0003                     stringtab:
+   155                           ;	String table - string pointers are 1 byte each
+   156  0003                     stringcode:stringdir:
+      + 0003                     stringdir:	
+   157  0003  3000               movlw high(stringdir)
+   158  0004  008A               movwf pclath
+   159  0005  0804               movf fsr,w
+   160  0006  0A84               incf fsr
+   161  0007  0782               	addwf pc
+   162  0008                     __stringbase:
+   163  0008  3400               	retlw	0
+   164                           psect	strings
+   165                           	
+   166  0009                     STR_1:	
+   167  0009  3477               	retlw	119	;'w'
+   168  000A  3465               	retlw	101	;'e'
+   169  000B  346C               	retlw	108	;'l'
+   170  000C  3463               	retlw	99	;'c'
+   171  000D  346F               	retlw	111	;'o'
+   172  000E  346D               	retlw	109	;'m'
+   173  000F  3465               	retlw	101	;'e'
+   174  0010  3400               	retlw	0
+   175                           psect	strings
+   176                           	file	"traffic light.as"
+   177                           	line	#
+   178                           psect cinit,class=CODE,delta=2
+   179                           global start_initialization
+   180  0670                     start_initialization:
+   181                           
+   182                           psect	bssCOMMON,class=COMMON,space=1
+   183                           global __pbssCOMMON
+   184  007C                     __pbssCOMMON:
+   185  007C                     _data_cap1:
+   186  007C                            ds      1
+   187                           
+   188                           psect	dataCOMMON,class=COMMON,space=1
+   189                           global __pdataCOMMON
+   190  007D                     __pdataCOMMON:
+   191                           	file	"D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+   192  007D                     _ser1:
+   193  007D                            ds      1
+   194                           
+   195                           psect	bssBANK0,class=BANK0,space=1
+   196                           global __pbssBANK0
+   197  0020                     __pbssBANK0:
+   198  0020                     _a:
+   199  0020                            ds      20
+   200                           
+   201  0034                     _F:
+   202  0034                            ds      2
+   203                           
+   204  0036                     _T:
+   205  0036                            ds      2
+   206                           
+   207  0038                     _W:
+   208  0038                            ds      2
+   209                           
+   210  003A                     _W1:
+   211  003A                            ds      2
+   212                           
+   213  003C                     _Y:
+   214  003C                            ds      2
+   215                           
+   216  003E                     _Z:
+   217  003E                            ds      2
+   218                           
+   219  0040                     _i:
+   220  0040                            ds      2
+   221                           
+   222  0042                     _p:
+   223  0042                            ds      2
+   224                           
+   225  0044                     _temp:
+   226  0044                            ds      2
+   227                           
+   228  0046                     _n:
+   229  0046                            ds      1
+   230                           
+   231  0047                     _o:
+   232  0047                            ds      1
+   233                           
+   234  0048                     _x:
+   235  0048                            ds      1
+   236                           
+   237                           psect	dataBANK0,class=BANK0,space=1
+   238                           global __pdataBANK0
+   239  0049                     __pdataBANK0:
+   240                           	file	"D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+   241                           	line	26
+   242  0049                     _b:
+   243  0049                            ds      20
+   244                           
+   245                           psect	dataBANK0
+   246                           	file	"D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+   247                           	line	22
+   248  005D                     _st1:
+   249  005D                            ds      1
+   250                           
+   251                           psect	bssBANK1,class=BANK1,space=1
+   252                           global __pbssBANK1
+   253  00A0                     __pbssBANK1:
+   254  00A0                     _gpsdata:
+   255  00A0                            ds      50
+   256                           
+   257                           psect clrtext,class=CODE,delta=2
+   258                           global clear_ram
+   259                           ;	Called with FSR containing the base address, and
+   260                           ;	W with the last address+1
+   261  061C                     clear_ram:
+   262  061C  0064               	clrwdt			;clear the watchdog before getting into this loop
+   263  061D                     clrloop:
+   264  061D  0180               	clrf	indf		;clear RAM location pointed to by FSR
+   265  061E  0A84               	incf	fsr,f		;increment pointer
+   266  061F  0604               	xorwf	fsr,w		;XOR with final address
+   267  0620  1903               	btfsc	status,2	;have we reached the end yet?
+   268  0621  3400               	retlw	0		;all done for this memory range, return
+   269  0622  0604               	xorwf	fsr,w		;XOR again to restore value
+   270  0623  2E1D               	goto	clrloop		;do the next byte
+   271                           
+   272                           ; Clear objects allocated to COMMON
+   273                           psect cinit,class=CODE,delta=2
+   274  0670  01FC               	clrf	((__pbssCOMMON)+0)&07Fh
+   275                           ; Clear objects allocated to BANK0
+   276                           psect cinit,class=CODE,delta=2
+   277  0671  1383               	bcf	status, 7	;select IRP bank0
+   278  0672  3020               	movlw	low(__pbssBANK0)
+   279  0673  0084               	movwf	fsr
+   280  0674  3049               	movlw	low((__pbssBANK0)+029h)
+   281  0675  120A  118A  261C   	fcall	clear_ram
+              120A  118A         
+   282                           ; Clear objects allocated to BANK1
+   283                           psect cinit,class=CODE,delta=2
+   284  067A  30A0               	movlw	low(__pbssBANK1)
+   285  067B  0084               	movwf	fsr
+   286  067C  30D2               	movlw	low((__pbssBANK1)+032h)
+   287  067D  120A  118A  261C   	fcall	clear_ram
+              120A  118A         
+   288                           global btemp
+   289                           psect inittext,class=CODE,delta=2
+   290                           global init_fetch,btemp
+   291                           ;	Called with low address in FSR and high address in W
+   292  0624                     init_fetch:
+   293  0624  087E               	movf btemp,w
+   294  0625  008A               	movwf pclath
+   295  0626  087F               	movf btemp+1,w
+   296  0627  0082               	movwf pc
+   297                           global init_ram
+   298                           ;Called with:
+   299                           ;	high address of idata address in btemp 
+   300                           ;	low address of idata address in btemp+1 
+   301                           ;	low address of data in FSR
+   302                           ;	high address + 1 of data in btemp-1
+   303  0628                     init_ram:
+   304  0628  2624  120A  118A   	fcall init_fetch
+   305  062B  0080               	movwf indf,f
+   306  062C  0A84               	incf fsr,f
+   307  062D  0804               	movf fsr,w
+   308  062E  067D               	xorwf btemp-1,w
+   309  062F  1903               	btfsc status,2
+   310  0630  3400               	retlw 0
+   311  0631  0AFF               	incf btemp+1,f
+   312  0632  1903               	btfsc status,2
+   313  0633  0AFE               	incf btemp,f
+   314  0634  2E28               	goto init_ram
+   315                           ; Initialize objects allocated to BANK0
+   316                           psect cinit,class=CODE,delta=2
+   317                           global init_ram, __pidataBANK0
+   318  0682  305E               	movlw low(__pdataBANK0+21)
+   319  0683  00FD               	movwf btemp-1,f
+   320  0684  3006               	movlw high(__pidataBANK0)
+   321  0685  00FE               	movwf btemp,f
+   322  0686  305B               	movlw low(__pidataBANK0)
+   323  0687  00FF               	movwf btemp+1,f
+   324  0688  3049               	movlw low(__pdataBANK0)
+   325  0689  0084               	movwf fsr,f
+   326  068A  120A  118A  2628   	fcall init_ram
+              120A  118A         
+   327                           ; Initialize objects allocated to COMMON
+   328                           	global __pidataCOMMON
+   329                           psect cinit,class=CODE,delta=2
+   330  068F  120A  118A  261B   	fcall	__pidataCOMMON+0		;fetch initializer
+              120A  118A         
+   331  0694  00FD               	movwf	__pdataCOMMON+0&07fh		
+   332                           psect cinit,class=CODE,delta=2
+   333                           global end_of_initialization
+   334                           
+   335                           ;End of C runtime variable initialization code
+   336                           
+   337  0695                     end_of_initialization:
+   338  0695  0183               clrf status
+   339  0696  120A  118A  2F8D   ljmp _main	;jump to C main() function
+   340                           psect	cstackCOMMON,class=COMMON,space=1
+   341                           global __pcstackCOMMON
+   342  0070                     __pcstackCOMMON:
+   343                           	global	?_delay4
+   344  0070                     ?_delay4:	; 0 bytes @ 0x0
+   345                           	global	?_lcd_display
+   346  0070                     ?_lcd_display:	; 0 bytes @ 0x0
+   347                           	global	?_delay
+   348  0070                     ?_delay:	; 0 bytes @ 0x0
+   349                           	global	??_delay
+   350  0070                     ??_delay:	; 0 bytes @ 0x0
+   351                           	global	?_delay1
+   352  0070                     ?_delay1:	; 0 bytes @ 0x0
+   353                           	global	??_delay1
+   354  0070                     ??_delay1:	; 0 bytes @ 0x0
+   355                           	global	?_delay2
+   356  0070                     ?_delay2:	; 0 bytes @ 0x0
+   357                           	global	??_delay2
+   358  0070                     ??_delay2:	; 0 bytes @ 0x0
+   359                           	global	?_main
+   360  0070                     ?_main:	; 0 bytes @ 0x0
+   361                           	global	delay4@x
+   362  0070                     delay4@x:	; 2 bytes @ 0x0
+   363                           	global	delay1@i
+   364  0070                     delay1@i:	; 2 bytes @ 0x0
+   365                           	global	delay2@i
+   366  0070                     delay2@i:	; 2 bytes @ 0x0
+   367  0070                     	ds	2
+   368                           	global	??_delay4
+   369  0072                     ??_delay4:	; 0 bytes @ 0x2
+   370                           	global	?_lcd_command
+   371  0072                     ?_lcd_command:	; 0 bytes @ 0x2
+   372                           	global	?_lcd_data
+   373  0072                     ?_lcd_data:	; 0 bytes @ 0x2
+   374                           	global	lcd_command@COM
+   375  0072                     lcd_command@COM:	; 2 bytes @ 0x2
+   376                           	global	lcd_data@data
+   377  0072                     lcd_data@data:	; 2 bytes @ 0x2
+   378  0072                     	ds	2
+   379                           	global	??_lcd_command
+   380  0074                     ??_lcd_command:	; 0 bytes @ 0x4
+   381                           	global	??_lcd_data
+   382  0074                     ??_lcd_data:	; 0 bytes @ 0x4
+   383  0074                     	ds	2
+   384                           	global	lcd_command@temp
+   385  0076                     lcd_command@temp:	; 1 bytes @ 0x6
+   386                           	global	lcd_data@val1
+   387  0076                     lcd_data@val1:	; 1 bytes @ 0x6
+   388  0076                     	ds	1
+   389                           	global	??_lcd_display
+   390  0077                     ??_lcd_display:	; 0 bytes @ 0x7
+   391  0077                     	ds	2
+   392                           	global	lcd_display@i
+   393  0079                     lcd_display@i:	; 2 bytes @ 0x9
+   394  0079                     	ds	2
+   395                           	global	lcd_display@m
+   396  007B                     lcd_display@m:	; 1 bytes @ 0xB
+   397  007B                     	ds	1
+   398                           	global	??_main
+   399  007C                     ??_main:	; 0 bytes @ 0xC
+   400 ;;Data sizes: Strings 8, constant 0, data 22, bss 92, persistent 0 stack 0
+   401 ;;Auto spaces:   Size  Autos    Used
+   402 ;; COMMON          14     12      14
+   403 ;; BANK0           80      0      62
+   404 ;; BANK1           80      0      50
+   405 ;; BANK3           96      0       0
+   406 ;; BANK2           96      0       0
+   407                           
+   408 ;;
+   409 ;; Pointer list with targets:
+   410                           
+   411 ;; lcd_display@m	PTR const unsigned char  size(1) Largest target is 8
+   412 ;;		 -> STR_1(CODE[8]), 
+   413 ;;
+   414                           
+   415                           
+   416 ;;
+   417 ;; Critical Paths under _main in COMMON
+   418 ;;
+   419 ;;   _main->_lcd_display
+   420 ;;   _lcd_display->_lcd_data
+   421 ;;   _lcd_data->_delay4
+   422 ;;   _lcd_command->_delay4
+   423 ;;
+   424 ;; Critical Paths under _main in BANK0
+   425 ;;
+   426 ;;   None.
+   427 ;;
+   428 ;; Critical Paths under _main in BANK1
+   429 ;;
+   430 ;;   None.
+   431 ;;
+   432 ;; Critical Paths under _main in BANK3
+   433 ;;
+   434 ;;   None.
+   435 ;;
+   436 ;; Critical Paths under _main in BANK2
+   437 ;;
+   438 ;;   None.
+   439                           
+   440 ;;
+   441 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   442 ;;
+   443                           
+   444 ;;
+   445 ;;Call Graph Tables:
+   446 ;;
+   447 ;; ---------------------------------------------------------------------------------
+   448 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   449 ;; ---------------------------------------------------------------------------------
+   450 ;; (0) _main                                                 0     0      0     270
+   451 ;;                        _lcd_command
+   452 ;;                        _lcd_display
+   453 ;;                             _delay4
+   454 ;;                             _delay2
+   455 ;;                             _delay1
+   456 ;; ---------------------------------------------------------------------------------
+   457 ;; (1) _lcd_display                                          5     5      0     135
+   458 ;;                                              7 COMMON     5     5      0
+   459 ;;                           _lcd_data
+   460 ;;                             _delay4
+   461 ;; ---------------------------------------------------------------------------------
+   462 ;; (1) _delay2                                               2     2      0      30
+   463 ;;                                              0 COMMON     2     2      0
+   464 ;;                              _delay
+   465 ;; ---------------------------------------------------------------------------------
+   466 ;; (1) _delay1                                               2     2      0      30
+   467 ;;                                              0 COMMON     2     2      0
+   468 ;;                              _delay
+   469 ;; ---------------------------------------------------------------------------------
+   470 ;; (2) _lcd_data                                             5     3      2      60
+   471 ;;                                              2 COMMON     5     3      2
+   472 ;;                             _delay4
+   473 ;; ---------------------------------------------------------------------------------
+   474 ;; (1) _lcd_command                                          5     3      2      60
+   475 ;;                                              2 COMMON     5     3      2
+   476 ;;                             _delay4
+   477 ;; ---------------------------------------------------------------------------------
+   478 ;; (2) _delay                                                0     0      0       0
+   479 ;; ---------------------------------------------------------------------------------
+   480 ;; (1) _delay4                                               2     0      2      15
+   481 ;;                                              0 COMMON     2     0      2
+   482 ;; ---------------------------------------------------------------------------------
+   483 ;; Estimated maximum stack depth 2
+   484 ;; ---------------------------------------------------------------------------------
+   485                           
+   486 ;; Call Graph Graphs:
+   487                           
+   488 ;; _main (ROOT)
+   489 ;;   _lcd_command
+   490 ;;     _delay4
+   491 ;;   _lcd_display
+   492 ;;     _lcd_data
+   493 ;;       _delay4
+   494 ;;     _delay4
+   495 ;;   _delay4
+   496 ;;   _delay2
+   497 ;;     _delay
+   498 ;;   _delay1
+   499 ;;     _delay
+   500 ;;
+   501                           
+   502 ;; Address spaces:
+   503                           
+   504 ;;Name               Size   Autos  Total    Cost      Usage
+   505 ;;BANK3               60      0       0       9        0.0%
+   506 ;;BITBANK3            60      0       0       8        0.0%
+   507 ;;SFR3                 0      0       0       4        0.0%
+   508 ;;BITSFR3              0      0       0       4        0.0%
+   509 ;;BANK2               60      0       0      11        0.0%
+   510 ;;BITBANK2            60      0       0      10        0.0%
+   511 ;;SFR2                 0      0       0       5        0.0%
+   512 ;;BITSFR2              0      0       0       5        0.0%
+   513 ;;SFR1                 0      0       0       2        0.0%
+   514 ;;BITSFR1              0      0       0       2        0.0%
+   515 ;;BANK1               50      0      32       7       62.5%
+   516 ;;BITBANK1            50      0       0       6        0.0%
+   517 ;;CODE                 0      0       0       0        0.0%
+   518 ;;DATA                 0      0      81      12        0.0%
+   519 ;;ABS                  0      0      7E       3        0.0%
+   520 ;;NULL                 0      0       0       0        0.0%
+   521 ;;STACK                0      0       3       2        0.0%
+   522 ;;BANK0               50      0      3E       5       77.5%
+   523 ;;BITBANK0            50      0       0       4        0.0%
+   524 ;;SFR0                 0      0       0       1        0.0%
+   525 ;;BITSFR0              0      0       0       1        0.0%
+   526 ;;COMMON               E      C       E       1      100.0%
+   527 ;;BITCOMMON            E      0       0       0        0.0%
+   528 ;;EEDATA             100      0       0       0        0.0%
+   529                           
+   530                           	global	_main
+   531                           psect	maintext,global,class=CODE,delta=2
+   532                           global __pmaintext
+   533  078D                     __pmaintext:
+   534                           
+   535 ;; *************** function _main *****************
+   536 ;; Defined at:
+   537 ;;		line 133 in file "D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+   538 ;; Parameters:    Size  Location     Type
+   539 ;;		None
+   540 ;; Auto vars:     Size  Location     Type
+   541 ;;		None
+   542 ;; Return value:  Size  Location     Type
+   543 ;;		None               void
+   544 ;; Registers used:
+   545 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+0, pclath, cstack
+   546 ;; Tracked objects:
+   547 ;;		On entry : 17F/0
+   548 ;;		On exit  : 0/0
+   549 ;;		Unchanged: 0/0
+   550 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   551 ;;      Params:         0       0       0       0       0
+   552 ;;      Locals:         0       0       0       0       0
+   553 ;;      Temps:          0       0       0       0       0
+   554 ;;      Totals:         0       0       0       0       0
+   555 ;;Total ram usage:        0 bytes
+   556 ;; Hardware stack levels required when called:    3
+   557 ;; This function calls:
+   558 ;;		_lcd_command
+   559 ;;		_lcd_display
+   560 ;;		_delay4
+   561 ;;		_delay2
+   562 ;;		_delay1
+   563 ;; This function is called by:
+   564 ;;		Startup code after reset
+   565 ;; This function uses a non-reentrant model
+   566 ;;
+   567                           psect	maintext
+   568                           	file	"D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+   569                           	line	133
+   570                           	global	__size_of_main
+   571  0073                     	__size_of_main	equ	__end_of_main-_main
+   572                           	
+   573  078D                     _main:	
+   574                           	opt	stack 8
+   575                           ; Regs used in _main: [wreg-fsr0h+status,2-btemp+0+pclath+cstack]
+   576                           	line	134
+   577                           	
+   578  078D                     l1892:	
+   579                           ;traffic light.c: 134: TRISB=0X00;
+   580  078D  1683               	bsf	status, 5	;RP0=1, select bank1
+   581  078E  1303               	bcf	status, 6	;RP1=0, select bank1
+   582  078F  0186               	clrf	(134)^080h	;volatile
+   583                           	line	135
+   584                           ;traffic light.c: 135: PORTB=0X00;
+   585  0790  1283               	bcf	status, 5	;RP0=0, select bank0
+   586  0791  1303               	bcf	status, 6	;RP1=0, select bank0
+   587  0792  0186               	clrf	(6)	;volatile
+   588                           	line	136
+   589                           ;traffic light.c: 136: TRISC=0X00;
+   590  0793  1683               	bsf	status, 5	;RP0=1, select bank1
+   591  0794  1303               	bcf	status, 6	;RP1=0, select bank1
+   592  0795  0187               	clrf	(135)^080h	;volatile
+   593                           	line	137
+   594                           ;traffic light.c: 137: PORTC=0X00;
+   595  0796  1283               	bcf	status, 5	;RP0=0, select bank0
+   596  0797  1303               	bcf	status, 6	;RP1=0, select bank0
+   597  0798  0187               	clrf	(7)	;volatile
+   598                           	line	138
+   599                           	
+   600  0799                     l1894:	
+   601                           ;traffic light.c: 138: lcd_command(0x80);
+   602  0799  3080               	movlw	low(080h)
+   603  079A  00F2               	movwf	(?_lcd_command)
+   604  079B  3000               	movlw	high(080h)
+   605  079C  00F3               	movwf	((?_lcd_command))+1
+   606  079D  120A  118A  26EF   	fcall	_lcd_command
+              120A  118A         
+   607                           	line	139
+   608                           	
+   609  07A2                     l1896:	
+   610                           ;traffic light.c: 139: lcd_display("welcome");
+   611  07A2  3001               	movlw	((STR_1-__stringbase))&0ffh
+   612  07A3  120A  118A  2757   	fcall	_lcd_display
+              120A  118A         
+   613                           	line	140
+   614                           	
+   615  07A8                     l1898:	
+   616                           ;traffic light.c: 140: delay4(10000);delay4(10000);
+   617  07A8  3010               	movlw	low(02710h)
+   618  07A9  00F0               	movwf	(?_delay4)
+   619  07AA  3027               	movlw	high(02710h)
+   620  07AB  00F1               	movwf	((?_delay4))+1
+   621  07AC  120A  118A  2635   	fcall	_delay4
+              120A  118A         
+   622                           	
+   623  07B1                     l1900:	
+   624  07B1  3010               	movlw	low(02710h)
+   625  07B2  00F0               	movwf	(?_delay4)
+   626  07B3  3027               	movlw	high(02710h)
+   627  07B4  00F1               	movwf	((?_delay4))+1
+   628  07B5  120A  118A  2635   	fcall	_delay4
+              120A  118A         
+   629                           	line	141
+   630                           ;traffic light.c: 141: while(1)
+   631                           	
+   632  07BA                     l632:	
+   633                           	line	143
+   634                           	
+   635  07BA                     l1902:	
+   636                           ;traffic light.c: 142: {
+   637                           ;traffic light.c: 143: PORTB=0X14;
+   638  07BA  3014               	movlw	(014h)
+   639  07BB  1283               	bcf	status, 5	;RP0=0, select bank0
+   640  07BC  1303               	bcf	status, 6	;RP1=0, select bank0
+   641  07BD  0086               	movwf	(6)	;volatile
+   642                           	line	144
+   643                           	
+   644  07BE                     l1904:	
+   645                           ;traffic light.c: 144: PORTC=0X01;
+   646  07BE  3001               	movlw	(01h)
+   647  07BF  0087               	movwf	(7)	;volatile
+   648                           	line	145
+   649                           	
+   650  07C0                     l1906:	
+   651                           ;traffic light.c: 145: delay2();
+   652  07C0  120A  118A  26C4   	fcall	_delay2
+              120A  118A         
+   653                           	line	147
+   654                           	
+   655  07C5                     l1908:	
+   656                           ;traffic light.c: 147: PORTB=0X36;
+   657  07C5  3036               	movlw	(036h)
+   658  07C6  1283               	bcf	status, 5	;RP0=0, select bank0
+   659  07C7  1303               	bcf	status, 6	;RP1=0, select bank0
+   660  07C8  0086               	movwf	(6)	;volatile
+   661                           	line	148
+   662                           	
+   663  07C9                     l1910:	
+   664                           ;traffic light.c: 148: PORTC=0X01;
+   665  07C9  3001               	movlw	(01h)
+   666  07CA  0087               	movwf	(7)	;volatile
+   667                           	line	149
+   668                           	
+   669  07CB                     l1912:	
+   670                           ;traffic light.c: 149: delay1();
+   671  07CB  120A  118A  2699   	fcall	_delay1
+              120A  118A         
+   672                           	line	152
+   673                           	
+   674  07D0                     l1914:	
+   675                           ;traffic light.c: 152: PORTB=0X41;
+   676  07D0  3041               	movlw	(041h)
+   677  07D1  1283               	bcf	status, 5	;RP0=0, select bank0
+   678  07D2  1303               	bcf	status, 6	;RP1=0, select bank0
+   679  07D3  0086               	movwf	(6)	;volatile
+   680                           	line	153
+   681                           	
+   682  07D4                     l1916:	
+   683                           ;traffic light.c: 153: PORTC=0X01;
+   684  07D4  3001               	movlw	(01h)
+   685  07D5  0087               	movwf	(7)	;volatile
+   686                           	line	154
+   687                           	
+   688  07D6                     l1918:	
+   689                           ;traffic light.c: 154: delay2();
+   690  07D6  120A  118A  26C4   	fcall	_delay2
+              120A  118A         
+   691                           	line	156
+   692                           	
+   693  07DB                     l1920:	
+   694                           ;traffic light.c: 156: PORTB=0X61;
+   695  07DB  3061               	movlw	(061h)
+   696  07DC  1283               	bcf	status, 5	;RP0=0, select bank0
+   697  07DD  1303               	bcf	status, 6	;RP1=0, select bank0
+   698  07DE  0086               	movwf	(6)	;volatile
+   699                           	line	157
+   700                           	
+   701  07DF                     l1922:	
+   702                           ;traffic light.c: 157: PORTC=0X03;
+   703  07DF  3003               	movlw	(03h)
+   704  07E0  0087               	movwf	(7)	;volatile
+   705                           	line	158
+   706                           	
+   707  07E1                     l1924:	
+   708                           ;traffic light.c: 158: delay1();
+   709  07E1  120A  118A  2699   	fcall	_delay1
+              120A  118A         
+   710                           	line	160
+   711                           	
+   712  07E6                     l1926:	
+   713                           ;traffic light.c: 160: PORTB=0X11;
+   714  07E6  3011               	movlw	(011h)
+   715  07E7  1283               	bcf	status, 5	;RP0=0, select bank0
+   716  07E8  1303               	bcf	status, 6	;RP1=0, select bank0
+   717  07E9  0086               	movwf	(6)	;volatile
+   718                           	line	161
+   719                           	
+   720  07EA                     l1928:	
+   721                           ;traffic light.c: 161: PORTC=0X04;
+   722  07EA  3004               	movlw	(04h)
+   723  07EB  0087               	movwf	(7)	;volatile
+   724                           	line	162
+   725                           	
+   726  07EC                     l1930:	
+   727                           ;traffic light.c: 162: delay2();
+   728  07EC  120A  118A  26C4   	fcall	_delay2
+              120A  118A         
+   729                           	line	164
+   730                           	
+   731  07F1                     l1932:	
+   732                           ;traffic light.c: 164: PORTB=0X13;
+   733  07F1  3013               	movlw	(013h)
+   734  07F2  1283               	bcf	status, 5	;RP0=0, select bank0
+   735  07F3  1303               	bcf	status, 6	;RP1=0, select bank0
+   736  07F4  0086               	movwf	(6)	;volatile
+   737                           	line	165
+   738                           	
+   739  07F5                     l1934:	
+   740                           ;traffic light.c: 165: PORTC=0X06;
+   741  07F5  3006               	movlw	(06h)
+   742  07F6  0087               	movwf	(7)	;volatile
+   743                           	line	166
+   744                           	
+   745  07F7                     l1936:	
+   746                           ;traffic light.c: 166: delay1();
+   747  07F7  120A  118A  2699   	fcall	_delay1
+              120A  118A         
+   748                           	line	167
+   749                           	
+   750  07FC                     l633:	
+   751                           	line	141
+   752  07FC  2FBA               	goto	l632
+   753                           	
+   754  07FD                     l634:	
+   755                           	line	168
+   756                           	
+   757  07FD                     l635:	
+   758                           	global	start
+   759  07FD  120A  118A  2800   	ljmp	start
+   760                           	opt stack 0
+   761                           GLOBAL	__end_of_main
+   762  0800                     	__end_of_main:
+   763 ;; =============== function _main ends ============
+   764                           
+   765                           	signat	_main,88
+   766                           	global	_lcd_display
+   767                           psect	text110,local,class=CODE,delta=2
+   768                           global __ptext110
+   769  0757                     __ptext110:
+   770                           
+   771 ;; *************** function _lcd_display *****************
+   772 ;; Defined at:
+   773 ;;		line 94 in file "D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+   774 ;; Parameters:    Size  Location     Type
+   775 ;;  m               1    wreg     PTR const unsigned char 
+   776 ;;		 -> STR_1(8), 
+   777 ;; Auto vars:     Size  Location     Type
+   778 ;;  m               1   11[COMMON] PTR const unsigned char 
+   779 ;;		 -> STR_1(8), 
+   780 ;;  i               2    9[COMMON] int 
+   781 ;; Return value:  Size  Location     Type
+   782 ;;		None               void
+   783 ;; Registers used:
+   784 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   785 ;; Tracked objects:
+   786 ;;		On entry : 0/0
+   787 ;;		On exit  : 0/0
+   788 ;;		Unchanged: 0/0
+   789 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   790 ;;      Params:         0       0       0       0       0
+   791 ;;      Locals:         3       0       0       0       0
+   792 ;;      Temps:          2       0       0       0       0
+   793 ;;      Totals:         5       0       0       0       0
+   794 ;;Total ram usage:        5 bytes
+   795 ;; Hardware stack levels used:    1
+   796 ;; Hardware stack levels required when called:    2
+   797 ;; This function calls:
+   798 ;;		_lcd_data
+   799 ;;		_delay4
+   800 ;; This function is called by:
+   801 ;;		_main
+   802 ;; This function uses a non-reentrant model
+   803 ;;
+   804                           psect	text110
+   805                           	file	"D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+   806                           	line	94
+   807                           	global	__size_of_lcd_display
+   808  0036                     	__size_of_lcd_display	equ	__end_of_lcd_display-_lcd_display
+   809                           	
+   810  0757                     _lcd_display:	
+   811                           	opt	stack 7
+   812                           ; Regs used in _lcd_display: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   813                           ;lcd_display@m stored from wreg
+   814  0757  00FB               	movwf	(lcd_display@m)
+   815                           	line	95
+   816                           	
+   817  0758                     l1882:	
+   818                           ;traffic light.c: 95: for(int i=0;m[i]!=0;i++)
+   819  0758  3000               	movlw	low(0)
+   820  0759  00F9               	movwf	(lcd_display@i)
+   821  075A  3000               	movlw	high(0)
+   822  075B  00FA               	movwf	((lcd_display@i))+1
+   823  075C  2F7F               	goto	l610
+   824                           	line	96
+   825                           	
+   826  075D                     l611:	
+   827                           	line	97
+   828                           	
+   829  075D                     l1884:	
+   830                           ;traffic light.c: 96: {
+   831                           ;traffic light.c: 97: lcd_data(m[i]);
+   832  075D  0879               	movf	(lcd_display@i),w
+   833  075E  077B               	addwf	(lcd_display@m),w
+   834  075F  0084               	movwf	fsr0
+   835  0760  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+   836  0765  00F7               	movwf	(??_lcd_display+0)+0
+   837  0766  01F8               	clrf	(??_lcd_display+0)+0+1
+   838  0767  0877               	movf	0+(??_lcd_display+0)+0,w
+   839  0768  00F2               	movwf	(?_lcd_data)
+   840  0769  0878               	movf	1+(??_lcd_display+0)+0,w
+   841  076A  00F3               	movwf	(?_lcd_data+1)
+   842  076B  120A  118A  2723   	fcall	_lcd_data
+              120A  118A         
+   843                           	line	98
+   844                           	
+   845  0770                     l1886:	
+   846                           ;traffic light.c: 98: delay4(1000);
+   847  0770  30E8               	movlw	low(03E8h)
+   848  0771  00F0               	movwf	(?_delay4)
+   849  0772  3003               	movlw	high(03E8h)
+   850  0773  00F1               	movwf	((?_delay4))+1
+   851  0774  120A  118A  2635   	fcall	_delay4
+              120A  118A         
+   852                           	line	95
+   853                           	
+   854  0779                     l1888:	
+   855  0779  3001               	movlw	low(01h)
+   856  077A  07F9               	addwf	(lcd_display@i),f
+   857  077B  1803               	skipnc
+   858  077C  0AFA               	incf	(lcd_display@i+1),f
+   859  077D  3000               	movlw	high(01h)
+   860  077E  07FA               	addwf	(lcd_display@i+1),f
+   861                           	
+   862  077F                     l610:	
+   863                           	
+   864  077F                     l1890:	
+   865  077F  0879               	movf	(lcd_display@i),w
+   866  0780  077B               	addwf	(lcd_display@m),w
+   867  0781  0084               	movwf	fsr0
+   868  0782  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+   869  0787  3800               	iorlw	0
+   870  0788  1D03               	skipz
+   871  0789  2F8B               	goto	u2221
+   872  078A  2F8C               	goto	u2220
+   873  078B                     u2221:
+   874  078B  2F5D               	goto	l611
+   875  078C                     u2220:
+   876                           	
+   877  078C                     l612:	
+   878                           	line	100
+   879                           	
+   880  078C                     l613:	
+   881  078C  0008               	return
+   882                           	opt stack 0
+   883                           GLOBAL	__end_of_lcd_display
+   884  078D                     	__end_of_lcd_display:
+   885 ;; =============== function _lcd_display ends ============
+   886                           
+   887                           	signat	_lcd_display,4216
+   888                           	global	_delay2
+   889                           psect	text111,local,class=CODE,delta=2
+   890                           global __ptext111
+   891  06C4                     __ptext111:
+   892                           
+   893 ;; *************** function _delay2 *****************
+   894 ;; Defined at:
+   895 ;;		line 125 in file "D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+   896 ;; Parameters:    Size  Location     Type
+   897 ;;		None
+   898 ;; Auto vars:     Size  Location     Type
+   899 ;;  i               2    0[COMMON] int 
+   900 ;; Return value:  Size  Location     Type
+   901 ;;		None               void
+   902 ;; Registers used:
+   903 ;;		wreg, status,2, status,0, btemp+0, pclath, cstack
+   904 ;; Tracked objects:
+   905 ;;		On entry : 0/0
+   906 ;;		On exit  : 0/0
+   907 ;;		Unchanged: 0/0
+   908 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   909 ;;      Params:         0       0       0       0       0
+   910 ;;      Locals:         2       0       0       0       0
+   911 ;;      Temps:          0       0       0       0       0
+   912 ;;      Totals:         2       0       0       0       0
+   913 ;;Total ram usage:        2 bytes
+   914 ;; Hardware stack levels used:    1
+   915 ;; Hardware stack levels required when called:    1
+   916 ;; This function calls:
+   917 ;;		_delay
+   918 ;; This function is called by:
+   919 ;;		_main
+   920 ;; This function uses a non-reentrant model
+   921 ;;
+   922                           psect	text111
+   923                           	file	"D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+   924                           	line	125
+   925                           	global	__size_of_delay2
+   926  002B                     	__size_of_delay2	equ	__end_of_delay2-_delay2
+   927                           	
+   928  06C4                     _delay2:	
+   929                           	opt	stack 7
+   930                           ; Regs used in _delay2: [wreg+status,2-btemp+0+pclath+cstack]
+   931                           	line	126
+   932                           	
+   933  06C4                     l1870:	
+   934                           ;traffic light.c: 126: for(int i=0;i<=500;i++)
+   935  06C4  3000               	movlw	low(0)
+   936  06C5  00F0               	movwf	(delay2@i)
+   937  06C6  3000               	movlw	high(0)
+   938  06C7  00F1               	movwf	((delay2@i))+1
+   939                           	
+   940  06C8                     l1872:	
+   941  06C8  0871               	movf	(delay2@i+1),w
+   942  06C9  3A80               	xorlw	80h
+   943  06CA  00FE               	movwf	btemp+0
+   944  06CB  3081               	movlw	(high(01F5h))^80h
+   945  06CC  027E               	subwf	btemp+0,w
+   946  06CD  1D03               	skipz
+   947  06CE  2ED1               	goto	u2205
+   948  06CF  30F5               	movlw	low(01F5h)
+   949  06D0  0270               	subwf	(delay2@i),w
+   950  06D1                     u2205:
+   951                           
+   952  06D1  1C03               	skipc
+   953  06D2  2ED4               	goto	u2201
+   954  06D3  2ED5               	goto	u2200
+   955  06D4                     u2201:
+   956  06D4  2ED6               	goto	l627
+   957  06D5                     u2200:
+   958                           	
+   959  06D5                     l1874:	
+   960  06D5  2EEE               	goto	l628
+   961                           	line	127
+   962                           	
+   963  06D6                     l627:	
+   964                           	line	128
+   965                           	
+   966  06D6                     l1876:	
+   967                           ;traffic light.c: 127: {
+   968                           ;traffic light.c: 128: delay();
+   969  06D6  120A  118A  2647   	fcall	_delay
+              120A  118A         
+   970                           	line	126
+   971                           	
+   972  06DB                     l1878:	
+   973  06DB  3001               	movlw	low(01h)
+   974  06DC  07F0               	addwf	(delay2@i),f
+   975  06DD  1803               	skipnc
+   976  06DE  0AF1               	incf	(delay2@i+1),f
+   977  06DF  3000               	movlw	high(01h)
+   978  06E0  07F1               	addwf	(delay2@i+1),f
+   979                           	
+   980  06E1                     l1880:	
+   981  06E1  0871               	movf	(delay2@i+1),w
+   982  06E2  3A80               	xorlw	80h
+   983  06E3  00FE               	movwf	btemp+0
+   984  06E4  3081               	movlw	(high(01F5h))^80h
+   985  06E5  027E               	subwf	btemp+0,w
+   986  06E6  1D03               	skipz
+   987  06E7  2EEA               	goto	u2215
+   988  06E8  30F5               	movlw	low(01F5h)
+   989  06E9  0270               	subwf	(delay2@i),w
+   990  06EA                     u2215:
+   991                           
+   992  06EA  1C03               	skipc
+   993  06EB  2EED               	goto	u2211
+   994  06EC  2EEE               	goto	u2210
+   995  06ED                     u2211:
+   996  06ED  2ED6               	goto	l627
+   997  06EE                     u2210:
+   998                           	
+   999  06EE                     l628:	
+  1000                           	line	130
+  1001                           	
+  1002  06EE                     l629:	
+  1003  06EE  0008               	return
+  1004                           	opt stack 0
+  1005                           GLOBAL	__end_of_delay2
+  1006  06EF                     	__end_of_delay2:
+  1007 ;; =============== function _delay2 ends ============
+  1008                           
+  1009                           	signat	_delay2,88
+  1010                           	global	_delay1
+  1011                           psect	text112,local,class=CODE,delta=2
+  1012                           global __ptext112
+  1013  0699                     __ptext112:
+  1014                           
+  1015 ;; *************** function _delay1 *****************
+  1016 ;; Defined at:
+  1017 ;;		line 117 in file "D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+  1018 ;; Parameters:    Size  Location     Type
+  1019 ;;		None
+  1020 ;; Auto vars:     Size  Location     Type
+  1021 ;;  i               2    0[COMMON] int 
+  1022 ;; Return value:  Size  Location     Type
+  1023 ;;		None               void
+  1024 ;; Registers used:
+  1025 ;;		wreg, status,2, status,0, btemp+0, pclath, cstack
+  1026 ;; Tracked objects:
+  1027 ;;		On entry : 0/0
+  1028 ;;		On exit  : 0/0
+  1029 ;;		Unchanged: 0/0
+  1030 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1031 ;;      Params:         0       0       0       0       0
+  1032 ;;      Locals:         2       0       0       0       0
+  1033 ;;      Temps:          0       0       0       0       0
+  1034 ;;      Totals:         2       0       0       0       0
+  1035 ;;Total ram usage:        2 bytes
+  1036 ;; Hardware stack levels used:    1
+  1037 ;; Hardware stack levels required when called:    1
+  1038 ;; This function calls:
+  1039 ;;		_delay
+  1040 ;; This function is called by:
+  1041 ;;		_main
+  1042 ;; This function uses a non-reentrant model
+  1043 ;;
+  1044                           psect	text112
+  1045                           	file	"D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+  1046                           	line	117
+  1047                           	global	__size_of_delay1
+  1048  002B                     	__size_of_delay1	equ	__end_of_delay1-_delay1
+  1049                           	
+  1050  0699                     _delay1:	
+  1051                           	opt	stack 7
+  1052                           ; Regs used in _delay1: [wreg+status,2-btemp+0+pclath+cstack]
+  1053                           	line	118
+  1054                           	
+  1055  0699                     l1858:	
+  1056                           ;traffic light.c: 118: for(int i=0;i<=100;i++)
+  1057  0699  3000               	movlw	low(0)
+  1058  069A  00F0               	movwf	(delay1@i)
+  1059  069B  3000               	movlw	high(0)
+  1060  069C  00F1               	movwf	((delay1@i))+1
+  1061                           	
+  1062  069D                     l1860:	
+  1063  069D  0871               	movf	(delay1@i+1),w
+  1064  069E  3A80               	xorlw	80h
+  1065  069F  00FE               	movwf	btemp+0
+  1066  06A0  3080               	movlw	(high(065h))^80h
+  1067  06A1  027E               	subwf	btemp+0,w
+  1068  06A2  1D03               	skipz
+  1069  06A3  2EA6               	goto	u2185
+  1070  06A4  3065               	movlw	low(065h)
+  1071  06A5  0270               	subwf	(delay1@i),w
+  1072  06A6                     u2185:
+  1073                           
+  1074  06A6  1C03               	skipc
+  1075  06A7  2EA9               	goto	u2181
+  1076  06A8  2EAA               	goto	u2180
+  1077  06A9                     u2181:
+  1078  06A9  2EAB               	goto	l622
+  1079  06AA                     u2180:
+  1080                           	
+  1081  06AA                     l1862:	
+  1082  06AA  2EC3               	goto	l623
+  1083                           	line	119
+  1084                           	
+  1085  06AB                     l622:	
+  1086                           	line	120
+  1087                           	
+  1088  06AB                     l1864:	
+  1089                           ;traffic light.c: 119: {
+  1090                           ;traffic light.c: 120: delay();
+  1091  06AB  120A  118A  2647   	fcall	_delay
+              120A  118A         
+  1092                           	line	118
+  1093                           	
+  1094  06B0                     l1866:	
+  1095  06B0  3001               	movlw	low(01h)
+  1096  06B1  07F0               	addwf	(delay1@i),f
+  1097  06B2  1803               	skipnc
+  1098  06B3  0AF1               	incf	(delay1@i+1),f
+  1099  06B4  3000               	movlw	high(01h)
+  1100  06B5  07F1               	addwf	(delay1@i+1),f
+  1101                           	
+  1102  06B6                     l1868:	
+  1103  06B6  0871               	movf	(delay1@i+1),w
+  1104  06B7  3A80               	xorlw	80h
+  1105  06B8  00FE               	movwf	btemp+0
+  1106  06B9  3080               	movlw	(high(065h))^80h
+  1107  06BA  027E               	subwf	btemp+0,w
+  1108  06BB  1D03               	skipz
+  1109  06BC  2EBF               	goto	u2195
+  1110  06BD  3065               	movlw	low(065h)
+  1111  06BE  0270               	subwf	(delay1@i),w
+  1112  06BF                     u2195:
+  1113                           
+  1114  06BF  1C03               	skipc
+  1115  06C0  2EC2               	goto	u2191
+  1116  06C1  2EC3               	goto	u2190
+  1117  06C2                     u2191:
+  1118  06C2  2EAB               	goto	l622
+  1119  06C3                     u2190:
+  1120                           	
+  1121  06C3                     l623:	
+  1122                           	line	122
+  1123                           	
+  1124  06C3                     l624:	
+  1125  06C3  0008               	return
+  1126                           	opt stack 0
+  1127                           GLOBAL	__end_of_delay1
+  1128  06C4                     	__end_of_delay1:
+  1129 ;; =============== function _delay1 ends ============
+  1130                           
+  1131                           	signat	_delay1,88
+  1132                           	global	_lcd_data
+  1133                           psect	text113,local,class=CODE,delta=2
+  1134                           global __ptext113
+  1135  0723                     __ptext113:
+  1136                           
+  1137 ;; *************** function _lcd_data *****************
+  1138 ;; Defined at:
+  1139 ;;		line 60 in file "D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+  1140 ;; Parameters:    Size  Location     Type
+  1141 ;;  data            2    2[COMMON] unsigned int 
+  1142 ;; Auto vars:     Size  Location     Type
+  1143 ;;  val1            1    6[COMMON] unsigned char 
+  1144 ;; Return value:  Size  Location     Type
+  1145 ;;		None               void
+  1146 ;; Registers used:
+  1147 ;;		wreg, status,2, status,0, pclath, cstack
+  1148 ;; Tracked objects:
+  1149 ;;		On entry : 0/0
+  1150 ;;		On exit  : 0/0
+  1151 ;;		Unchanged: 0/0
+  1152 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1153 ;;      Params:         2       0       0       0       0
+  1154 ;;      Locals:         1       0       0       0       0
+  1155 ;;      Temps:          2       0       0       0       0
+  1156 ;;      Totals:         5       0       0       0       0
+  1157 ;;Total ram usage:        5 bytes
+  1158 ;; Hardware stack levels used:    1
+  1159 ;; Hardware stack levels required when called:    1
+  1160 ;; This function calls:
+  1161 ;;		_delay4
+  1162 ;; This function is called by:
+  1163 ;;		_lcd_display
+  1164 ;; This function uses a non-reentrant model
+  1165 ;;
+  1166                           psect	text113
+  1167                           	file	"D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+  1168                           	line	60
+  1169                           	global	__size_of_lcd_data
+  1170  0034                     	__size_of_lcd_data	equ	__end_of_lcd_data-_lcd_data
+  1171                           	
+  1172  0723                     _lcd_data:	
+  1173                           	opt	stack 6
+  1174                           ; Regs used in _lcd_data: [wreg+status,2+status,0+pclath+cstack]
+  1175                           	line	62
+  1176                           	
+  1177  0723                     l1832:	
+  1178                           ;traffic light.c: 61: unsigned char val1;
+  1179                           ;traffic light.c: 62: PORTD=data&0xf0;
+  1180  0723  0872               	movf	(lcd_data@data),w
+  1181  0724  39F0               	andlw	0F0h
+  1182  0725  1283               	bcf	status, 5	;RP0=0, select bank0
+  1183  0726  1303               	bcf	status, 6	;RP1=0, select bank0
+  1184  0727  0088               	movwf	(8)	;volatile
+  1185                           	line	63
+  1186                           	
+  1187  0728                     l1834:	
+  1188                           ;traffic light.c: 63: RD1=1;
+  1189  0728  1488               	bsf	(65/8),(65)&7
+  1190                           	line	64
+  1191                           	
+  1192  0729                     l1836:	
+  1193                           ;traffic light.c: 64: RD2=0;
+  1194  0729  1108               	bcf	(66/8),(66)&7
+  1195                           	line	65
+  1196                           	
+  1197  072A                     l1838:	
+  1198                           ;traffic light.c: 65: RD3=1;
+  1199  072A  1588               	bsf	(67/8),(67)&7
+  1200                           	line	66
+  1201                           	
+  1202  072B                     l1840:	
+  1203                           ;traffic light.c: 66: delay4(1000);
+  1204  072B  30E8               	movlw	low(03E8h)
+  1205  072C  00F0               	movwf	(?_delay4)
+  1206  072D  3003               	movlw	high(03E8h)
+  1207  072E  00F1               	movwf	((?_delay4))+1
+  1208  072F  120A  118A  2635   	fcall	_delay4
+              120A  118A         
+  1209                           	line	67
+  1210                           	
+  1211  0734                     l1842:	
+  1212                           ;traffic light.c: 67: RD3=0;
+  1213  0734  1283               	bcf	status, 5	;RP0=0, select bank0
+  1214  0735  1303               	bcf	status, 6	;RP1=0, select bank0
+  1215  0736  1188               	bcf	(67/8),(67)&7
+  1216                           	line	68
+  1217                           	
+  1218  0737                     l1844:	
+  1219                           ;traffic light.c: 68: val1=data<<4;
+  1220  0737  0872               	movf	(lcd_data@data),w
+  1221  0738  00F4               	movwf	(??_lcd_data+0)+0
+  1222  0739  3003               	movlw	(04h)-1
+  1223  073A                     u2175:
+  1224  073A  1003               	clrc
+  1225  073B  0DF4               	rlf	(??_lcd_data+0)+0,f
+  1226  073C  3EFF               	addlw	-1
+  1227  073D  1D03               	skipz
+  1228  073E  2F3A               	goto	u2175
+  1229  073F  1003               	clrc
+  1230  0740  0D74               	rlf	(??_lcd_data+0)+0,w
+  1231  0741  00F5               	movwf	(??_lcd_data+1)+0
+  1232  0742  0875               	movf	(??_lcd_data+1)+0,w
+  1233  0743  00F6               	movwf	(lcd_data@val1)
+  1234                           	line	69
+  1235                           	
+  1236  0744                     l1846:	
+  1237                           ;traffic light.c: 69: PORTD=val1&0Xf0;
+  1238  0744  0876               	movf	(lcd_data@val1),w
+  1239  0745  39F0               	andlw	0F0h
+  1240  0746  0088               	movwf	(8)	;volatile
+  1241                           	line	70
+  1242                           	
+  1243  0747                     l1848:	
+  1244                           ;traffic light.c: 70: RD1=1;
+  1245  0747  1488               	bsf	(65/8),(65)&7
+  1246                           	line	71
+  1247                           	
+  1248  0748                     l1850:	
+  1249                           ;traffic light.c: 71: RD2=0;
+  1250  0748  1108               	bcf	(66/8),(66)&7
+  1251                           	line	72
+  1252                           	
+  1253  0749                     l1852:	
+  1254                           ;traffic light.c: 72: RD3=1;
+  1255  0749  1588               	bsf	(67/8),(67)&7
+  1256                           	line	73
+  1257                           	
+  1258  074A                     l1854:	
+  1259                           ;traffic light.c: 73: delay4(1000);
+  1260  074A  30E8               	movlw	low(03E8h)
+  1261  074B  00F0               	movwf	(?_delay4)
+  1262  074C  3003               	movlw	high(03E8h)
+  1263  074D  00F1               	movwf	((?_delay4))+1
+  1264  074E  120A  118A  2635   	fcall	_delay4
+              120A  118A         
+  1265                           	line	74
+  1266                           	
+  1267  0753                     l1856:	
+  1268                           ;traffic light.c: 74: RD3=0;
+  1269  0753  1283               	bcf	status, 5	;RP0=0, select bank0
+  1270  0754  1303               	bcf	status, 6	;RP1=0, select bank0
+  1271  0755  1188               	bcf	(67/8),(67)&7
+  1272                           	line	82
+  1273                           	
+  1274  0756                     l604:	
+  1275  0756  0008               	return
+  1276                           	opt stack 0
+  1277                           GLOBAL	__end_of_lcd_data
+  1278  0757                     	__end_of_lcd_data:
+  1279 ;; =============== function _lcd_data ends ============
+  1280                           
+  1281                           	signat	_lcd_data,4216
+  1282                           	global	_lcd_command
+  1283                           psect	text114,local,class=CODE,delta=2
+  1284                           global __ptext114
+  1285  06EF                     __ptext114:
+  1286                           
+  1287 ;; *************** function _lcd_command *****************
+  1288 ;; Defined at:
+  1289 ;;		line 36 in file "D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+  1290 ;; Parameters:    Size  Location     Type
+  1291 ;;  COM             2    2[COMMON] unsigned int 
+  1292 ;; Auto vars:     Size  Location     Type
+  1293 ;;  temp            1    6[COMMON] unsigned char 
+  1294 ;; Return value:  Size  Location     Type
+  1295 ;;		None               void
+  1296 ;; Registers used:
+  1297 ;;		wreg, status,2, status,0, pclath, cstack
+  1298 ;; Tracked objects:
+  1299 ;;		On entry : 0/0
+  1300 ;;		On exit  : 0/0
+  1301 ;;		Unchanged: 0/0
+  1302 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1303 ;;      Params:         2       0       0       0       0
+  1304 ;;      Locals:         1       0       0       0       0
+  1305 ;;      Temps:          2       0       0       0       0
+  1306 ;;      Totals:         5       0       0       0       0
+  1307 ;;Total ram usage:        5 bytes
+  1308 ;; Hardware stack levels used:    1
+  1309 ;; Hardware stack levels required when called:    1
+  1310 ;; This function calls:
+  1311 ;;		_delay4
+  1312 ;; This function is called by:
+  1313 ;;		_main
+  1314 ;;		_lcd_init
+  1315 ;; This function uses a non-reentrant model
+  1316 ;;
+  1317                           psect	text114
+  1318                           	file	"D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+  1319                           	line	36
+  1320                           	global	__size_of_lcd_command
+  1321  0034                     	__size_of_lcd_command	equ	__end_of_lcd_command-_lcd_command
+  1322                           	
+  1323  06EF                     _lcd_command:	
+  1324                           	opt	stack 7
+  1325                           ; Regs used in _lcd_command: [wreg+status,2+status,0+pclath+cstack]
+  1326                           	line	38
+  1327                           	
+  1328  06EF                     l1806:	
+  1329                           ;traffic light.c: 37: unsigned char temp;
+  1330                           ;traffic light.c: 38: PORTD=COM&0Xf0;
+  1331  06EF  0872               	movf	(lcd_command@COM),w
+  1332  06F0  39F0               	andlw	0F0h
+  1333  06F1  1283               	bcf	status, 5	;RP0=0, select bank0
+  1334  06F2  1303               	bcf	status, 6	;RP1=0, select bank0
+  1335  06F3  0088               	movwf	(8)	;volatile
+  1336                           	line	39
+  1337                           	
+  1338  06F4                     l1808:	
+  1339                           ;traffic light.c: 39: RD1=0;
+  1340  06F4  1088               	bcf	(65/8),(65)&7
+  1341                           	line	40
+  1342                           	
+  1343  06F5                     l1810:	
+  1344                           ;traffic light.c: 40: RD2=0;
+  1345  06F5  1108               	bcf	(66/8),(66)&7
+  1346                           	line	41
+  1347                           	
+  1348  06F6                     l1812:	
+  1349                           ;traffic light.c: 41: RD3=1;
+  1350  06F6  1588               	bsf	(67/8),(67)&7
+  1351                           	line	42
+  1352                           	
+  1353  06F7                     l1814:	
+  1354                           ;traffic light.c: 42: delay4(200);
+  1355  06F7  30C8               	movlw	low(0C8h)
+  1356  06F8  00F0               	movwf	(?_delay4)
+  1357  06F9  3000               	movlw	high(0C8h)
+  1358  06FA  00F1               	movwf	((?_delay4))+1
+  1359  06FB  120A  118A  2635   	fcall	_delay4
+              120A  118A         
+  1360                           	line	43
+  1361                           	
+  1362  0700                     l1816:	
+  1363                           ;traffic light.c: 43: RD3=0;
+  1364  0700  1283               	bcf	status, 5	;RP0=0, select bank0
+  1365  0701  1303               	bcf	status, 6	;RP1=0, select bank0
+  1366  0702  1188               	bcf	(67/8),(67)&7
+  1367                           	line	44
+  1368                           	
+  1369  0703                     l1818:	
+  1370                           ;traffic light.c: 44: temp=COM<<4;
+  1371  0703  0872               	movf	(lcd_command@COM),w
+  1372  0704  00F4               	movwf	(??_lcd_command+0)+0
+  1373  0705  3003               	movlw	(04h)-1
+  1374  0706                     u2165:
+  1375  0706  1003               	clrc
+  1376  0707  0DF4               	rlf	(??_lcd_command+0)+0,f
+  1377  0708  3EFF               	addlw	-1
+  1378  0709  1D03               	skipz
+  1379  070A  2F06               	goto	u2165
+  1380  070B  1003               	clrc
+  1381  070C  0D74               	rlf	(??_lcd_command+0)+0,w
+  1382  070D  00F5               	movwf	(??_lcd_command+1)+0
+  1383  070E  0875               	movf	(??_lcd_command+1)+0,w
+  1384  070F  00F6               	movwf	(lcd_command@temp)
+  1385                           	line	45
+  1386                           	
+  1387  0710                     l1820:	
+  1388                           ;traffic light.c: 45: PORTD=temp&0Xf0;
+  1389  0710  0876               	movf	(lcd_command@temp),w
+  1390  0711  39F0               	andlw	0F0h
+  1391  0712  0088               	movwf	(8)	;volatile
+  1392                           	line	46
+  1393                           	
+  1394  0713                     l1822:	
+  1395                           ;traffic light.c: 46: RD1=0;
+  1396  0713  1088               	bcf	(65/8),(65)&7
+  1397                           	line	47
+  1398                           	
+  1399  0714                     l1824:	
+  1400                           ;traffic light.c: 47: RD2=0;
+  1401  0714  1108               	bcf	(66/8),(66)&7
+  1402                           	line	48
+  1403                           	
+  1404  0715                     l1826:	
+  1405                           ;traffic light.c: 48: RD3=1;
+  1406  0715  1588               	bsf	(67/8),(67)&7
+  1407                           	line	49
+  1408                           	
+  1409  0716                     l1828:	
+  1410                           ;traffic light.c: 49: delay4(200);
+  1411  0716  30C8               	movlw	low(0C8h)
+  1412  0717  00F0               	movwf	(?_delay4)
+  1413  0718  3000               	movlw	high(0C8h)
+  1414  0719  00F1               	movwf	((?_delay4))+1
+  1415  071A  120A  118A  2635   	fcall	_delay4
+              120A  118A         
+  1416                           	line	50
+  1417                           	
+  1418  071F                     l1830:	
+  1419                           ;traffic light.c: 50: RD3=0;
+  1420  071F  1283               	bcf	status, 5	;RP0=0, select bank0
+  1421  0720  1303               	bcf	status, 6	;RP1=0, select bank0
+  1422  0721  1188               	bcf	(67/8),(67)&7
+  1423                           	line	58
+  1424                           	
+  1425  0722                     l601:	
+  1426  0722  0008               	return
+  1427                           	opt stack 0
+  1428                           GLOBAL	__end_of_lcd_command
+  1429  0723                     	__end_of_lcd_command:
+  1430 ;; =============== function _lcd_command ends ============
+  1431                           
+  1432                           	signat	_lcd_command,4216
+  1433                           	global	_delay
+  1434                           psect	text115,local,class=CODE,delta=2
+  1435                           global __ptext115
+  1436  0647                     __ptext115:
+  1437                           
+  1438 ;; *************** function _delay *****************
+  1439 ;; Defined at:
+  1440 ;;		line 104 in file "D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+  1441 ;; Parameters:    Size  Location     Type
+  1442 ;;		None
+  1443 ;; Auto vars:     Size  Location     Type
+  1444 ;;		None
+  1445 ;; Return value:  Size  Location     Type
+  1446 ;;		None               void
+  1447 ;; Registers used:
+  1448 ;;		wreg, status,2
+  1449 ;; Tracked objects:
+  1450 ;;		On entry : 0/0
+  1451 ;;		On exit  : 0/0
+  1452 ;;		Unchanged: 0/0
+  1453 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1454 ;;      Params:         0       0       0       0       0
+  1455 ;;      Locals:         0       0       0       0       0
+  1456 ;;      Temps:          0       0       0       0       0
+  1457 ;;      Totals:         0       0       0       0       0
+  1458 ;;Total ram usage:        0 bytes
+  1459 ;; Hardware stack levels used:    1
+  1460 ;; This function calls:
+  1461 ;;		Nothing
+  1462 ;; This function is called by:
+  1463 ;;		_delay1
+  1464 ;;		_delay2
+  1465 ;; This function uses a non-reentrant model
+  1466 ;;
+  1467                           psect	text115
+  1468                           	file	"D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+  1469                           	line	104
+  1470                           	global	__size_of_delay
+  1471  0014                     	__size_of_delay	equ	__end_of_delay-_delay
+  1472                           	
+  1473  0647                     _delay:	
+  1474                           	opt	stack 6
+  1475                           ; Regs used in _delay: [wreg+status,2]
+  1476                           	line	105
+  1477                           	
+  1478  0647                     l1014:	
+  1479                           ;traffic light.c: 105: T0CS=0;
+  1480  0647  1683               	bsf	status, 5	;RP0=1, select bank1
+  1481  0648  1303               	bcf	status, 6	;RP1=0, select bank1
+  1482  0649  1281               	bcf	(1037/8)^080h,(1037)&7
+  1483                           	line	106
+  1484                           ;traffic light.c: 106: T0SE=0;
+  1485  064A  1201               	bcf	(1036/8)^080h,(1036)&7
+  1486                           	line	107
+  1487                           ;traffic light.c: 107: PSA=0;
+  1488  064B  1181               	bcf	(1035/8)^080h,(1035)&7
+  1489                           	line	108
+  1490                           ;traffic light.c: 108: PS0=1;
+  1491  064C  1401               	bsf	(1032/8)^080h,(1032)&7
+  1492                           	line	109
+  1493                           ;traffic light.c: 109: PS1=1;
+  1494  064D  1481               	bsf	(1033/8)^080h,(1033)&7
+  1495                           	line	110
+  1496                           ;traffic light.c: 110: PS2=1;
+  1497  064E  1501               	bsf	(1034/8)^080h,(1034)&7
+  1498                           	line	111
+  1499                           	
+  1500  064F                     l1016:	
+  1501                           ;traffic light.c: 111: TMR0=60;
+  1502  064F  303C               	movlw	(03Ch)
+  1503  0650  1283               	bcf	status, 5	;RP0=0, select bank0
+  1504  0651  1303               	bcf	status, 6	;RP1=0, select bank0
+  1505  0652  0081               	movwf	(1)	;volatile
+  1506                           	line	112
+  1507                           ;traffic light.c: 112: while(T0IF==0);
+  1508  0653  2E54               	goto	l616
+  1509                           	
+  1510  0654                     l617:	
+  1511                           	
+  1512  0654                     l616:	
+  1513  0654  1D0B               	btfss	(90/8),(90)&7
+  1514  0655  2E57               	goto	u21
+  1515  0656  2E58               	goto	u20
+  1516  0657                     u21:
+  1517  0657  2E54               	goto	l617
+  1518  0658                     u20:
+  1519                           	
+  1520  0658                     l618:	
+  1521                           	line	113
+  1522                           ;traffic light.c: 113: T0IF=0;
+  1523  0658  110B               	bcf	(90/8),(90)&7
+  1524                           	line	114
+  1525                           	
+  1526  0659                     l1018:	
+  1527                           ;traffic light.c: 114: TMR0=0;
+  1528  0659  0181               	clrf	(1)	;volatile
+  1529                           	line	115
+  1530                           	
+  1531  065A                     l619:	
+  1532  065A  0008               	return
+  1533                           	opt stack 0
+  1534                           GLOBAL	__end_of_delay
+  1535  065B                     	__end_of_delay:
+  1536 ;; =============== function _delay ends ============
+  1537                           
+  1538                           	signat	_delay,88
+  1539                           	global	_delay4
+  1540                           psect	text116,local,class=CODE,delta=2
+  1541                           global __ptext116
+  1542  0635                     __ptext116:
+  1543                           
+  1544 ;; *************** function _delay4 *****************
+  1545 ;; Defined at:
+  1546 ;;		line 32 in file "D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+  1547 ;; Parameters:    Size  Location     Type
+  1548 ;;  x               2    0[COMMON] unsigned int 
+  1549 ;; Auto vars:     Size  Location     Type
+  1550 ;;		None
+  1551 ;; Return value:  Size  Location     Type
+  1552 ;;		None               void
+  1553 ;; Registers used:
+  1554 ;;		wreg
+  1555 ;; Tracked objects:
+  1556 ;;		On entry : 0/0
+  1557 ;;		On exit  : 0/0
+  1558 ;;		Unchanged: 0/0
+  1559 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1560 ;;      Params:         2       0       0       0       0
+  1561 ;;      Locals:         0       0       0       0       0
+  1562 ;;      Temps:          0       0       0       0       0
+  1563 ;;      Totals:         2       0       0       0       0
+  1564 ;;Total ram usage:        2 bytes
+  1565 ;; Hardware stack levels used:    1
+  1566 ;; This function calls:
+  1567 ;;		Nothing
+  1568 ;; This function is called by:
+  1569 ;;		_lcd_command
+  1570 ;;		_lcd_data
+  1571 ;;		_lcd_display
+  1572 ;;		_main
+  1573 ;; This function uses a non-reentrant model
+  1574 ;;
+  1575                           psect	text116
+  1576                           	file	"D:\Madhu\madhu pic folder\pic task\timer0\traffic light\traffic light.c"
+  1577                           	line	32
+  1578                           	global	__size_of_delay4
+  1579  0012                     	__size_of_delay4	equ	__end_of_delay4-_delay4
+  1580                           	
+  1581  0635                     _delay4:	
+  1582                           	opt	stack 7
+  1583                           ; Regs used in _delay4: [wreg]
+  1584                           	line	33
+  1585                           	
+  1586  0635                     l1008:	
+  1587                           ;traffic light.c: 33: while(x--);
+  1588  0635  2E36               	goto	l595
+  1589                           	
+  1590  0636                     l596:	
+  1591                           	
+  1592  0636                     l595:	
+  1593                           	
+  1594  0636                     l1010:	
+  1595  0636  3001               	movlw	low(01h)
+  1596  0637  02F0               	subwf	(delay4@x),f
+  1597  0638  3000               	movlw	high(01h)
+  1598  0639  1C03               	skipc
+  1599  063A  03F1               	decf	(delay4@x+1),f
+  1600  063B  02F1               	subwf	(delay4@x+1),f
+  1601  063C  30FF               	movlw	high(0FFFFh)
+  1602  063D  0671               	xorwf	((delay4@x+1)),w
+  1603  063E  1D03               	skipz
+  1604  063F  2E42               	goto	u15
+  1605  0640  30FF               	movlw	low(0FFFFh)
+  1606  0641  0670               	xorwf	((delay4@x)),w
+  1607  0642                     u15:
+  1608                           
+  1609  0642  1D03               	skipz
+  1610  0643  2E45               	goto	u11
+  1611  0644  2E46               	goto	u10
+  1612  0645                     u11:
+  1613  0645  2E36               	goto	l596
+  1614  0646                     u10:
+  1615                           	
+  1616  0646                     l597:	
+  1617                           	line	34
+  1618                           	
+  1619  0646                     l598:	
+  1620  0646  0008               	return
+  1621                           	opt stack 0
+  1622                           GLOBAL	__end_of_delay4
+  1623  0647                     	__end_of_delay4:
+  1624 ;; =============== function _delay4 ends ============
+  1625                           
+  1626                           	signat	_delay4,4216
+  1627                           psect	text117,local,class=CODE,delta=2
+  1628                           global __ptext117
+  1629  0000                     __ptext117:
+  1630                           	global	btemp
+  1631  007E                     	btemp set 07Eh
+  1632                           
+  1633                           	DABS	1,126,2	;btemp
+  1634                           	global	wtemp0
+  1635  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.71a build 6446 
+Symbol Table                                                                                   Mon Jul 17 19:29:15 2023
+
+                   _F 0034                     _T 0036                     _W 0038                     _Y 003C  
+                   _Z 003E                     _a 0020                     _b 0049                     _i 0040  
+                   _n 0046                     _o 0047                     _p 0042                     _x 0048  
+                   pc 0002          lcd_data@data 0072          lcd_data@val1 0076                    _W1 003A  
+                  u10 0646                    u11 0645                    u20 0658                    u21 0657  
+                  u15 0642                    fsr 0004                   l601 0722                   l610 077F  
+                 l611 075D                   l604 0756                   l612 078C                   l613 078C  
+                 l622 06AB                   l623 06C3                   l616 0654                   l624 06C3  
+                 l632 07BA                   l617 0654                   l633 07FC                   l618 0658  
+                 l634 07FD                   l619 065A                   l627 06D6                   l635 07FD  
+                 l628 06EE                   l629 06EE                   l595 0636                   l596 0636  
+                 l597 0646                   l598 0646                   _RD1 0041                   _RD2 0042  
+                 _RD3 0043                   _PS0 0408                   _PS1 0409                   _PS2 040A  
+                 _PSA 040B                   _st1 005D                   fsr0 0004                   indf 0000  
+                l1010 0636                  l1014 0647          lcd_display@i 0079                  l1008 0635  
+                l1016 064F                  l1018 0659          lcd_display@m 007B                  l1810 06F5  
+                l1820 0710                  l1812 06F6                  l1900 07B1                  l1830 071F  
+                l1822 0713                  l1814 06F7                  l1806 06EF                  l1910 07C9  
+                l1902 07BA                  l1824 0714                  l1816 0700                  l1808 06F4  
+                l1840 072B                  l1832 0723                  l1920 07DB                  l1912 07CB  
+                l1904 07BE                  l1826 0715                  l1818 0703                  l1850 0748  
+                l1842 0734                  l1834 0728                  l1930 07EC                  l1922 07DF  
+                l1914 07D0                  l1906 07C0                  l1828 0716                  l1852 0749  
+                l1844 0737                  l1836 0729                  l1860 069D                  l1932 07F1  
+                l1924 07E1                  l1916 07D4                  l1908 07C5                  l1854 074A  
+                l1846 0744                  l1838 072A                  l1862 06AA                  l1870 06C4  
+                l1934 07F5                  l1926 07E6                  l1918 07D6                  l1856 0753  
+                l1848 0747                  l1864 06AB                  l1880 06E1                  l1872 06C8  
+                l1936 07F7                  l1928 07EA                  l1866 06B0                  l1858 0699  
+                l1874 06D5                  l1890 077F                  l1882 0758                  l1868 06B6  
+                l1876 06D6                  l1884 075D                  l1892 078D                  l1878 06DB  
+                l1886 0770                  l1894 0799                  l1888 0779                  l1896 07A2  
+                l1898 07A8                  STR_1 0009                  _T0IF 005A                  _T0CS 040D  
+                u2200 06D5                  u2201 06D4                  u2210 06EE                  u2211 06ED  
+                _T0SE 040C                  u2220 078C                  u2205 06D1                  u2221 078B  
+                u2215 06EA                  u2180 06AA                  u2165 0706                  u2181 06A9  
+                u2190 06C3                  u2175 073A                  u2191 06C2                  u2185 06A6  
+                u2195 06BF                  _TMR0 0001                  _main 078D                  _ser1 007D  
+                _temp 0044                  btemp 007E                  start 0000                 ?_main 0070  
+               _PORTB 0006                 _PORTC 0007                 _PORTD 0008                 _TRISB 0086  
+               _TRISC 0087                 _delay 0647                 pclath 000A                 status 0003  
+               wtemp0 007E          __end_of_main 0800                ??_main 007C        lcd_command@COM 0072  
+              ?_delay 0070      __end_of_lcd_data 0757  __size_of_lcd_command 0034  __size_of_lcd_display 0036  
+              _delay1 0699                _delay2 06C4                _delay4 0635                clrloop 061D  
+        __pdataCOMMON 007D        __pcstackCOMMON 0070          __pidataBANK0 065B         __end_of_delay 065B  
+             ??_delay 0070            __pbssBANK0 0020            __pbssBANK1 00A0       lcd_command@temp 0076  
+          __pmaintext 078D               ?_delay1 0070               ?_delay2 0070               ?_delay4 0070  
+           ?_lcd_data 0072       __size_of_delay1 002B       __size_of_delay2 002B       __size_of_delay4 0012  
+             delay1@i 0070               delay2@i 0070               _gpsdata 00A0               delay4@x 0070  
+          ??_lcd_data 0074  end_of_initialization 0695               init_ram 0628         ??_lcd_command 0074  
+       ??_lcd_display 0077        __end_of_delay1 06C4        __end_of_delay2 06EF        __end_of_delay4 0647  
+       __pidataCOMMON 061B   start_initialization 0670              ??_delay1 0070              ??_delay2 0070  
+            ??_delay4 0072   __end_of_lcd_command 0723   __end_of_lcd_display 078D           __pdataBANK0 0049  
+         __pbssCOMMON 007C     __size_of_lcd_data 0034             _data_cap1 007C             __ptext110 0757  
+           __ptext111 06C4             __ptext112 0699             __ptext113 0723             __ptext114 06EF  
+           __ptext115 0647             __ptext116 0635             __ptext117 0000             __pstrings 0003  
+      __size_of_delay 0014           _lcd_command 06EF           _lcd_display 0757           __stringbase 0008  
+           init_fetch 0624              _lcd_data 0723         __size_of_main 0073              clear_ram 061C  
+           stringcode 0003              stringdir 0003              stringtab 0003          ?_lcd_command 0072  
+        ?_lcd_display 0070  

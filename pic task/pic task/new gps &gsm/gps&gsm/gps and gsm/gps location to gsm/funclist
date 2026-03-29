@@ -1,0 +1,10 @@
+_delay: CODE, 737 0 20
+_lcd_cmd: CODE, 574 0 54
+_lcd_data: CODE, 520 0 54
+_lcd_display: CODE, 628 0 43
+_main: CODE, 325 0 122
+_rcx: CODE, 447 0 73
+_gps_init: CODE, 757 0 17
+_gps_send: CODE, 37 0 288
+_lcd_init: CODE, 671 0 37
+Total: 708

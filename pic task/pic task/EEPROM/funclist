@@ -1,0 +1,8 @@
+_lcd_command: CODE, 1868 0 21
+_delay: CODE, 1850 0 18
+_lcd_data: CODE, 1889 0 21
+_read: CODE, 1834 0 16
+_main: CODE, 1960 0 88
+_write: CODE, 1910 0 25
+_lcd_init: CODE, 1935 0 25
+Total: 214

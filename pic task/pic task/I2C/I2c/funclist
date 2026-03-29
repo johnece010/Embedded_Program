@@ -1,0 +1,13 @@
+___awdiv: CODE, 1141 0 112
+_lcd_command: CODE, 731 0 52
+_delay: CODE, 667 0 18
+_lcd_data: CODE, 783 0 52
+___awmod: CODE, 1045 0 96
+_bcd_to_ascii: CODE, 961 0 84
+_decimal_to_bcd: CODE, 889 0 72
+_lcd_display: CODE, 835 0 54
+_main: CODE, 1253 0 134
+_DS1307_READ: CODE, 1669 0 379
+_DS1307_WRITE: CODE, 1387 0 282
+_lcd_init: CODE, 685 0 46
+Total: 1381

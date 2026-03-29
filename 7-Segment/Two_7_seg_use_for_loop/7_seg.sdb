@@ -74,7 +74,7 @@
 [v ___tmul `(um  1 e 3 0 ]
 "3 C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\sources\wmul.c
 [v ___wmul `(ui  1 e 2 0 ]
-"7 E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c
+"7 E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c
 [v _delay `(v  1 e 0 0 ]
 "15
 [v _main `(v  1 e 0 0 ]
@@ -634,7 +634,7 @@
 [v _WR `Vb  1 e 0 @3169 ]
 "392
 [v _RD `Vb  1 e 0 @3168 ]
-"11 E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c
+"11 E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c
 [v _seg `[10]i  1 e 20 0 ]
 "12
 [v _i `i  1 e 2 0 ]
@@ -669,7 +669,7 @@
 [v ___awdiv@dividend `i  1 p 2 2 ]
 "37
 } 0
-"7 E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c
+"7 E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c
 [v _delay `(v  1 e 0 0 ]
 {
 [v delay@x `ui  1 p 2 0 ]

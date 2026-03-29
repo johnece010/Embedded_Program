@@ -1,5 +1,5 @@
 
-# 1 "E:\Embedded\SWITCH_CODE\2_SWITCH\switch.c"
+# 1 "E:\Embedded_Program\SWITCH_CODE\2_SWITCH\switch.c"
 
 # 19 "C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\include\pic168xa.h"
 volatile unsigned char INDF @ 0x00;
@@ -384,7 +384,7 @@ extern unsigned char eeprom_read(unsigned char addr);
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
-# 8 "E:\Embedded\SWITCH_CODE\2_SWITCH\switch.c"
+# 8 "E:\Embedded_Program\SWITCH_CODE\2_SWITCH\switch.c"
 void delay (unsigned int x)
 {
 while(x--);
@@ -392,7 +392,7 @@ while(x--);
 
 main()
 {
-TRISB=0x03;
+TRISB=0x05;
 PORTB=0x00;
 
 while(1)

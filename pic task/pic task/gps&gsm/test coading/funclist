@@ -1,0 +1,14 @@
+_delay: CODE, 1399 0 18
+_lcd_cmd: CODE, 1148 0 54
+_lcd_data: CODE, 1094 0 54
+_serial: CODE, 1202 0 47
+_lcd_display: CODE, 1249 0 43
+_main: CODE, 447 0 310
+_rcx: CODE, 1021 0 73
+_gsm_command: CODE, 1292 0 43
+_sms1: CODE, 75 0 372
+_gps_init: CODE, 1417 0 17
+_txs: CODE, 1434 0 12
+_gps_send: CODE, 757 0 264
+_lcd_init: CODE, 1335 0 37
+Total: 1344

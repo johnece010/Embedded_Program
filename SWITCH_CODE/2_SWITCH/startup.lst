@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC Macro Assembler V9.71a build 6446 
-                                                                                                           Tue Oct 14 20:07:52 2025
+                                                                                                           Fri Jan 30 19:59:32 2026
 
 
      1                           
@@ -71,7 +71,7 @@ HI-TECH Software PIC Macro Assembler V9.71a build 6446
 
 
 HI-TECH Software PICC Macro Assembler V9.71a build 6446 
-Symbol Table                                                                                               Tue Oct 14 20:07:52 2025
+Symbol Table                                                                                               Fri Jan 30 19:59:32 2026
 
                _main 07E7                 _exit 0000                 start 0000  start_initialization 07E3  
            intlevel0 0000             intlevel1 0000             intlevel2 0000             intlevel3 0000  

@@ -1,0 +1,2608 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
+                                                                                               Tue Oct 11 23:54:34 2022
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNCALL	_main,_lcd_init
+    43                           	FNCALL	_main,_delay
+    44                           	FNCALL	_main,___lwdiv
+    45                           	FNCALL	_main,___lwmod
+    46                           	FNCALL	_main,___awdiv
+    47                           	FNCALL	_main,___awmod
+    48                           	FNCALL	_main,_lcd_command
+    49                           	FNCALL	_main,_lcd_data
+    50                           	FNCALL	_lcd_init,_lcd_command
+    51                           	FNCALL	_lcd_data,_delay
+    52                           	FNCALL	_lcd_command,_delay
+    53                           	FNROOT	_main
+    54                           	global	_ADCON0
+    55                           psect	text180,local,class=CODE,delta=2
+    56                           global __ptext180
+    57  0000                     __ptext180:
+    58  001F                     _ADCON0	set	31
+    59                           	global	_ADRESH
+    60  001E                     _ADRESH	set	30
+    61                           	global	_PORTA
+    62  0005                     _PORTA	set	5
+    63                           	global	_PORTC
+    64  0007                     _PORTC	set	7
+    65                           	global	_PORTD
+    66  0008                     _PORTD	set	8
+    67                           	global	_ADON
+    68  00F8                     _ADON	set	248
+    69                           	global	_CHS0
+    70  00FB                     _CHS0	set	251
+    71                           	global	_CHS1
+    72  00FC                     _CHS1	set	252
+    73                           	global	_CHS2
+    74  00FD                     _CHS2	set	253
+    75                           	global	_RC0
+    76  0038                     _RC0	set	56
+    77                           	global	_RC1
+    78  0039                     _RC1	set	57
+    79                           	global	_RC2
+    80  003A                     _RC2	set	58
+    81                           	global	_ADCON1
+    82  009F                     _ADCON1	set	159
+    83                           	global	_ADRESL
+    84  009E                     _ADRESL	set	158
+    85                           	global	_TRISA
+    86  0085                     _TRISA	set	133
+    87                           	global	_TRISC
+    88  0087                     _TRISC	set	135
+    89                           	global	_TRISD
+    90  0088                     _TRISD	set	136
+    91                           	file	"2 sensor value.as"
+    92                           	line	#
+    93                           psect cinit,class=CODE,delta=2
+    94                           global start_initialization
+    95  03DC                     start_initialization:
+    96                           
+    97                           psect cinit,class=CODE,delta=2
+    98                           global end_of_initialization
+    99                           
+   100                           ;End of C runtime variable initialization code
+   101                           
+   102  03DC                     end_of_initialization:
+   103  03DC  0183               clrf status
+   104  03DD  120A  118A  2D8B   ljmp _main	;jump to C main() function
+   105                           psect	cstackCOMMON,class=COMMON,space=1
+   106                           global __pcstackCOMMON
+   107  0070                     __pcstackCOMMON:
+   108                           	global	?_delay
+   109  0070                     ?_delay:	; 0 bytes @ 0x0
+   110                           	global	?_lcd_command
+   111  0070                     ?_lcd_command:	; 0 bytes @ 0x0
+   112                           	global	?_lcd_init
+   113  0070                     ?_lcd_init:	; 0 bytes @ 0x0
+   114                           	global	?_lcd_data
+   115  0070                     ?_lcd_data:	; 0 bytes @ 0x0
+   116                           	global	?_main
+   117  0070                     ?_main:	; 0 bytes @ 0x0
+   118                           	global	?___lwdiv
+   119  0070                     ?___lwdiv:	; 2 bytes @ 0x0
+   120                           	global	?___lwmod
+   121  0070                     ?___lwmod:	; 2 bytes @ 0x0
+   122                           	global	?___awdiv
+   123  0070                     ?___awdiv:	; 2 bytes @ 0x0
+   124                           	global	?___awmod
+   125  0070                     ?___awmod:	; 2 bytes @ 0x0
+   126                           	global	delay@x
+   127  0070                     delay@x:	; 2 bytes @ 0x0
+   128                           	global	___lwdiv@divisor
+   129  0070                     ___lwdiv@divisor:	; 2 bytes @ 0x0
+   130                           	global	___lwmod@divisor
+   131  0070                     ___lwmod@divisor:	; 2 bytes @ 0x0
+   132                           	global	___awdiv@divisor
+   133  0070                     ___awdiv@divisor:	; 2 bytes @ 0x0
+   134                           	global	___awmod@divisor
+   135  0070                     ___awmod@divisor:	; 2 bytes @ 0x0
+   136  0070                     	ds	2
+   137                           	global	??_delay
+   138  0072                     ??_delay:	; 0 bytes @ 0x2
+   139                           	global	??_lcd_command
+   140  0072                     ??_lcd_command:	; 0 bytes @ 0x2
+   141                           	global	??_lcd_data
+   142  0072                     ??_lcd_data:	; 0 bytes @ 0x2
+   143                           	global	lcd_command@com
+   144  0072                     lcd_command@com:	; 1 bytes @ 0x2
+   145                           	global	lcd_data@data
+   146  0072                     lcd_data@data:	; 1 bytes @ 0x2
+   147                           	global	___lwdiv@dividend
+   148  0072                     ___lwdiv@dividend:	; 2 bytes @ 0x2
+   149                           	global	___lwmod@dividend
+   150  0072                     ___lwmod@dividend:	; 2 bytes @ 0x2
+   151                           	global	___awdiv@dividend
+   152  0072                     ___awdiv@dividend:	; 2 bytes @ 0x2
+   153                           	global	___awmod@dividend
+   154  0072                     ___awmod@dividend:	; 2 bytes @ 0x2
+   155  0072                     	ds	1
+   156                           	global	??_lcd_init
+   157  0073                     ??_lcd_init:	; 0 bytes @ 0x3
+   158  0073                     	ds	1
+   159                           	global	??___lwdiv
+   160  0074                     ??___lwdiv:	; 0 bytes @ 0x4
+   161                           	global	??___lwmod
+   162  0074                     ??___lwmod:	; 0 bytes @ 0x4
+   163                           	global	??___awdiv
+   164  0074                     ??___awdiv:	; 0 bytes @ 0x4
+   165                           	global	??___awmod
+   166  0074                     ??___awmod:	; 0 bytes @ 0x4
+   167  0074                     	ds	1
+   168                           	global	___lwmod@counter
+   169  0075                     ___lwmod@counter:	; 1 bytes @ 0x5
+   170                           	global	___awdiv@counter
+   171  0075                     ___awdiv@counter:	; 1 bytes @ 0x5
+   172                           	global	___awmod@counter
+   173  0075                     ___awmod@counter:	; 1 bytes @ 0x5
+   174                           	global	___lwdiv@quotient
+   175  0075                     ___lwdiv@quotient:	; 2 bytes @ 0x5
+   176  0075                     	ds	1
+   177                           	global	___awdiv@sign
+   178  0076                     ___awdiv@sign:	; 1 bytes @ 0x6
+   179                           	global	___awmod@sign
+   180  0076                     ___awmod@sign:	; 1 bytes @ 0x6
+   181  0076                     	ds	1
+   182                           	global	___lwdiv@counter
+   183  0077                     ___lwdiv@counter:	; 1 bytes @ 0x7
+   184                           	global	___awdiv@quotient
+   185  0077                     ___awdiv@quotient:	; 2 bytes @ 0x7
+   186  0077                     	ds	2
+   187                           	global	??_main
+   188  0079                     ??_main:	; 0 bytes @ 0x9
+   189  0079                     	ds	2
+   190                           psect	cstackBANK0,class=BANK0,space=1
+   191                           global __pcstackBANK0
+   192  0020                     __pcstackBANK0:
+   193                           	global	main@a
+   194  0020                     main@a:	; 2 bytes @ 0x0
+   195  0020                     	ds	2
+   196                           	global	main@c
+   197  0022                     main@c:	; 2 bytes @ 0x2
+   198  0022                     	ds	2
+   199                           	global	main@e
+   200  0024                     main@e:	; 2 bytes @ 0x4
+   201  0024                     	ds	2
+   202                           	global	main@f
+   203  0026                     main@f:	; 2 bytes @ 0x6
+   204  0026                     	ds	2
+   205                           	global	main@z
+   206  0028                     main@z:	; 2 bytes @ 0x8
+   207  0028                     	ds	2
+   208                           	global	main@x
+   209  002A                     main@x:	; 2 bytes @ 0xA
+   210  002A                     	ds	2
+   211                           	global	main@v
+   212  002C                     main@v:	; 2 bytes @ 0xC
+   213  002C                     	ds	2
+   214                           	global	main@u
+   215  002E                     main@u:	; 2 bytes @ 0xE
+   216  002E                     	ds	2
+   217                           	global	main@b
+   218  0030                     main@b:	; 2 bytes @ 0x10
+   219  0030                     	ds	2
+   220                           	global	main@d
+   221  0032                     main@d:	; 2 bytes @ 0x12
+   222  0032                     	ds	2
+   223                           	global	main@y
+   224  0034                     main@y:	; 2 bytes @ 0x14
+   225  0034                     	ds	2
+   226                           	global	main@w
+   227  0036                     main@w:	; 2 bytes @ 0x16
+   228  0036                     	ds	2
+   229                           	global	main@temp
+   230  0038                     main@temp:	; 2 bytes @ 0x18
+   231  0038                     	ds	2
+   232                           	global	main@temp1
+   233  003A                     main@temp1:	; 2 bytes @ 0x1A
+   234  003A                     	ds	2
+   235 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+   236 ;;Auto spaces:   Size  Autos    Used
+   237 ;; COMMON          14     11      11
+   238 ;; BANK0           80     28      28
+   239 ;; BANK1           80      0       0
+   240 ;; BANK3           96      0       0
+   241 ;; BANK2           96      0       0
+   242                           
+   243 ;;
+   244 ;; Pointer list with targets:
+   245                           
+   246 ;; ?___awmod	int  size(1) Largest target is 0
+   247 ;;
+   248 ;; ?___awdiv	int  size(1) Largest target is 0
+   249 ;;
+   250 ;; ?___lwmod	unsigned int  size(1) Largest target is 0
+   251 ;;
+   252 ;; ?___lwdiv	unsigned int  size(1) Largest target is 0
+   253 ;;
+   254                           
+   255                           
+   256 ;;
+   257 ;; Critical Paths under _main in COMMON
+   258 ;;
+   259 ;;   _main->___awdiv
+   260 ;;   _lcd_init->_lcd_command
+   261 ;;   _lcd_data->_delay
+   262 ;;   _lcd_command->_delay
+   263 ;;
+   264 ;; Critical Paths under _main in BANK0
+   265 ;;
+   266 ;;   None.
+   267 ;;
+   268 ;; Critical Paths under _main in BANK1
+   269 ;;
+   270 ;;   None.
+   271 ;;
+   272 ;; Critical Paths under _main in BANK3
+   273 ;;
+   274 ;;   None.
+   275 ;;
+   276 ;; Critical Paths under _main in BANK2
+   277 ;;
+   278 ;;   None.
+   279                           
+   280 ;;
+   281 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
+   282 ;;
+   283                           
+   284 ;;
+   285 ;;Call Graph Tables:
+   286 ;;
+   287 ;; ---------------------------------------------------------------------------------
+   288 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   289 ;; ---------------------------------------------------------------------------------
+   290 ;; (0) _main                                                30    30      0    1615
+   291 ;;                                              9 COMMON     2     2      0
+   292 ;;                                              0 BANK0     28    28      0
+   293 ;;                           _lcd_init
+   294 ;;                              _delay
+   295 ;;                            ___lwdiv
+   296 ;;                            ___lwmod
+   297 ;;                            ___awdiv
+   298 ;;                            ___awmod
+   299 ;;                        _lcd_command
+   300 ;;                           _lcd_data
+   301 ;; ---------------------------------------------------------------------------------
+   302 ;; (1) _lcd_init                                             0     0      0      44
+   303 ;;                        _lcd_command
+   304 ;; ---------------------------------------------------------------------------------
+   305 ;; (1) _lcd_data                                             1     1      0      44
+   306 ;;                                              2 COMMON     1     1      0
+   307 ;;                              _delay
+   308 ;; ---------------------------------------------------------------------------------
+   309 ;; (1) _lcd_command                                          1     1      0      44
+   310 ;;                                              2 COMMON     1     1      0
+   311 ;;                              _delay
+   312 ;; ---------------------------------------------------------------------------------
+   313 ;; (1) ___awmod                                              7     3      4     296
+   314 ;;                                              0 COMMON     7     3      4
+   315 ;; ---------------------------------------------------------------------------------
+   316 ;; (1) ___awdiv                                              9     5      4     300
+   317 ;;                                              0 COMMON     9     5      4
+   318 ;; ---------------------------------------------------------------------------------
+   319 ;; (1) ___lwmod                                              6     2      4     159
+   320 ;;                                              0 COMMON     6     2      4
+   321 ;; ---------------------------------------------------------------------------------
+   322 ;; (1) ___lwdiv                                              8     4      4     162
+   323 ;;                                              0 COMMON     8     4      4
+   324 ;; ---------------------------------------------------------------------------------
+   325 ;; (2) _delay                                                2     0      2      22
+   326 ;;                                              0 COMMON     2     0      2
+   327 ;; ---------------------------------------------------------------------------------
+   328 ;; Estimated maximum stack depth 2
+   329 ;; ---------------------------------------------------------------------------------
+   330                           
+   331 ;; Call Graph Graphs:
+   332                           
+   333 ;; _main (ROOT)
+   334 ;;   _lcd_init
+   335 ;;     _lcd_command
+   336 ;;       _delay
+   337 ;;   _delay
+   338 ;;   ___lwdiv
+   339 ;;   ___lwmod
+   340 ;;   ___awdiv
+   341 ;;   ___awmod
+   342 ;;   _lcd_command
+   343 ;;     _delay
+   344 ;;   _lcd_data
+   345 ;;     _delay
+   346 ;;
+   347                           
+   348 ;; Address spaces:
+   349                           
+   350 ;;Name               Size   Autos  Total    Cost      Usage
+   351 ;;BITCOMMON            E      0       0       0        0.0%
+   352 ;;EEDATA             100      0       0       0        0.0%
+   353 ;;NULL                 0      0       0       0        0.0%
+   354 ;;CODE                 0      0       0       0        0.0%
+   355 ;;COMMON               E      B       B       1       78.6%
+   356 ;;BITSFR0              0      0       0       1        0.0%
+   357 ;;SFR0                 0      0       0       1        0.0%
+   358 ;;BITSFR1              0      0       0       2        0.0%
+   359 ;;SFR1                 0      0       0       2        0.0%
+   360 ;;STACK                0      0       3       2        0.0%
+   361 ;;ABS                  0      0       0       3        0.0%
+   362 ;;BITBANK0            50      0       0       4        0.0%
+   363 ;;BITSFR3              0      0       0       4        0.0%
+   364 ;;SFR3                 0      0       0       4        0.0%
+   365 ;;BANK0               50     1C      1C       5       35.0%
+   366 ;;BITSFR2              0      0       0       5        0.0%
+   367 ;;SFR2                 0      0       0       5        0.0%
+   368 ;;BITBANK1            50      0       0       6        0.0%
+   369 ;;BANK1               50      0       0       7        0.0%
+   370 ;;BITBANK3            60      0       0       8        0.0%
+   371 ;;BANK3               60      0       0       9        0.0%
+   372 ;;BITBANK2            60      0       0      10        0.0%
+   373 ;;BANK2               60      0       0      11        0.0%
+   374 ;;DATA                 0      0       0      12        0.0%
+   375                           
+   376                           	global	_main
+   377                           psect	maintext,global,class=CODE,delta=2
+   378                           global __pmaintext
+   379  058B                     __pmaintext:
+   380                           
+   381 ;; *************** function _main *****************
+   382 ;; Defined at:
+   383 ;;		line 45 in file "C:\Users\ELCOT\Desktop\adc timer\ADC\ADC task\2 sensor with lcd value\2 sensor value.c"
+   384 ;; Parameters:    Size  Location     Type
+   385 ;;		None
+   386 ;; Auto vars:     Size  Location     Type
+   387 ;;  temp1           2   26[BANK0 ] unsigned int 
+   388 ;;  temp            2   24[BANK0 ] unsigned int 
+   389 ;;  w               2   22[BANK0 ] int 
+   390 ;;  y               2   20[BANK0 ] int 
+   391 ;;  d               2   18[BANK0 ] int 
+   392 ;;  b               2   16[BANK0 ] int 
+   393 ;;  u               2   14[BANK0 ] int 
+   394 ;;  v               2   12[BANK0 ] int 
+   395 ;;  x               2   10[BANK0 ] int 
+   396 ;;  z               2    8[BANK0 ] int 
+   397 ;;  f               2    6[BANK0 ] int 
+   398 ;;  e               2    4[BANK0 ] int 
+   399 ;;  c               2    2[BANK0 ] int 
+   400 ;;  a               2    0[BANK0 ] int 
+   401 ;; Return value:  Size  Location     Type
+   402 ;;		None               void
+   403 ;; Registers used:
+   404 ;;		wreg, status,2, status,0, btemp+0, pclath, cstack
+   405 ;; Tracked objects:
+   406 ;;		On entry : 17F/0
+   407 ;;		On exit  : 0/0
+   408 ;;		Unchanged: 0/0
+   409 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   410 ;;      Params:         0       0       0       0       0
+   411 ;;      Locals:         0      28       0       0       0
+   412 ;;      Temps:          2       0       0       0       0
+   413 ;;      Totals:         2      28       0       0       0
+   414 ;;Total ram usage:       30 bytes
+   415 ;; Hardware stack levels required when called:    3
+   416 ;; This function calls:
+   417 ;;		_lcd_init
+   418 ;;		_delay
+   419 ;;		___lwdiv
+   420 ;;		___lwmod
+   421 ;;		___awdiv
+   422 ;;		___awmod
+   423 ;;		_lcd_command
+   424 ;;		_lcd_data
+   425 ;; This function is called by:
+   426 ;;		Startup code after reset
+   427 ;; This function uses a non-reentrant model
+   428 ;;
+   429                           psect	maintext
+   430                           	file	"C:\Users\ELCOT\Desktop\adc timer\ADC\ADC task\2 sensor with lcd value\2 sensor va
+                                 lue.c"
+   431                           	line	45
+   432                           	global	__size_of_main
+   433  0275                     	__size_of_main	equ	__end_of_main-_main
+   434                           	
+   435  058B                     _main:	
+   436                           	opt	stack 8
+   437                           ; Regs used in _main: [wreg+status,2-btemp+0+pclath+cstack]
+   438                           	line	48
+   439                           	
+   440  058B                     l2236:	
+   441                           ;2 sensor value.c: 46: int a,b,c,d,e,f,z,y,x,w,v,u;
+   442                           ;2 sensor value.c: 47: unsigned int temp,temp1;
+   443                           ;2 sensor value.c: 48: ADCON1=0X80;
+   444  058B  3080               	movlw	(080h)
+   445  058C  1683               	bsf	status, 5	;RP0=1, select bank1
+   446  058D  1303               	bcf	status, 6	;RP1=0, select bank1
+   447  058E  009F               	movwf	(159)^080h	;volatile
+   448                           	line	49
+   449                           ;2 sensor value.c: 49: ADCON0=0X40;
+   450  058F  3040               	movlw	(040h)
+   451  0590  1283               	bcf	status, 5	;RP0=0, select bank0
+   452  0591  1303               	bcf	status, 6	;RP1=0, select bank0
+   453  0592  009F               	movwf	(31)	;volatile
+   454                           	line	51
+   455                           	
+   456  0593                     l2238:	
+   457                           ;2 sensor value.c: 51: TRISC=0X00;
+   458  0593  1683               	bsf	status, 5	;RP0=1, select bank1
+   459  0594  1303               	bcf	status, 6	;RP1=0, select bank1
+   460  0595  0187               	clrf	(135)^080h	;volatile
+   461                           	line	52
+   462                           	
+   463  0596                     l2240:	
+   464                           ;2 sensor value.c: 52: PORTC=0X00;
+   465  0596  1283               	bcf	status, 5	;RP0=0, select bank0
+   466  0597  1303               	bcf	status, 6	;RP1=0, select bank0
+   467  0598  0187               	clrf	(7)	;volatile
+   468                           	line	54
+   469                           	
+   470  0599                     l2242:	
+   471                           ;2 sensor value.c: 54: TRISD=0X00;
+   472  0599  1683               	bsf	status, 5	;RP0=1, select bank1
+   473  059A  1303               	bcf	status, 6	;RP1=0, select bank1
+   474  059B  0188               	clrf	(136)^080h	;volatile
+   475                           	line	55
+   476                           	
+   477  059C                     l2244:	
+   478                           ;2 sensor value.c: 55: PORTD=0X00;
+   479  059C  1283               	bcf	status, 5	;RP0=0, select bank0
+   480  059D  1303               	bcf	status, 6	;RP1=0, select bank0
+   481  059E  0188               	clrf	(8)	;volatile
+   482                           	line	58
+   483                           ;2 sensor value.c: 58: TRISA=0X03;
+   484  059F  3003               	movlw	(03h)
+   485  05A0  1683               	bsf	status, 5	;RP0=1, select bank1
+   486  05A1  1303               	bcf	status, 6	;RP1=0, select bank1
+   487  05A2  0085               	movwf	(133)^080h	;volatile
+   488                           	line	59
+   489                           	
+   490  05A3                     l2246:	
+   491                           ;2 sensor value.c: 59: PORTA=0X00;
+   492  05A3  1283               	bcf	status, 5	;RP0=0, select bank0
+   493  05A4  1303               	bcf	status, 6	;RP1=0, select bank0
+   494  05A5  0185               	clrf	(5)	;volatile
+   495                           	line	61
+   496                           	
+   497  05A6                     l2248:	
+   498                           ;2 sensor value.c: 61: lcd_init();
+   499  05A6  120A  118A  241C   	fcall	_lcd_init
+              120A  118A         
+   500                           	line	62
+   501                           	
+   502  05AB                     l2250:	
+   503                           ;2 sensor value.c: 62: delay(100);
+   504  05AB  3064               	movlw	low(064h)
+   505  05AC  00F0               	movwf	(?_delay)
+   506  05AD  3000               	movlw	high(064h)
+   507  05AE  00F1               	movwf	((?_delay))+1
+   508  05AF  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+   509                           	line	67
+   510                           ;2 sensor value.c: 67: while(1)
+   511                           	
+   512  05B4                     l580:	
+   513                           	line	69
+   514                           	
+   515  05B4                     l2252:	
+   516                           ;2 sensor value.c: 68: {
+   517                           ;2 sensor value.c: 69: CHS2=0;
+   518  05B4  1283               	bcf	status, 5	;RP0=0, select bank0
+   519  05B5  1303               	bcf	status, 6	;RP1=0, select bank0
+   520  05B6  129F               	bcf	(253/8),(253)&7
+   521                           	line	70
+   522                           	
+   523  05B7                     l2254:	
+   524                           ;2 sensor value.c: 70: CHS1=0;
+   525  05B7  121F               	bcf	(252/8),(252)&7
+   526                           	line	71
+   527                           	
+   528  05B8                     l2256:	
+   529                           ;2 sensor value.c: 71: CHS0=0;
+   530  05B8  119F               	bcf	(251/8),(251)&7
+   531                           	line	72
+   532                           	
+   533  05B9                     l2258:	
+   534                           ;2 sensor value.c: 72: ADON=1;
+   535  05B9  141F               	bsf	(248/8),(248)&7
+   536                           	line	73
+   537                           	
+   538  05BA                     l2260:	
+   539                           ;2 sensor value.c: 73: delay(600);
+   540  05BA  3058               	movlw	low(0258h)
+   541  05BB  00F0               	movwf	(?_delay)
+   542  05BC  3002               	movlw	high(0258h)
+   543  05BD  00F1               	movwf	((?_delay))+1
+   544  05BE  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+   545                           	line	74
+   546                           	
+   547  05C3                     l2262:	
+   548                           ;2 sensor value.c: 74: ADCON0=(ADCON0|0X04);
+   549  05C3  1283               	bcf	status, 5	;RP0=0, select bank0
+   550  05C4  1303               	bcf	status, 6	;RP1=0, select bank0
+   551  05C5  081F               	movf	(31),w	;volatile
+   552  05C6  3804               	iorlw	04h
+   553  05C7  009F               	movwf	(31)	;volatile
+   554                           	line	75
+   555                           ;2 sensor value.c: 75: delay(600);
+   556  05C8  3058               	movlw	low(0258h)
+   557  05C9  00F0               	movwf	(?_delay)
+   558  05CA  3002               	movlw	high(0258h)
+   559  05CB  00F1               	movwf	((?_delay))+1
+   560  05CC  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+   561                           	line	76
+   562                           	
+   563  05D1                     l2264:	
+   564                           ;2 sensor value.c: 76: temp=ADRESH<<8;
+   565  05D1  1283               	bcf	status, 5	;RP0=0, select bank0
+   566  05D2  1303               	bcf	status, 6	;RP1=0, select bank0
+   567  05D3  081E               	movf	(30),w	;volatile
+   568  05D4  00F9               	movwf	(??_main+0)+0
+   569  05D5  01FA               	clrf	(??_main+0)+0+1
+   570  05D6  3008               	movlw	08h
+   571  05D7  00FE               	movwf	btemp+0
+   572  05D8                     u2525:
+   573  05D8  1003               	clrc
+   574  05D9  0DF9               	rlf	(??_main+0)+0,f
+   575  05DA  0DFA               	rlf	(??_main+0)+1,f
+   576  05DB  0BFE               	decfsz	btemp+0,f
+   577  05DC  2DD8               	goto	u2525
+   578  05DD  0879               	movf	0+(??_main+0)+0,w
+   579  05DE  00B8               	movwf	(main@temp)
+   580  05DF  087A               	movf	1+(??_main+0)+0,w
+   581  05E0  00B9               	movwf	(main@temp+1)
+   582                           	line	77
+   583                           	
+   584  05E1                     l2266:	
+   585                           ;2 sensor value.c: 77: delay(600);
+   586  05E1  3058               	movlw	low(0258h)
+   587  05E2  00F0               	movwf	(?_delay)
+   588  05E3  3002               	movlw	high(0258h)
+   589  05E4  00F1               	movwf	((?_delay))+1
+   590  05E5  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+   591                           	line	78
+   592                           	
+   593  05EA                     l2268:	
+   594                           ;2 sensor value.c: 78: temp=temp+ADRESL;
+   595  05EA  1683               	bsf	status, 5	;RP0=1, select bank1
+   596  05EB  1303               	bcf	status, 6	;RP1=0, select bank1
+   597  05EC  081E               	movf	(158)^080h,w	;volatile
+   598  05ED  1283               	bcf	status, 5	;RP0=0, select bank0
+   599  05EE  1303               	bcf	status, 6	;RP1=0, select bank0
+   600  05EF  0738               	addwf	(main@temp),w
+   601  05F0  00B8               	movwf	(main@temp)
+   602  05F1  0839               	movf	(main@temp+1),w
+   603  05F2  1803               	skipnc
+   604  05F3  0A39               	incf	(main@temp+1),w
+   605  05F4  00B9               	movwf	((main@temp))+1
+   606                           	line	80
+   607                           	
+   608  05F5                     l2270:	
+   609                           ;2 sensor value.c: 80: PORTD=temp;
+   610  05F5  0838               	movf	(main@temp),w
+   611  05F6  0088               	movwf	(8)	;volatile
+   612                           	line	81
+   613                           	
+   614  05F7                     l2272:	
+   615                           ;2 sensor value.c: 81: a=temp/1000;
+   616  05F7  30E8               	movlw	low(03E8h)
+   617  05F8  00F0               	movwf	(?___lwdiv)
+   618  05F9  3003               	movlw	high(03E8h)
+   619  05FA  00F1               	movwf	((?___lwdiv))+1
+   620  05FB  0839               	movf	(main@temp+1),w
+   621  05FC  01F3               	clrf	1+(?___lwdiv)+02h
+   622  05FD  07F3               	addwf	1+(?___lwdiv)+02h
+   623  05FE  0838               	movf	(main@temp),w
+   624  05FF  01F2               	clrf	0+(?___lwdiv)+02h
+   625  0600  07F2               	addwf	0+(?___lwdiv)+02h
+   626                           
+   627  0601  120A  118A  2472   	fcall	___lwdiv
+              120A  118A         
+   628  0606  0871               	movf	(1+(?___lwdiv)),w
+   629  0607  1283               	bcf	status, 5	;RP0=0, select bank0
+   630  0608  1303               	bcf	status, 6	;RP1=0, select bank0
+   631  0609  01A1               	clrf	(main@a+1)
+   632  060A  07A1               	addwf	(main@a+1)
+   633  060B  0870               	movf	(0+(?___lwdiv)),w
+   634  060C  01A0               	clrf	(main@a)
+   635  060D  07A0               	addwf	(main@a)
+   636                           
+   637                           	line	82
+   638                           	
+   639  060E                     l2274:	
+   640                           ;2 sensor value.c: 82: b=temp%1000;
+   641  060E  30E8               	movlw	low(03E8h)
+   642  060F  00F0               	movwf	(?___lwmod)
+   643  0610  3003               	movlw	high(03E8h)
+   644  0611  00F1               	movwf	((?___lwmod))+1
+   645  0612  0839               	movf	(main@temp+1),w
+   646  0613  01F3               	clrf	1+(?___lwmod)+02h
+   647  0614  07F3               	addwf	1+(?___lwmod)+02h
+   648  0615  0838               	movf	(main@temp),w
+   649  0616  01F2               	clrf	0+(?___lwmod)+02h
+   650  0617  07F2               	addwf	0+(?___lwmod)+02h
+   651                           
+   652  0618  120A  118A  2435   	fcall	___lwmod
+              120A  118A         
+   653  061D  0871               	movf	(1+(?___lwmod)),w
+   654  061E  1283               	bcf	status, 5	;RP0=0, select bank0
+   655  061F  1303               	bcf	status, 6	;RP1=0, select bank0
+   656  0620  01B1               	clrf	(main@b+1)
+   657  0621  07B1               	addwf	(main@b+1)
+   658  0622  0870               	movf	(0+(?___lwmod)),w
+   659  0623  01B0               	clrf	(main@b)
+   660  0624  07B0               	addwf	(main@b)
+   661                           
+   662                           	line	83
+   663                           	
+   664  0625                     l2276:	
+   665                           ;2 sensor value.c: 83: c=b/100;
+   666  0625  3064               	movlw	low(064h)
+   667  0626  00F0               	movwf	(?___awdiv)
+   668  0627  3000               	movlw	high(064h)
+   669  0628  00F1               	movwf	((?___awdiv))+1
+   670  0629  0831               	movf	(main@b+1),w
+   671  062A  01F3               	clrf	1+(?___awdiv)+02h
+   672  062B  07F3               	addwf	1+(?___awdiv)+02h
+   673  062C  0830               	movf	(main@b),w
+   674  062D  01F2               	clrf	0+(?___awdiv)+02h
+   675  062E  07F2               	addwf	0+(?___awdiv)+02h
+   676                           
+   677  062F  120A  118A  251B   	fcall	___awdiv
+              120A  118A         
+   678  0634  0871               	movf	(1+(?___awdiv)),w
+   679  0635  1283               	bcf	status, 5	;RP0=0, select bank0
+   680  0636  1303               	bcf	status, 6	;RP1=0, select bank0
+   681  0637  01A3               	clrf	(main@c+1)
+   682  0638  07A3               	addwf	(main@c+1)
+   683  0639  0870               	movf	(0+(?___awdiv)),w
+   684  063A  01A2               	clrf	(main@c)
+   685  063B  07A2               	addwf	(main@c)
+   686                           
+   687                           	line	84
+   688                           	
+   689  063C                     l2278:	
+   690                           ;2 sensor value.c: 84: d=b%100;
+   691  063C  3064               	movlw	low(064h)
+   692  063D  00F0               	movwf	(?___awmod)
+   693  063E  3000               	movlw	high(064h)
+   694  063F  00F1               	movwf	((?___awmod))+1
+   695  0640  0831               	movf	(main@b+1),w
+   696  0641  01F3               	clrf	1+(?___awmod)+02h
+   697  0642  07F3               	addwf	1+(?___awmod)+02h
+   698  0643  0830               	movf	(main@b),w
+   699  0644  01F2               	clrf	0+(?___awmod)+02h
+   700  0645  07F2               	addwf	0+(?___awmod)+02h
+   701                           
+   702  0646  120A  118A  24BB   	fcall	___awmod
+              120A  118A         
+   703  064B  0871               	movf	(1+(?___awmod)),w
+   704  064C  1283               	bcf	status, 5	;RP0=0, select bank0
+   705  064D  1303               	bcf	status, 6	;RP1=0, select bank0
+   706  064E  01B3               	clrf	(main@d+1)
+   707  064F  07B3               	addwf	(main@d+1)
+   708  0650  0870               	movf	(0+(?___awmod)),w
+   709  0651  01B2               	clrf	(main@d)
+   710  0652  07B2               	addwf	(main@d)
+   711                           
+   712                           	line	85
+   713                           	
+   714  0653                     l2280:	
+   715                           ;2 sensor value.c: 85: e=d/10;
+   716  0653  300A               	movlw	low(0Ah)
+   717  0654  00F0               	movwf	(?___awdiv)
+   718  0655  3000               	movlw	high(0Ah)
+   719  0656  00F1               	movwf	((?___awdiv))+1
+   720  0657  0833               	movf	(main@d+1),w
+   721  0658  01F3               	clrf	1+(?___awdiv)+02h
+   722  0659  07F3               	addwf	1+(?___awdiv)+02h
+   723  065A  0832               	movf	(main@d),w
+   724  065B  01F2               	clrf	0+(?___awdiv)+02h
+   725  065C  07F2               	addwf	0+(?___awdiv)+02h
+   726                           
+   727  065D  120A  118A  251B   	fcall	___awdiv
+              120A  118A         
+   728  0662  0871               	movf	(1+(?___awdiv)),w
+   729  0663  1283               	bcf	status, 5	;RP0=0, select bank0
+   730  0664  1303               	bcf	status, 6	;RP1=0, select bank0
+   731  0665  01A5               	clrf	(main@e+1)
+   732  0666  07A5               	addwf	(main@e+1)
+   733  0667  0870               	movf	(0+(?___awdiv)),w
+   734  0668  01A4               	clrf	(main@e)
+   735  0669  07A4               	addwf	(main@e)
+   736                           
+   737                           	line	86
+   738                           	
+   739  066A                     l2282:	
+   740                           ;2 sensor value.c: 86: f=d%10;
+   741  066A  300A               	movlw	low(0Ah)
+   742  066B  00F0               	movwf	(?___awmod)
+   743  066C  3000               	movlw	high(0Ah)
+   744  066D  00F1               	movwf	((?___awmod))+1
+   745  066E  0833               	movf	(main@d+1),w
+   746  066F  01F3               	clrf	1+(?___awmod)+02h
+   747  0670  07F3               	addwf	1+(?___awmod)+02h
+   748  0671  0832               	movf	(main@d),w
+   749  0672  01F2               	clrf	0+(?___awmod)+02h
+   750  0673  07F2               	addwf	0+(?___awmod)+02h
+   751                           
+   752  0674  120A  118A  24BB   	fcall	___awmod
+              120A  118A         
+   753  0679  0871               	movf	(1+(?___awmod)),w
+   754  067A  1283               	bcf	status, 5	;RP0=0, select bank0
+   755  067B  1303               	bcf	status, 6	;RP1=0, select bank0
+   756  067C  01A7               	clrf	(main@f+1)
+   757  067D  07A7               	addwf	(main@f+1)
+   758  067E  0870               	movf	(0+(?___awmod)),w
+   759  067F  01A6               	clrf	(main@f)
+   760  0680  07A6               	addwf	(main@f)
+   761                           
+   762                           	line	87
+   763                           	
+   764  0681                     l2284:	
+   765                           ;2 sensor value.c: 87: lcd_command(0x80);
+   766  0681  3080               	movlw	(080h)
+   767  0682  120A  118A  23F2   	fcall	_lcd_command
+              120A  118A         
+   768                           	line	88
+   769                           	
+   770  0687                     l2286:	
+   771                           ;2 sensor value.c: 88: delay(600);
+   772  0687  3058               	movlw	low(0258h)
+   773  0688  00F0               	movwf	(?_delay)
+   774  0689  3002               	movlw	high(0258h)
+   775  068A  00F1               	movwf	((?_delay))+1
+   776  068B  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+   777                           	line	89
+   778                           	
+   779  0690                     l2288:	
+   780                           ;2 sensor value.c: 89: lcd_data(a+0x30);
+   781  0690  1283               	bcf	status, 5	;RP0=0, select bank0
+   782  0691  1303               	bcf	status, 6	;RP1=0, select bank0
+   783  0692  0820               	movf	(main@a),w
+   784  0693  3E30               	addlw	030h
+   785  0694  120A  118A  2407   	fcall	_lcd_data
+              120A  118A         
+   786                           	line	90
+   787                           	
+   788  0699                     l2290:	
+   789                           ;2 sensor value.c: 90: delay(600);
+   790  0699  3058               	movlw	low(0258h)
+   791  069A  00F0               	movwf	(?_delay)
+   792  069B  3002               	movlw	high(0258h)
+   793  069C  00F1               	movwf	((?_delay))+1
+   794  069D  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+   795                           	line	91
+   796                           	
+   797  06A2                     l2292:	
+   798                           ;2 sensor value.c: 91: lcd_data(c+0x30);
+   799  06A2  1283               	bcf	status, 5	;RP0=0, select bank0
+   800  06A3  1303               	bcf	status, 6	;RP1=0, select bank0
+   801  06A4  0822               	movf	(main@c),w
+   802  06A5  3E30               	addlw	030h
+   803  06A6  120A  118A  2407   	fcall	_lcd_data
+              120A  118A         
+   804                           	line	92
+   805                           	
+   806  06AB                     l2294:	
+   807                           ;2 sensor value.c: 92: delay(600);
+   808  06AB  3058               	movlw	low(0258h)
+   809  06AC  00F0               	movwf	(?_delay)
+   810  06AD  3002               	movlw	high(0258h)
+   811  06AE  00F1               	movwf	((?_delay))+1
+   812  06AF  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+   813                           	line	93
+   814                           	
+   815  06B4                     l2296:	
+   816                           ;2 sensor value.c: 93: lcd_data(e+0x30);
+   817  06B4  1283               	bcf	status, 5	;RP0=0, select bank0
+   818  06B5  1303               	bcf	status, 6	;RP1=0, select bank0
+   819  06B6  0824               	movf	(main@e),w
+   820  06B7  3E30               	addlw	030h
+   821  06B8  120A  118A  2407   	fcall	_lcd_data
+              120A  118A         
+   822                           	line	94
+   823                           	
+   824  06BD                     l2298:	
+   825                           ;2 sensor value.c: 94: delay(600);
+   826  06BD  3058               	movlw	low(0258h)
+   827  06BE  00F0               	movwf	(?_delay)
+   828  06BF  3002               	movlw	high(0258h)
+   829  06C0  00F1               	movwf	((?_delay))+1
+   830  06C1  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+   831                           	line	95
+   832                           	
+   833  06C6                     l2300:	
+   834                           ;2 sensor value.c: 95: lcd_data(f+0x30);
+   835  06C6  1283               	bcf	status, 5	;RP0=0, select bank0
+   836  06C7  1303               	bcf	status, 6	;RP1=0, select bank0
+   837  06C8  0826               	movf	(main@f),w
+   838  06C9  3E30               	addlw	030h
+   839  06CA  120A  118A  2407   	fcall	_lcd_data
+              120A  118A         
+   840                           	line	96
+   841                           	
+   842  06CF                     l2302:	
+   843                           ;2 sensor value.c: 96: delay(600);
+   844  06CF  3058               	movlw	low(0258h)
+   845  06D0  00F0               	movwf	(?_delay)
+   846  06D1  3002               	movlw	high(0258h)
+   847  06D2  00F1               	movwf	((?_delay))+1
+   848  06D3  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+   849                           	line	100
+   850                           	
+   851  06D8                     l2304:	
+   852                           ;2 sensor value.c: 100: CHS2=0;
+   853  06D8  1283               	bcf	status, 5	;RP0=0, select bank0
+   854  06D9  1303               	bcf	status, 6	;RP1=0, select bank0
+   855  06DA  129F               	bcf	(253/8),(253)&7
+   856                           	line	101
+   857                           	
+   858  06DB                     l2306:	
+   859                           ;2 sensor value.c: 101: CHS1=0;
+   860  06DB  121F               	bcf	(252/8),(252)&7
+   861                           	line	102
+   862                           	
+   863  06DC                     l2308:	
+   864                           ;2 sensor value.c: 102: CHS0=1;
+   865  06DC  159F               	bsf	(251/8),(251)&7
+   866                           	line	103
+   867                           	
+   868  06DD                     l2310:	
+   869                           ;2 sensor value.c: 103: ADON=1;
+   870  06DD  141F               	bsf	(248/8),(248)&7
+   871                           	line	104
+   872                           	
+   873  06DE                     l2312:	
+   874                           ;2 sensor value.c: 104: delay(600);
+   875  06DE  3058               	movlw	low(0258h)
+   876  06DF  00F0               	movwf	(?_delay)
+   877  06E0  3002               	movlw	high(0258h)
+   878  06E1  00F1               	movwf	((?_delay))+1
+   879  06E2  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+   880                           	line	105
+   881                           	
+   882  06E7                     l2314:	
+   883                           ;2 sensor value.c: 105: ADCON0=(ADCON0|0X04);
+   884  06E7  1283               	bcf	status, 5	;RP0=0, select bank0
+   885  06E8  1303               	bcf	status, 6	;RP1=0, select bank0
+   886  06E9  081F               	movf	(31),w	;volatile
+   887  06EA  3804               	iorlw	04h
+   888  06EB  009F               	movwf	(31)	;volatile
+   889                           	line	106
+   890                           	
+   891  06EC                     l2316:	
+   892                           ;2 sensor value.c: 106: delay(600);
+   893  06EC  3058               	movlw	low(0258h)
+   894  06ED  00F0               	movwf	(?_delay)
+   895  06EE  3002               	movlw	high(0258h)
+   896  06EF  00F1               	movwf	((?_delay))+1
+   897  06F0  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+   898                           	line	107
+   899                           	
+   900  06F5                     l2318:	
+   901                           ;2 sensor value.c: 107: temp1=ADRESH<<8;
+   902  06F5  1283               	bcf	status, 5	;RP0=0, select bank0
+   903  06F6  1303               	bcf	status, 6	;RP1=0, select bank0
+   904  06F7  081E               	movf	(30),w	;volatile
+   905  06F8  00F9               	movwf	(??_main+0)+0
+   906  06F9  01FA               	clrf	(??_main+0)+0+1
+   907  06FA  3008               	movlw	08h
+   908  06FB  00FE               	movwf	btemp+0
+   909  06FC                     u2535:
+   910  06FC  1003               	clrc
+   911  06FD  0DF9               	rlf	(??_main+0)+0,f
+   912  06FE  0DFA               	rlf	(??_main+0)+1,f
+   913  06FF  0BFE               	decfsz	btemp+0,f
+   914  0700  2EFC               	goto	u2535
+   915  0701  0879               	movf	0+(??_main+0)+0,w
+   916  0702  00BA               	movwf	(main@temp1)
+   917  0703  087A               	movf	1+(??_main+0)+0,w
+   918  0704  00BB               	movwf	(main@temp1+1)
+   919                           	line	108
+   920                           	
+   921  0705                     l2320:	
+   922                           ;2 sensor value.c: 108: delay(600);
+   923  0705  3058               	movlw	low(0258h)
+   924  0706  00F0               	movwf	(?_delay)
+   925  0707  3002               	movlw	high(0258h)
+   926  0708  00F1               	movwf	((?_delay))+1
+   927  0709  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+   928                           	line	109
+   929                           	
+   930  070E                     l2322:	
+   931                           ;2 sensor value.c: 109: temp1=temp1+ADRESL;
+   932  070E  1683               	bsf	status, 5	;RP0=1, select bank1
+   933  070F  1303               	bcf	status, 6	;RP1=0, select bank1
+   934  0710  081E               	movf	(158)^080h,w	;volatile
+   935  0711  1283               	bcf	status, 5	;RP0=0, select bank0
+   936  0712  1303               	bcf	status, 6	;RP1=0, select bank0
+   937  0713  073A               	addwf	(main@temp1),w
+   938  0714  00BA               	movwf	(main@temp1)
+   939  0715  083B               	movf	(main@temp1+1),w
+   940  0716  1803               	skipnc
+   941  0717  0A3B               	incf	(main@temp1+1),w
+   942  0718  00BB               	movwf	((main@temp1))+1
+   943                           	line	111
+   944                           	
+   945  0719                     l2324:	
+   946                           ;2 sensor value.c: 111: PORTD=temp1;
+   947  0719  083A               	movf	(main@temp1),w
+   948  071A  0088               	movwf	(8)	;volatile
+   949                           	line	112
+   950                           	
+   951  071B                     l2326:	
+   952                           ;2 sensor value.c: 112: z=temp1/1000;
+   953  071B  30E8               	movlw	low(03E8h)
+   954  071C  00F0               	movwf	(?___lwdiv)
+   955  071D  3003               	movlw	high(03E8h)
+   956  071E  00F1               	movwf	((?___lwdiv))+1
+   957  071F  083B               	movf	(main@temp1+1),w
+   958  0720  01F3               	clrf	1+(?___lwdiv)+02h
+   959  0721  07F3               	addwf	1+(?___lwdiv)+02h
+   960  0722  083A               	movf	(main@temp1),w
+   961  0723  01F2               	clrf	0+(?___lwdiv)+02h
+   962  0724  07F2               	addwf	0+(?___lwdiv)+02h
+   963                           
+   964  0725  120A  118A  2472   	fcall	___lwdiv
+              120A  118A         
+   965  072A  0871               	movf	(1+(?___lwdiv)),w
+   966  072B  1283               	bcf	status, 5	;RP0=0, select bank0
+   967  072C  1303               	bcf	status, 6	;RP1=0, select bank0
+   968  072D  01A9               	clrf	(main@z+1)
+   969  072E  07A9               	addwf	(main@z+1)
+   970  072F  0870               	movf	(0+(?___lwdiv)),w
+   971  0730  01A8               	clrf	(main@z)
+   972  0731  07A8               	addwf	(main@z)
+   973                           
+   974                           	line	113
+   975                           	
+   976  0732                     l2328:	
+   977                           ;2 sensor value.c: 113: y=temp1%1000;
+   978  0732  30E8               	movlw	low(03E8h)
+   979  0733  00F0               	movwf	(?___lwmod)
+   980  0734  3003               	movlw	high(03E8h)
+   981  0735  00F1               	movwf	((?___lwmod))+1
+   982  0736  083B               	movf	(main@temp1+1),w
+   983  0737  01F3               	clrf	1+(?___lwmod)+02h
+   984  0738  07F3               	addwf	1+(?___lwmod)+02h
+   985  0739  083A               	movf	(main@temp1),w
+   986  073A  01F2               	clrf	0+(?___lwmod)+02h
+   987  073B  07F2               	addwf	0+(?___lwmod)+02h
+   988                           
+   989  073C  120A  118A  2435   	fcall	___lwmod
+              120A  118A         
+   990  0741  0871               	movf	(1+(?___lwmod)),w
+   991  0742  1283               	bcf	status, 5	;RP0=0, select bank0
+   992  0743  1303               	bcf	status, 6	;RP1=0, select bank0
+   993  0744  01B5               	clrf	(main@y+1)
+   994  0745  07B5               	addwf	(main@y+1)
+   995  0746  0870               	movf	(0+(?___lwmod)),w
+   996  0747  01B4               	clrf	(main@y)
+   997  0748  07B4               	addwf	(main@y)
+   998                           
+   999                           	line	114
+  1000                           	
+  1001  0749                     l2330:	
+  1002                           ;2 sensor value.c: 114: x=y/100;
+  1003  0749  3064               	movlw	low(064h)
+  1004  074A  00F0               	movwf	(?___awdiv)
+  1005  074B  3000               	movlw	high(064h)
+  1006  074C  00F1               	movwf	((?___awdiv))+1
+  1007  074D  0835               	movf	(main@y+1),w
+  1008  074E  01F3               	clrf	1+(?___awdiv)+02h
+  1009  074F  07F3               	addwf	1+(?___awdiv)+02h
+  1010  0750  0834               	movf	(main@y),w
+  1011  0751  01F2               	clrf	0+(?___awdiv)+02h
+  1012  0752  07F2               	addwf	0+(?___awdiv)+02h
+  1013                           
+  1014  0753  120A  118A  251B   	fcall	___awdiv
+              120A  118A         
+  1015  0758  0871               	movf	(1+(?___awdiv)),w
+  1016  0759  1283               	bcf	status, 5	;RP0=0, select bank0
+  1017  075A  1303               	bcf	status, 6	;RP1=0, select bank0
+  1018  075B  01AB               	clrf	(main@x+1)
+  1019  075C  07AB               	addwf	(main@x+1)
+  1020  075D  0870               	movf	(0+(?___awdiv)),w
+  1021  075E  01AA               	clrf	(main@x)
+  1022  075F  07AA               	addwf	(main@x)
+  1023                           
+  1024                           	line	115
+  1025                           	
+  1026  0760                     l2332:	
+  1027                           ;2 sensor value.c: 115: w=y%100;
+  1028  0760  3064               	movlw	low(064h)
+  1029  0761  00F0               	movwf	(?___awmod)
+  1030  0762  3000               	movlw	high(064h)
+  1031  0763  00F1               	movwf	((?___awmod))+1
+  1032  0764  0835               	movf	(main@y+1),w
+  1033  0765  01F3               	clrf	1+(?___awmod)+02h
+  1034  0766  07F3               	addwf	1+(?___awmod)+02h
+  1035  0767  0834               	movf	(main@y),w
+  1036  0768  01F2               	clrf	0+(?___awmod)+02h
+  1037  0769  07F2               	addwf	0+(?___awmod)+02h
+  1038                           
+  1039  076A  120A  118A  24BB   	fcall	___awmod
+              120A  118A         
+  1040  076F  0871               	movf	(1+(?___awmod)),w
+  1041  0770  1283               	bcf	status, 5	;RP0=0, select bank0
+  1042  0771  1303               	bcf	status, 6	;RP1=0, select bank0
+  1043  0772  01B7               	clrf	(main@w+1)
+  1044  0773  07B7               	addwf	(main@w+1)
+  1045  0774  0870               	movf	(0+(?___awmod)),w
+  1046  0775  01B6               	clrf	(main@w)
+  1047  0776  07B6               	addwf	(main@w)
+  1048                           
+  1049                           	line	116
+  1050                           	
+  1051  0777                     l2334:	
+  1052                           ;2 sensor value.c: 116: v=w/10;
+  1053  0777  300A               	movlw	low(0Ah)
+  1054  0778  00F0               	movwf	(?___awdiv)
+  1055  0779  3000               	movlw	high(0Ah)
+  1056  077A  00F1               	movwf	((?___awdiv))+1
+  1057  077B  0837               	movf	(main@w+1),w
+  1058  077C  01F3               	clrf	1+(?___awdiv)+02h
+  1059  077D  07F3               	addwf	1+(?___awdiv)+02h
+  1060  077E  0836               	movf	(main@w),w
+  1061  077F  01F2               	clrf	0+(?___awdiv)+02h
+  1062  0780  07F2               	addwf	0+(?___awdiv)+02h
+  1063                           
+  1064  0781  120A  118A  251B   	fcall	___awdiv
+              120A  118A         
+  1065  0786  0871               	movf	(1+(?___awdiv)),w
+  1066  0787  1283               	bcf	status, 5	;RP0=0, select bank0
+  1067  0788  1303               	bcf	status, 6	;RP1=0, select bank0
+  1068  0789  01AD               	clrf	(main@v+1)
+  1069  078A  07AD               	addwf	(main@v+1)
+  1070  078B  0870               	movf	(0+(?___awdiv)),w
+  1071  078C  01AC               	clrf	(main@v)
+  1072  078D  07AC               	addwf	(main@v)
+  1073                           
+  1074                           	line	117
+  1075                           	
+  1076  078E                     l2336:	
+  1077                           ;2 sensor value.c: 117: u=w%10;
+  1078  078E  300A               	movlw	low(0Ah)
+  1079  078F  00F0               	movwf	(?___awmod)
+  1080  0790  3000               	movlw	high(0Ah)
+  1081  0791  00F1               	movwf	((?___awmod))+1
+  1082  0792  0837               	movf	(main@w+1),w
+  1083  0793  01F3               	clrf	1+(?___awmod)+02h
+  1084  0794  07F3               	addwf	1+(?___awmod)+02h
+  1085  0795  0836               	movf	(main@w),w
+  1086  0796  01F2               	clrf	0+(?___awmod)+02h
+  1087  0797  07F2               	addwf	0+(?___awmod)+02h
+  1088                           
+  1089  0798  120A  118A  24BB   	fcall	___awmod
+              120A  118A         
+  1090  079D  0871               	movf	(1+(?___awmod)),w
+  1091  079E  1283               	bcf	status, 5	;RP0=0, select bank0
+  1092  079F  1303               	bcf	status, 6	;RP1=0, select bank0
+  1093  07A0  01AF               	clrf	(main@u+1)
+  1094  07A1  07AF               	addwf	(main@u+1)
+  1095  07A2  0870               	movf	(0+(?___awmod)),w
+  1096  07A3  01AE               	clrf	(main@u)
+  1097  07A4  07AE               	addwf	(main@u)
+  1098                           
+  1099                           	line	118
+  1100                           	
+  1101  07A5                     l2338:	
+  1102                           ;2 sensor value.c: 118: lcd_command(0xC0);
+  1103  07A5  30C0               	movlw	(0C0h)
+  1104  07A6  120A  118A  23F2   	fcall	_lcd_command
+              120A  118A         
+  1105                           	line	119
+  1106                           	
+  1107  07AB                     l2340:	
+  1108                           ;2 sensor value.c: 119: delay(600);
+  1109  07AB  3058               	movlw	low(0258h)
+  1110  07AC  00F0               	movwf	(?_delay)
+  1111  07AD  3002               	movlw	high(0258h)
+  1112  07AE  00F1               	movwf	((?_delay))+1
+  1113  07AF  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+  1114                           	line	120
+  1115                           	
+  1116  07B4                     l2342:	
+  1117                           ;2 sensor value.c: 120: lcd_data(z+0x30);
+  1118  07B4  1283               	bcf	status, 5	;RP0=0, select bank0
+  1119  07B5  1303               	bcf	status, 6	;RP1=0, select bank0
+  1120  07B6  0828               	movf	(main@z),w
+  1121  07B7  3E30               	addlw	030h
+  1122  07B8  120A  118A  2407   	fcall	_lcd_data
+              120A  118A         
+  1123                           	line	121
+  1124                           	
+  1125  07BD                     l2344:	
+  1126                           ;2 sensor value.c: 121: delay(600);
+  1127  07BD  3058               	movlw	low(0258h)
+  1128  07BE  00F0               	movwf	(?_delay)
+  1129  07BF  3002               	movlw	high(0258h)
+  1130  07C0  00F1               	movwf	((?_delay))+1
+  1131  07C1  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+  1132                           	line	122
+  1133                           	
+  1134  07C6                     l2346:	
+  1135                           ;2 sensor value.c: 122: lcd_data(x+0x30);
+  1136  07C6  1283               	bcf	status, 5	;RP0=0, select bank0
+  1137  07C7  1303               	bcf	status, 6	;RP1=0, select bank0
+  1138  07C8  082A               	movf	(main@x),w
+  1139  07C9  3E30               	addlw	030h
+  1140  07CA  120A  118A  2407   	fcall	_lcd_data
+              120A  118A         
+  1141                           	line	123
+  1142                           	
+  1143  07CF                     l2348:	
+  1144                           ;2 sensor value.c: 123: delay(600);
+  1145  07CF  3058               	movlw	low(0258h)
+  1146  07D0  00F0               	movwf	(?_delay)
+  1147  07D1  3002               	movlw	high(0258h)
+  1148  07D2  00F1               	movwf	((?_delay))+1
+  1149  07D3  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+  1150                           	line	124
+  1151                           	
+  1152  07D8                     l2350:	
+  1153                           ;2 sensor value.c: 124: lcd_data(v+0x30);
+  1154  07D8  1283               	bcf	status, 5	;RP0=0, select bank0
+  1155  07D9  1303               	bcf	status, 6	;RP1=0, select bank0
+  1156  07DA  082C               	movf	(main@v),w
+  1157  07DB  3E30               	addlw	030h
+  1158  07DC  120A  118A  2407   	fcall	_lcd_data
+              120A  118A         
+  1159                           	line	125
+  1160                           	
+  1161  07E1                     l2352:	
+  1162                           ;2 sensor value.c: 125: delay(600);
+  1163  07E1  3058               	movlw	low(0258h)
+  1164  07E2  00F0               	movwf	(?_delay)
+  1165  07E3  3002               	movlw	high(0258h)
+  1166  07E4  00F1               	movwf	((?_delay))+1
+  1167  07E5  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+  1168                           	line	126
+  1169                           	
+  1170  07EA                     l2354:	
+  1171                           ;2 sensor value.c: 126: lcd_data(u+0x30);
+  1172  07EA  1283               	bcf	status, 5	;RP0=0, select bank0
+  1173  07EB  1303               	bcf	status, 6	;RP1=0, select bank0
+  1174  07EC  082E               	movf	(main@u),w
+  1175  07ED  3E30               	addlw	030h
+  1176  07EE  120A  118A  2407   	fcall	_lcd_data
+              120A  118A         
+  1177                           	line	127
+  1178                           	
+  1179  07F3                     l2356:	
+  1180                           ;2 sensor value.c: 127: delay(600);
+  1181  07F3  3058               	movlw	low(0258h)
+  1182  07F4  00F0               	movwf	(?_delay)
+  1183  07F5  3002               	movlw	high(0258h)
+  1184  07F6  00F1               	movwf	((?_delay))+1
+  1185  07F7  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+  1186                           	line	131
+  1187                           	
+  1188  07FC                     l581:	
+  1189                           	line	67
+  1190  07FC  2DB4               	goto	l580
+  1191                           	
+  1192  07FD                     l582:	
+  1193                           	line	132
+  1194                           	
+  1195  07FD                     l583:	
+  1196                           	global	start
+  1197  07FD  120A  118A  2800   	ljmp	start
+  1198                           	opt stack 0
+  1199                           GLOBAL	__end_of_main
+  1200  0800                     	__end_of_main:
+  1201 ;; =============== function _main ends ============
+  1202                           
+  1203                           	signat	_main,88
+  1204                           	global	_lcd_init
+  1205                           psect	text181,local,class=CODE,delta=2
+  1206                           global __ptext181
+  1207  041C                     __ptext181:
+  1208                           
+  1209 ;; *************** function _lcd_init *****************
+  1210 ;; Defined at:
+  1211 ;;		line 20 in file "C:\Users\ELCOT\Desktop\adc timer\ADC\ADC task\2 sensor with lcd value\2 sensor value.c"
+  1212 ;; Parameters:    Size  Location     Type
+  1213 ;;		None
+  1214 ;; Auto vars:     Size  Location     Type
+  1215 ;;		None
+  1216 ;; Return value:  Size  Location     Type
+  1217 ;;		None               void
+  1218 ;; Registers used:
+  1219 ;;		wreg, status,2, status,0, pclath, cstack
+  1220 ;; Tracked objects:
+  1221 ;;		On entry : 0/0
+  1222 ;;		On exit  : 0/0
+  1223 ;;		Unchanged: 0/0
+  1224 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1225 ;;      Params:         0       0       0       0       0
+  1226 ;;      Locals:         0       0       0       0       0
+  1227 ;;      Temps:          0       0       0       0       0
+  1228 ;;      Totals:         0       0       0       0       0
+  1229 ;;Total ram usage:        0 bytes
+  1230 ;; Hardware stack levels used:    1
+  1231 ;; Hardware stack levels required when called:    2
+  1232 ;; This function calls:
+  1233 ;;		_lcd_command
+  1234 ;; This function is called by:
+  1235 ;;		_main
+  1236 ;; This function uses a non-reentrant model
+  1237 ;;
+  1238                           psect	text181
+  1239                           	file	"C:\Users\ELCOT\Desktop\adc timer\ADC\ADC task\2 sensor with lcd value\2 sensor va
+                                 lue.c"
+  1240                           	line	20
+  1241                           	global	__size_of_lcd_init
+  1242  0019                     	__size_of_lcd_init	equ	__end_of_lcd_init-_lcd_init
+  1243                           	
+  1244  041C                     _lcd_init:	
+  1245                           	opt	stack 7
+  1246                           ; Regs used in _lcd_init: [wreg+status,2+status,0+pclath+cstack]
+  1247                           	line	21
+  1248                           	
+  1249  041C                     l2234:	
+  1250                           ;2 sensor value.c: 21: lcd_command(0x38);
+  1251  041C  3038               	movlw	(038h)
+  1252  041D  120A  118A  23F2   	fcall	_lcd_command
+              120A  118A         
+  1253                           	line	22
+  1254                           ;2 sensor value.c: 22: lcd_command(0x06);
+  1255  0422  3006               	movlw	(06h)
+  1256  0423  120A  118A  23F2   	fcall	_lcd_command
+              120A  118A         
+  1257                           	line	23
+  1258                           ;2 sensor value.c: 23: lcd_command(0x0c);
+  1259  0428  300C               	movlw	(0Ch)
+  1260  0429  120A  118A  23F2   	fcall	_lcd_command
+              120A  118A         
+  1261                           	line	24
+  1262                           ;2 sensor value.c: 24: lcd_command(0x01);
+  1263  042E  3001               	movlw	(01h)
+  1264  042F  120A  118A  23F2   	fcall	_lcd_command
+              120A  118A         
+  1265                           	line	25
+  1266                           	
+  1267  0434                     l568:	
+  1268  0434  0008               	return
+  1269                           	opt stack 0
+  1270                           GLOBAL	__end_of_lcd_init
+  1271  0435                     	__end_of_lcd_init:
+  1272 ;; =============== function _lcd_init ends ============
+  1273                           
+  1274                           	signat	_lcd_init,88
+  1275                           	global	_lcd_data
+  1276                           psect	text182,local,class=CODE,delta=2
+  1277                           global __ptext182
+  1278  0407                     __ptext182:
+  1279                           
+  1280 ;; *************** function _lcd_data *****************
+  1281 ;; Defined at:
+  1282 ;;		line 27 in file "C:\Users\ELCOT\Desktop\adc timer\ADC\ADC task\2 sensor with lcd value\2 sensor value.c"
+  1283 ;; Parameters:    Size  Location     Type
+  1284 ;;  data            1    wreg     unsigned char 
+  1285 ;; Auto vars:     Size  Location     Type
+  1286 ;;  data            1    2[COMMON] unsigned char 
+  1287 ;; Return value:  Size  Location     Type
+  1288 ;;		None               void
+  1289 ;; Registers used:
+  1290 ;;		wreg, status,2, status,0, pclath, cstack
+  1291 ;; Tracked objects:
+  1292 ;;		On entry : 0/0
+  1293 ;;		On exit  : 0/0
+  1294 ;;		Unchanged: 0/0
+  1295 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1296 ;;      Params:         0       0       0       0       0
+  1297 ;;      Locals:         1       0       0       0       0
+  1298 ;;      Temps:          0       0       0       0       0
+  1299 ;;      Totals:         1       0       0       0       0
+  1300 ;;Total ram usage:        1 bytes
+  1301 ;; Hardware stack levels used:    1
+  1302 ;; Hardware stack levels required when called:    1
+  1303 ;; This function calls:
+  1304 ;;		_delay
+  1305 ;; This function is called by:
+  1306 ;;		_main
+  1307 ;;		_lcd_display
+  1308 ;; This function uses a non-reentrant model
+  1309 ;;
+  1310                           psect	text182
+  1311                           	file	"C:\Users\ELCOT\Desktop\adc timer\ADC\ADC task\2 sensor with lcd value\2 sensor va
+                                 lue.c"
+  1312                           	line	27
+  1313                           	global	__size_of_lcd_data
+  1314  0015                     	__size_of_lcd_data	equ	__end_of_lcd_data-_lcd_data
+  1315                           	
+  1316  0407                     _lcd_data:	
+  1317                           	opt	stack 7
+  1318                           ; Regs used in _lcd_data: [wreg+status,2+status,0+pclath+cstack]
+  1319                           ;lcd_data@data stored from wreg
+  1320  0407  00F2               	movwf	(lcd_data@data)
+  1321                           	line	28
+  1322                           	
+  1323  0408                     l2222:	
+  1324                           ;2 sensor value.c: 28: PORTD=data;
+  1325  0408  0872               	movf	(lcd_data@data),w
+  1326  0409  1283               	bcf	status, 5	;RP0=0, select bank0
+  1327  040A  1303               	bcf	status, 6	;RP1=0, select bank0
+  1328  040B  0088               	movwf	(8)	;volatile
+  1329                           	line	29
+  1330                           	
+  1331  040C                     l2224:	
+  1332                           ;2 sensor value.c: 29: RC0=1;
+  1333  040C  1407               	bsf	(56/8),(56)&7
+  1334                           	line	30
+  1335                           	
+  1336  040D                     l2226:	
+  1337                           ;2 sensor value.c: 30: RC1=0;
+  1338  040D  1087               	bcf	(57/8),(57)&7
+  1339                           	line	31
+  1340                           	
+  1341  040E                     l2228:	
+  1342                           ;2 sensor value.c: 31: RC2=1;
+  1343  040E  1507               	bsf	(58/8),(58)&7
+  1344                           	line	32
+  1345                           	
+  1346  040F                     l2230:	
+  1347                           ;2 sensor value.c: 32: delay(100);
+  1348  040F  3064               	movlw	low(064h)
+  1349  0410  00F0               	movwf	(?_delay)
+  1350  0411  3000               	movlw	high(064h)
+  1351  0412  00F1               	movwf	((?_delay))+1
+  1352  0413  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+  1353                           	line	33
+  1354                           	
+  1355  0418                     l2232:	
+  1356                           ;2 sensor value.c: 33: RC2=0;
+  1357  0418  1283               	bcf	status, 5	;RP0=0, select bank0
+  1358  0419  1303               	bcf	status, 6	;RP1=0, select bank0
+  1359  041A  1107               	bcf	(58/8),(58)&7
+  1360                           	line	34
+  1361                           	
+  1362  041B                     l571:	
+  1363  041B  0008               	return
+  1364                           	opt stack 0
+  1365                           GLOBAL	__end_of_lcd_data
+  1366  041C                     	__end_of_lcd_data:
+  1367 ;; =============== function _lcd_data ends ============
+  1368                           
+  1369                           	signat	_lcd_data,4216
+  1370                           	global	_lcd_command
+  1371                           psect	text183,local,class=CODE,delta=2
+  1372                           global __ptext183
+  1373  03F2                     __ptext183:
+  1374                           
+  1375 ;; *************** function _lcd_command *****************
+  1376 ;; Defined at:
+  1377 ;;		line 11 in file "C:\Users\ELCOT\Desktop\adc timer\ADC\ADC task\2 sensor with lcd value\2 sensor value.c"
+  1378 ;; Parameters:    Size  Location     Type
+  1379 ;;  com             1    wreg     unsigned char 
+  1380 ;; Auto vars:     Size  Location     Type
+  1381 ;;  com             1    2[COMMON] unsigned char 
+  1382 ;; Return value:  Size  Location     Type
+  1383 ;;		None               void
+  1384 ;; Registers used:
+  1385 ;;		wreg, status,2, status,0, pclath, cstack
+  1386 ;; Tracked objects:
+  1387 ;;		On entry : 0/0
+  1388 ;;		On exit  : 0/0
+  1389 ;;		Unchanged: 0/0
+  1390 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1391 ;;      Params:         0       0       0       0       0
+  1392 ;;      Locals:         1       0       0       0       0
+  1393 ;;      Temps:          0       0       0       0       0
+  1394 ;;      Totals:         1       0       0       0       0
+  1395 ;;Total ram usage:        1 bytes
+  1396 ;; Hardware stack levels used:    1
+  1397 ;; Hardware stack levels required when called:    1
+  1398 ;; This function calls:
+  1399 ;;		_delay
+  1400 ;; This function is called by:
+  1401 ;;		_lcd_init
+  1402 ;;		_main
+  1403 ;; This function uses a non-reentrant model
+  1404 ;;
+  1405                           psect	text183
+  1406                           	file	"C:\Users\ELCOT\Desktop\adc timer\ADC\ADC task\2 sensor with lcd value\2 sensor va
+                                 lue.c"
+  1407                           	line	11
+  1408                           	global	__size_of_lcd_command
+  1409  0015                     	__size_of_lcd_command	equ	__end_of_lcd_command-_lcd_command
+  1410                           	
+  1411  03F2                     _lcd_command:	
+  1412                           	opt	stack 7
+  1413                           ; Regs used in _lcd_command: [wreg+status,2+status,0+pclath+cstack]
+  1414                           ;lcd_command@com stored from wreg
+  1415  03F2  00F2               	movwf	(lcd_command@com)
+  1416                           	line	12
+  1417                           	
+  1418  03F3                     l2210:	
+  1419                           ;2 sensor value.c: 12: PORTD=com;
+  1420  03F3  0872               	movf	(lcd_command@com),w
+  1421  03F4  1283               	bcf	status, 5	;RP0=0, select bank0
+  1422  03F5  1303               	bcf	status, 6	;RP1=0, select bank0
+  1423  03F6  0088               	movwf	(8)	;volatile
+  1424                           	line	13
+  1425                           	
+  1426  03F7                     l2212:	
+  1427                           ;2 sensor value.c: 13: RC0=0;
+  1428  03F7  1007               	bcf	(56/8),(56)&7
+  1429                           	line	14
+  1430                           	
+  1431  03F8                     l2214:	
+  1432                           ;2 sensor value.c: 14: RC1=0;
+  1433  03F8  1087               	bcf	(57/8),(57)&7
+  1434                           	line	15
+  1435                           	
+  1436  03F9                     l2216:	
+  1437                           ;2 sensor value.c: 15: RC2=1;
+  1438  03F9  1507               	bsf	(58/8),(58)&7
+  1439                           	line	16
+  1440                           	
+  1441  03FA                     l2218:	
+  1442                           ;2 sensor value.c: 16: delay(100);
+  1443  03FA  3064               	movlw	low(064h)
+  1444  03FB  00F0               	movwf	(?_delay)
+  1445  03FC  3000               	movlw	high(064h)
+  1446  03FD  00F1               	movwf	((?_delay))+1
+  1447  03FE  120A  118A  23E0   	fcall	_delay
+              120A  118A         
+  1448                           	line	17
+  1449                           	
+  1450  0403                     l2220:	
+  1451                           ;2 sensor value.c: 17: RC2=0;
+  1452  0403  1283               	bcf	status, 5	;RP0=0, select bank0
+  1453  0404  1303               	bcf	status, 6	;RP1=0, select bank0
+  1454  0405  1107               	bcf	(58/8),(58)&7
+  1455                           	line	18
+  1456                           	
+  1457  0406                     l565:	
+  1458  0406  0008               	return
+  1459                           	opt stack 0
+  1460                           GLOBAL	__end_of_lcd_command
+  1461  0407                     	__end_of_lcd_command:
+  1462 ;; =============== function _lcd_command ends ============
+  1463                           
+  1464                           	signat	_lcd_command,4216
+  1465                           	global	___awmod
+  1466                           psect	text184,local,class=CODE,delta=2
+  1467                           global __ptext184
+  1468  04BB                     __ptext184:
+  1469                           
+  1470 ;; *************** function ___awmod *****************
+  1471 ;; Defined at:
+  1472 ;;		line 5 in file "C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\sources\awmod.c"
+  1473 ;; Parameters:    Size  Location     Type
+  1474 ;;  divisor         2    0[COMMON] int 
+  1475 ;;  dividend        2    2[COMMON] int 
+  1476 ;; Auto vars:     Size  Location     Type
+  1477 ;;  sign            1    6[COMMON] unsigned char 
+  1478 ;;  counter         1    5[COMMON] unsigned char 
+  1479 ;; Return value:  Size  Location     Type
+  1480 ;;                  2    0[COMMON] int 
+  1481 ;; Registers used:
+  1482 ;;		wreg, status,2, status,0
+  1483 ;; Tracked objects:
+  1484 ;;		On entry : 0/0
+  1485 ;;		On exit  : 0/0
+  1486 ;;		Unchanged: 0/0
+  1487 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1488 ;;      Params:         4       0       0       0       0
+  1489 ;;      Locals:         2       0       0       0       0
+  1490 ;;      Temps:          1       0       0       0       0
+  1491 ;;      Totals:         7       0       0       0       0
+  1492 ;;Total ram usage:        7 bytes
+  1493 ;; Hardware stack levels used:    1
+  1494 ;; This function calls:
+  1495 ;;		Nothing
+  1496 ;; This function is called by:
+  1497 ;;		_main
+  1498 ;; This function uses a non-reentrant model
+  1499 ;;
+  1500                           psect	text184
+  1501                           	file	"C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\sources\awmod.c"
+  1502                           	line	5
+  1503                           	global	__size_of___awmod
+  1504  0060                     	__size_of___awmod	equ	__end_of___awmod-___awmod
+  1505                           	
+  1506  04BB                     ___awmod:	
+  1507                           	opt	stack 7
+  1508                           ; Regs used in ___awmod: [wreg+status,2+status,0]
+  1509                           	line	8
+  1510                           	
+  1511  04BB                     l2174:	
+  1512  04BB  1003               	clrc
+  1513  04BC  3000               	movlw	0
+  1514  04BD  1803               	btfsc	status,0
+  1515  04BE  3001               	movlw	1
+  1516  04BF  00F6               	movwf	(___awmod@sign)
+  1517                           	line	9
+  1518                           	
+  1519  04C0                     l2176:	
+  1520  04C0  1FF3               	btfss	(___awmod@dividend+1),7
+  1521  04C1  2CC3               	goto	u2431
+  1522  04C2  2CC4               	goto	u2430
+  1523  04C3                     u2431:
+  1524  04C3  2CCC               	goto	l800
+  1525  04C4                     u2430:
+  1526                           	line	10
+  1527                           	
+  1528  04C4                     l2178:	
+  1529  04C4  09F2               	comf	(___awmod@dividend),f
+  1530  04C5  09F3               	comf	(___awmod@dividend+1),f
+  1531  04C6  0AF2               	incf	(___awmod@dividend),f
+  1532  04C7  1903               	skipnz
+  1533  04C8  0AF3               	incf	(___awmod@dividend+1),f
+  1534                           	line	11
+  1535  04C9  01F6               	clrf	(___awmod@sign)
+  1536  04CA  1403               	bsf	status,0
+  1537  04CB  0DF6               	rlf	(___awmod@sign),f
+  1538                           	line	12
+  1539                           	
+  1540  04CC                     l800:	
+  1541                           	line	13
+  1542                           	
+  1543  04CC                     l2180:	
+  1544  04CC  1FF1               	btfss	(___awmod@divisor+1),7
+  1545  04CD  2CCF               	goto	u2441
+  1546  04CE  2CD0               	goto	u2440
+  1547  04CF                     u2441:
+  1548  04CF  2CD5               	goto	l801
+  1549  04D0                     u2440:
+  1550                           	line	14
+  1551                           	
+  1552  04D0                     l2182:	
+  1553  04D0  09F0               	comf	(___awmod@divisor),f
+  1554  04D1  09F1               	comf	(___awmod@divisor+1),f
+  1555  04D2  0AF0               	incf	(___awmod@divisor),f
+  1556  04D3  1903               	skipnz
+  1557  04D4  0AF1               	incf	(___awmod@divisor+1),f
+  1558                           	
+  1559  04D5                     l801:	
+  1560                           	line	15
+  1561                           	
+  1562  04D5                     l2184:	
+  1563  04D5  0871               	movf	(___awmod@divisor+1),w
+  1564  04D6  0470               	iorwf	(___awmod@divisor),w
+  1565  04D7  1903               	skipnz
+  1566  04D8  2CDA               	goto	u2451
+  1567  04D9  2CDB               	goto	u2450
+  1568  04DA                     u2451:
+  1569  04DA  2D0B               	goto	l802
+  1570  04DB                     u2450:
+  1571                           	line	16
+  1572                           	
+  1573  04DB                     l2186:	
+  1574  04DB  01F5               	clrf	(___awmod@counter)
+  1575  04DC  1403               	bsf	status,0
+  1576  04DD  0DF5               	rlf	(___awmod@counter),f
+  1577                           	line	17
+  1578  04DE  2CEA               	goto	l803
+  1579                           	
+  1580  04DF                     l804:	
+  1581                           	line	18
+  1582                           	
+  1583  04DF                     l2188:	
+  1584  04DF  3001               	movlw	01h
+  1585                           	
+  1586  04E0                     u2465:
+  1587  04E0  1003               	clrc
+  1588  04E1  0DF0               	rlf	(___awmod@divisor),f
+  1589  04E2  0DF1               	rlf	(___awmod@divisor+1),f
+  1590  04E3  3EFF               	addlw	-1
+  1591  04E4  1D03               	skipz
+  1592  04E5  2CE0               	goto	u2465
+  1593                           	line	19
+  1594                           	
+  1595  04E6                     l2190:	
+  1596  04E6  3001               	movlw	(01h)
+  1597  04E7  00F4               	movwf	(??___awmod+0)+0
+  1598  04E8  0874               	movf	(??___awmod+0)+0,w
+  1599  04E9  07F5               	addwf	(___awmod@counter),f
+  1600                           	line	20
+  1601                           	
+  1602  04EA                     l803:	
+  1603                           	line	17
+  1604                           	
+  1605  04EA                     l2192:	
+  1606  04EA  1FF1               	btfss	(___awmod@divisor+1),(15)&7
+  1607  04EB  2CED               	goto	u2471
+  1608  04EC  2CEE               	goto	u2470
+  1609  04ED                     u2471:
+  1610  04ED  2CDF               	goto	l804
+  1611  04EE                     u2470:
+  1612                           	
+  1613  04EE                     l805:	
+  1614                           	line	21
+  1615                           	
+  1616  04EE                     l806:	
+  1617                           	line	22
+  1618                           	
+  1619  04EE                     l2194:	
+  1620  04EE  0871               	movf	(___awmod@divisor+1),w
+  1621  04EF  0273               	subwf	(___awmod@dividend+1),w
+  1622  04F0  1D03               	skipz
+  1623  04F1  2CF4               	goto	u2485
+  1624  04F2  0870               	movf	(___awmod@divisor),w
+  1625  04F3  0272               	subwf	(___awmod@dividend),w
+  1626  04F4                     u2485:
+  1627  04F4  1C03               	skipc
+  1628  04F5  2CF7               	goto	u2481
+  1629  04F6  2CF8               	goto	u2480
+  1630  04F7                     u2481:
+  1631  04F7  2CFE               	goto	l807
+  1632  04F8                     u2480:
+  1633                           	line	23
+  1634                           	
+  1635  04F8                     l2196:	
+  1636  04F8  0870               	movf	(___awmod@divisor),w
+  1637  04F9  02F2               	subwf	(___awmod@dividend),f
+  1638  04FA  0871               	movf	(___awmod@divisor+1),w
+  1639  04FB  1C03               	skipc
+  1640  04FC  03F3               	decf	(___awmod@dividend+1),f
+  1641  04FD  02F3               	subwf	(___awmod@dividend+1),f
+  1642                           	
+  1643  04FE                     l807:	
+  1644                           	line	24
+  1645                           	
+  1646  04FE                     l2198:	
+  1647  04FE  3001               	movlw	01h
+  1648                           	
+  1649  04FF                     u2495:
+  1650  04FF  1003               	clrc
+  1651  0500  0CF1               	rrf	(___awmod@divisor+1),f
+  1652  0501  0CF0               	rrf	(___awmod@divisor),f
+  1653  0502  3EFF               	addlw	-1
+  1654  0503  1D03               	skipz
+  1655  0504  2CFF               	goto	u2495
+  1656                           	line	25
+  1657                           	
+  1658  0505                     l2200:	
+  1659  0505  3001               	movlw	low(01h)
+  1660  0506  02F5               	subwf	(___awmod@counter),f
+  1661  0507  1D03               	btfss	status,2
+  1662  0508  2D0A               	goto	u2501
+  1663  0509  2D0B               	goto	u2500
+  1664  050A                     u2501:
+  1665  050A  2CEE               	goto	l806
+  1666  050B                     u2500:
+  1667                           	
+  1668  050B                     l808:	
+  1669                           	line	26
+  1670                           	
+  1671  050B                     l802:	
+  1672                           	line	27
+  1673                           	
+  1674  050B                     l2202:	
+  1675  050B  0876               	movf	(___awmod@sign),w
+  1676  050C  1D03               	skipz
+  1677  050D  2D0F               	goto	u2510
+  1678  050E  2D14               	goto	l809
+  1679  050F                     u2510:
+  1680                           	line	28
+  1681                           	
+  1682  050F                     l2204:	
+  1683  050F  09F2               	comf	(___awmod@dividend),f
+  1684  0510  09F3               	comf	(___awmod@dividend+1),f
+  1685  0511  0AF2               	incf	(___awmod@dividend),f
+  1686  0512  1903               	skipnz
+  1687  0513  0AF3               	incf	(___awmod@dividend+1),f
+  1688                           	
+  1689  0514                     l809:	
+  1690                           	line	29
+  1691                           	
+  1692  0514                     l2206:	
+  1693  0514  0873               	movf	(___awmod@dividend+1),w
+  1694  0515  01F1               	clrf	(?___awmod+1)
+  1695  0516  07F1               	addwf	(?___awmod+1)
+  1696  0517  0872               	movf	(___awmod@dividend),w
+  1697  0518  01F0               	clrf	(?___awmod)
+  1698  0519  07F0               	addwf	(?___awmod)
+  1699                           
+  1700                           	
+  1701  051A                     l2208:	
+  1702                           	line	30
+  1703                           	
+  1704  051A                     l810:	
+  1705  051A  0008               	return
+  1706                           	opt stack 0
+  1707                           GLOBAL	__end_of___awmod
+  1708  051B                     	__end_of___awmod:
+  1709 ;; =============== function ___awmod ends ============
+  1710                           
+  1711                           	signat	___awmod,8314
+  1712                           	global	___awdiv
+  1713                           psect	text185,local,class=CODE,delta=2
+  1714                           global __ptext185
+  1715  051B                     __ptext185:
+  1716                           
+  1717 ;; *************** function ___awdiv *****************
+  1718 ;; Defined at:
+  1719 ;;		line 5 in file "C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\sources\awdiv.c"
+  1720 ;; Parameters:    Size  Location     Type
+  1721 ;;  divisor         2    0[COMMON] int 
+  1722 ;;  dividend        2    2[COMMON] int 
+  1723 ;; Auto vars:     Size  Location     Type
+  1724 ;;  quotient        2    7[COMMON] int 
+  1725 ;;  sign            1    6[COMMON] unsigned char 
+  1726 ;;  counter         1    5[COMMON] unsigned char 
+  1727 ;; Return value:  Size  Location     Type
+  1728 ;;                  2    0[COMMON] int 
+  1729 ;; Registers used:
+  1730 ;;		wreg, status,2, status,0
+  1731 ;; Tracked objects:
+  1732 ;;		On entry : 0/0
+  1733 ;;		On exit  : 0/0
+  1734 ;;		Unchanged: 0/0
+  1735 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1736 ;;      Params:         4       0       0       0       0
+  1737 ;;      Locals:         4       0       0       0       0
+  1738 ;;      Temps:          1       0       0       0       0
+  1739 ;;      Totals:         9       0       0       0       0
+  1740 ;;Total ram usage:        9 bytes
+  1741 ;; Hardware stack levels used:    1
+  1742 ;; This function calls:
+  1743 ;;		Nothing
+  1744 ;; This function is called by:
+  1745 ;;		_main
+  1746 ;; This function uses a non-reentrant model
+  1747 ;;
+  1748                           psect	text185
+  1749                           	file	"C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\sources\awdiv.c"
+  1750                           	line	5
+  1751                           	global	__size_of___awdiv
+  1752  0070                     	__size_of___awdiv	equ	__end_of___awdiv-___awdiv
+  1753                           	
+  1754  051B                     ___awdiv:	
+  1755                           	opt	stack 7
+  1756                           ; Regs used in ___awdiv: [wreg+status,2+status,0]
+  1757                           	line	9
+  1758                           	
+  1759  051B                     l2136:	
+  1760  051B  1003               	clrc
+  1761  051C  3000               	movlw	0
+  1762  051D  1803               	btfsc	status,0
+  1763  051E  3001               	movlw	1
+  1764  051F  00F6               	movwf	(___awdiv@sign)
+  1765                           	line	10
+  1766                           	
+  1767  0520                     l2138:	
+  1768  0520  1FF1               	btfss	(___awdiv@divisor+1),7
+  1769  0521  2D23               	goto	u2331
+  1770  0522  2D24               	goto	u2330
+  1771  0523                     u2331:
+  1772  0523  2D2C               	goto	l732
+  1773  0524                     u2330:
+  1774                           	line	11
+  1775                           	
+  1776  0524                     l2140:	
+  1777  0524  09F0               	comf	(___awdiv@divisor),f
+  1778  0525  09F1               	comf	(___awdiv@divisor+1),f
+  1779  0526  0AF0               	incf	(___awdiv@divisor),f
+  1780  0527  1903               	skipnz
+  1781  0528  0AF1               	incf	(___awdiv@divisor+1),f
+  1782                           	line	12
+  1783  0529  01F6               	clrf	(___awdiv@sign)
+  1784  052A  1403               	bsf	status,0
+  1785  052B  0DF6               	rlf	(___awdiv@sign),f
+  1786                           	line	13
+  1787                           	
+  1788  052C                     l732:	
+  1789                           	line	14
+  1790                           	
+  1791  052C                     l2142:	
+  1792  052C  1FF3               	btfss	(___awdiv@dividend+1),7
+  1793  052D  2D2F               	goto	u2341
+  1794  052E  2D30               	goto	u2340
+  1795  052F                     u2341:
+  1796  052F  2D39               	goto	l733
+  1797  0530                     u2340:
+  1798                           	line	15
+  1799                           	
+  1800  0530                     l2144:	
+  1801  0530  09F2               	comf	(___awdiv@dividend),f
+  1802  0531  09F3               	comf	(___awdiv@dividend+1),f
+  1803  0532  0AF2               	incf	(___awdiv@dividend),f
+  1804  0533  1903               	skipnz
+  1805  0534  0AF3               	incf	(___awdiv@dividend+1),f
+  1806                           	line	16
+  1807                           	
+  1808  0535                     l2146:	
+  1809  0535  3001               	movlw	(01h)
+  1810  0536  00F4               	movwf	(??___awdiv+0)+0
+  1811  0537  0874               	movf	(??___awdiv+0)+0,w
+  1812  0538  06F6               	xorwf	(___awdiv@sign),f
+  1813                           	line	17
+  1814                           	
+  1815  0539                     l733:	
+  1816                           	line	18
+  1817  0539  3000               	movlw	low(0)
+  1818  053A  00F7               	movwf	(___awdiv@quotient)
+  1819  053B  3000               	movlw	high(0)
+  1820  053C  00F8               	movwf	((___awdiv@quotient))+1
+  1821                           	line	19
+  1822  053D  0871               	movf	(___awdiv@divisor+1),w
+  1823  053E  0470               	iorwf	(___awdiv@divisor),w
+  1824  053F  1903               	skipnz
+  1825  0540  2D42               	goto	u2351
+  1826  0541  2D43               	goto	u2350
+  1827  0542                     u2351:
+  1828  0542  2D7B               	goto	l734
+  1829  0543                     u2350:
+  1830                           	line	20
+  1831                           	
+  1832  0543                     l2148:	
+  1833  0543  01F5               	clrf	(___awdiv@counter)
+  1834  0544  1403               	bsf	status,0
+  1835  0545  0DF5               	rlf	(___awdiv@counter),f
+  1836                           	line	21
+  1837  0546  2D52               	goto	l735
+  1838                           	
+  1839  0547                     l736:	
+  1840                           	line	22
+  1841                           	
+  1842  0547                     l2150:	
+  1843  0547  3001               	movlw	01h
+  1844                           	
+  1845  0548                     u2365:
+  1846  0548  1003               	clrc
+  1847  0549  0DF0               	rlf	(___awdiv@divisor),f
+  1848  054A  0DF1               	rlf	(___awdiv@divisor+1),f
+  1849  054B  3EFF               	addlw	-1
+  1850  054C  1D03               	skipz
+  1851  054D  2D48               	goto	u2365
+  1852                           	line	23
+  1853                           	
+  1854  054E                     l2152:	
+  1855  054E  3001               	movlw	(01h)
+  1856  054F  00F4               	movwf	(??___awdiv+0)+0
+  1857  0550  0874               	movf	(??___awdiv+0)+0,w
+  1858  0551  07F5               	addwf	(___awdiv@counter),f
+  1859                           	line	24
+  1860                           	
+  1861  0552                     l735:	
+  1862                           	line	21
+  1863                           	
+  1864  0552                     l2154:	
+  1865  0552  1FF1               	btfss	(___awdiv@divisor+1),(15)&7
+  1866  0553  2D55               	goto	u2371
+  1867  0554  2D56               	goto	u2370
+  1868  0555                     u2371:
+  1869  0555  2D47               	goto	l736
+  1870  0556                     u2370:
+  1871                           	
+  1872  0556                     l737:	
+  1873                           	line	25
+  1874                           	
+  1875  0556                     l738:	
+  1876                           	line	26
+  1877                           	
+  1878  0556                     l2156:	
+  1879  0556  3001               	movlw	01h
+  1880                           	
+  1881  0557                     u2385:
+  1882  0557  1003               	clrc
+  1883  0558  0DF7               	rlf	(___awdiv@quotient),f
+  1884  0559  0DF8               	rlf	(___awdiv@quotient+1),f
+  1885  055A  3EFF               	addlw	-1
+  1886  055B  1D03               	skipz
+  1887  055C  2D57               	goto	u2385
+  1888                           	line	27
+  1889  055D  0871               	movf	(___awdiv@divisor+1),w
+  1890  055E  0273               	subwf	(___awdiv@dividend+1),w
+  1891  055F  1D03               	skipz
+  1892  0560  2D63               	goto	u2395
+  1893  0561  0870               	movf	(___awdiv@divisor),w
+  1894  0562  0272               	subwf	(___awdiv@dividend),w
+  1895  0563                     u2395:
+  1896  0563  1C03               	skipc
+  1897  0564  2D66               	goto	u2391
+  1898  0565  2D67               	goto	u2390
+  1899  0566                     u2391:
+  1900  0566  2D6E               	goto	l739
+  1901  0567                     u2390:
+  1902                           	line	28
+  1903                           	
+  1904  0567                     l2158:	
+  1905  0567  0870               	movf	(___awdiv@divisor),w
+  1906  0568  02F2               	subwf	(___awdiv@dividend),f
+  1907  0569  0871               	movf	(___awdiv@divisor+1),w
+  1908  056A  1C03               	skipc
+  1909  056B  03F3               	decf	(___awdiv@dividend+1),f
+  1910  056C  02F3               	subwf	(___awdiv@dividend+1),f
+  1911                           	line	29
+  1912                           	
+  1913  056D                     l2160:	
+  1914  056D  1477               	bsf	(___awdiv@quotient)+(0/8),(0)&7
+  1915                           	line	30
+  1916                           	
+  1917  056E                     l739:	
+  1918                           	line	31
+  1919                           	
+  1920  056E                     l2162:	
+  1921  056E  3001               	movlw	01h
+  1922                           	
+  1923  056F                     u2405:
+  1924  056F  1003               	clrc
+  1925  0570  0CF1               	rrf	(___awdiv@divisor+1),f
+  1926  0571  0CF0               	rrf	(___awdiv@divisor),f
+  1927  0572  3EFF               	addlw	-1
+  1928  0573  1D03               	skipz
+  1929  0574  2D6F               	goto	u2405
+  1930                           	line	32
+  1931                           	
+  1932  0575                     l2164:	
+  1933  0575  3001               	movlw	low(01h)
+  1934  0576  02F5               	subwf	(___awdiv@counter),f
+  1935  0577  1D03               	btfss	status,2
+  1936  0578  2D7A               	goto	u2411
+  1937  0579  2D7B               	goto	u2410
+  1938  057A                     u2411:
+  1939  057A  2D56               	goto	l738
+  1940  057B                     u2410:
+  1941                           	
+  1942  057B                     l740:	
+  1943                           	line	33
+  1944                           	
+  1945  057B                     l734:	
+  1946                           	line	34
+  1947                           	
+  1948  057B                     l2166:	
+  1949  057B  0876               	movf	(___awdiv@sign),w
+  1950  057C  1D03               	skipz
+  1951  057D  2D7F               	goto	u2420
+  1952  057E  2D84               	goto	l741
+  1953  057F                     u2420:
+  1954                           	line	35
+  1955                           	
+  1956  057F                     l2168:	
+  1957  057F  09F7               	comf	(___awdiv@quotient),f
+  1958  0580  09F8               	comf	(___awdiv@quotient+1),f
+  1959  0581  0AF7               	incf	(___awdiv@quotient),f
+  1960  0582  1903               	skipnz
+  1961  0583  0AF8               	incf	(___awdiv@quotient+1),f
+  1962                           	
+  1963  0584                     l741:	
+  1964                           	line	36
+  1965                           	
+  1966  0584                     l2170:	
+  1967  0584  0878               	movf	(___awdiv@quotient+1),w
+  1968  0585  01F1               	clrf	(?___awdiv+1)
+  1969  0586  07F1               	addwf	(?___awdiv+1)
+  1970  0587  0877               	movf	(___awdiv@quotient),w
+  1971  0588  01F0               	clrf	(?___awdiv)
+  1972  0589  07F0               	addwf	(?___awdiv)
+  1973                           
+  1974                           	
+  1975  058A                     l2172:	
+  1976                           	line	37
+  1977                           	
+  1978  058A                     l742:	
+  1979  058A  0008               	return
+  1980                           	opt stack 0
+  1981                           GLOBAL	__end_of___awdiv
+  1982  058B                     	__end_of___awdiv:
+  1983 ;; =============== function ___awdiv ends ============
+  1984                           
+  1985                           	signat	___awdiv,8314
+  1986                           	global	___lwmod
+  1987                           psect	text186,local,class=CODE,delta=2
+  1988                           global __ptext186
+  1989  0435                     __ptext186:
+  1990                           
+  1991 ;; *************** function ___lwmod *****************
+  1992 ;; Defined at:
+  1993 ;;		line 5 in file "C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\sources\lwmod.c"
+  1994 ;; Parameters:    Size  Location     Type
+  1995 ;;  divisor         2    0[COMMON] unsigned int 
+  1996 ;;  dividend        2    2[COMMON] unsigned int 
+  1997 ;; Auto vars:     Size  Location     Type
+  1998 ;;  counter         1    5[COMMON] unsigned char 
+  1999 ;; Return value:  Size  Location     Type
+  2000 ;;                  2    0[COMMON] unsigned int 
+  2001 ;; Registers used:
+  2002 ;;		wreg, status,2, status,0
+  2003 ;; Tracked objects:
+  2004 ;;		On entry : 0/0
+  2005 ;;		On exit  : 0/0
+  2006 ;;		Unchanged: 0/0
+  2007 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2008 ;;      Params:         4       0       0       0       0
+  2009 ;;      Locals:         1       0       0       0       0
+  2010 ;;      Temps:          1       0       0       0       0
+  2011 ;;      Totals:         6       0       0       0       0
+  2012 ;;Total ram usage:        6 bytes
+  2013 ;; Hardware stack levels used:    1
+  2014 ;; This function calls:
+  2015 ;;		Nothing
+  2016 ;; This function is called by:
+  2017 ;;		_main
+  2018 ;; This function uses a non-reentrant model
+  2019 ;;
+  2020                           psect	text186
+  2021                           	file	"C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\sources\lwmod.c"
+  2022                           	line	5
+  2023                           	global	__size_of___lwmod
+  2024  003D                     	__size_of___lwmod	equ	__end_of___lwmod-___lwmod
+  2025                           	
+  2026  0435                     ___lwmod:	
+  2027                           	opt	stack 7
+  2028                           ; Regs used in ___lwmod: [wreg+status,2+status,0]
+  2029                           	line	8
+  2030                           	
+  2031  0435                     l2114:	
+  2032  0435  0871               	movf	(___lwmod@divisor+1),w
+  2033  0436  0470               	iorwf	(___lwmod@divisor),w
+  2034  0437  1903               	skipnz
+  2035  0438  2C3A               	goto	u2271
+  2036  0439  2C3B               	goto	u2270
+  2037  043A                     u2271:
+  2038  043A  2C6B               	goto	l608
+  2039  043B                     u2270:
+  2040                           	line	9
+  2041                           	
+  2042  043B                     l2116:	
+  2043  043B  01F5               	clrf	(___lwmod@counter)
+  2044  043C  1403               	bsf	status,0
+  2045  043D  0DF5               	rlf	(___lwmod@counter),f
+  2046                           	line	10
+  2047  043E  2C4A               	goto	l609
+  2048                           	
+  2049  043F                     l610:	
+  2050                           	line	11
+  2051                           	
+  2052  043F                     l2118:	
+  2053  043F  3001               	movlw	01h
+  2054                           	
+  2055  0440                     u2285:
+  2056  0440  1003               	clrc
+  2057  0441  0DF0               	rlf	(___lwmod@divisor),f
+  2058  0442  0DF1               	rlf	(___lwmod@divisor+1),f
+  2059  0443  3EFF               	addlw	-1
+  2060  0444  1D03               	skipz
+  2061  0445  2C40               	goto	u2285
+  2062                           	line	12
+  2063                           	
+  2064  0446                     l2120:	
+  2065  0446  3001               	movlw	(01h)
+  2066  0447  00F4               	movwf	(??___lwmod+0)+0
+  2067  0448  0874               	movf	(??___lwmod+0)+0,w
+  2068  0449  07F5               	addwf	(___lwmod@counter),f
+  2069                           	line	13
+  2070                           	
+  2071  044A                     l609:	
+  2072                           	line	10
+  2073                           	
+  2074  044A                     l2122:	
+  2075  044A  1FF1               	btfss	(___lwmod@divisor+1),(15)&7
+  2076  044B  2C4D               	goto	u2291
+  2077  044C  2C4E               	goto	u2290
+  2078  044D                     u2291:
+  2079  044D  2C3F               	goto	l610
+  2080  044E                     u2290:
+  2081                           	
+  2082  044E                     l611:	
+  2083                           	line	14
+  2084                           	
+  2085  044E                     l612:	
+  2086                           	line	15
+  2087                           	
+  2088  044E                     l2124:	
+  2089  044E  0871               	movf	(___lwmod@divisor+1),w
+  2090  044F  0273               	subwf	(___lwmod@dividend+1),w
+  2091  0450  1D03               	skipz
+  2092  0451  2C54               	goto	u2305
+  2093  0452  0870               	movf	(___lwmod@divisor),w
+  2094  0453  0272               	subwf	(___lwmod@dividend),w
+  2095  0454                     u2305:
+  2096  0454  1C03               	skipc
+  2097  0455  2C57               	goto	u2301
+  2098  0456  2C58               	goto	u2300
+  2099  0457                     u2301:
+  2100  0457  2C5E               	goto	l613
+  2101  0458                     u2300:
+  2102                           	line	16
+  2103                           	
+  2104  0458                     l2126:	
+  2105  0458  0870               	movf	(___lwmod@divisor),w
+  2106  0459  02F2               	subwf	(___lwmod@dividend),f
+  2107  045A  0871               	movf	(___lwmod@divisor+1),w
+  2108  045B  1C03               	skipc
+  2109  045C  03F3               	decf	(___lwmod@dividend+1),f
+  2110  045D  02F3               	subwf	(___lwmod@dividend+1),f
+  2111                           	
+  2112  045E                     l613:	
+  2113                           	line	17
+  2114                           	
+  2115  045E                     l2128:	
+  2116  045E  3001               	movlw	01h
+  2117                           	
+  2118  045F                     u2315:
+  2119  045F  1003               	clrc
+  2120  0460  0CF1               	rrf	(___lwmod@divisor+1),f
+  2121  0461  0CF0               	rrf	(___lwmod@divisor),f
+  2122  0462  3EFF               	addlw	-1
+  2123  0463  1D03               	skipz
+  2124  0464  2C5F               	goto	u2315
+  2125                           	line	18
+  2126                           	
+  2127  0465                     l2130:	
+  2128  0465  3001               	movlw	low(01h)
+  2129  0466  02F5               	subwf	(___lwmod@counter),f
+  2130  0467  1D03               	btfss	status,2
+  2131  0468  2C6A               	goto	u2321
+  2132  0469  2C6B               	goto	u2320
+  2133  046A                     u2321:
+  2134  046A  2C4E               	goto	l612
+  2135  046B                     u2320:
+  2136                           	
+  2137  046B                     l614:	
+  2138                           	line	19
+  2139                           	
+  2140  046B                     l608:	
+  2141                           	line	20
+  2142                           	
+  2143  046B                     l2132:	
+  2144  046B  0873               	movf	(___lwmod@dividend+1),w
+  2145  046C  01F1               	clrf	(?___lwmod+1)
+  2146  046D  07F1               	addwf	(?___lwmod+1)
+  2147  046E  0872               	movf	(___lwmod@dividend),w
+  2148  046F  01F0               	clrf	(?___lwmod)
+  2149  0470  07F0               	addwf	(?___lwmod)
+  2150                           
+  2151                           	
+  2152  0471                     l2134:	
+  2153                           	line	21
+  2154                           	
+  2155  0471                     l615:	
+  2156  0471  0008               	return
+  2157                           	opt stack 0
+  2158                           GLOBAL	__end_of___lwmod
+  2159  0472                     	__end_of___lwmod:
+  2160 ;; =============== function ___lwmod ends ============
+  2161                           
+  2162                           	signat	___lwmod,8314
+  2163                           	global	___lwdiv
+  2164                           psect	text187,local,class=CODE,delta=2
+  2165                           global __ptext187
+  2166  0472                     __ptext187:
+  2167                           
+  2168 ;; *************** function ___lwdiv *****************
+  2169 ;; Defined at:
+  2170 ;;		line 5 in file "C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\sources\lwdiv.c"
+  2171 ;; Parameters:    Size  Location     Type
+  2172 ;;  divisor         2    0[COMMON] unsigned int 
+  2173 ;;  dividend        2    2[COMMON] unsigned int 
+  2174 ;; Auto vars:     Size  Location     Type
+  2175 ;;  quotient        2    5[COMMON] unsigned int 
+  2176 ;;  counter         1    7[COMMON] unsigned char 
+  2177 ;; Return value:  Size  Location     Type
+  2178 ;;                  2    0[COMMON] unsigned int 
+  2179 ;; Registers used:
+  2180 ;;		wreg, status,2, status,0
+  2181 ;; Tracked objects:
+  2182 ;;		On entry : 0/0
+  2183 ;;		On exit  : 0/0
+  2184 ;;		Unchanged: 0/0
+  2185 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2186 ;;      Params:         4       0       0       0       0
+  2187 ;;      Locals:         3       0       0       0       0
+  2188 ;;      Temps:          1       0       0       0       0
+  2189 ;;      Totals:         8       0       0       0       0
+  2190 ;;Total ram usage:        8 bytes
+  2191 ;; Hardware stack levels used:    1
+  2192 ;; This function calls:
+  2193 ;;		Nothing
+  2194 ;; This function is called by:
+  2195 ;;		_main
+  2196 ;; This function uses a non-reentrant model
+  2197 ;;
+  2198                           psect	text187
+  2199                           	file	"C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\sources\lwdiv.c"
+  2200                           	line	5
+  2201                           	global	__size_of___lwdiv
+  2202  0049                     	__size_of___lwdiv	equ	__end_of___lwdiv-___lwdiv
+  2203                           	
+  2204  0472                     ___lwdiv:	
+  2205                           	opt	stack 7
+  2206                           ; Regs used in ___lwdiv: [wreg+status,2+status,0]
+  2207                           	line	9
+  2208                           	
+  2209  0472                     l2090:	
+  2210  0472  3000               	movlw	low(0)
+  2211  0473  00F5               	movwf	(___lwdiv@quotient)
+  2212  0474  3000               	movlw	high(0)
+  2213  0475  00F6               	movwf	((___lwdiv@quotient))+1
+  2214                           	line	10
+  2215  0476  0871               	movf	(___lwdiv@divisor+1),w
+  2216  0477  0470               	iorwf	(___lwdiv@divisor),w
+  2217  0478  1903               	skipnz
+  2218  0479  2C7B               	goto	u2201
+  2219  047A  2C7C               	goto	u2200
+  2220  047B                     u2201:
+  2221  047B  2CB4               	goto	l598
+  2222  047C                     u2200:
+  2223                           	line	11
+  2224                           	
+  2225  047C                     l2092:	
+  2226  047C  01F7               	clrf	(___lwdiv@counter)
+  2227  047D  1403               	bsf	status,0
+  2228  047E  0DF7               	rlf	(___lwdiv@counter),f
+  2229                           	line	12
+  2230  047F  2C8B               	goto	l599
+  2231                           	
+  2232  0480                     l600:	
+  2233                           	line	13
+  2234                           	
+  2235  0480                     l2094:	
+  2236  0480  3001               	movlw	01h
+  2237                           	
+  2238  0481                     u2215:
+  2239  0481  1003               	clrc
+  2240  0482  0DF0               	rlf	(___lwdiv@divisor),f
+  2241  0483  0DF1               	rlf	(___lwdiv@divisor+1),f
+  2242  0484  3EFF               	addlw	-1
+  2243  0485  1D03               	skipz
+  2244  0486  2C81               	goto	u2215
+  2245                           	line	14
+  2246                           	
+  2247  0487                     l2096:	
+  2248  0487  3001               	movlw	(01h)
+  2249  0488  00F4               	movwf	(??___lwdiv+0)+0
+  2250  0489  0874               	movf	(??___lwdiv+0)+0,w
+  2251  048A  07F7               	addwf	(___lwdiv@counter),f
+  2252                           	line	15
+  2253                           	
+  2254  048B                     l599:	
+  2255                           	line	12
+  2256                           	
+  2257  048B                     l2098:	
+  2258  048B  1FF1               	btfss	(___lwdiv@divisor+1),(15)&7
+  2259  048C  2C8E               	goto	u2221
+  2260  048D  2C8F               	goto	u2220
+  2261  048E                     u2221:
+  2262  048E  2C80               	goto	l600
+  2263  048F                     u2220:
+  2264                           	
+  2265  048F                     l601:	
+  2266                           	line	16
+  2267                           	
+  2268  048F                     l602:	
+  2269                           	line	17
+  2270                           	
+  2271  048F                     l2100:	
+  2272  048F  3001               	movlw	01h
+  2273                           	
+  2274  0490                     u2235:
+  2275  0490  1003               	clrc
+  2276  0491  0DF5               	rlf	(___lwdiv@quotient),f
+  2277  0492  0DF6               	rlf	(___lwdiv@quotient+1),f
+  2278  0493  3EFF               	addlw	-1
+  2279  0494  1D03               	skipz
+  2280  0495  2C90               	goto	u2235
+  2281                           	line	18
+  2282  0496  0871               	movf	(___lwdiv@divisor+1),w
+  2283  0497  0273               	subwf	(___lwdiv@dividend+1),w
+  2284  0498  1D03               	skipz
+  2285  0499  2C9C               	goto	u2245
+  2286  049A  0870               	movf	(___lwdiv@divisor),w
+  2287  049B  0272               	subwf	(___lwdiv@dividend),w
+  2288  049C                     u2245:
+  2289  049C  1C03               	skipc
+  2290  049D  2C9F               	goto	u2241
+  2291  049E  2CA0               	goto	u2240
+  2292  049F                     u2241:
+  2293  049F  2CA7               	goto	l603
+  2294  04A0                     u2240:
+  2295                           	line	19
+  2296                           	
+  2297  04A0                     l2102:	
+  2298  04A0  0870               	movf	(___lwdiv@divisor),w
+  2299  04A1  02F2               	subwf	(___lwdiv@dividend),f
+  2300  04A2  0871               	movf	(___lwdiv@divisor+1),w
+  2301  04A3  1C03               	skipc
+  2302  04A4  03F3               	decf	(___lwdiv@dividend+1),f
+  2303  04A5  02F3               	subwf	(___lwdiv@dividend+1),f
+  2304                           	line	20
+  2305                           	
+  2306  04A6                     l2104:	
+  2307  04A6  1475               	bsf	(___lwdiv@quotient)+(0/8),(0)&7
+  2308                           	line	21
+  2309                           	
+  2310  04A7                     l603:	
+  2311                           	line	22
+  2312                           	
+  2313  04A7                     l2106:	
+  2314  04A7  3001               	movlw	01h
+  2315                           	
+  2316  04A8                     u2255:
+  2317  04A8  1003               	clrc
+  2318  04A9  0CF1               	rrf	(___lwdiv@divisor+1),f
+  2319  04AA  0CF0               	rrf	(___lwdiv@divisor),f
+  2320  04AB  3EFF               	addlw	-1
+  2321  04AC  1D03               	skipz
+  2322  04AD  2CA8               	goto	u2255
+  2323                           	line	23
+  2324                           	
+  2325  04AE                     l2108:	
+  2326  04AE  3001               	movlw	low(01h)
+  2327  04AF  02F7               	subwf	(___lwdiv@counter),f
+  2328  04B0  1D03               	btfss	status,2
+  2329  04B1  2CB3               	goto	u2261
+  2330  04B2  2CB4               	goto	u2260
+  2331  04B3                     u2261:
+  2332  04B3  2C8F               	goto	l602
+  2333  04B4                     u2260:
+  2334                           	
+  2335  04B4                     l604:	
+  2336                           	line	24
+  2337                           	
+  2338  04B4                     l598:	
+  2339                           	line	25
+  2340                           	
+  2341  04B4                     l2110:	
+  2342  04B4  0876               	movf	(___lwdiv@quotient+1),w
+  2343  04B5  01F1               	clrf	(?___lwdiv+1)
+  2344  04B6  07F1               	addwf	(?___lwdiv+1)
+  2345  04B7  0875               	movf	(___lwdiv@quotient),w
+  2346  04B8  01F0               	clrf	(?___lwdiv)
+  2347  04B9  07F0               	addwf	(?___lwdiv)
+  2348                           
+  2349                           	
+  2350  04BA                     l2112:	
+  2351                           	line	26
+  2352                           	
+  2353  04BA                     l605:	
+  2354  04BA  0008               	return
+  2355                           	opt stack 0
+  2356                           GLOBAL	__end_of___lwdiv
+  2357  04BB                     	__end_of___lwdiv:
+  2358 ;; =============== function ___lwdiv ends ============
+  2359                           
+  2360                           	signat	___lwdiv,8314
+  2361                           	global	_delay
+  2362                           psect	text188,local,class=CODE,delta=2
+  2363                           global __ptext188
+  2364  03E0                     __ptext188:
+  2365                           
+  2366 ;; *************** function _delay *****************
+  2367 ;; Defined at:
+  2368 ;;		line 7 in file "C:\Users\ELCOT\Desktop\adc timer\ADC\ADC task\2 sensor with lcd value\2 sensor value.c"
+  2369 ;; Parameters:    Size  Location     Type
+  2370 ;;  x               2    0[COMMON] unsigned int 
+  2371 ;; Auto vars:     Size  Location     Type
+  2372 ;;		None
+  2373 ;; Return value:  Size  Location     Type
+  2374 ;;		None               void
+  2375 ;; Registers used:
+  2376 ;;		wreg
+  2377 ;; Tracked objects:
+  2378 ;;		On entry : 0/0
+  2379 ;;		On exit  : 0/0
+  2380 ;;		Unchanged: 0/0
+  2381 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2382 ;;      Params:         2       0       0       0       0
+  2383 ;;      Locals:         0       0       0       0       0
+  2384 ;;      Temps:          0       0       0       0       0
+  2385 ;;      Totals:         2       0       0       0       0
+  2386 ;;Total ram usage:        2 bytes
+  2387 ;; Hardware stack levels used:    1
+  2388 ;; This function calls:
+  2389 ;;		Nothing
+  2390 ;; This function is called by:
+  2391 ;;		_lcd_command
+  2392 ;;		_lcd_data
+  2393 ;;		_main
+  2394 ;; This function uses a non-reentrant model
+  2395 ;;
+  2396                           psect	text188
+  2397                           	file	"C:\Users\ELCOT\Desktop\adc timer\ADC\ADC task\2 sensor with lcd value\2 sensor va
+                                 lue.c"
+  2398                           	line	7
+  2399                           	global	__size_of_delay
+  2400  0012                     	__size_of_delay	equ	__end_of_delay-_delay
+  2401                           	
+  2402  03E0                     _delay:	
+  2403                           	opt	stack 6
+  2404                           ; Regs used in _delay: [wreg]
+  2405                           	line	8
+  2406                           	
+  2407  03E0                     l2078:	
+  2408                           ;2 sensor value.c: 8: while(x--);
+  2409  03E0  2BE1               	goto	l559
+  2410                           	
+  2411  03E1                     l560:	
+  2412                           	
+  2413  03E1                     l559:	
+  2414                           	
+  2415  03E1                     l2080:	
+  2416  03E1  3001               	movlw	low(01h)
+  2417  03E2  02F0               	subwf	(delay@x),f
+  2418  03E3  3000               	movlw	high(01h)
+  2419  03E4  1C03               	skipc
+  2420  03E5  03F1               	decf	(delay@x+1),f
+  2421  03E6  02F1               	subwf	(delay@x+1),f
+  2422  03E7  30FF               	movlw	high(0FFFFh)
+  2423  03E8  0671               	xorwf	((delay@x+1)),w
+  2424  03E9  1D03               	skipz
+  2425  03EA  2BED               	goto	u2185
+  2426  03EB  30FF               	movlw	low(0FFFFh)
+  2427  03EC  0670               	xorwf	((delay@x)),w
+  2428  03ED                     u2185:
+  2429                           
+  2430  03ED  1D03               	skipz
+  2431  03EE  2BF0               	goto	u2181
+  2432  03EF  2BF1               	goto	u2180
+  2433  03F0                     u2181:
+  2434  03F0  2BE1               	goto	l560
+  2435  03F1                     u2180:
+  2436                           	
+  2437  03F1                     l561:	
+  2438                           	line	9
+  2439                           	
+  2440  03F1                     l562:	
+  2441  03F1  0008               	return
+  2442                           	opt stack 0
+  2443                           GLOBAL	__end_of_delay
+  2444  03F2                     	__end_of_delay:
+  2445 ;; =============== function _delay ends ============
+  2446                           
+  2447                           	signat	_delay,4216
+  2448                           psect	text189,local,class=CODE,delta=2
+  2449                           global __ptext189
+  2450  0000                     __ptext189:
+  2451                           	global	btemp
+  2452  007E                     	btemp set 07Eh
+  2453                           
+  2454                           	DABS	1,126,2	;btemp
+  2455                           	global	wtemp0
+  2456  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.71a build 6446 
+Symbol Table                                                                                   Tue Oct 11 23:54:34 2022
+
+        lcd_data@data 0072          ___awdiv@sign 0076                   l600 0480                   l601 048F  
+                 l602 048F                   l610 043F                   l603 04A7                   l611 044E  
+                 l604 04B4                   l612 044E                   l605 04BA                   l613 045E  
+                 l614 046B                   l615 0471                   l560 03E1                   l608 046B  
+                 l800 04CC                   l561 03F1                   l609 044A                   l801 04D5  
+                 l562 03F1                   l810 051A                   l802 050B                   l803 04EA  
+                 l571 041B                   l740 057B                   l732 052C                   l804 04DF  
+                 l580 05B4                   l741 0584                   l733 0539                   l805 04EE  
+                 l565 0406                   l581 07FC                   l742 058A                   l734 057B  
+                 l806 04EE                   l582 07FD                   l559 03E1                   l735 0552  
+                 l807 04FE                   l583 07FD                   l736 0547                   l808 050B  
+                 l568 0434                   l737 0556                   l809 0514                   l738 0556  
+                 l739 056E                   l598 04B4                   l599 048B                   _RC0 0038  
+                 _RC1 0039                   _RC2 003A          ___awmod@sign 0076                  l2100 048F  
+                l2110 04B4                  l2102 04A0                  l2112 04BA                  l2104 04A6  
+                l2120 0446                  l2200 0505                  l2106 04A7                  l2130 0465  
+                l2122 044A                  l2114 0435                  l2202 050B                  l2210 03F3  
+                l2108 04AE                  l2132 046B                  l2124 044E                  l2116 043B  
+                l2140 0524                  l2204 050F                  l2220 0403                  l2212 03F7  
+                l2300 06C6                  l2134 0471                  l2126 0458                  l2118 043F  
+                l2150 0547                  l2142 052C                  l2206 0514                  l2214 03F8  
+                l2230 040F                  l2222 0408                  l2310 06DD                  l2302 06CF  
+                l2080 03E1                  l2128 045E                  l2160 056D                  l2152 054E  
+                l2144 0530                  l2136 051B                  l2208 051A                  l2216 03F9  
+                l2232 0418                  l2224 040C                  l2320 0705                  l2312 06DE  
+                l2304 06D8                  l2240 0596                  l2090 0472                  l2170 0584  
+                l2162 056E                  l2154 0552                  l2146 0535                  l2138 0520  
+                l2218 03FA                  l2226 040D                  l2234 041C                  l2330 0749  
+                l2322 070E                  l2314 06E7                  l2306 06DB                  l2250 05AB  
+                l2242 0599                  l2092 047C                  l2172 058A                  l2164 0575  
+                l2156 0556                  l2148 0543                  l2180 04CC                  l2228 040E  
+                l2340 07AB                  l2332 0760                  l2324 0719                  l2316 06EC  
+                l2308 06DC                  l2260 05BA                  l2252 05B4                  l2244 059C  
+                l2236 058B                  l2078 03E0                  l2094 0480                  l2166 057B  
+                l2158 0567                  l2190 04E6                  l2182 04D0                  l2174 04BB  
+                l2350 07D8                  l2342 07B4                  l2334 0777                  l2326 071B  
+                l2318 06F5                  l2270 05F5                  l2262 05C3                  l2254 05B7  
+                l2246 05A3                  l2238 0593                  l2096 0487                  l2168 057F  
+                l2192 04EA                  l2184 04D5                  l2176 04C0                  l2352 07E1  
+                l2344 07BD                  l2336 078E                  l2328 0732                  l2280 0653  
+                l2272 05F7                  l2264 05D1                  l2256 05B8                  l2248 05A6  
+                l2098 048B                  l2194 04EE                  l2186 04DB                  l2178 04C4  
+                l2354 07EA                  l2346 07C6                  l2338 07A5                  l2290 0699  
+                l2282 066A                  l2274 060E                  l2266 05E1                  l2258 05B9  
+                l2196 04F8                  l2188 04DF                  l2356 07F3                  l2348 07CF  
+                l2292 06A2                  l2284 0681                  l2276 0625                  l2268 05EA  
+                l2198 04FE                  l2294 06AB                  l2286 0687                  l2278 063C  
+                l2296 06B4                  l2288 0690                  l2298 06BD                  _ADON 00F8  
+                _CHS0 00FB                  _CHS1 00FC                  _CHS2 00FD                  u2200 047C  
+                u2201 047B                  u2220 048F                  u2300 0458                  u2221 048E  
+                u2301 0457                  u2215 0481                  u2240 04A0                  u2320 046B  
+                u2241 049F                  u2321 046A                  u2305 0454                  u2410 057B  
+                u2330 0524                  u2235 0490                  u2315 045F                  u2411 057A  
+                u2331 0523                  u2180 03F1                  u2260 04B4                  u2420 057F  
+                u2340 0530                  u2500 050B                  u2181 03F0                  u2261 04B3  
+                u2245 049C                  u2405 056F                  u2341 052F                  u2501 050A  
+                u2270 043B                  u2350 0543                  u2510 050F                  u2430 04C4  
+                u2255 04A8                  u2271 043A                  u2351 0542                  u2431 04C3  
+                u2440 04D0                  u2185 03ED                  u2441 04CF                  u2290 044E  
+                u2370 0556                  u2450 04DB                  u2291 044D                  u2371 0555  
+                u2451 04DA                  u2285 0440                  u2365 0548                  u2525 05D8  
+                u2390 0567                  u2470 04EE                  u2391 0566                  u2471 04ED  
+                u2535 06FC                  u2480 04F8                  u2385 0557                  u2481 04F7  
+                u2465 04E0                  u2395 0563                  u2485 04F4                  u2495 04FF  
+                _main 058B                  btemp 007E                  start 0000                 ?_main 0070  
+     __end_of___awdiv 058B       __end_of___awmod 051B       ___awdiv@divisor 0070       __end_of___lwdiv 04BB  
+     __end_of___lwmod 0472       ___awdiv@counter 0075                 _PORTA 0005                 _PORTC 0007  
+               _PORTD 0008                 _TRISA 0085                 _TRISC 0087                 _TRISD 0088  
+               _delay 03E0                 main@a 0020                 main@b 0030                 main@c 0022  
+               main@d 0032                 main@e 0024                 main@f 0026                 main@u 002E  
+               main@v 002C                 main@w 0036                 main@x 002A                 main@y 0034  
+               main@z 0028                 status 0003                 wtemp0 007E          __end_of_main 0800  
+              ??_main 0079        lcd_command@com 0072                ?_delay 0070                _ADCON0 001F  
+              _ADCON1 009F                _ADRESH 001E                _ADRESL 009E      ___awdiv@dividend 0072  
+    __end_of_lcd_data 041C      __end_of_lcd_init 0435  __size_of_lcd_command 0015             ??___awdiv 0074  
+           ??___awmod 0074             ??___lwdiv 0074             ??___lwmod 0074                delay@x 0070  
+    ___awdiv@quotient 0077       ___awmod@divisor 0070       ___awmod@counter 0075        __pcstackCOMMON 0070  
+       __end_of_delay 03F2               ??_delay 0072            __pmaintext 058B             ?_lcd_data 0070  
+           ?_lcd_init 0070               ___awdiv 051B               ___awmod 04BB               ___lwdiv 0472  
+             ___lwmod 0435      ___awmod@dividend 0072            ??_lcd_data 0072            ??_lcd_init 0073  
+end_of_initialization 03DC         ??_lcd_command 0072   start_initialization 03DC   __end_of_lcd_command 0407  
+       __pcstackBANK0 0020     __size_of_lcd_data 0015     __size_of_lcd_init 0019      ___lwdiv@dividend 0072  
+            ?___awdiv 0070             __ptext180 0000             __ptext181 041C             __ptext182 0407  
+           __ptext183 03F2             __ptext184 04BB             __ptext185 051B             __ptext186 0435  
+           __ptext187 0472              ?___awmod 0070             __ptext188 03E0             __ptext189 0000  
+            ?___lwdiv 0070              ?___lwmod 0070      ___lwdiv@quotient 0075        __size_of_delay 0012  
+         _lcd_command 03F2             main@temp1 003A      __size_of___awdiv 0070      __size_of___awmod 0060  
+    __size_of___lwdiv 0049      __size_of___lwmod 003D       ___lwdiv@divisor 0070       ___lwdiv@counter 0077  
+            _lcd_data 0407              _lcd_init 041C         __size_of_main 0275              main@temp 0038  
+    ___lwmod@dividend 0072       ___lwmod@divisor 0070       ___lwmod@counter 0075          ?_lcd_command 0070  

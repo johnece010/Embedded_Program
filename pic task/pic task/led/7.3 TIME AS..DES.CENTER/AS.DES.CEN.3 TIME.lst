@@ -1,0 +1,1505 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
+                                                                                               Tue Apr 16 11:22:07 2024
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           # 2 "E:\Madhu\madhu pic folder\pic task\led\7.3 TIME AS..DES.CENTER\AS.DES.CEN.3 TIME.C"
+    43                           	psect config,class=CONFIG,delta=2 ;#
+    44                           # 2 "E:\Madhu\madhu pic folder\pic task\led\7.3 TIME AS..DES.CENTER\AS.DES.CEN.3 TIME.C"
+    45  2007  3F72               	dw 0X3F72 ;#
+    46                           	FNCALL	_main,_delay
+    47                           	FNROOT	_main
+    48                           	global	_PORTB
+    49                           psect	maintext,global,class=CODE,delta=2
+    50                           global __pmaintext
+    51  04C8                     __pmaintext:
+    52  0006                     _PORTB	set	6
+    53                           	global	_TRISB
+    54  0086                     _TRISB	set	134
+    55                           	file	"AS.DES.CEN.3 TIME.as"
+    56                           	line	#
+    57                           psect cinit,class=CODE,delta=2
+    58                           global start_initialization
+    59  04B2                     start_initialization:
+    60                           
+    61                           psect cinit,class=CODE,delta=2
+    62                           global end_of_initialization
+    63                           
+    64                           ;End of C runtime variable initialization code
+    65                           
+    66  04B2                     end_of_initialization:
+    67  04B2  0183               clrf status
+    68  04B3  120A  118A  2CC8   ljmp _main	;jump to C main() function
+    69                           psect	cstackCOMMON,class=COMMON,space=1
+    70                           global __pcstackCOMMON
+    71  0070                     __pcstackCOMMON:
+    72                           	global	?_delay
+    73  0070                     ?_delay:	; 0 bytes @ 0x0
+    74                           	global	?_main
+    75  0070                     ?_main:	; 2 bytes @ 0x0
+    76                           	global	delay@x
+    77  0070                     delay@x:	; 2 bytes @ 0x0
+    78  0070                     	ds	2
+    79                           	global	??_delay
+    80  0072                     ??_delay:	; 0 bytes @ 0x2
+    81                           	global	??_main
+    82  0072                     ??_main:	; 0 bytes @ 0x2
+    83 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+    84 ;;Auto spaces:   Size  Autos    Used
+    85 ;; COMMON          14      2       2
+    86 ;; BANK0           80      0       0
+    87 ;; BANK1           80      0       0
+    88 ;; BANK3           96      0       0
+    89 ;; BANK2           96      0       0
+    90                           
+    91 ;;
+    92 ;; Pointer list with targets:
+    93                           
+    94                           
+    95                           
+    96 ;;
+    97 ;; Critical Paths under _main in COMMON
+    98 ;;
+    99 ;;   _main->_delay
+   100 ;;
+   101 ;; Critical Paths under _main in BANK0
+   102 ;;
+   103 ;;   None.
+   104 ;;
+   105 ;; Critical Paths under _main in BANK1
+   106 ;;
+   107 ;;   None.
+   108 ;;
+   109 ;; Critical Paths under _main in BANK3
+   110 ;;
+   111 ;;   None.
+   112 ;;
+   113 ;; Critical Paths under _main in BANK2
+   114 ;;
+   115 ;;   None.
+   116                           
+   117 ;;
+   118 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   119 ;;
+   120                           
+   121 ;;
+   122 ;;Call Graph Tables:
+   123 ;;
+   124 ;; ---------------------------------------------------------------------------------
+   125 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   126 ;; ---------------------------------------------------------------------------------
+   127 ;; (0) _main                                                 0     0      0      15
+   128 ;;                              _delay
+   129 ;; ---------------------------------------------------------------------------------
+   130 ;; (1) _delay                                                2     0      2      15
+   131 ;;                                              0 COMMON     2     0      2
+   132 ;; ---------------------------------------------------------------------------------
+   133 ;; Estimated maximum stack depth 1
+   134 ;; ---------------------------------------------------------------------------------
+   135                           
+   136 ;; Call Graph Graphs:
+   137                           
+   138 ;; _main (ROOT)
+   139 ;;   _delay
+   140 ;;
+   141                           
+   142 ;; Address spaces:
+   143                           
+   144 ;;Name               Size   Autos  Total    Cost      Usage
+   145 ;;BITCOMMON            E      0       0       0        0.0%
+   146 ;;EEDATA             100      0       0       0        0.0%
+   147 ;;NULL                 0      0       0       0        0.0%
+   148 ;;CODE                 0      0       0       0        0.0%
+   149 ;;COMMON               E      2       2       1       14.3%
+   150 ;;BITSFR0              0      0       0       1        0.0%
+   151 ;;SFR0                 0      0       0       1        0.0%
+   152 ;;BITSFR1              0      0       0       2        0.0%
+   153 ;;SFR1                 0      0       0       2        0.0%
+   154 ;;STACK                0      0       1       2        0.0%
+   155 ;;ABS                  0      0       0       3        0.0%
+   156 ;;BITBANK0            50      0       0       4        0.0%
+   157 ;;BITSFR3              0      0       0       4        0.0%
+   158 ;;SFR3                 0      0       0       4        0.0%
+   159 ;;BANK0               50      0       0       5        0.0%
+   160 ;;BITSFR2              0      0       0       5        0.0%
+   161 ;;SFR2                 0      0       0       5        0.0%
+   162 ;;BITBANK1            50      0       0       6        0.0%
+   163 ;;BANK1               50      0       0       7        0.0%
+   164 ;;BITBANK3            60      0       0       8        0.0%
+   165 ;;BANK3               60      0       0       9        0.0%
+   166 ;;BITBANK2            60      0       0      10        0.0%
+   167 ;;BANK2               60      0       0      11        0.0%
+   168 ;;DATA                 0      0       0      12        0.0%
+   169                           
+   170                           	global	_main
+   171                           psect	maintext
+   172                           
+   173 ;; *************** function _main *****************
+   174 ;; Defined at:
+   175 ;;		line 8 in file "E:\Madhu\madhu pic folder\pic task\led\7.3 TIME AS..DES.CENTER\AS.DES.CEN.3 TIME.C"
+   176 ;; Parameters:    Size  Location     Type
+   177 ;;		None
+   178 ;; Auto vars:     Size  Location     Type
+   179 ;;		None
+   180 ;; Return value:  Size  Location     Type
+   181 ;;                  2  564[COMMON] int 
+   182 ;; Registers used:
+   183 ;;		wreg, status,2, status,0, pclath, cstack
+   184 ;; Tracked objects:
+   185 ;;		On entry : 17F/0
+   186 ;;		On exit  : 0/0
+   187 ;;		Unchanged: 0/0
+   188 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   189 ;;      Params:         0       0       0       0       0
+   190 ;;      Locals:         0       0       0       0       0
+   191 ;;      Temps:          0       0       0       0       0
+   192 ;;      Totals:         0       0       0       0       0
+   193 ;;Total ram usage:        0 bytes
+   194 ;; Hardware stack levels required when called:    1
+   195 ;; This function calls:
+   196 ;;		_delay
+   197 ;; This function is called by:
+   198 ;;		Startup code after reset
+   199 ;; This function uses a non-reentrant model
+   200 ;;
+   201                           psect	maintext
+   202                           	file	"E:\Madhu\madhu pic folder\pic task\led\7.3 TIME AS..DES.CENTER\AS.DES.CEN.3 TIME.
+                                 C"
+   203                           	line	8
+   204                           	global	__size_of_main
+   205  0338                     	__size_of_main	equ	__end_of_main-_main
+   206                           	
+   207  04C8                     _main:	
+   208                           	opt	stack 8
+   209                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   210                           	line	9
+   211                           	
+   212  04C8                     l1727:	
+   213                           ;AS.DES.CEN.3 TIME.C: 9: TRISB=0X00;
+   214  04C8  1683               	bsf	status, 5	;RP0=1, select bank1
+   215  04C9  1303               	bcf	status, 6	;RP1=0, select bank1
+   216  04CA  0186               	clrf	(134)^080h	;volatile
+   217                           	line	10
+   218                           ;AS.DES.CEN.3 TIME.C: 10: PORTB=0X00;
+   219  04CB  1283               	bcf	status, 5	;RP0=0, select bank0
+   220  04CC  1303               	bcf	status, 6	;RP1=0, select bank0
+   221  04CD  0186               	clrf	(6)	;volatile
+   222                           	line	11
+   223                           ;AS.DES.CEN.3 TIME.C: 11: while(1)
+   224                           	
+   225  04CE                     l565:	
+   226                           	line	13
+   227                           	
+   228  04CE                     l1729:	
+   229                           ;AS.DES.CEN.3 TIME.C: 12: {
+   230                           ;AS.DES.CEN.3 TIME.C: 13: PORTB=0X01;
+   231  04CE  3001               	movlw	(01h)
+   232  04CF  0086               	movwf	(6)	;volatile
+   233                           	line	14
+   234                           	
+   235  04D0                     l1731:	
+   236                           ;AS.DES.CEN.3 TIME.C: 14: delay(50000);
+   237  04D0  3050               	movlw	low(0C350h)
+   238  04D1  00F0               	movwf	(?_delay)
+   239  04D2  30C3               	movlw	high(0C350h)
+   240  04D3  00F1               	movwf	((?_delay))+1
+   241  04D4  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   242                           	line	15
+   243                           	
+   244  04D9                     l1733:	
+   245                           ;AS.DES.CEN.3 TIME.C: 15: PORTB=0X02;
+   246  04D9  3002               	movlw	(02h)
+   247  04DA  1283               	bcf	status, 5	;RP0=0, select bank0
+   248  04DB  1303               	bcf	status, 6	;RP1=0, select bank0
+   249  04DC  0086               	movwf	(6)	;volatile
+   250                           	line	16
+   251                           	
+   252  04DD                     l1735:	
+   253                           ;AS.DES.CEN.3 TIME.C: 16: delay(50000);
+   254  04DD  3050               	movlw	low(0C350h)
+   255  04DE  00F0               	movwf	(?_delay)
+   256  04DF  30C3               	movlw	high(0C350h)
+   257  04E0  00F1               	movwf	((?_delay))+1
+   258  04E1  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   259                           	line	17
+   260                           	
+   261  04E6                     l1737:	
+   262                           ;AS.DES.CEN.3 TIME.C: 17: PORTB=0X04;
+   263  04E6  3004               	movlw	(04h)
+   264  04E7  1283               	bcf	status, 5	;RP0=0, select bank0
+   265  04E8  1303               	bcf	status, 6	;RP1=0, select bank0
+   266  04E9  0086               	movwf	(6)	;volatile
+   267                           	line	18
+   268                           	
+   269  04EA                     l1739:	
+   270                           ;AS.DES.CEN.3 TIME.C: 18: delay(50000);
+   271  04EA  3050               	movlw	low(0C350h)
+   272  04EB  00F0               	movwf	(?_delay)
+   273  04EC  30C3               	movlw	high(0C350h)
+   274  04ED  00F1               	movwf	((?_delay))+1
+   275  04EE  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   276                           	line	19
+   277                           	
+   278  04F3                     l1741:	
+   279                           ;AS.DES.CEN.3 TIME.C: 19: PORTB=0X08;
+   280  04F3  3008               	movlw	(08h)
+   281  04F4  1283               	bcf	status, 5	;RP0=0, select bank0
+   282  04F5  1303               	bcf	status, 6	;RP1=0, select bank0
+   283  04F6  0086               	movwf	(6)	;volatile
+   284                           	line	20
+   285                           	
+   286  04F7                     l1743:	
+   287                           ;AS.DES.CEN.3 TIME.C: 20: delay(50000);
+   288  04F7  3050               	movlw	low(0C350h)
+   289  04F8  00F0               	movwf	(?_delay)
+   290  04F9  30C3               	movlw	high(0C350h)
+   291  04FA  00F1               	movwf	((?_delay))+1
+   292  04FB  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   293                           	line	21
+   294                           	
+   295  0500                     l1745:	
+   296                           ;AS.DES.CEN.3 TIME.C: 21: PORTB=0X10;
+   297  0500  3010               	movlw	(010h)
+   298  0501  1283               	bcf	status, 5	;RP0=0, select bank0
+   299  0502  1303               	bcf	status, 6	;RP1=0, select bank0
+   300  0503  0086               	movwf	(6)	;volatile
+   301                           	line	22
+   302                           	
+   303  0504                     l1747:	
+   304                           ;AS.DES.CEN.3 TIME.C: 22: delay(50000);
+   305  0504  3050               	movlw	low(0C350h)
+   306  0505  00F0               	movwf	(?_delay)
+   307  0506  30C3               	movlw	high(0C350h)
+   308  0507  00F1               	movwf	((?_delay))+1
+   309  0508  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   310                           	line	23
+   311                           	
+   312  050D                     l1749:	
+   313                           ;AS.DES.CEN.3 TIME.C: 23: PORTB=0X20;
+   314  050D  3020               	movlw	(020h)
+   315  050E  1283               	bcf	status, 5	;RP0=0, select bank0
+   316  050F  1303               	bcf	status, 6	;RP1=0, select bank0
+   317  0510  0086               	movwf	(6)	;volatile
+   318                           	line	24
+   319                           	
+   320  0511                     l1751:	
+   321                           ;AS.DES.CEN.3 TIME.C: 24: delay(50000);
+   322  0511  3050               	movlw	low(0C350h)
+   323  0512  00F0               	movwf	(?_delay)
+   324  0513  30C3               	movlw	high(0C350h)
+   325  0514  00F1               	movwf	((?_delay))+1
+   326  0515  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   327                           	line	25
+   328                           	
+   329  051A                     l1753:	
+   330                           ;AS.DES.CEN.3 TIME.C: 25: PORTB=0X40;
+   331  051A  3040               	movlw	(040h)
+   332  051B  1283               	bcf	status, 5	;RP0=0, select bank0
+   333  051C  1303               	bcf	status, 6	;RP1=0, select bank0
+   334  051D  0086               	movwf	(6)	;volatile
+   335                           	line	26
+   336                           	
+   337  051E                     l1755:	
+   338                           ;AS.DES.CEN.3 TIME.C: 26: delay(50000);
+   339  051E  3050               	movlw	low(0C350h)
+   340  051F  00F0               	movwf	(?_delay)
+   341  0520  30C3               	movlw	high(0C350h)
+   342  0521  00F1               	movwf	((?_delay))+1
+   343  0522  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   344                           	line	27
+   345                           	
+   346  0527                     l1757:	
+   347                           ;AS.DES.CEN.3 TIME.C: 27: PORTB=0X80;
+   348  0527  3080               	movlw	(080h)
+   349  0528  1283               	bcf	status, 5	;RP0=0, select bank0
+   350  0529  1303               	bcf	status, 6	;RP1=0, select bank0
+   351  052A  0086               	movwf	(6)	;volatile
+   352                           	line	28
+   353                           	
+   354  052B                     l1759:	
+   355                           ;AS.DES.CEN.3 TIME.C: 28: delay(50000);
+   356  052B  3050               	movlw	low(0C350h)
+   357  052C  00F0               	movwf	(?_delay)
+   358  052D  30C3               	movlw	high(0C350h)
+   359  052E  00F1               	movwf	((?_delay))+1
+   360  052F  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   361                           	line	30
+   362                           	
+   363  0534                     l1761:	
+   364                           ;AS.DES.CEN.3 TIME.C: 30: PORTB=0X01;
+   365  0534  3001               	movlw	(01h)
+   366  0535  1283               	bcf	status, 5	;RP0=0, select bank0
+   367  0536  1303               	bcf	status, 6	;RP1=0, select bank0
+   368  0537  0086               	movwf	(6)	;volatile
+   369                           	line	31
+   370                           	
+   371  0538                     l1763:	
+   372                           ;AS.DES.CEN.3 TIME.C: 31: delay(50000);
+   373  0538  3050               	movlw	low(0C350h)
+   374  0539  00F0               	movwf	(?_delay)
+   375  053A  30C3               	movlw	high(0C350h)
+   376  053B  00F1               	movwf	((?_delay))+1
+   377  053C  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   378                           	line	32
+   379                           	
+   380  0541                     l1765:	
+   381                           ;AS.DES.CEN.3 TIME.C: 32: PORTB=0X02;
+   382  0541  3002               	movlw	(02h)
+   383  0542  1283               	bcf	status, 5	;RP0=0, select bank0
+   384  0543  1303               	bcf	status, 6	;RP1=0, select bank0
+   385  0544  0086               	movwf	(6)	;volatile
+   386                           	line	33
+   387                           	
+   388  0545                     l1767:	
+   389                           ;AS.DES.CEN.3 TIME.C: 33: delay(50000);
+   390  0545  3050               	movlw	low(0C350h)
+   391  0546  00F0               	movwf	(?_delay)
+   392  0547  30C3               	movlw	high(0C350h)
+   393  0548  00F1               	movwf	((?_delay))+1
+   394  0549  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   395                           	line	34
+   396                           	
+   397  054E                     l1769:	
+   398                           ;AS.DES.CEN.3 TIME.C: 34: PORTB=0X04;
+   399  054E  3004               	movlw	(04h)
+   400  054F  1283               	bcf	status, 5	;RP0=0, select bank0
+   401  0550  1303               	bcf	status, 6	;RP1=0, select bank0
+   402  0551  0086               	movwf	(6)	;volatile
+   403                           	line	35
+   404                           	
+   405  0552                     l1771:	
+   406                           ;AS.DES.CEN.3 TIME.C: 35: delay(50000);
+   407  0552  3050               	movlw	low(0C350h)
+   408  0553  00F0               	movwf	(?_delay)
+   409  0554  30C3               	movlw	high(0C350h)
+   410  0555  00F1               	movwf	((?_delay))+1
+   411  0556  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   412                           	line	36
+   413                           	
+   414  055B                     l1773:	
+   415                           ;AS.DES.CEN.3 TIME.C: 36: PORTB=0X08;
+   416  055B  3008               	movlw	(08h)
+   417  055C  1283               	bcf	status, 5	;RP0=0, select bank0
+   418  055D  1303               	bcf	status, 6	;RP1=0, select bank0
+   419  055E  0086               	movwf	(6)	;volatile
+   420                           	line	37
+   421                           	
+   422  055F                     l1775:	
+   423                           ;AS.DES.CEN.3 TIME.C: 37: delay(50000);
+   424  055F  3050               	movlw	low(0C350h)
+   425  0560  00F0               	movwf	(?_delay)
+   426  0561  30C3               	movlw	high(0C350h)
+   427  0562  00F1               	movwf	((?_delay))+1
+   428  0563  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   429                           	line	38
+   430                           	
+   431  0568                     l1777:	
+   432                           ;AS.DES.CEN.3 TIME.C: 38: PORTB=0X10;
+   433  0568  3010               	movlw	(010h)
+   434  0569  1283               	bcf	status, 5	;RP0=0, select bank0
+   435  056A  1303               	bcf	status, 6	;RP1=0, select bank0
+   436  056B  0086               	movwf	(6)	;volatile
+   437                           	line	39
+   438                           	
+   439  056C                     l1779:	
+   440                           ;AS.DES.CEN.3 TIME.C: 39: delay(50000);
+   441  056C  3050               	movlw	low(0C350h)
+   442  056D  00F0               	movwf	(?_delay)
+   443  056E  30C3               	movlw	high(0C350h)
+   444  056F  00F1               	movwf	((?_delay))+1
+   445  0570  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   446                           	line	40
+   447                           	
+   448  0575                     l1781:	
+   449                           ;AS.DES.CEN.3 TIME.C: 40: PORTB=0X20;
+   450  0575  3020               	movlw	(020h)
+   451  0576  1283               	bcf	status, 5	;RP0=0, select bank0
+   452  0577  1303               	bcf	status, 6	;RP1=0, select bank0
+   453  0578  0086               	movwf	(6)	;volatile
+   454                           	line	41
+   455                           	
+   456  0579                     l1783:	
+   457                           ;AS.DES.CEN.3 TIME.C: 41: delay(50000);
+   458  0579  3050               	movlw	low(0C350h)
+   459  057A  00F0               	movwf	(?_delay)
+   460  057B  30C3               	movlw	high(0C350h)
+   461  057C  00F1               	movwf	((?_delay))+1
+   462  057D  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   463                           	line	42
+   464                           	
+   465  0582                     l1785:	
+   466                           ;AS.DES.CEN.3 TIME.C: 42: PORTB=0X40;
+   467  0582  3040               	movlw	(040h)
+   468  0583  1283               	bcf	status, 5	;RP0=0, select bank0
+   469  0584  1303               	bcf	status, 6	;RP1=0, select bank0
+   470  0585  0086               	movwf	(6)	;volatile
+   471                           	line	43
+   472                           	
+   473  0586                     l1787:	
+   474                           ;AS.DES.CEN.3 TIME.C: 43: delay(50000);
+   475  0586  3050               	movlw	low(0C350h)
+   476  0587  00F0               	movwf	(?_delay)
+   477  0588  30C3               	movlw	high(0C350h)
+   478  0589  00F1               	movwf	((?_delay))+1
+   479  058A  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   480                           	line	44
+   481                           	
+   482  058F                     l1789:	
+   483                           ;AS.DES.CEN.3 TIME.C: 44: PORTB=0X80;
+   484  058F  3080               	movlw	(080h)
+   485  0590  1283               	bcf	status, 5	;RP0=0, select bank0
+   486  0591  1303               	bcf	status, 6	;RP1=0, select bank0
+   487  0592  0086               	movwf	(6)	;volatile
+   488                           	line	45
+   489                           	
+   490  0593                     l1791:	
+   491                           ;AS.DES.CEN.3 TIME.C: 45: delay(50000);
+   492  0593  3050               	movlw	low(0C350h)
+   493  0594  00F0               	movwf	(?_delay)
+   494  0595  30C3               	movlw	high(0C350h)
+   495  0596  00F1               	movwf	((?_delay))+1
+   496  0597  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   497                           	line	47
+   498                           	
+   499  059C                     l1793:	
+   500                           ;AS.DES.CEN.3 TIME.C: 47: PORTB=0X01;
+   501  059C  3001               	movlw	(01h)
+   502  059D  1283               	bcf	status, 5	;RP0=0, select bank0
+   503  059E  1303               	bcf	status, 6	;RP1=0, select bank0
+   504  059F  0086               	movwf	(6)	;volatile
+   505                           	line	48
+   506                           	
+   507  05A0                     l1795:	
+   508                           ;AS.DES.CEN.3 TIME.C: 48: delay(50000);
+   509  05A0  3050               	movlw	low(0C350h)
+   510  05A1  00F0               	movwf	(?_delay)
+   511  05A2  30C3               	movlw	high(0C350h)
+   512  05A3  00F1               	movwf	((?_delay))+1
+   513  05A4  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   514                           	line	49
+   515                           	
+   516  05A9                     l1797:	
+   517                           ;AS.DES.CEN.3 TIME.C: 49: PORTB=0X02;
+   518  05A9  3002               	movlw	(02h)
+   519  05AA  1283               	bcf	status, 5	;RP0=0, select bank0
+   520  05AB  1303               	bcf	status, 6	;RP1=0, select bank0
+   521  05AC  0086               	movwf	(6)	;volatile
+   522                           	line	50
+   523                           	
+   524  05AD                     l1799:	
+   525                           ;AS.DES.CEN.3 TIME.C: 50: delay(50000);
+   526  05AD  3050               	movlw	low(0C350h)
+   527  05AE  00F0               	movwf	(?_delay)
+   528  05AF  30C3               	movlw	high(0C350h)
+   529  05B0  00F1               	movwf	((?_delay))+1
+   530  05B1  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   531                           	line	51
+   532                           	
+   533  05B6                     l1801:	
+   534                           ;AS.DES.CEN.3 TIME.C: 51: PORTB=0X04;
+   535  05B6  3004               	movlw	(04h)
+   536  05B7  1283               	bcf	status, 5	;RP0=0, select bank0
+   537  05B8  1303               	bcf	status, 6	;RP1=0, select bank0
+   538  05B9  0086               	movwf	(6)	;volatile
+   539                           	line	52
+   540                           	
+   541  05BA                     l1803:	
+   542                           ;AS.DES.CEN.3 TIME.C: 52: delay(50000);
+   543  05BA  3050               	movlw	low(0C350h)
+   544  05BB  00F0               	movwf	(?_delay)
+   545  05BC  30C3               	movlw	high(0C350h)
+   546  05BD  00F1               	movwf	((?_delay))+1
+   547  05BE  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   548                           	line	53
+   549                           	
+   550  05C3                     l1805:	
+   551                           ;AS.DES.CEN.3 TIME.C: 53: PORTB=0X08;
+   552  05C3  3008               	movlw	(08h)
+   553  05C4  1283               	bcf	status, 5	;RP0=0, select bank0
+   554  05C5  1303               	bcf	status, 6	;RP1=0, select bank0
+   555  05C6  0086               	movwf	(6)	;volatile
+   556                           	line	54
+   557                           	
+   558  05C7                     l1807:	
+   559                           ;AS.DES.CEN.3 TIME.C: 54: delay(50000);
+   560  05C7  3050               	movlw	low(0C350h)
+   561  05C8  00F0               	movwf	(?_delay)
+   562  05C9  30C3               	movlw	high(0C350h)
+   563  05CA  00F1               	movwf	((?_delay))+1
+   564  05CB  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   565                           	line	55
+   566                           	
+   567  05D0                     l1809:	
+   568                           ;AS.DES.CEN.3 TIME.C: 55: PORTB=0X10;
+   569  05D0  3010               	movlw	(010h)
+   570  05D1  1283               	bcf	status, 5	;RP0=0, select bank0
+   571  05D2  1303               	bcf	status, 6	;RP1=0, select bank0
+   572  05D3  0086               	movwf	(6)	;volatile
+   573                           	line	56
+   574                           	
+   575  05D4                     l1811:	
+   576                           ;AS.DES.CEN.3 TIME.C: 56: delay(50000);
+   577  05D4  3050               	movlw	low(0C350h)
+   578  05D5  00F0               	movwf	(?_delay)
+   579  05D6  30C3               	movlw	high(0C350h)
+   580  05D7  00F1               	movwf	((?_delay))+1
+   581  05D8  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   582                           	line	57
+   583                           	
+   584  05DD                     l1813:	
+   585                           ;AS.DES.CEN.3 TIME.C: 57: PORTB=0X20;
+   586  05DD  3020               	movlw	(020h)
+   587  05DE  1283               	bcf	status, 5	;RP0=0, select bank0
+   588  05DF  1303               	bcf	status, 6	;RP1=0, select bank0
+   589  05E0  0086               	movwf	(6)	;volatile
+   590                           	line	58
+   591                           	
+   592  05E1                     l1815:	
+   593                           ;AS.DES.CEN.3 TIME.C: 58: delay(50000);
+   594  05E1  3050               	movlw	low(0C350h)
+   595  05E2  00F0               	movwf	(?_delay)
+   596  05E3  30C3               	movlw	high(0C350h)
+   597  05E4  00F1               	movwf	((?_delay))+1
+   598  05E5  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   599                           	line	59
+   600                           	
+   601  05EA                     l1817:	
+   602                           ;AS.DES.CEN.3 TIME.C: 59: PORTB=0X40;
+   603  05EA  3040               	movlw	(040h)
+   604  05EB  1283               	bcf	status, 5	;RP0=0, select bank0
+   605  05EC  1303               	bcf	status, 6	;RP1=0, select bank0
+   606  05ED  0086               	movwf	(6)	;volatile
+   607                           	line	60
+   608                           	
+   609  05EE                     l1819:	
+   610                           ;AS.DES.CEN.3 TIME.C: 60: delay(50000);
+   611  05EE  3050               	movlw	low(0C350h)
+   612  05EF  00F0               	movwf	(?_delay)
+   613  05F0  30C3               	movlw	high(0C350h)
+   614  05F1  00F1               	movwf	((?_delay))+1
+   615  05F2  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   616                           	line	61
+   617                           	
+   618  05F7                     l1821:	
+   619                           ;AS.DES.CEN.3 TIME.C: 61: PORTB=0X80;
+   620  05F7  3080               	movlw	(080h)
+   621  05F8  1283               	bcf	status, 5	;RP0=0, select bank0
+   622  05F9  1303               	bcf	status, 6	;RP1=0, select bank0
+   623  05FA  0086               	movwf	(6)	;volatile
+   624                           	line	62
+   625                           	
+   626  05FB                     l1823:	
+   627                           ;AS.DES.CEN.3 TIME.C: 62: delay(50000);
+   628  05FB  3050               	movlw	low(0C350h)
+   629  05FC  00F0               	movwf	(?_delay)
+   630  05FD  30C3               	movlw	high(0C350h)
+   631  05FE  00F1               	movwf	((?_delay))+1
+   632  05FF  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   633                           	line	64
+   634                           	
+   635  0604                     l1825:	
+   636                           ;AS.DES.CEN.3 TIME.C: 64: PORTB=0X80;
+   637  0604  3080               	movlw	(080h)
+   638  0605  1283               	bcf	status, 5	;RP0=0, select bank0
+   639  0606  1303               	bcf	status, 6	;RP1=0, select bank0
+   640  0607  0086               	movwf	(6)	;volatile
+   641                           	line	65
+   642                           	
+   643  0608                     l1827:	
+   644                           ;AS.DES.CEN.3 TIME.C: 65: delay(50000);
+   645  0608  3050               	movlw	low(0C350h)
+   646  0609  00F0               	movwf	(?_delay)
+   647  060A  30C3               	movlw	high(0C350h)
+   648  060B  00F1               	movwf	((?_delay))+1
+   649  060C  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   650                           	line	66
+   651                           	
+   652  0611                     l1829:	
+   653                           ;AS.DES.CEN.3 TIME.C: 66: PORTB=0X40;
+   654  0611  3040               	movlw	(040h)
+   655  0612  1283               	bcf	status, 5	;RP0=0, select bank0
+   656  0613  1303               	bcf	status, 6	;RP1=0, select bank0
+   657  0614  0086               	movwf	(6)	;volatile
+   658                           	line	67
+   659                           	
+   660  0615                     l1831:	
+   661                           ;AS.DES.CEN.3 TIME.C: 67: delay(50000);
+   662  0615  3050               	movlw	low(0C350h)
+   663  0616  00F0               	movwf	(?_delay)
+   664  0617  30C3               	movlw	high(0C350h)
+   665  0618  00F1               	movwf	((?_delay))+1
+   666  0619  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   667                           	line	68
+   668                           	
+   669  061E                     l1833:	
+   670                           ;AS.DES.CEN.3 TIME.C: 68: PORTB=0X20;
+   671  061E  3020               	movlw	(020h)
+   672  061F  1283               	bcf	status, 5	;RP0=0, select bank0
+   673  0620  1303               	bcf	status, 6	;RP1=0, select bank0
+   674  0621  0086               	movwf	(6)	;volatile
+   675                           	line	69
+   676                           	
+   677  0622                     l1835:	
+   678                           ;AS.DES.CEN.3 TIME.C: 69: delay(50000);
+   679  0622  3050               	movlw	low(0C350h)
+   680  0623  00F0               	movwf	(?_delay)
+   681  0624  30C3               	movlw	high(0C350h)
+   682  0625  00F1               	movwf	((?_delay))+1
+   683  0626  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   684                           	line	70
+   685                           	
+   686  062B                     l1837:	
+   687                           ;AS.DES.CEN.3 TIME.C: 70: PORTB=0X10;
+   688  062B  3010               	movlw	(010h)
+   689  062C  1283               	bcf	status, 5	;RP0=0, select bank0
+   690  062D  1303               	bcf	status, 6	;RP1=0, select bank0
+   691  062E  0086               	movwf	(6)	;volatile
+   692                           	line	71
+   693                           	
+   694  062F                     l1839:	
+   695                           ;AS.DES.CEN.3 TIME.C: 71: delay(50000);
+   696  062F  3050               	movlw	low(0C350h)
+   697  0630  00F0               	movwf	(?_delay)
+   698  0631  30C3               	movlw	high(0C350h)
+   699  0632  00F1               	movwf	((?_delay))+1
+   700  0633  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   701                           	line	72
+   702                           	
+   703  0638                     l1841:	
+   704                           ;AS.DES.CEN.3 TIME.C: 72: PORTB=0X08;
+   705  0638  3008               	movlw	(08h)
+   706  0639  1283               	bcf	status, 5	;RP0=0, select bank0
+   707  063A  1303               	bcf	status, 6	;RP1=0, select bank0
+   708  063B  0086               	movwf	(6)	;volatile
+   709                           	line	73
+   710                           	
+   711  063C                     l1843:	
+   712                           ;AS.DES.CEN.3 TIME.C: 73: delay(50000);
+   713  063C  3050               	movlw	low(0C350h)
+   714  063D  00F0               	movwf	(?_delay)
+   715  063E  30C3               	movlw	high(0C350h)
+   716  063F  00F1               	movwf	((?_delay))+1
+   717  0640  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   718                           	line	74
+   719                           	
+   720  0645                     l1845:	
+   721                           ;AS.DES.CEN.3 TIME.C: 74: PORTB=0X04;
+   722  0645  3004               	movlw	(04h)
+   723  0646  1283               	bcf	status, 5	;RP0=0, select bank0
+   724  0647  1303               	bcf	status, 6	;RP1=0, select bank0
+   725  0648  0086               	movwf	(6)	;volatile
+   726                           	line	75
+   727                           	
+   728  0649                     l1847:	
+   729                           ;AS.DES.CEN.3 TIME.C: 75: delay(50000);
+   730  0649  3050               	movlw	low(0C350h)
+   731  064A  00F0               	movwf	(?_delay)
+   732  064B  30C3               	movlw	high(0C350h)
+   733  064C  00F1               	movwf	((?_delay))+1
+   734  064D  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   735                           	line	76
+   736                           	
+   737  0652                     l1849:	
+   738                           ;AS.DES.CEN.3 TIME.C: 76: PORTB=0X02;
+   739  0652  3002               	movlw	(02h)
+   740  0653  1283               	bcf	status, 5	;RP0=0, select bank0
+   741  0654  1303               	bcf	status, 6	;RP1=0, select bank0
+   742  0655  0086               	movwf	(6)	;volatile
+   743                           	line	77
+   744                           	
+   745  0656                     l1851:	
+   746                           ;AS.DES.CEN.3 TIME.C: 77: delay(50000);
+   747  0656  3050               	movlw	low(0C350h)
+   748  0657  00F0               	movwf	(?_delay)
+   749  0658  30C3               	movlw	high(0C350h)
+   750  0659  00F1               	movwf	((?_delay))+1
+   751  065A  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   752                           	line	78
+   753                           	
+   754  065F                     l1853:	
+   755                           ;AS.DES.CEN.3 TIME.C: 78: PORTB=0X01;
+   756  065F  3001               	movlw	(01h)
+   757  0660  1283               	bcf	status, 5	;RP0=0, select bank0
+   758  0661  1303               	bcf	status, 6	;RP1=0, select bank0
+   759  0662  0086               	movwf	(6)	;volatile
+   760                           	line	79
+   761                           	
+   762  0663                     l1855:	
+   763                           ;AS.DES.CEN.3 TIME.C: 79: delay(50000);
+   764  0663  3050               	movlw	low(0C350h)
+   765  0664  00F0               	movwf	(?_delay)
+   766  0665  30C3               	movlw	high(0C350h)
+   767  0666  00F1               	movwf	((?_delay))+1
+   768  0667  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   769                           	line	80
+   770                           ;AS.DES.CEN.3 TIME.C: 80: PORTB=0X00;
+   771  066C  1283               	bcf	status, 5	;RP0=0, select bank0
+   772  066D  1303               	bcf	status, 6	;RP1=0, select bank0
+   773  066E  0186               	clrf	(6)	;volatile
+   774                           	line	81
+   775                           	
+   776  066F                     l1857:	
+   777                           ;AS.DES.CEN.3 TIME.C: 81: delay(50000);
+   778  066F  3050               	movlw	low(0C350h)
+   779  0670  00F0               	movwf	(?_delay)
+   780  0671  30C3               	movlw	high(0C350h)
+   781  0672  00F1               	movwf	((?_delay))+1
+   782  0673  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   783                           	line	83
+   784                           	
+   785  0678                     l1859:	
+   786                           ;AS.DES.CEN.3 TIME.C: 83: PORTB=0X80;
+   787  0678  3080               	movlw	(080h)
+   788  0679  1283               	bcf	status, 5	;RP0=0, select bank0
+   789  067A  1303               	bcf	status, 6	;RP1=0, select bank0
+   790  067B  0086               	movwf	(6)	;volatile
+   791                           	line	84
+   792                           	
+   793  067C                     l1861:	
+   794                           ;AS.DES.CEN.3 TIME.C: 84: delay(50000);
+   795  067C  3050               	movlw	low(0C350h)
+   796  067D  00F0               	movwf	(?_delay)
+   797  067E  30C3               	movlw	high(0C350h)
+   798  067F  00F1               	movwf	((?_delay))+1
+   799  0680  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   800                           	line	85
+   801                           	
+   802  0685                     l1863:	
+   803                           ;AS.DES.CEN.3 TIME.C: 85: PORTB=0X40;
+   804  0685  3040               	movlw	(040h)
+   805  0686  1283               	bcf	status, 5	;RP0=0, select bank0
+   806  0687  1303               	bcf	status, 6	;RP1=0, select bank0
+   807  0688  0086               	movwf	(6)	;volatile
+   808                           	line	86
+   809                           	
+   810  0689                     l1865:	
+   811                           ;AS.DES.CEN.3 TIME.C: 86: delay(50000);
+   812  0689  3050               	movlw	low(0C350h)
+   813  068A  00F0               	movwf	(?_delay)
+   814  068B  30C3               	movlw	high(0C350h)
+   815  068C  00F1               	movwf	((?_delay))+1
+   816  068D  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   817                           	line	87
+   818                           	
+   819  0692                     l1867:	
+   820                           ;AS.DES.CEN.3 TIME.C: 87: PORTB=0X20;
+   821  0692  3020               	movlw	(020h)
+   822  0693  1283               	bcf	status, 5	;RP0=0, select bank0
+   823  0694  1303               	bcf	status, 6	;RP1=0, select bank0
+   824  0695  0086               	movwf	(6)	;volatile
+   825                           	line	88
+   826                           	
+   827  0696                     l1869:	
+   828                           ;AS.DES.CEN.3 TIME.C: 88: delay(50000);
+   829  0696  3050               	movlw	low(0C350h)
+   830  0697  00F0               	movwf	(?_delay)
+   831  0698  30C3               	movlw	high(0C350h)
+   832  0699  00F1               	movwf	((?_delay))+1
+   833  069A  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   834                           	line	89
+   835                           	
+   836  069F                     l1871:	
+   837                           ;AS.DES.CEN.3 TIME.C: 89: PORTB=0X10;
+   838  069F  3010               	movlw	(010h)
+   839  06A0  1283               	bcf	status, 5	;RP0=0, select bank0
+   840  06A1  1303               	bcf	status, 6	;RP1=0, select bank0
+   841  06A2  0086               	movwf	(6)	;volatile
+   842                           	line	90
+   843                           	
+   844  06A3                     l1873:	
+   845                           ;AS.DES.CEN.3 TIME.C: 90: delay(50000);
+   846  06A3  3050               	movlw	low(0C350h)
+   847  06A4  00F0               	movwf	(?_delay)
+   848  06A5  30C3               	movlw	high(0C350h)
+   849  06A6  00F1               	movwf	((?_delay))+1
+   850  06A7  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   851                           	line	91
+   852                           	
+   853  06AC                     l1875:	
+   854                           ;AS.DES.CEN.3 TIME.C: 91: PORTB=0X08;
+   855  06AC  3008               	movlw	(08h)
+   856  06AD  1283               	bcf	status, 5	;RP0=0, select bank0
+   857  06AE  1303               	bcf	status, 6	;RP1=0, select bank0
+   858  06AF  0086               	movwf	(6)	;volatile
+   859                           	line	92
+   860                           	
+   861  06B0                     l1877:	
+   862                           ;AS.DES.CEN.3 TIME.C: 92: delay(50000);
+   863  06B0  3050               	movlw	low(0C350h)
+   864  06B1  00F0               	movwf	(?_delay)
+   865  06B2  30C3               	movlw	high(0C350h)
+   866  06B3  00F1               	movwf	((?_delay))+1
+   867  06B4  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   868                           	line	93
+   869                           	
+   870  06B9                     l1879:	
+   871                           ;AS.DES.CEN.3 TIME.C: 93: PORTB=0X04;
+   872  06B9  3004               	movlw	(04h)
+   873  06BA  1283               	bcf	status, 5	;RP0=0, select bank0
+   874  06BB  1303               	bcf	status, 6	;RP1=0, select bank0
+   875  06BC  0086               	movwf	(6)	;volatile
+   876                           	line	94
+   877                           	
+   878  06BD                     l1881:	
+   879                           ;AS.DES.CEN.3 TIME.C: 94: delay(50000);
+   880  06BD  3050               	movlw	low(0C350h)
+   881  06BE  00F0               	movwf	(?_delay)
+   882  06BF  30C3               	movlw	high(0C350h)
+   883  06C0  00F1               	movwf	((?_delay))+1
+   884  06C1  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   885                           	line	95
+   886                           	
+   887  06C6                     l1883:	
+   888                           ;AS.DES.CEN.3 TIME.C: 95: PORTB=0X02;
+   889  06C6  3002               	movlw	(02h)
+   890  06C7  1283               	bcf	status, 5	;RP0=0, select bank0
+   891  06C8  1303               	bcf	status, 6	;RP1=0, select bank0
+   892  06C9  0086               	movwf	(6)	;volatile
+   893                           	line	96
+   894                           	
+   895  06CA                     l1885:	
+   896                           ;AS.DES.CEN.3 TIME.C: 96: delay(50000);
+   897  06CA  3050               	movlw	low(0C350h)
+   898  06CB  00F0               	movwf	(?_delay)
+   899  06CC  30C3               	movlw	high(0C350h)
+   900  06CD  00F1               	movwf	((?_delay))+1
+   901  06CE  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   902                           	line	97
+   903                           	
+   904  06D3                     l1887:	
+   905                           ;AS.DES.CEN.3 TIME.C: 97: PORTB=0X01;
+   906  06D3  3001               	movlw	(01h)
+   907  06D4  1283               	bcf	status, 5	;RP0=0, select bank0
+   908  06D5  1303               	bcf	status, 6	;RP1=0, select bank0
+   909  06D6  0086               	movwf	(6)	;volatile
+   910                           	line	98
+   911                           	
+   912  06D7                     l1889:	
+   913                           ;AS.DES.CEN.3 TIME.C: 98: delay(50000);
+   914  06D7  3050               	movlw	low(0C350h)
+   915  06D8  00F0               	movwf	(?_delay)
+   916  06D9  30C3               	movlw	high(0C350h)
+   917  06DA  00F1               	movwf	((?_delay))+1
+   918  06DB  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   919                           	line	99
+   920                           	
+   921  06E0                     l1891:	
+   922                           ;AS.DES.CEN.3 TIME.C: 99: PORTB=0X00;
+   923  06E0  1283               	bcf	status, 5	;RP0=0, select bank0
+   924  06E1  1303               	bcf	status, 6	;RP1=0, select bank0
+   925  06E2  0186               	clrf	(6)	;volatile
+   926                           	line	100
+   927                           ;AS.DES.CEN.3 TIME.C: 100: delay(50000);
+   928  06E3  3050               	movlw	low(0C350h)
+   929  06E4  00F0               	movwf	(?_delay)
+   930  06E5  30C3               	movlw	high(0C350h)
+   931  06E6  00F1               	movwf	((?_delay))+1
+   932  06E7  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   933                           	line	102
+   934                           	
+   935  06EC                     l1893:	
+   936                           ;AS.DES.CEN.3 TIME.C: 102: PORTB=0X80;
+   937  06EC  3080               	movlw	(080h)
+   938  06ED  1283               	bcf	status, 5	;RP0=0, select bank0
+   939  06EE  1303               	bcf	status, 6	;RP1=0, select bank0
+   940  06EF  0086               	movwf	(6)	;volatile
+   941                           	line	103
+   942                           	
+   943  06F0                     l1895:	
+   944                           ;AS.DES.CEN.3 TIME.C: 103: delay(50000);
+   945  06F0  3050               	movlw	low(0C350h)
+   946  06F1  00F0               	movwf	(?_delay)
+   947  06F2  30C3               	movlw	high(0C350h)
+   948  06F3  00F1               	movwf	((?_delay))+1
+   949  06F4  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   950                           	line	104
+   951                           ;AS.DES.CEN.3 TIME.C: 104: PORTB=0X40;
+   952  06F9  3040               	movlw	(040h)
+   953  06FA  1283               	bcf	status, 5	;RP0=0, select bank0
+   954  06FB  1303               	bcf	status, 6	;RP1=0, select bank0
+   955  06FC  0086               	movwf	(6)	;volatile
+   956                           	line	105
+   957                           	
+   958  06FD                     l1897:	
+   959                           ;AS.DES.CEN.3 TIME.C: 105: delay(50000);
+   960  06FD  3050               	movlw	low(0C350h)
+   961  06FE  00F0               	movwf	(?_delay)
+   962  06FF  30C3               	movlw	high(0C350h)
+   963  0700  00F1               	movwf	((?_delay))+1
+   964  0701  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   965                           	line	106
+   966                           	
+   967  0706                     l1899:	
+   968                           ;AS.DES.CEN.3 TIME.C: 106: PORTB=0X20;
+   969  0706  3020               	movlw	(020h)
+   970  0707  1283               	bcf	status, 5	;RP0=0, select bank0
+   971  0708  1303               	bcf	status, 6	;RP1=0, select bank0
+   972  0709  0086               	movwf	(6)	;volatile
+   973                           	line	107
+   974                           ;AS.DES.CEN.3 TIME.C: 107: delay(50000);
+   975  070A  3050               	movlw	low(0C350h)
+   976  070B  00F0               	movwf	(?_delay)
+   977  070C  30C3               	movlw	high(0C350h)
+   978  070D  00F1               	movwf	((?_delay))+1
+   979  070E  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   980                           	line	108
+   981                           	
+   982  0713                     l1901:	
+   983                           ;AS.DES.CEN.3 TIME.C: 108: PORTB=0X10;
+   984  0713  3010               	movlw	(010h)
+   985  0714  1283               	bcf	status, 5	;RP0=0, select bank0
+   986  0715  1303               	bcf	status, 6	;RP1=0, select bank0
+   987  0716  0086               	movwf	(6)	;volatile
+   988                           	line	109
+   989                           	
+   990  0717                     l1903:	
+   991                           ;AS.DES.CEN.3 TIME.C: 109: delay(50000);
+   992  0717  3050               	movlw	low(0C350h)
+   993  0718  00F0               	movwf	(?_delay)
+   994  0719  30C3               	movlw	high(0C350h)
+   995  071A  00F1               	movwf	((?_delay))+1
+   996  071B  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+   997                           	line	110
+   998                           ;AS.DES.CEN.3 TIME.C: 110: PORTB=0X08;
+   999  0720  3008               	movlw	(08h)
+  1000  0721  1283               	bcf	status, 5	;RP0=0, select bank0
+  1001  0722  1303               	bcf	status, 6	;RP1=0, select bank0
+  1002  0723  0086               	movwf	(6)	;volatile
+  1003                           	line	111
+  1004                           	
+  1005  0724                     l1905:	
+  1006                           ;AS.DES.CEN.3 TIME.C: 111: delay(50000);
+  1007  0724  3050               	movlw	low(0C350h)
+  1008  0725  00F0               	movwf	(?_delay)
+  1009  0726  30C3               	movlw	high(0C350h)
+  1010  0727  00F1               	movwf	((?_delay))+1
+  1011  0728  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1012                           	line	112
+  1013                           	
+  1014  072D                     l1907:	
+  1015                           ;AS.DES.CEN.3 TIME.C: 112: PORTB=0X04;
+  1016  072D  3004               	movlw	(04h)
+  1017  072E  1283               	bcf	status, 5	;RP0=0, select bank0
+  1018  072F  1303               	bcf	status, 6	;RP1=0, select bank0
+  1019  0730  0086               	movwf	(6)	;volatile
+  1020                           	line	113
+  1021                           ;AS.DES.CEN.3 TIME.C: 113: delay(50000);
+  1022  0731  3050               	movlw	low(0C350h)
+  1023  0732  00F0               	movwf	(?_delay)
+  1024  0733  30C3               	movlw	high(0C350h)
+  1025  0734  00F1               	movwf	((?_delay))+1
+  1026  0735  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1027                           	line	114
+  1028                           	
+  1029  073A                     l1909:	
+  1030                           ;AS.DES.CEN.3 TIME.C: 114: PORTB=0X02;
+  1031  073A  3002               	movlw	(02h)
+  1032  073B  1283               	bcf	status, 5	;RP0=0, select bank0
+  1033  073C  1303               	bcf	status, 6	;RP1=0, select bank0
+  1034  073D  0086               	movwf	(6)	;volatile
+  1035                           	line	115
+  1036                           	
+  1037  073E                     l1911:	
+  1038                           ;AS.DES.CEN.3 TIME.C: 115: delay(50000);
+  1039  073E  3050               	movlw	low(0C350h)
+  1040  073F  00F0               	movwf	(?_delay)
+  1041  0740  30C3               	movlw	high(0C350h)
+  1042  0741  00F1               	movwf	((?_delay))+1
+  1043  0742  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1044                           	line	116
+  1045                           ;AS.DES.CEN.3 TIME.C: 116: PORTB=0X01;
+  1046  0747  3001               	movlw	(01h)
+  1047  0748  1283               	bcf	status, 5	;RP0=0, select bank0
+  1048  0749  1303               	bcf	status, 6	;RP1=0, select bank0
+  1049  074A  0086               	movwf	(6)	;volatile
+  1050                           	line	117
+  1051                           	
+  1052  074B                     l1913:	
+  1053                           ;AS.DES.CEN.3 TIME.C: 117: delay(50000);
+  1054  074B  3050               	movlw	low(0C350h)
+  1055  074C  00F0               	movwf	(?_delay)
+  1056  074D  30C3               	movlw	high(0C350h)
+  1057  074E  00F1               	movwf	((?_delay))+1
+  1058  074F  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1059                           	line	118
+  1060                           	
+  1061  0754                     l1915:	
+  1062                           ;AS.DES.CEN.3 TIME.C: 118: PORTB=0X00;
+  1063  0754  1283               	bcf	status, 5	;RP0=0, select bank0
+  1064  0755  1303               	bcf	status, 6	;RP1=0, select bank0
+  1065  0756  0186               	clrf	(6)	;volatile
+  1066                           	line	119
+  1067                           	
+  1068  0757                     l1917:	
+  1069                           ;AS.DES.CEN.3 TIME.C: 119: delay(50000);
+  1070  0757  3050               	movlw	low(0C350h)
+  1071  0758  00F0               	movwf	(?_delay)
+  1072  0759  30C3               	movlw	high(0C350h)
+  1073  075A  00F1               	movwf	((?_delay))+1
+  1074  075B  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1075                           	line	121
+  1076                           	
+  1077  0760                     l1919:	
+  1078                           ;AS.DES.CEN.3 TIME.C: 121: PORTB=0X18;
+  1079  0760  3018               	movlw	(018h)
+  1080  0761  1283               	bcf	status, 5	;RP0=0, select bank0
+  1081  0762  1303               	bcf	status, 6	;RP1=0, select bank0
+  1082  0763  0086               	movwf	(6)	;volatile
+  1083                           	line	122
+  1084                           	
+  1085  0764                     l1921:	
+  1086                           ;AS.DES.CEN.3 TIME.C: 122: delay(50000);
+  1087  0764  3050               	movlw	low(0C350h)
+  1088  0765  00F0               	movwf	(?_delay)
+  1089  0766  30C3               	movlw	high(0C350h)
+  1090  0767  00F1               	movwf	((?_delay))+1
+  1091  0768  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1092                           	line	123
+  1093                           	
+  1094  076D                     l1923:	
+  1095                           ;AS.DES.CEN.3 TIME.C: 123: PORTB=0X24;
+  1096  076D  3024               	movlw	(024h)
+  1097  076E  1283               	bcf	status, 5	;RP0=0, select bank0
+  1098  076F  1303               	bcf	status, 6	;RP1=0, select bank0
+  1099  0770  0086               	movwf	(6)	;volatile
+  1100                           	line	124
+  1101                           	
+  1102  0771                     l1925:	
+  1103                           ;AS.DES.CEN.3 TIME.C: 124: delay(50000);
+  1104  0771  3050               	movlw	low(0C350h)
+  1105  0772  00F0               	movwf	(?_delay)
+  1106  0773  30C3               	movlw	high(0C350h)
+  1107  0774  00F1               	movwf	((?_delay))+1
+  1108  0775  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1109                           	line	125
+  1110                           	
+  1111  077A                     l1927:	
+  1112                           ;AS.DES.CEN.3 TIME.C: 125: PORTB=0X42;
+  1113  077A  3042               	movlw	(042h)
+  1114  077B  1283               	bcf	status, 5	;RP0=0, select bank0
+  1115  077C  1303               	bcf	status, 6	;RP1=0, select bank0
+  1116  077D  0086               	movwf	(6)	;volatile
+  1117                           	line	126
+  1118                           	
+  1119  077E                     l1929:	
+  1120                           ;AS.DES.CEN.3 TIME.C: 126: delay(50000);
+  1121  077E  3050               	movlw	low(0C350h)
+  1122  077F  00F0               	movwf	(?_delay)
+  1123  0780  30C3               	movlw	high(0C350h)
+  1124  0781  00F1               	movwf	((?_delay))+1
+  1125  0782  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1126                           	line	127
+  1127                           	
+  1128  0787                     l1931:	
+  1129                           ;AS.DES.CEN.3 TIME.C: 127: PORTB=0X81;
+  1130  0787  3081               	movlw	(081h)
+  1131  0788  1283               	bcf	status, 5	;RP0=0, select bank0
+  1132  0789  1303               	bcf	status, 6	;RP1=0, select bank0
+  1133  078A  0086               	movwf	(6)	;volatile
+  1134                           	line	128
+  1135                           	
+  1136  078B                     l1933:	
+  1137                           ;AS.DES.CEN.3 TIME.C: 128: delay(50000);
+  1138  078B  3050               	movlw	low(0C350h)
+  1139  078C  00F0               	movwf	(?_delay)
+  1140  078D  30C3               	movlw	high(0C350h)
+  1141  078E  00F1               	movwf	((?_delay))+1
+  1142  078F  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1143                           	line	130
+  1144                           	
+  1145  0794                     l1935:	
+  1146                           ;AS.DES.CEN.3 TIME.C: 130: PORTB=0X18;
+  1147  0794  3018               	movlw	(018h)
+  1148  0795  1283               	bcf	status, 5	;RP0=0, select bank0
+  1149  0796  1303               	bcf	status, 6	;RP1=0, select bank0
+  1150  0797  0086               	movwf	(6)	;volatile
+  1151                           	line	131
+  1152                           	
+  1153  0798                     l1937:	
+  1154                           ;AS.DES.CEN.3 TIME.C: 131: delay(50000);
+  1155  0798  3050               	movlw	low(0C350h)
+  1156  0799  00F0               	movwf	(?_delay)
+  1157  079A  30C3               	movlw	high(0C350h)
+  1158  079B  00F1               	movwf	((?_delay))+1
+  1159  079C  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1160                           	line	132
+  1161                           	
+  1162  07A1                     l1939:	
+  1163                           ;AS.DES.CEN.3 TIME.C: 132: PORTB=0X24;
+  1164  07A1  3024               	movlw	(024h)
+  1165  07A2  1283               	bcf	status, 5	;RP0=0, select bank0
+  1166  07A3  1303               	bcf	status, 6	;RP1=0, select bank0
+  1167  07A4  0086               	movwf	(6)	;volatile
+  1168                           	line	133
+  1169                           	
+  1170  07A5                     l1941:	
+  1171                           ;AS.DES.CEN.3 TIME.C: 133: delay(50000);
+  1172  07A5  3050               	movlw	low(0C350h)
+  1173  07A6  00F0               	movwf	(?_delay)
+  1174  07A7  30C3               	movlw	high(0C350h)
+  1175  07A8  00F1               	movwf	((?_delay))+1
+  1176  07A9  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1177                           	line	134
+  1178                           	
+  1179  07AE                     l1943:	
+  1180                           ;AS.DES.CEN.3 TIME.C: 134: PORTB=0X42;
+  1181  07AE  3042               	movlw	(042h)
+  1182  07AF  1283               	bcf	status, 5	;RP0=0, select bank0
+  1183  07B0  1303               	bcf	status, 6	;RP1=0, select bank0
+  1184  07B1  0086               	movwf	(6)	;volatile
+  1185                           	line	135
+  1186                           	
+  1187  07B2                     l1945:	
+  1188                           ;AS.DES.CEN.3 TIME.C: 135: delay(50000);
+  1189  07B2  3050               	movlw	low(0C350h)
+  1190  07B3  00F0               	movwf	(?_delay)
+  1191  07B4  30C3               	movlw	high(0C350h)
+  1192  07B5  00F1               	movwf	((?_delay))+1
+  1193  07B6  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1194                           	line	136
+  1195                           	
+  1196  07BB                     l1947:	
+  1197                           ;AS.DES.CEN.3 TIME.C: 136: PORTB=0X81;
+  1198  07BB  3081               	movlw	(081h)
+  1199  07BC  1283               	bcf	status, 5	;RP0=0, select bank0
+  1200  07BD  1303               	bcf	status, 6	;RP1=0, select bank0
+  1201  07BE  0086               	movwf	(6)	;volatile
+  1202                           	line	137
+  1203                           	
+  1204  07BF                     l1949:	
+  1205                           ;AS.DES.CEN.3 TIME.C: 137: delay(50000);
+  1206  07BF  3050               	movlw	low(0C350h)
+  1207  07C0  00F0               	movwf	(?_delay)
+  1208  07C1  30C3               	movlw	high(0C350h)
+  1209  07C2  00F1               	movwf	((?_delay))+1
+  1210  07C3  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1211                           	line	139
+  1212                           	
+  1213  07C8                     l1951:	
+  1214                           ;AS.DES.CEN.3 TIME.C: 139: PORTB=0X18;
+  1215  07C8  3018               	movlw	(018h)
+  1216  07C9  1283               	bcf	status, 5	;RP0=0, select bank0
+  1217  07CA  1303               	bcf	status, 6	;RP1=0, select bank0
+  1218  07CB  0086               	movwf	(6)	;volatile
+  1219                           	line	140
+  1220                           	
+  1221  07CC                     l1953:	
+  1222                           ;AS.DES.CEN.3 TIME.C: 140: delay(50000);
+  1223  07CC  3050               	movlw	low(0C350h)
+  1224  07CD  00F0               	movwf	(?_delay)
+  1225  07CE  30C3               	movlw	high(0C350h)
+  1226  07CF  00F1               	movwf	((?_delay))+1
+  1227  07D0  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1228                           	line	141
+  1229                           	
+  1230  07D5                     l1955:	
+  1231                           ;AS.DES.CEN.3 TIME.C: 141: PORTB=0X24;
+  1232  07D5  3024               	movlw	(024h)
+  1233  07D6  1283               	bcf	status, 5	;RP0=0, select bank0
+  1234  07D7  1303               	bcf	status, 6	;RP1=0, select bank0
+  1235  07D8  0086               	movwf	(6)	;volatile
+  1236                           	line	142
+  1237                           	
+  1238  07D9                     l1957:	
+  1239                           ;AS.DES.CEN.3 TIME.C: 142: delay(50000);
+  1240  07D9  3050               	movlw	low(0C350h)
+  1241  07DA  00F0               	movwf	(?_delay)
+  1242  07DB  30C3               	movlw	high(0C350h)
+  1243  07DC  00F1               	movwf	((?_delay))+1
+  1244  07DD  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1245                           	line	143
+  1246                           	
+  1247  07E2                     l1959:	
+  1248                           ;AS.DES.CEN.3 TIME.C: 143: PORTB=0X42;
+  1249  07E2  3042               	movlw	(042h)
+  1250  07E3  1283               	bcf	status, 5	;RP0=0, select bank0
+  1251  07E4  1303               	bcf	status, 6	;RP1=0, select bank0
+  1252  07E5  0086               	movwf	(6)	;volatile
+  1253                           	line	144
+  1254                           	
+  1255  07E6                     l1961:	
+  1256                           ;AS.DES.CEN.3 TIME.C: 144: delay(50000);
+  1257  07E6  3050               	movlw	low(0C350h)
+  1258  07E7  00F0               	movwf	(?_delay)
+  1259  07E8  30C3               	movlw	high(0C350h)
+  1260  07E9  00F1               	movwf	((?_delay))+1
+  1261  07EA  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1262                           	line	145
+  1263                           	
+  1264  07EF                     l1963:	
+  1265                           ;AS.DES.CEN.3 TIME.C: 145: PORTB=0X81;
+  1266  07EF  3081               	movlw	(081h)
+  1267  07F0  1283               	bcf	status, 5	;RP0=0, select bank0
+  1268  07F1  1303               	bcf	status, 6	;RP1=0, select bank0
+  1269  07F2  0086               	movwf	(6)	;volatile
+  1270                           	line	146
+  1271                           	
+  1272  07F3                     l1965:	
+  1273                           ;AS.DES.CEN.3 TIME.C: 146: delay(50000);
+  1274  07F3  3050               	movlw	low(0C350h)
+  1275  07F4  00F0               	movwf	(?_delay)
+  1276  07F5  30C3               	movlw	high(0C350h)
+  1277  07F6  00F1               	movwf	((?_delay))+1
+  1278  07F7  120A  118A  24B6   	fcall	_delay
+              120A  118A         
+  1279                           	line	147
+  1280                           	
+  1281  07FC                     l566:	
+  1282                           	line	11
+  1283  07FC  2CCE               	goto	l565
+  1284                           	
+  1285  07FD                     l567:	
+  1286                           	line	148
+  1287                           	
+  1288  07FD                     l568:	
+  1289                           	global	start
+  1290  07FD  120A  118A  2800   	ljmp	start
+  1291                           	opt stack 0
+  1292                           GLOBAL	__end_of_main
+  1293  0800                     	__end_of_main:
+  1294 ;; =============== function _main ends ============
+  1295                           
+  1296                           	signat	_main,90
+  1297                           	global	_delay
+  1298                           psect	text55,local,class=CODE,delta=2
+  1299                           global __ptext55
+  1300  04B6                     __ptext55:
+  1301                           
+  1302 ;; *************** function _delay *****************
+  1303 ;; Defined at:
+  1304 ;;		line 4 in file "E:\Madhu\madhu pic folder\pic task\led\7.3 TIME AS..DES.CENTER\AS.DES.CEN.3 TIME.C"
+  1305 ;; Parameters:    Size  Location     Type
+  1306 ;;  x               2    0[COMMON] unsigned int 
+  1307 ;; Auto vars:     Size  Location     Type
+  1308 ;;		None
+  1309 ;; Return value:  Size  Location     Type
+  1310 ;;		None               void
+  1311 ;; Registers used:
+  1312 ;;		wreg
+  1313 ;; Tracked objects:
+  1314 ;;		On entry : 0/0
+  1315 ;;		On exit  : 0/0
+  1316 ;;		Unchanged: 0/0
+  1317 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1318 ;;      Params:         2       0       0       0       0
+  1319 ;;      Locals:         0       0       0       0       0
+  1320 ;;      Temps:          0       0       0       0       0
+  1321 ;;      Totals:         2       0       0       0       0
+  1322 ;;Total ram usage:        2 bytes
+  1323 ;; Hardware stack levels used:    1
+  1324 ;; This function calls:
+  1325 ;;		Nothing
+  1326 ;; This function is called by:
+  1327 ;;		_main
+  1328 ;; This function uses a non-reentrant model
+  1329 ;;
+  1330                           psect	text55
+  1331                           	file	"E:\Madhu\madhu pic folder\pic task\led\7.3 TIME AS..DES.CENTER\AS.DES.CEN.3 TIME.
+                                 C"
+  1332                           	line	4
+  1333                           	global	__size_of_delay
+  1334  0012                     	__size_of_delay	equ	__end_of_delay-_delay
+  1335                           	
+  1336  04B6                     _delay:	
+  1337                           	opt	stack 7
+  1338                           ; Regs used in _delay: [wreg]
+  1339                           	line	5
+  1340                           	
+  1341  04B6                     l937:	
+  1342                           ;AS.DES.CEN.3 TIME.C: 5: while(x--);
+  1343  04B6  2CB7               	goto	l559
+  1344                           	
+  1345  04B7                     l560:	
+  1346                           	
+  1347  04B7                     l559:	
+  1348                           	
+  1349  04B7                     l939:	
+  1350  04B7  3001               	movlw	low(01h)
+  1351  04B8  02F0               	subwf	(delay@x),f
+  1352  04B9  3000               	movlw	high(01h)
+  1353  04BA  1C03               	skipc
+  1354  04BB  03F1               	decf	(delay@x+1),f
+  1355  04BC  02F1               	subwf	(delay@x+1),f
+  1356  04BD  30FF               	movlw	high(0FFFFh)
+  1357  04BE  0671               	xorwf	((delay@x+1)),w
+  1358  04BF  1D03               	skipz
+  1359  04C0  2CC3               	goto	u15
+  1360  04C1  30FF               	movlw	low(0FFFFh)
+  1361  04C2  0670               	xorwf	((delay@x)),w
+  1362  04C3                     u15:
+  1363                           
+  1364  04C3  1D03               	skipz
+  1365  04C4  2CC6               	goto	u11
+  1366  04C5  2CC7               	goto	u10
+  1367  04C6                     u11:
+  1368  04C6  2CB7               	goto	l560
+  1369  04C7                     u10:
+  1370                           	
+  1371  04C7                     l561:	
+  1372                           	line	6
+  1373                           	
+  1374  04C7                     l562:	
+  1375  04C7  0008               	return
+  1376                           	opt stack 0
+  1377                           GLOBAL	__end_of_delay
+  1378  04C8                     	__end_of_delay:
+  1379 ;; =============== function _delay ends ============
+  1380                           
+  1381                           	signat	_delay,4216
+  1382                           psect	text56,local,class=CODE,delta=2
+  1383                           global __ptext56
+  1384  0000                     __ptext56:
+  1385                           	global	btemp
+  1386  007E                     	btemp set 07Eh
+  1387                           
+  1388                           	DABS	1,126,2	;btemp
+  1389                           	global	wtemp0
+  1390  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.71a build 6446 
+Symbol Table                                                                                   Tue Apr 16 11:22:07 2024
+
+                  u10 04C7                    u11 04C6                    u15 04C3                   l560 04B7  
+                 l561 04C7                   l562 04C7                   l565 04CE                   l566 07FC  
+                 l559 04B7                   l567 07FD                   l568 07FD                   l937 04B6  
+                 l939 04B7                  l1801 05B6                  l1811 05D4                  l1803 05BA  
+                l1731 04D0                  l1901 0713                  l1821 05F7                  l1813 05DD  
+                l1805 05C3                  l1741 04F3                  l1733 04D9                  l1911 073E  
+                l1903 0717                  l1831 0615                  l1823 05FB                  l1815 05E1  
+                l1807 05C7                  l1751 0511                  l1743 04F7                  l1735 04DD  
+                l1727 04C8                  l1921 0764                  l1913 074B                  l1905 0724  
+                l1841 0638                  l1833 061E                  l1825 0604                  l1817 05EA  
+                l1809 05D0                  l1761 0534                  l1753 051A                  l1745 0500  
+                l1737 04E6                  l1729 04CE                  l1931 0787                  l1923 076D  
+                l1915 0754                  l1907 072D                  l1851 0656                  l1843 063C  
+                l1835 0622                  l1827 0608                  l1819 05EE                  l1771 0552  
+                l1763 0538                  l1755 051E                  l1747 0504                  l1739 04EA  
+                l1941 07A5                  l1933 078B                  l1925 0771                  l1917 0757  
+                l1909 073A                  l1861 067C                  l1853 065F                  l1845 0645  
+                l1837 062B                  l1829 0611                  l1781 0575                  l1773 055B  
+                l1765 0541                  l1757 0527                  l1749 050D                  l1951 07C8  
+                l1943 07AE                  l1935 0794                  l1927 077A                  l1919 0760  
+                l1871 069F                  l1863 0685                  l1855 0663                  l1847 0649  
+                l1839 062F                  l1791 0593                  l1783 0579                  l1775 055F  
+                l1767 0545                  l1759 052B                  l1961 07E6                  l1953 07CC  
+                l1945 07B2                  l1937 0798                  l1929 077E                  l1881 06BD  
+                l1873 06A3                  l1865 0689                  l1857 066F                  l1849 0652  
+                l1793 059C                  l1785 0582                  l1777 0568                  l1769 054E  
+                l1963 07EF                  l1955 07D5                  l1947 07BB                  l1939 07A1  
+                l1891 06E0                  l1883 06C6                  l1875 06AC                  l1867 0692  
+                l1859 0678                  l1795 05A0                  l1787 0586                  l1779 056C  
+                l1965 07F3                  l1957 07D9                  l1949 07BF                  l1893 06EC  
+                l1885 06CA                  l1877 06B0                  l1869 0696                  l1797 05A9  
+                l1789 058F                  l1959 07E2                  l1895 06F0                  l1887 06D3  
+                l1879 06B9                  l1799 05AD                  l1897 06FD                  l1889 06D7  
+                l1899 0706                  _main 04C8                  btemp 007E                  start 0000  
+               ?_main 0070                 _PORTB 0006                 _TRISB 0086                 _delay 04B6  
+               status 0003                 wtemp0 007E          __end_of_main 0800                ??_main 0072  
+              ?_delay 0070                delay@x 0070        __pcstackCOMMON 0070         __end_of_delay 04C8  
+             ??_delay 0072            __pmaintext 04C8  end_of_initialization 04B2   start_initialization 04B2  
+      __size_of_delay 0012              __ptext55 04B6              __ptext56 0000         __size_of_main 0338  

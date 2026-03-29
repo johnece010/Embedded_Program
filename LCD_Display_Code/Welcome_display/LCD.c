@@ -1,62 +1,138 @@
-#include <pic.h>
-#define rs RC0
-#define rw RC1
-#define en RC2
+#include<pic.h>
+__CONFIG(0X3F72);
+#define RS RD1
+#define RW RD2
+#define EN RD3
+
+unsigned int temp,temp1,temp2;
+
+int a,b,c,d,e,f,i;
 
 void delay(unsigned int x)
 {
-    while(x--);
+while(x--);
 }
 
-char i;
-char da[] = {"WELCOME"};
-
-void lcd_cmd(unsigned char cmd)
+void lcd_command(unsigned char com)
 {
-    PORTD = cmd;
-    rs = 0;
-    rw = 0;
-    en = 1;
-    delay(10000);
-    en = 0;
-}
-
-void lcd_data(unsigned char data)
-{
-    PORTD = data;
-    rs = 1;
-    rw = 0;
-    en = 1;
-    delay(10000);
-    en = 0;
+PORTD=com&0XF0;
+RS=0;
+RW=0;
+EN=1;
+delay(100);
+EN=0;
+temp2=com<<4;
+PORTD=temp2&0XF0;
+RS=0;
+RW=0;
+EN=1;
+delay(100);
+EN=0;
 }
 
 void lcd_init()
 {
-    lcd_cmd(0x38); // 2 lines, 5x7 matrix
-    lcd_cmd(0x06); // increment cursor
-    lcd_cmd(0x0C); // display ON, cursor OFF
-    lcd_cmd(0x01); // clear display
-    lcd_cmd(0x80); // move cursor to first line
+lcd_command(0X02);
+lcd_command(0X2C);
+lcd_command(0X06);
+lcd_command(0X0C);
+lcd_command(0X01);
 }
 
-void main()
+
+void lcd_data(unsigned char data)
 {
-    TRISC = 0x00;
-    PORTC = 0x00;
-    TRISD = 0x00;
-    PORTD = 0x00;
+PORTD=data&0XF0;
+RS=1;
+RW=0;
+EN=1;
+delay(100);
+EN=0;
+temp1=data<<4;
+PORTD=temp1&0XF0;
+RS=1;
+RW=0;
+EN=1;
+delay(100);
+EN=0;
+}
 
-    lcd_init();  // ? Initialize LCD
+void lcd_display(unsigned char *m)
+{
+for(i=0;m[i]!=0;i++)
+{
+lcd_data(m[i]);
+}
+}
 
-    while(1)
-    {
-        lcd_cmd(0x80); // set cursor to beginning
-        for(i = 0; i < 7; i++)
-        {
-            lcd_data(da[i]); // ? display each character
-            delay(50000);
-        }
-        while(1); // stop after displaying once
-    }
+
+
+main()
+{
+TRISD=0X00;
+PORTD=0X00;
+
+TRISA=0x01;
+PORTA=0x00;
+
+
+TRISC=0X00;
+PORTC=0X00;
+
+
+ADCON1=0X80;
+ADCON0=0X40;
+
+lcd_init();
+delay(100);
+
+lcd_command(0X84);
+lcd_display("WELCOME");
+delay(50000);delay(50000);
+delay(50000);
+lcd_command(0X01);
+
+
+
+
+while(1) 
+{
+
+CHS2=0;
+CHS1=0;
+CHS0=0;
+ADON=1; 
+delay(600);
+ADCON0=(ADCON0|0X04);
+delay(600);
+temp=ADRESH<<8;
+
+delay(600);
+temp=(temp+ADRESL);
+delay(600);
+temp;
+delay(600);
+
+lcd_command(0X80);
+//lcd_display("sensor 1:");
+lcd_command(0X8A);
+a=temp/1000;
+b=temp%1000;
+c=b/100;
+d=b%100;
+e=d/10;
+f=d%10;
+
+
+lcd_data(a+0x30);
+delay(1000);
+lcd_data(c+0x30);
+delay(1000);
+lcd_data(e+0x30);
+delay(1000);
+lcd_data(f+0x30);
+delay(1000);
+
+
+}
 }

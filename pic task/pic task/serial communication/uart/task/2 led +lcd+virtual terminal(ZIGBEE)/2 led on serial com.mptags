@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+EN::RD3	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	5;"	d	line:5	file:
+RS::RD1	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	3;"	d	line:3	file:
+RW::RD2	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	4;"	d	line:4	file:
+b	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	9;"	v	line:9
+delay	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	11;"	f	line:11	signature:(unsigned int x)
+i	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	9;"	v	line:9
+lcd_cmd	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	15;"	f	line:15	signature:(unsigned char com)
+lcd_data	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	40;"	f	line:40	signature:(unsigned char dat)
+lcd_display	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	56;"	f	line:56	signature:(unsigned char *m)
+lcd_init	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	31;"	f	line:31
+led1::RC0	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	6;"	d	line:6	file:
+led2::RC1	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	7;"	d	line:7	file:
+main	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	83;"	f	line:83
+rcx	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	64;"	f	line:64
+serial	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	74;"	f	line:74	signature:(unsigned char *a)
+temp	E:\Embedded_Program\pic task\pic task\serial communication\uart\task\2 led +lcd+virtual terminal(ZIGBEE)\2 led on serial com.c	9;"	v	line:9

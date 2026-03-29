@@ -29,13 +29,13 @@ void main()
             S1 = 0;
             S2 = 1;
             PORTB = seg[a];
-            delay(10000);
+            delay(50000);
 
             // Display ones
             S1 = 1;
             S2 = 0;
             PORTB = seg[b];
-            delay(10000);
+            delay(50000);
         }
     }
 }

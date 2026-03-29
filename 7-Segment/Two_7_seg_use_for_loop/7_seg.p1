@@ -555,13 +555,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _WR `Vb 1 e@3169 ]
 "392 C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\include\pic168xa.h
 [v _RD `Vb 1 e@3168 ]
-"11 E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c
+"11 E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c
 [v _seg `i -> 0 `x e ]
-"12 E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c
+"12 E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c
 [v _i `i 1 e ]
-"12 E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c
+"12 E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c
 [v _a `i 1 e ]
-"12 E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c
+"12 E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c
 [v _b `i 1 e ]
 [p mainexit ]
 [; ;pic168xa.h: 19: volatile unsigned char INDF @ 0x00;
@@ -847,7 +847,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eeprom_routines.h: 41: extern void eeprom_write(unsigned char addr, unsigned char value);
 [; ;eeprom_routines.h: 42: extern unsigned char eeprom_read(unsigned char addr);
 [; ;pic.h: 626: extern void _delay(unsigned long);
-"7 E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c
+"7 E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c
 [v _delay `(v 1 ef1`ui ]
 {
 [; ;7_seg.c: 6: void delay(unsigned int x)
@@ -933,9 +933,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;7_seg.c: 31: PORTB = seg[a];
 "31
 [e = _PORTB -> *U + &U _seg * -> -> _a `ui `ux -> -> # *U &U _seg `ui `ux `uc ]
-[; ;7_seg.c: 32: delay(10000);
+[; ;7_seg.c: 32: delay(50000);
 "32
-[e ( _delay (1 -> -> 10000 `i `ui ]
+[e ( _delay (1 -> -> 50000 `l `ui ]
 [; ;7_seg.c: 35: RC0 = 1;
 "35
 [e = _RC0 -> -> 1 `i `b ]
@@ -945,9 +945,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;7_seg.c: 37: PORTB = seg[b];
 "37
 [e = _PORTB -> *U + &U _seg * -> -> _b `ui `ux -> -> # *U &U _seg `ui `ux `uc ]
-[; ;7_seg.c: 38: delay(10000);
+[; ;7_seg.c: 38: delay(50000);
 "38
-[e ( _delay (1 -> -> 10000 `i `ui ]
+[e ( _delay (1 -> -> 50000 `l `ui ]
 "39
 }
 "23

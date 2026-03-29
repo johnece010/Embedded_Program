@@ -47,7 +47,7 @@ pclath	equ	10
 psect	idataBANK0,class=CODE,space=0,delta=2
 global __pidataBANK0
 __pidataBANK0:
-	file	"E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
+	file	"E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
 	line	11
 
 ;initializer for _seg
@@ -123,7 +123,7 @@ _b:
 psect	dataBANK0,class=BANK0,space=1
 global __pdataBANK0
 __pdataBANK0:
-	file	"E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
+	file	"E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
 _seg:
        ds      20
 
@@ -338,7 +338,7 @@ __pmaintext:
 
 ;; *************** function _main *****************
 ;; Defined at:
-;;		line 15 in file "E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
+;;		line 15 in file "E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -367,7 +367,7 @@ __pmaintext:
 ;; This function uses a non-reentrant model
 ;;
 psect	maintext
-	file	"E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
+	file	"E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
 	line	15
 	global	__size_of_main
 	__size_of_main	equ	__end_of_main-_main
@@ -507,10 +507,10 @@ l1889:
 	line	32
 	
 l1891:	
-;7_seg.c: 32: delay(10000);
-	movlw	low(02710h)
+;7_seg.c: 32: delay(50000);
+	movlw	low(0C350h)
 	movwf	(?_delay)
-	movlw	high(02710h)
+	movlw	high(0C350h)
 	movwf	((?_delay))+1
 	fcall	_delay
 	line	35
@@ -538,10 +538,10 @@ l1895:
 	line	38
 	
 l1897:	
-;7_seg.c: 38: delay(10000);
-	movlw	low(02710h)
+;7_seg.c: 38: delay(50000);
+	movlw	low(0C350h)
 	movwf	(?_delay)
-	movlw	high(02710h)
+	movlw	high(0C350h)
 	movwf	((?_delay))+1
 	fcall	_delay
 	line	23
@@ -1120,7 +1120,7 @@ __ptext97:
 
 ;; *************** function _delay *****************
 ;; Defined at:
-;;		line 7 in file "E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
+;;		line 7 in file "E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
 ;; Parameters:    Size  Location     Type
 ;;  x               2    0[COMMON] unsigned int 
 ;; Auto vars:     Size  Location     Type
@@ -1147,7 +1147,7 @@ __ptext97:
 ;; This function uses a non-reentrant model
 ;;
 psect	text97
-	file	"E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
+	file	"E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
 	line	7
 	global	__size_of_delay
 	__size_of_delay	equ	__end_of_delay-_delay

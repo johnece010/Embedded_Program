@@ -1,0 +1,176 @@
+_RD C60 0 ABS
+_WR C61 0 ABS
+_RB0 30 0 ABS
+__S0 2008 0 ABS
+__S1 75 0 ABS
+__S2 0 0 ABS
+_GIE 5F 0 ABS
+__Hintentry 0 0 CODE
+__Lintentry 0 0 CODE
+__end_of_init 76D 0 CODE
+_WREN C62 0 ABS
+__end_of_readFromEEPROM 778 0 CODE
+_main 7AE 0 CODE
+btemp 7E 0 ABS
+_init 765 0 CODE
+_exit 0 0 CODE
+start 0 0 CODE
+_EEPGD C67 0 ABS
+_TRISB 86 0 ABS
+reset_vec 0 0 CODE
+_PORTB 6 0 ABS
+_EEADR 10D 0 ABS
+wtemp0 7E 0 ABS
+__size_of_init 0 0 ABS
+__end_of_delay 7AE 0 CODE
+__Hconfig 2008 0 CONFIG
+__Lconfig 2007 0 CONFIG
+__Hram 0 0 ABS
+__Lram 0 0 ABS
+?_main 70 0 COMMON
+?_init 70 0 COMMON
+_delay 790 0 CODE
+__Hfunctab 0 0 CODE
+__Lfunctab 0 0 CODE
+_EECON2 18D 0 ABS
+__Hcommon 0 0 ABS
+__Lcommon 0 0 ABS
+__Heeprom_data 0 0 EEDATA
+__Leeprom_data 0 0 EEDATA
+_EEDATA 10C 0 ABS
+__Habs1 0 0 ABS
+__Labs1 0 0 ABS
+__Hsfr0 0 0 ABS
+__Lsfr0 0 0 ABS
+__Hsfr1 0 0 ABS
+__Lsfr1 0 0 ABS
+__Hsfr2 0 0 ABS
+__Lsfr2 0 0 ABS
+__Hsfr3 0 0 ABS
+__Lsfr3 0 0 ABS
+__size_of_delay 0 0 ABS
+delay@i 70 0 COMMON
+__Hcode 0 0 ABS
+__Lcode 0 0 ABS
+main@currentAddress 74 0 COMMON
+??_main 72 0 COMMON
+??_init 70 0 COMMON
+__Hinit 0 0 CODE
+__Linit 0 0 CODE
+?_delay 70 0 COMMON
+__end_of_main 800 0 CODE
+__end_of_saveToEEPROM 790 0 CODE
+__Htext 0 0 ABS
+__Ltext 0 0 ABS
+end_of_initialization 761 0 CODE
+__Hstrings 0 0 ABS
+__Lstrings 0 0 ABS
+__size_of_readFromEEPROM 0 0 ABS
+__Hbank0 0 0 ABS
+__Lbank0 0 0 ABS
+__Hbank1 0 0 ABS
+__Lbank1 0 0 ABS
+__Hbank2 0 0 ABS
+__Lbank2 0 0 ABS
+__Hbank3 0 0 ABS
+__Lbank3 0 0 ABS
+__Hpowerup 0 0 CODE
+__Lpowerup 0 0 CODE
+__Hclrtext 0 0 ABS
+__Lclrtext 0 0 ABS
+_saveToEEPROM 778 0 CODE
+__Hidloc 0 0 IDLOC
+__Lidloc 0 0 IDLOC
+__Hcinit 0 0 ABS
+??_delay 70 0 COMMON
+__Lcinit 0 0 ABS
+__size_of_main 0 0 ABS
+saveToEEPROM@data 70 0 COMMON
+__size_of_saveToEEPROM 0 0 ABS
+__ptext90 0 0 CODE
+__ptext91 778 0 CODE
+__ptext92 790 0 CODE
+__ptext93 76D 0 CODE
+__ptext94 765 0 CODE
+__ptext95 0 0 CODE
+__Hend_init 3 0 CODE
+__Lend_init 0 0 CODE
+__Hreset_vec 0 0 CODE
+__Lreset_vec 0 0 CODE
+??_readFromEEPROM 70 0 COMMON
+intlevel0 0 0 CODE
+intlevel1 0 0 CODE
+intlevel2 0 0 CODE
+intlevel3 0 0 CODE
+intlevel4 0 0 CODE
+intlevel5 0 0 CODE
+?_readFromEEPROM 70 0 COMMON
+__HcstackCOMMON 0 0 ABS
+__LcstackCOMMON 0 0 ABS
+__pcstackCOMMON 70 0 COMMON
+??_saveToEEPROM 70 0 COMMON
+start_initialization 761 0 CODE
+__Hmaintext 0 0 ABS
+__Lmaintext 0 0 ABS
+__pmaintext 7AE 0 CODE
+_readFromEEPROM 76D 0 CODE
+?_saveToEEPROM 70 0 COMMON
+%segments
+reset_vec 0 5 CODE 0
+config 400E 400F CONFIG 400E
+cstackCOMMON 70 74 COMMON 70
+maintext F5C FFF CODE F5C
+text92 F20 F5B CODE F20
+text91 EF0 F1F CODE EF0
+text93 EDA EEF CODE EDA
+text94 ECA ED9 CODE ECA
+cinit EC2 EC9 CODE EC2
+%locals
+startup.obj
+startup.as
+64 0 0 CODE
+epprom.obj
+C:\Users\ELCOT\Desktop\eeprom data\epprom.c
+3 2007 0 CONFIG
+epprom.as
+88 761 0 CODE
+89 762 0 CODE
+C:\Users\ELCOT\Desktop\eeprom data\epprom.c
+16 7AE 0 CODE
+18 7B3 0 CODE
+20 7B8 0 CODE
+23 7C0 0 CODE
+25 7C3 0 CODE
+27 7D0 0 CODE
+29 7D5 0 CODE
+30 7DB 0 CODE
+31 7E0 0 CODE
+32 7E4 0 CODE
+34 7EA 0 CODE
+37 7F1 0 CODE
+38 7F7 0 CODE
+22 7FC 0 CODE
+41 7FD 0 CODE
+52 778 0 CODE
+53 779 0 CODE
+54 77C 0 CODE
+55 77E 0 CODE
+57 781 0 CODE
+58 782 0 CODE
+59 783 0 CODE
+60 785 0 CODE
+61 787 0 CODE
+62 788 0 CODE
+63 789 0 CODE
+64 78E 0 CODE
+65 78F 0 CODE
+49 790 0 CODE
+50 7AD 0 CODE
+68 76D 0 CODE
+69 770 0 CODE
+71 773 0 CODE
+72 774 0 CODE
+73 777 0 CODE
+44 765 0 CODE
+45 769 0 CODE
+46 76C 0 CODE

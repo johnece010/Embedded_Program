@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
-                                                                                               Tue Oct 14 20:07:52 2025
+                                                                                               Fri Jan 30 19:59:32 2026
 
 HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
      1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
@@ -169,7 +169,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
    163                           
    164 ;; *************** function _main *****************
    165 ;; Defined at:
-   166 ;;		line 14 in file "E:\Embedded\SWITCH_CODE\2_SWITCH\switch.c"
+   166 ;;		line 14 in file "E:\Embedded_Program\SWITCH_CODE\2_SWITCH\switch.c"
    167 ;; Parameters:    Size  Location     Type
    168 ;;		None
    169 ;; Auto vars:     Size  Location     Type
@@ -195,7 +195,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
    189 ;; This function uses a non-reentrant model
    190 ;;
    191                           psect	maintext
-   192                           	file	"E:\Embedded\SWITCH_CODE\2_SWITCH\switch.c"
+   192                           	file	"E:\Embedded_Program\SWITCH_CODE\2_SWITCH\switch.c"
    193                           	line	14
    194                           	global	__size_of_main
    195  0019                     	__size_of_main	equ	__end_of_main-_main
@@ -206,8 +206,8 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
    200                           	line	15
    201                           	
    202  07E7                     l945:	
-   203                           ;switch.c: 15: TRISB=0x03;
-   204  07E7  3003               	movlw	(03h)
+   203                           ;switch.c: 15: TRISB=0x05;
+   204  07E7  3005               	movlw	(05h)
    205  07E8  1683               	bsf	status, 5	;RP0=1, select bank1
    206  07E9  1303               	bcf	status, 6	;RP1=0, select bank1
    207  07EA  0086               	movwf	(134)^080h	;volatile
@@ -310,7 +310,7 @@ HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
 
 
 HI-TECH Software PICC Macro Assembler V9.71a build 6446 
-Symbol Table                                                                                   Tue Oct 14 20:07:52 2025
+Symbol Table                                                                                   Fri Jan 30 19:59:32 2026
 
                   u20 07F2                    u21 07F1                    u30 07F9                    u31 07F8  
                  l570 07FC                   l571 07FD                   l572 07FD                   l565 07EE  

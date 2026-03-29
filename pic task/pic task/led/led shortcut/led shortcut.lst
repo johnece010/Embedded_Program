@@ -1,0 +1,535 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
+                                                                                               Tue Oct 11 11:06:02 2022
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNCALL	_main,_delay
+    43                           	FNROOT	_main
+    44                           	global	_led
+    45                           psect	idataBANK0,class=CODE,space=0,delta=2
+    46                           global __pidataBANK0
+    47  0779                     __pidataBANK0:
+    48                           	file	"C:\Users\TECH\Desktop\madhu pic folder\led\led shortcut\led shortcut.c"
+    49                           	line	6
+    50                           
+    51                           ;initializer for _led
+    52  0779  3401               	retlw	01h
+    53  077A  3400               	retlw	0
+    54                           
+    55  077B  3403               	retlw	03h
+    56  077C  3400               	retlw	0
+    57                           
+    58  077D  3407               	retlw	07h
+    59  077E  3400               	retlw	0
+    60                           
+    61  077F  340F               	retlw	0Fh
+    62  0780  3400               	retlw	0
+    63                           
+    64  0781  341F               	retlw	01Fh
+    65  0782  3400               	retlw	0
+    66                           
+    67  0783  343F               	retlw	03Fh
+    68  0784  3400               	retlw	0
+    69                           
+    70  0785  347F               	retlw	07Fh
+    71  0786  3400               	retlw	0
+    72                           
+    73  0787  34FF               	retlw	0FFh
+    74  0788  3400               	retlw	0
+    75                           
+    76                           	global	_i
+    77                           psect	nvCOMMON,class=COMMON,space=1
+    78                           global __pnvCOMMON
+    79  0073                     __pnvCOMMON:
+    80  0073                     _i:
+    81  0073                            ds      2
+    82                           
+    83                           	global	_PORTB
+    84  0006                     _PORTB	set	6
+    85                           	global	_TRISB
+    86  0086                     _TRISB	set	134
+    87                           	file	"led shortcut.as"
+    88                           	line	#
+    89                           psect cinit,class=CODE,delta=2
+    90                           global start_initialization
+    91  07AC                     start_initialization:
+    92                           
+    93                           psect	dataBANK0,class=BANK0,space=1
+    94                           global __pdataBANK0
+    95  0020                     __pdataBANK0:
+    96                           	file	"C:\Users\TECH\Desktop\madhu pic folder\led\led shortcut\led shortcut.c"
+    97  0020                     _led:
+    98  0020                            ds      16
+    99                           
+   100                           global btemp
+   101                           psect inittext,class=CODE,delta=2
+   102                           global init_fetch,btemp
+   103                           ;	Called with low address in FSR and high address in W
+   104  0789                     init_fetch:
+   105  0789  087E               	movf btemp,w
+   106  078A  008A               	movwf pclath
+   107  078B  087F               	movf btemp+1,w
+   108  078C  0082               	movwf pc
+   109                           global init_ram
+   110                           ;Called with:
+   111                           ;	high address of idata address in btemp 
+   112                           ;	low address of idata address in btemp+1 
+   113                           ;	low address of data in FSR
+   114                           ;	high address + 1 of data in btemp-1
+   115  078D                     init_ram:
+   116  078D  2789  120A  118A   	fcall init_fetch
+   117  0790  0080               	movwf indf,f
+   118  0791  0A84               	incf fsr,f
+   119  0792  0804               	movf fsr,w
+   120  0793  067D               	xorwf btemp-1,w
+   121  0794  1903               	btfsc status,2
+   122  0795  3400               	retlw 0
+   123  0796  0AFF               	incf btemp+1,f
+   124  0797  1903               	btfsc status,2
+   125  0798  0AFE               	incf btemp,f
+   126  0799  2F8D               	goto init_ram
+   127                           ; Initialize objects allocated to BANK0
+   128                           psect cinit,class=CODE,delta=2
+   129                           global init_ram, __pidataBANK0
+   130  07AC  1383               	bcf	status, 7	;select IRP bank0
+   131  07AD  3030               	movlw low(__pdataBANK0+16)
+   132  07AE  00FD               	movwf btemp-1,f
+   133  07AF  3007               	movlw high(__pidataBANK0)
+   134  07B0  00FE               	movwf btemp,f
+   135  07B1  3079               	movlw low(__pidataBANK0)
+   136  07B2  00FF               	movwf btemp+1,f
+   137  07B3  3020               	movlw low(__pdataBANK0)
+   138  07B4  0084               	movwf fsr,f
+   139  07B5  120A  118A  278D   	fcall init_ram
+              120A  118A         
+   140                           psect cinit,class=CODE,delta=2
+   141                           global end_of_initialization
+   142                           
+   143                           ;End of C runtime variable initialization code
+   144                           
+   145  07BA                     end_of_initialization:
+   146  07BA  0183               clrf status
+   147  07BB  120A  118A  2FBE   ljmp _main	;jump to C main() function
+   148                           psect	cstackCOMMON,class=COMMON,space=1
+   149                           global __pcstackCOMMON
+   150  0070                     __pcstackCOMMON:
+   151                           	global	?_delay
+   152  0070                     ?_delay:	; 0 bytes @ 0x0
+   153                           	global	?_main
+   154  0070                     ?_main:	; 2 bytes @ 0x0
+   155                           	global	delay@x
+   156  0070                     delay@x:	; 2 bytes @ 0x0
+   157  0070                     	ds	2
+   158                           	global	??_delay
+   159  0072                     ??_delay:	; 0 bytes @ 0x2
+   160                           	global	??_main
+   161  0072                     ??_main:	; 0 bytes @ 0x2
+   162  0072                     	ds	1
+   163 ;;Data sizes: Strings 0, constant 0, data 16, bss 0, persistent 2 stack 0
+   164 ;;Auto spaces:   Size  Autos    Used
+   165 ;; COMMON          14      3       5
+   166 ;; BANK0           80      0      16
+   167 ;; BANK1           80      0       0
+   168 ;; BANK3           96      0       0
+   169 ;; BANK2           96      0       0
+   170                           
+   171 ;;
+   172 ;; Pointer list with targets:
+   173                           
+   174                           
+   175                           
+   176 ;;
+   177 ;; Critical Paths under _main in COMMON
+   178 ;;
+   179 ;;   _main->_delay
+   180 ;;
+   181 ;; Critical Paths under _main in BANK0
+   182 ;;
+   183 ;;   None.
+   184 ;;
+   185 ;; Critical Paths under _main in BANK1
+   186 ;;
+   187 ;;   None.
+   188 ;;
+   189 ;; Critical Paths under _main in BANK3
+   190 ;;
+   191 ;;   None.
+   192 ;;
+   193 ;; Critical Paths under _main in BANK2
+   194 ;;
+   195 ;;   None.
+   196                           
+   197 ;;
+   198 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   199 ;;
+   200                           
+   201 ;;
+   202 ;;Call Graph Tables:
+   203 ;;
+   204 ;; ---------------------------------------------------------------------------------
+   205 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   206 ;; ---------------------------------------------------------------------------------
+   207 ;; (0) _main                                                 1     1      0      22
+   208 ;;                                              2 COMMON     1     1      0
+   209 ;;                              _delay
+   210 ;; ---------------------------------------------------------------------------------
+   211 ;; (1) _delay                                                2     0      2      22
+   212 ;;                                              0 COMMON     2     0      2
+   213 ;; ---------------------------------------------------------------------------------
+   214 ;; Estimated maximum stack depth 1
+   215 ;; ---------------------------------------------------------------------------------
+   216                           
+   217 ;; Call Graph Graphs:
+   218                           
+   219 ;; _main (ROOT)
+   220 ;;   _delay
+   221 ;;
+   222                           
+   223 ;; Address spaces:
+   224                           
+   225 ;;Name               Size   Autos  Total    Cost      Usage
+   226 ;;BANK3               60      0       0       9        0.0%
+   227 ;;BITBANK3            60      0       0       8        0.0%
+   228 ;;SFR3                 0      0       0       4        0.0%
+   229 ;;BITSFR3              0      0       0       4        0.0%
+   230 ;;BANK2               60      0       0      11        0.0%
+   231 ;;BITBANK2            60      0       0      10        0.0%
+   232 ;;SFR2                 0      0       0       5        0.0%
+   233 ;;BITSFR2              0      0       0       5        0.0%
+   234 ;;SFR1                 0      0       0       2        0.0%
+   235 ;;BITSFR1              0      0       0       2        0.0%
+   236 ;;BANK1               50      0       0       7        0.0%
+   237 ;;BITBANK1            50      0       0       6        0.0%
+   238 ;;CODE                 0      0       0       0        0.0%
+   239 ;;DATA                 0      0      16      12        0.0%
+   240 ;;ABS                  0      0      15       3        0.0%
+   241 ;;NULL                 0      0       0       0        0.0%
+   242 ;;STACK                0      0       1       2        0.0%
+   243 ;;BANK0               50      0      10       5       20.0%
+   244 ;;BITBANK0            50      0       0       4        0.0%
+   245 ;;SFR0                 0      0       0       1        0.0%
+   246 ;;BITSFR0              0      0       0       1        0.0%
+   247 ;;COMMON               E      3       5       1       35.7%
+   248 ;;BITCOMMON            E      0       0       0        0.0%
+   249 ;;EEDATA             100      0       0       0        0.0%
+   250                           
+   251                           	global	_main
+   252                           psect	maintext,global,class=CODE,delta=2
+   253                           global __pmaintext
+   254  07BE                     __pmaintext:
+   255                           
+   256 ;; *************** function _main *****************
+   257 ;; Defined at:
+   258 ;;		line 9 in file "C:\Users\TECH\Desktop\madhu pic folder\led\led shortcut\led shortcut.c"
+   259 ;; Parameters:    Size  Location     Type
+   260 ;;		None
+   261 ;; Auto vars:     Size  Location     Type
+   262 ;;		None
+   263 ;; Return value:  Size  Location     Type
+   264 ;;                  2  568[COMMON] int 
+   265 ;; Registers used:
+   266 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+0, pclath, cstack
+   267 ;; Tracked objects:
+   268 ;;		On entry : 17F/0
+   269 ;;		On exit  : 0/0
+   270 ;;		Unchanged: 0/0
+   271 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   272 ;;      Params:         0       0       0       0       0
+   273 ;;      Locals:         0       0       0       0       0
+   274 ;;      Temps:          1       0       0       0       0
+   275 ;;      Totals:         1       0       0       0       0
+   276 ;;Total ram usage:        1 bytes
+   277 ;; Hardware stack levels required when called:    1
+   278 ;; This function calls:
+   279 ;;		_delay
+   280 ;; This function is called by:
+   281 ;;		Startup code after reset
+   282 ;; This function uses a non-reentrant model
+   283 ;;
+   284                           psect	maintext
+   285                           	file	"C:\Users\TECH\Desktop\madhu pic folder\led\led shortcut\led shortcut.c"
+   286                           	line	9
+   287                           	global	__size_of_main
+   288  0042                     	__size_of_main	equ	__end_of_main-_main
+   289                           	
+   290  07BE                     _main:	
+   291                           	opt	stack 8
+   292                           ; Regs used in _main: [wreg-fsr0h+status,2-btemp+0+pclath+cstack]
+   293                           	line	10
+   294                           	
+   295  07BE                     l1753:	
+   296                           ;led shortcut.c: 10: TRISB=0X00;
+   297  07BE  1683               	bsf	status, 5	;RP0=1, select bank1
+   298  07BF  1303               	bcf	status, 6	;RP1=0, select bank1
+   299  07C0  0186               	clrf	(134)^080h	;volatile
+   300                           	line	11
+   301                           ;led shortcut.c: 11: PORTB=0X00;
+   302  07C1  1283               	bcf	status, 5	;RP0=0, select bank0
+   303  07C2  1303               	bcf	status, 6	;RP1=0, select bank0
+   304  07C3  0186               	clrf	(6)	;volatile
+   305                           	line	12
+   306                           ;led shortcut.c: 12: while(1)
+   307                           	
+   308  07C4                     l569:	
+   309                           	line	14
+   310                           	
+   311  07C4                     l1755:	
+   312                           ;led shortcut.c: 13: {
+   313                           ;led shortcut.c: 14: for(i=0;i<9;i++);
+   314  07C4  3000               	movlw	low(0)
+   315  07C5  00F3               	movwf	(_i)
+   316  07C6  3000               	movlw	high(0)
+   317  07C7  00F4               	movwf	((_i))+1
+   318                           	
+   319  07C8                     l1757:	
+   320  07C8  0874               	movf	(_i+1),w
+   321  07C9  3A80               	xorlw	80h
+   322  07CA  00FE               	movwf	btemp+0
+   323  07CB  3080               	movlw	(high(09h))^80h
+   324  07CC  027E               	subwf	btemp+0,w
+   325  07CD  1D03               	skipz
+   326  07CE  2FD1               	goto	u2185
+   327  07CF  3009               	movlw	low(09h)
+   328  07D0  0273               	subwf	(_i),w
+   329  07D1                     u2185:
+   330                           
+   331  07D1  1C03               	skipc
+   332  07D2  2FD4               	goto	u2181
+   333  07D3  2FD5               	goto	u2180
+   334  07D4                     u2181:
+   335  07D4  2FD6               	goto	l570
+   336  07D5                     u2180:
+   337                           	
+   338  07D5                     l1759:	
+   339  07D5  2FE9               	goto	l571
+   340                           	
+   341  07D6                     l570:	
+   342                           	
+   343  07D6                     l1761:	
+   344  07D6  3001               	movlw	low(01h)
+   345  07D7  07F3               	addwf	(_i),f
+   346  07D8  1803               	skipnc
+   347  07D9  0AF4               	incf	(_i+1),f
+   348  07DA  3000               	movlw	high(01h)
+   349  07DB  07F4               	addwf	(_i+1),f
+   350                           	
+   351  07DC                     l1763:	
+   352  07DC  0874               	movf	(_i+1),w
+   353  07DD  3A80               	xorlw	80h
+   354  07DE  00FE               	movwf	btemp+0
+   355  07DF  3080               	movlw	(high(09h))^80h
+   356  07E0  027E               	subwf	btemp+0,w
+   357  07E1  1D03               	skipz
+   358  07E2  2FE5               	goto	u2195
+   359  07E3  3009               	movlw	low(09h)
+   360  07E4  0273               	subwf	(_i),w
+   361  07E5                     u2195:
+   362                           
+   363  07E5  1C03               	skipc
+   364  07E6  2FE8               	goto	u2191
+   365  07E7  2FE9               	goto	u2190
+   366  07E8                     u2191:
+   367  07E8  2FD6               	goto	l570
+   368  07E9                     u2190:
+   369                           	
+   370  07E9                     l571:	
+   371                           	line	16
+   372                           	
+   373  07E9                     l1765:	
+   374                           ;led shortcut.c: 15: {
+   375                           ;led shortcut.c: 16: PORTB=led[i];
+   376  07E9  0873               	movf	(_i),w
+   377  07EA  00F2               	movwf	(??_main+0)+0
+   378  07EB  0772               	addwf	(??_main+0)+0,w
+   379  07EC  3E20               	addlw	_led&0ffh
+   380  07ED  0084               	movwf	fsr0
+   381  07EE  1383               	bcf	status, 7	;select IRP bank0
+   382  07EF  0800               	movf	indf,w
+   383  07F0  1283               	bcf	status, 5	;RP0=0, select bank0
+   384  07F1  1303               	bcf	status, 6	;RP1=0, select bank0
+   385  07F2  0086               	movwf	(6)	;volatile
+   386                           	line	17
+   387                           	
+   388  07F3                     l1767:	
+   389                           ;led shortcut.c: 17: delay(5000);
+   390  07F3  3088               	movlw	low(01388h)
+   391  07F4  00F0               	movwf	(?_delay)
+   392  07F5  3013               	movlw	high(01388h)
+   393  07F6  00F1               	movwf	((?_delay))+1
+   394  07F7  120A  118A  279A   	fcall	_delay
+              120A  118A         
+   395                           	line	19
+   396                           	
+   397  07FC                     l572:	
+   398                           	line	12
+   399  07FC  2FC4               	goto	l569
+   400                           	
+   401  07FD                     l573:	
+   402                           	line	20
+   403                           	
+   404  07FD                     l574:	
+   405                           	global	start
+   406  07FD  120A  118A  2800   	ljmp	start
+   407                           	opt stack 0
+   408                           GLOBAL	__end_of_main
+   409  0800                     	__end_of_main:
+   410 ;; =============== function _main ends ============
+   411                           
+   412                           	signat	_main,90
+   413                           	global	_delay
+   414                           psect	text73,local,class=CODE,delta=2
+   415                           global __ptext73
+   416  079A                     __ptext73:
+   417                           
+   418 ;; *************** function _delay *****************
+   419 ;; Defined at:
+   420 ;;		line 3 in file "C:\Users\TECH\Desktop\madhu pic folder\led\led shortcut\led shortcut.c"
+   421 ;; Parameters:    Size  Location     Type
+   422 ;;  x               2    0[COMMON] unsigned int 
+   423 ;; Auto vars:     Size  Location     Type
+   424 ;;		None
+   425 ;; Return value:  Size  Location     Type
+   426 ;;		None               void
+   427 ;; Registers used:
+   428 ;;		wreg
+   429 ;; Tracked objects:
+   430 ;;		On entry : 0/0
+   431 ;;		On exit  : 0/0
+   432 ;;		Unchanged: 0/0
+   433 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   434 ;;      Params:         2       0       0       0       0
+   435 ;;      Locals:         0       0       0       0       0
+   436 ;;      Temps:          0       0       0       0       0
+   437 ;;      Totals:         2       0       0       0       0
+   438 ;;Total ram usage:        2 bytes
+   439 ;; Hardware stack levels used:    1
+   440 ;; This function calls:
+   441 ;;		Nothing
+   442 ;; This function is called by:
+   443 ;;		_main
+   444 ;; This function uses a non-reentrant model
+   445 ;;
+   446                           psect	text73
+   447                           	file	"C:\Users\TECH\Desktop\madhu pic folder\led\led shortcut\led shortcut.c"
+   448                           	line	3
+   449                           	global	__size_of_delay
+   450  0012                     	__size_of_delay	equ	__end_of_delay-_delay
+   451                           	
+   452  079A                     _delay:	
+   453                           	opt	stack 7
+   454                           ; Regs used in _delay: [wreg]
+   455                           	line	4
+   456                           	
+   457  079A                     l1749:	
+   458                           ;led shortcut.c: 4: while(x--);
+   459  079A  2F9B               	goto	l563
+   460                           	
+   461  079B                     l564:	
+   462                           	
+   463  079B                     l563:	
+   464                           	
+   465  079B                     l1751:	
+   466  079B  3001               	movlw	low(01h)
+   467  079C  02F0               	subwf	(delay@x),f
+   468  079D  3000               	movlw	high(01h)
+   469  079E  1C03               	skipc
+   470  079F  03F1               	decf	(delay@x+1),f
+   471  07A0  02F1               	subwf	(delay@x+1),f
+   472  07A1  30FF               	movlw	high(0FFFFh)
+   473  07A2  0671               	xorwf	((delay@x+1)),w
+   474  07A3  1D03               	skipz
+   475  07A4  2FA7               	goto	u2175
+   476  07A5  30FF               	movlw	low(0FFFFh)
+   477  07A6  0670               	xorwf	((delay@x)),w
+   478  07A7                     u2175:
+   479                           
+   480  07A7  1D03               	skipz
+   481  07A8  2FAA               	goto	u2171
+   482  07A9  2FAB               	goto	u2170
+   483  07AA                     u2171:
+   484  07AA  2F9B               	goto	l564
+   485  07AB                     u2170:
+   486                           	
+   487  07AB                     l565:	
+   488                           	line	5
+   489                           	
+   490  07AB                     l566:	
+   491  07AB  0008               	return
+   492                           	opt stack 0
+   493                           GLOBAL	__end_of_delay
+   494  07AC                     	__end_of_delay:
+   495 ;; =============== function _delay ends ============
+   496                           
+   497                           	signat	_delay,4216
+   498                           psect	text74,local,class=CODE,delta=2
+   499                           global __ptext74
+   500  0000                     __ptext74:
+   501                           	global	btemp
+   502  007E                     	btemp set 07Eh
+   503                           
+   504                           	DABS	1,126,2	;btemp
+   505                           	global	wtemp0
+   506  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.71a build 6446 
+Symbol Table                                                                                   Tue Oct 11 11:06:02 2022
+
+                   _i 0073                     pc 0002                    fsr 0004                   l570 07D6  
+                 l563 079B                   l571 07E9                   l564 079B                   l572 07FC  
+                 l565 07AB                   l573 07FD                   l566 07AB                   l574 07FD  
+                 l569 07C4                   _led 0020                   fsr0 0004                   indf 0000  
+                l1751 079B                  l1761 07D6                  l1753 07BE                  l1763 07DC  
+                l1755 07C4                  l1749 079A                  l1765 07E9                  l1757 07C8  
+                l1767 07F3                  l1759 07D5                  u2170 07AB                  u2171 07AA  
+                u2180 07D5                  u2181 07D4                  u2190 07E9                  u2175 07A7  
+                u2191 07E8                  u2185 07D1                  u2195 07E5                  _main 07BE  
+                btemp 007E                  start 0000                 ?_main 0070                 _PORTB 0006  
+               _TRISB 0086                 _delay 079A                 pclath 000A                 status 0003  
+               wtemp0 007E          __end_of_main 0800                ??_main 0072                ?_delay 0070  
+              delay@x 0070        __pcstackCOMMON 0070          __pidataBANK0 0779         __end_of_delay 07AC  
+             ??_delay 0072            __pnvCOMMON 0073            __pmaintext 07BE  end_of_initialization 07BA  
+             init_ram 078D   start_initialization 07AC           __pdataBANK0 0020        __size_of_delay 0012  
+           init_fetch 0789              __ptext73 079A              __ptext74 0000         __size_of_main 0042  

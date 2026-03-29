@@ -1,5 +1,5 @@
 
-# 1 "E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
+# 1 "E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
 
 # 19 "C:\Program Files (x86)\HI-TECH Software\PICC\9.71a\include\pic168xa.h"
 volatile unsigned char INDF @ 0x00;
@@ -384,7 +384,7 @@ extern unsigned char eeprom_read(unsigned char addr);
 #pragma inline(_delay)
 extern void _delay(unsigned long);
 
-# 6 "E:\Embedded\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
+# 6 "E:\Embedded_Program\7-Segment\Two_7_seg_use_for_loop\7_seg.c"
 void delay(unsigned int x)
 {
 while(x--);
@@ -411,13 +411,13 @@ b = i % 10;
 RC0 = 0;
 RC1 = 1;
 PORTB = seg[a];
-delay(10000);
+delay(50000);
 
 
 RC0 = 1;
 RC1 = 0;
 PORTB = seg[b];
-delay(10000);
+delay(50000);
 }
 }
 }

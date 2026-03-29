@@ -1,0 +1,19 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+da	E:\Embedded_Program\LCD_Display_Code\welcome\welcome_code.c	11;"	v	line:11
+delay	E:\Embedded_Program\LCD_Display_Code\welcome\welcome_code.c	6;"	f	line:6	signature:(unsigned int x)
+en::RC2	E:\Embedded_Program\LCD_Display_Code\welcome\welcome_code.c	4;"	d	line:4	file:
+i	E:\Embedded_Program\LCD_Display_Code\welcome\welcome_code.c	10;"	v	line:10
+lcd_cmd	E:\Embedded_Program\LCD_Display_Code\welcome\welcome_code.c	13;"	f	line:13	signature:(unsigned char cmd)
+lcd_data	E:\Embedded_Program\LCD_Display_Code\welcome\welcome_code.c	23;"	f	line:23	signature:(unsigned char data)
+lcd_display	E:\Embedded_Program\LCD_Display_Code\welcome\welcome_code.c	42;"	f	line:42	signature:(unsigned char *m)
+lcd_init	E:\Embedded_Program\LCD_Display_Code\welcome\welcome_code.c	33;"	f	line:33
+main	E:\Embedded_Program\LCD_Display_Code\welcome\welcome_code.c	50;"	f	line:50
+rs::RC0	E:\Embedded_Program\LCD_Display_Code\welcome\welcome_code.c	2;"	d	line:2	file:
+rw::RC1	E:\Embedded_Program\LCD_Display_Code\welcome\welcome_code.c	3;"	d	line:3	file:

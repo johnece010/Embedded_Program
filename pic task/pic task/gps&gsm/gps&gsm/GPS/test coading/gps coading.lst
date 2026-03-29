@@ -1,0 +1,1893 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
+                                                                                               Tue Nov 15 15:39:36 2022
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           # 2 "C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+    43                           	psect config,class=CONFIG,delta=2 ;#
+    44                           # 2 "C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+    45  2007  3F72               	dw 0X3F72 ;#
+    46                           	FNCALL	_main,_gps_init
+    47                           	FNCALL	_main,_delay
+    48                           	FNCALL	_main,_lcd_cmd
+    49                           	FNCALL	_main,_lcd_display
+    50                           	FNCALL	_main,_gps_send
+    51                           	FNCALL	_gps_send,_lcd_cmd
+    52                           	FNCALL	_gps_send,_delay
+    53                           	FNCALL	_gps_send,_lcd_display
+    54                           	FNCALL	_gps_send,_lcd_data
+    55                           	FNCALL	_lcd_display,_lcd_data
+    56                           	FNCALL	_lcd_data,_delay
+    57                           	FNCALL	_lcd_cmd,_delay
+    58                           	FNROOT	_main
+    59                           	FNCALL	intlevel1,_rcx
+    60                           	global	intlevel1
+    61                           	FNROOT	intlevel1
+    62                           	global	_st
+    63                           psect	idataBANK0,class=CODE,space=0,delta=2
+    64                           global __pidataBANK0
+    65  02B5                     __pidataBANK0:
+    66                           	file	"C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+    67                           	line	7
+    68                           
+    69                           ;initializer for _st
+    70  02B5  3401               	retlw	01h
+    71                           	global	_gpsdata
+    72                           	global	_i
+    73                           	global	_j
+    74                           	global	_data_cap
+    75                           	global	_ser
+    76                           	global	_temp
+    77                           	global	_PORTD
+    78  0008                     _PORTD	set	8
+    79                           	global	_RCREG
+    80  001A                     _RCREG	set	26
+    81                           	global	_RCSTA
+    82  0018                     _RCSTA	set	24
+    83                           	global	_GIE
+    84  005F                     _GIE	set	95
+    85                           	global	_PEIE
+    86  005E                     _PEIE	set	94
+    87                           	global	_RCIF
+    88  0065                     _RCIF	set	101
+    89                           	global	_RD1
+    90  0041                     _RD1	set	65
+    91                           	global	_RD2
+    92  0042                     _RD2	set	66
+    93                           	global	_RD3
+    94  0043                     _RD3	set	67
+    95                           	global	_SPBRG
+    96  0099                     _SPBRG	set	153
+    97                           	global	_TXSTA
+    98  0098                     _TXSTA	set	152
+    99                           	global	_BRGH
+   100  04C2                     _BRGH	set	1218
+   101                           	global	_RCIE
+   102  0465                     _RCIE	set	1125
+   103                           psect	strings,class=STRING,delta=2
+   104                           global __pstrings
+   105  0013                     __pstrings:
+   106                           ;	global	stringdir,stringtab,__stringbase
+   107  0013                     stringtab:
+   108                           ;	String table - string pointers are 1 byte each
+   109  0013                     stringcode:stringdir:
+      + 0013                     stringdir:	
+   110  0013  3000               movlw high(stringdir)
+   111  0014  008A               movwf pclath
+   112  0015  0804               movf fsr,w
+   113  0016  0A84               incf fsr
+   114  0017  0782               	addwf pc
+   115  0018                     __stringbase:
+   116  0018  3400               	retlw	0
+   117                           psect	strings
+   118                           	
+   119  0019                     STR_2:	
+   120  0019  3457               	retlw	87	;'W'
+   121  001A  3445               	retlw	69	;'E'
+   122  001B  344C               	retlw	76	;'L'
+   123  001C  3443               	retlw	67	;'C'
+   124  001D  344F               	retlw	79	;'O'
+   125  001E  344D               	retlw	77	;'M'
+   126  001F  3445               	retlw	69	;'E'
+   127  0020  3400               	retlw	0
+   128                           psect	strings
+   129                           	
+   130  0021                     STR_1:	
+   131  0021  3467               	retlw	103	;'g'
+   132  0022  3470               	retlw	112	;'p'
+   133  0023  3473               	retlw	115	;'s'
+   134  0024  3400               	retlw	0
+   135                           psect	strings
+   136                           	file	"gps coading.as"
+   137                           	line	#
+   138                           psect cinit,class=CODE,delta=2
+   139                           global start_initialization
+   140  0275                     start_initialization:
+   141                           
+   142                           psect	bssCOMMON,class=COMMON,space=1
+   143                           global __pbssCOMMON
+   144  0077                     __pbssCOMMON:
+   145  0077                     _temp:
+   146  0077                            ds      2
+   147                           
+   148                           psect	bssBANK0,class=BANK0,space=1
+   149                           global __pbssBANK0
+   150  0020                     __pbssBANK0:
+   151  0020                     _gpsdata:
+   152  0020                            ds      50
+   153                           
+   154  0052                     _i:
+   155  0052                            ds      2
+   156                           
+   157  0054                     _j:
+   158  0054                            ds      2
+   159                           
+   160  0056                     _data_cap:
+   161  0056                            ds      1
+   162                           
+   163  0057                     _ser:
+   164  0057                            ds      1
+   165                           
+   166                           psect	dataBANK0,class=BANK0,space=1
+   167                           global __pdataBANK0
+   168  005F                     __pdataBANK0:
+   169                           	file	"C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+   170  005F                     _st:
+   171  005F                            ds      1
+   172                           
+   173                           psect clrtext,class=CODE,delta=2
+   174                           global clear_ram
+   175                           ;	Called with FSR containing the base address, and
+   176                           ;	W with the last address+1
+   177  02AD                     clear_ram:
+   178  02AD  0064               	clrwdt			;clear the watchdog before getting into this loop
+   179  02AE                     clrloop:
+   180  02AE  0180               	clrf	indf		;clear RAM location pointed to by FSR
+   181  02AF  0A84               	incf	fsr,f		;increment pointer
+   182  02B0  0604               	xorwf	fsr,w		;XOR with final address
+   183  02B1  1903               	btfsc	status,2	;have we reached the end yet?
+   184  02B2  3400               	retlw	0		;all done for this memory range, return
+   185  02B3  0604               	xorwf	fsr,w		;XOR again to restore value
+   186  02B4  2AAE               	goto	clrloop		;do the next byte
+   187                           
+   188                           ; Clear objects allocated to COMMON
+   189                           psect cinit,class=CODE,delta=2
+   190  0275  01F7               	clrf	((__pbssCOMMON)+0)&07Fh
+   191  0276  01F8               	clrf	((__pbssCOMMON)+1)&07Fh
+   192                           ; Clear objects allocated to BANK0
+   193                           psect cinit,class=CODE,delta=2
+   194  0277  1383               	bcf	status, 7	;select IRP bank0
+   195  0278  3020               	movlw	low(__pbssBANK0)
+   196  0279  0084               	movwf	fsr
+   197  027A  3058               	movlw	low((__pbssBANK0)+038h)
+   198  027B  120A  118A  22AD   	fcall	clear_ram
+              120A  118A         
+   199                           ; Initialize objects allocated to BANK0
+   200                           	global __pidataBANK0
+   201                           psect cinit,class=CODE,delta=2
+   202  0280  120A  118A  22B5   	fcall	__pidataBANK0+0		;fetch initializer
+              120A  118A         
+   203  0285  00DF               	movwf	__pdataBANK0+0&07fh		
+   204                           psect cinit,class=CODE,delta=2
+   205                           global end_of_initialization
+   206                           
+   207                           ;End of C runtime variable initialization code
+   208                           
+   209  0286                     end_of_initialization:
+   210  0286  0183               clrf status
+   211  0287  120A  118A  292D   ljmp _main	;jump to C main() function
+   212                           psect	cstackCOMMON,class=COMMON,space=1
+   213                           global __pcstackCOMMON
+   214  0070                     __pcstackCOMMON:
+   215                           	global	?_gps_init
+   216  0070                     ?_gps_init:	; 0 bytes @ 0x0
+   217                           	global	?_lcd_cmd
+   218  0070                     ?_lcd_cmd:	; 0 bytes @ 0x0
+   219                           	global	?_lcd_data
+   220  0070                     ?_lcd_data:	; 0 bytes @ 0x0
+   221                           	global	?_lcd_display
+   222  0070                     ?_lcd_display:	; 0 bytes @ 0x0
+   223                           	global	?_rcx
+   224  0070                     ?_rcx:	; 0 bytes @ 0x0
+   225                           	global	??_rcx
+   226  0070                     ??_rcx:	; 0 bytes @ 0x0
+   227                           	global	?_gps_send
+   228  0070                     ?_gps_send:	; 0 bytes @ 0x0
+   229                           	global	?_main
+   230  0070                     ?_main:	; 0 bytes @ 0x0
+   231  0070                     	ds	5
+   232                           	global	?_delay
+   233  0075                     ?_delay:	; 0 bytes @ 0x5
+   234                           	global	??_gps_init
+   235  0075                     ??_gps_init:	; 0 bytes @ 0x5
+   236                           	global	delay@x
+   237  0075                     delay@x:	; 2 bytes @ 0x5
+   238  0075                     	ds	2
+   239                           	global	??_delay
+   240  0077                     ??_delay:	; 0 bytes @ 0x7
+   241                           	global	??_lcd_display
+   242  0077                     ??_lcd_display:	; 0 bytes @ 0x7
+   243                           	global	??_main
+   244  0077                     ??_main:	; 0 bytes @ 0x7
+   245                           psect	cstackBANK0,class=BANK0,space=1
+   246                           global __pcstackBANK0
+   247  0058                     __pcstackBANK0:
+   248                           	global	??_lcd_cmd
+   249  0058                     ??_lcd_cmd:	; 0 bytes @ 0x0
+   250                           	global	??_lcd_data
+   251  0058                     ??_lcd_data:	; 0 bytes @ 0x0
+   252  0058                     	ds	2
+   253                           	global	lcd_cmd@com
+   254  005A                     lcd_cmd@com:	; 1 bytes @ 0x2
+   255                           	global	lcd_data@dat
+   256  005A                     lcd_data@dat:	; 1 bytes @ 0x2
+   257  005A                     	ds	1
+   258                           	global	lcd_display@m
+   259  005B                     lcd_display@m:	; 1 bytes @ 0x3
+   260  005B                     	ds	1
+   261                           	global	lcd_display@k
+   262  005C                     lcd_display@k:	; 2 bytes @ 0x4
+   263  005C                     	ds	2
+   264                           	global	??_gps_send
+   265  005E                     ??_gps_send:	; 0 bytes @ 0x6
+   266  005E                     	ds	1
+   267 ;;Data sizes: Strings 12, constant 0, data 1, bss 58, persistent 0 stack 0
+   268 ;;Auto spaces:   Size  Autos    Used
+   269 ;; COMMON          14      7       9
+   270 ;; BANK0           80      7      64
+   271 ;; BANK1           80      0       0
+   272 ;; BANK3           96      0       0
+   273 ;; BANK2           96      0       0
+   274                           
+   275 ;;
+   276 ;; Pointer list with targets:
+   277                           
+   278 ;; lcd_display@m	PTR const unsigned char  size(1) Largest target is 8
+   279 ;;		 -> STR_2(CODE[8]), STR_1(CODE[4]), 
+   280 ;;
+   281                           
+   282                           
+   283 ;;
+   284 ;; Critical Paths under _main in COMMON
+   285 ;;
+   286 ;;   _main->_delay
+   287 ;;   _gps_send->_delay
+   288 ;;   _lcd_data->_delay
+   289 ;;   _lcd_cmd->_delay
+   290 ;;
+   291 ;; Critical Paths under _rcx in COMMON
+   292 ;;
+   293 ;;   None.
+   294 ;;
+   295 ;; Critical Paths under _main in BANK0
+   296 ;;
+   297 ;;   _main->_gps_send
+   298 ;;   _gps_send->_lcd_display
+   299 ;;   _lcd_display->_lcd_data
+   300 ;;
+   301 ;; Critical Paths under _rcx in BANK0
+   302 ;;
+   303 ;;   None.
+   304 ;;
+   305 ;; Critical Paths under _main in BANK1
+   306 ;;
+   307 ;;   None.
+   308 ;;
+   309 ;; Critical Paths under _rcx in BANK1
+   310 ;;
+   311 ;;   None.
+   312 ;;
+   313 ;; Critical Paths under _main in BANK3
+   314 ;;
+   315 ;;   None.
+   316 ;;
+   317 ;; Critical Paths under _rcx in BANK3
+   318 ;;
+   319 ;;   None.
+   320 ;;
+   321 ;; Critical Paths under _main in BANK2
+   322 ;;
+   323 ;;   None.
+   324 ;;
+   325 ;; Critical Paths under _rcx in BANK2
+   326 ;;
+   327 ;;   None.
+   328                           
+   329 ;;
+   330 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   331 ;;
+   332                           
+   333 ;;
+   334 ;;Call Graph Tables:
+   335 ;;
+   336 ;; ---------------------------------------------------------------------------------
+   337 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   338 ;; ---------------------------------------------------------------------------------
+   339 ;; (0) _main                                                 0     0      0     724
+   340 ;;                           _gps_init
+   341 ;;                              _delay
+   342 ;;                            _lcd_cmd
+   343 ;;                        _lcd_display
+   344 ;;                           _gps_send
+   345 ;; ---------------------------------------------------------------------------------
+   346 ;; (1) _gps_send                                             1     1      0     404
+   347 ;;                                              6 BANK0      1     1      0
+   348 ;;                            _lcd_cmd
+   349 ;;                              _delay
+   350 ;;                        _lcd_display
+   351 ;;                           _lcd_data
+   352 ;; ---------------------------------------------------------------------------------
+   353 ;; (2) _lcd_display                                          3     3      0     214
+   354 ;;                                              3 BANK0      3     3      0
+   355 ;;                           _lcd_data
+   356 ;; ---------------------------------------------------------------------------------
+   357 ;; (2) _lcd_data                                             3     3      0      84
+   358 ;;                                              0 BANK0      3     3      0
+   359 ;;                              _delay
+   360 ;; ---------------------------------------------------------------------------------
+   361 ;; (2) _lcd_cmd                                              3     3      0      84
+   362 ;;                                              0 BANK0      3     3      0
+   363 ;;                              _delay
+   364 ;; ---------------------------------------------------------------------------------
+   365 ;; (1) _gps_init                                             0     0      0       0
+   366 ;; ---------------------------------------------------------------------------------
+   367 ;; (3) _delay                                                2     0      2      22
+   368 ;;                                              5 COMMON     2     0      2
+   369 ;; ---------------------------------------------------------------------------------
+   370 ;; Estimated maximum stack depth 3
+   371 ;; ---------------------------------------------------------------------------------
+   372 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   373 ;; ---------------------------------------------------------------------------------
+   374 ;; (5) _rcx                                                  5     5      0       0
+   375 ;;                                              0 COMMON     5     5      0
+   376 ;; ---------------------------------------------------------------------------------
+   377 ;; Estimated maximum stack depth 5
+   378 ;; ---------------------------------------------------------------------------------
+   379                           
+   380 ;; Call Graph Graphs:
+   381                           
+   382 ;; _main (ROOT)
+   383 ;;   _gps_init
+   384 ;;   _delay
+   385 ;;   _lcd_cmd
+   386 ;;     _delay
+   387 ;;   _lcd_display
+   388 ;;     _lcd_data
+   389 ;;       _delay
+   390 ;;   _gps_send
+   391 ;;     _lcd_cmd
+   392 ;;       _delay
+   393 ;;     _delay
+   394 ;;     _lcd_display
+   395 ;;       _lcd_data
+   396 ;;         _delay
+   397 ;;     _lcd_data
+   398 ;;       _delay
+   399 ;;
+   400 ;; _rcx (ROOT)
+   401 ;;
+   402                           
+   403 ;; Address spaces:
+   404                           
+   405 ;;Name               Size   Autos  Total    Cost      Usage
+   406 ;;BANK3               60      0       0       9        0.0%
+   407 ;;BITBANK3            60      0       0       8        0.0%
+   408 ;;SFR3                 0      0       0       4        0.0%
+   409 ;;BITSFR3              0      0       0       4        0.0%
+   410 ;;BANK2               60      0       0      11        0.0%
+   411 ;;BITBANK2            60      0       0      10        0.0%
+   412 ;;SFR2                 0      0       0       5        0.0%
+   413 ;;BITSFR2              0      0       0       5        0.0%
+   414 ;;SFR1                 0      0       0       2        0.0%
+   415 ;;BITSFR1              0      0       0       2        0.0%
+   416 ;;BANK1               50      0       0       7        0.0%
+   417 ;;BITBANK1            50      0       0       6        0.0%
+   418 ;;CODE                 0      0       0       0        0.0%
+   419 ;;DATA                 0      0      4D      12        0.0%
+   420 ;;ABS                  0      0      49       3        0.0%
+   421 ;;NULL                 0      0       0       0        0.0%
+   422 ;;STACK                0      0       4       2        0.0%
+   423 ;;BANK0               50      7      40       5       80.0%
+   424 ;;BITBANK0            50      0       0       4        0.0%
+   425 ;;SFR0                 0      0       0       1        0.0%
+   426 ;;BITSFR0              0      0       0       1        0.0%
+   427 ;;COMMON               E      7       9       1       64.3%
+   428 ;;BITCOMMON            E      0       0       0        0.0%
+   429 ;;EEDATA             100      0       0       0        0.0%
+   430                           
+   431                           	global	_main
+   432                           psect	maintext,global,class=CODE,delta=2
+   433                           global __pmaintext
+   434  012D                     __pmaintext:
+   435                           
+   436 ;; *************** function _main *****************
+   437 ;; Defined at:
+   438 ;;		line 174 in file "C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+   439 ;; Parameters:    Size  Location     Type
+   440 ;;		None
+   441 ;; Auto vars:     Size  Location     Type
+   442 ;;		None
+   443 ;; Return value:  Size  Location     Type
+   444 ;;		None               void
+   445 ;; Registers used:
+   446 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+0, pclath, cstack
+   447 ;; Tracked objects:
+   448 ;;		On entry : 17F/0
+   449 ;;		On exit  : 0/0
+   450 ;;		Unchanged: 0/0
+   451 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   452 ;;      Params:         0       0       0       0       0
+   453 ;;      Locals:         0       0       0       0       0
+   454 ;;      Temps:          0       0       0       0       0
+   455 ;;      Totals:         0       0       0       0       0
+   456 ;;Total ram usage:        0 bytes
+   457 ;; Hardware stack levels required when called:    5
+   458 ;; This function calls:
+   459 ;;		_gps_init
+   460 ;;		_delay
+   461 ;;		_lcd_cmd
+   462 ;;		_lcd_display
+   463 ;;		_gps_send
+   464 ;; This function is called by:
+   465 ;;		Startup code after reset
+   466 ;; This function uses a non-reentrant model
+   467 ;;
+   468                           psect	maintext
+   469                           	file	"C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+   470                           	line	174
+   471                           	global	__size_of_main
+   472  0068                     	__size_of_main	equ	__end_of_main-_main
+   473                           	
+   474  012D                     _main:	
+   475                           	opt	stack 8
+   476                           ; Regs used in _main: [wreg-fsr0h+status,2-btemp+0+pclath+cstack]
+   477                           	line	175
+   478                           	
+   479  012D                     l2243:	
+   480                           ;gps coading.c: 175: gps_init();
+   481  012D  120A  118A  229C   	fcall	_gps_init
+              120A  118A         
+   482                           	line	176
+   483                           ;gps coading.c: 176: delay(50000);
+   484  0132  3050               	movlw	low(0C350h)
+   485  0133  00F5               	movwf	(?_delay)
+   486  0134  30C3               	movlw	high(0C350h)
+   487  0135  00F6               	movwf	((?_delay))+1
+   488  0136  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   489                           	line	177
+   490                           ;gps coading.c: 177: delay(100);
+   491  013B  3064               	movlw	low(064h)
+   492  013C  00F5               	movwf	(?_delay)
+   493  013D  3000               	movlw	high(064h)
+   494  013E  00F6               	movwf	((?_delay))+1
+   495  013F  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   496                           	line	178
+   497                           	
+   498  0144                     l2245:	
+   499                           ;gps coading.c: 178: lcd_cmd(0x80);
+   500  0144  3080               	movlw	(080h)
+   501  0145  120A  118A  2214   	fcall	_lcd_cmd
+              120A  118A         
+   502                           	line	179
+   503                           	
+   504  014A                     l2247:	
+   505                           ;gps coading.c: 179: lcd_cmd(0x01);
+   506  014A  3001               	movlw	(01h)
+   507  014B  120A  118A  2214   	fcall	_lcd_cmd
+              120A  118A         
+   508                           	line	180
+   509                           	
+   510  0150                     l2249:	
+   511                           ;gps coading.c: 180: lcd_display("WELCOME");
+   512  0150  3001               	movlw	((STR_2-__stringbase))&0ffh
+   513  0151  120A  118A  224A   	fcall	_lcd_display
+              120A  118A         
+   514                           	line	181
+   515                           	
+   516  0156                     l2251:	
+   517                           ;gps coading.c: 181: delay(50000);delay(50000);delay(50000);
+   518  0156  3050               	movlw	low(0C350h)
+   519  0157  00F5               	movwf	(?_delay)
+   520  0158  30C3               	movlw	high(0C350h)
+   521  0159  00F6               	movwf	((?_delay))+1
+   522  015A  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   523                           	
+   524  015F                     l2253:	
+   525  015F  3050               	movlw	low(0C350h)
+   526  0160  00F5               	movwf	(?_delay)
+   527  0161  30C3               	movlw	high(0C350h)
+   528  0162  00F6               	movwf	((?_delay))+1
+   529  0163  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   530                           	
+   531  0168                     l2255:	
+   532  0168  3050               	movlw	low(0C350h)
+   533  0169  00F5               	movwf	(?_delay)
+   534  016A  30C3               	movlw	high(0C350h)
+   535  016B  00F6               	movwf	((?_delay))+1
+   536  016C  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   537                           	line	182
+   538                           	
+   539  0171                     l2257:	
+   540                           ;gps coading.c: 182: delay(50000);delay(50000);delay(50000);
+   541  0171  3050               	movlw	low(0C350h)
+   542  0172  00F5               	movwf	(?_delay)
+   543  0173  30C3               	movlw	high(0C350h)
+   544  0174  00F6               	movwf	((?_delay))+1
+   545  0175  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   546                           	
+   547  017A                     l2259:	
+   548  017A  3050               	movlw	low(0C350h)
+   549  017B  00F5               	movwf	(?_delay)
+   550  017C  30C3               	movlw	high(0C350h)
+   551  017D  00F6               	movwf	((?_delay))+1
+   552  017E  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   553                           	
+   554  0183                     l2261:	
+   555  0183  3050               	movlw	low(0C350h)
+   556  0184  00F5               	movwf	(?_delay)
+   557  0185  30C3               	movlw	high(0C350h)
+   558  0186  00F6               	movwf	((?_delay))+1
+   559  0187  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   560                           	line	184
+   561                           ;gps coading.c: 184: while(1)
+   562                           	
+   563  018C                     l611:	
+   564                           	line	187
+   565                           	
+   566  018C                     l2263:	
+   567                           ;gps coading.c: 185: {
+   568                           ;gps coading.c: 187: gps_send();
+   569  018C  120A  118A  2025   	fcall	_gps_send
+              120A  118A         
+   570                           	line	188
+   571                           	
+   572  0191                     l612:	
+   573                           	line	184
+   574  0191  298C               	goto	l611
+   575                           	
+   576  0192                     l613:	
+   577                           	line	189
+   578                           	
+   579  0192                     l614:	
+   580                           	global	start
+   581  0192  120A  118A  2810   	ljmp	start
+   582                           	opt stack 0
+   583                           GLOBAL	__end_of_main
+   584  0195                     	__end_of_main:
+   585 ;; =============== function _main ends ============
+   586                           
+   587                           	signat	_main,88
+   588                           	global	_gps_send
+   589                           psect	text279,local,class=CODE,delta=2
+   590                           global __ptext279
+   591  0025                     __ptext279:
+   592                           
+   593 ;; *************** function _gps_send *****************
+   594 ;; Defined at:
+   595 ;;		line 115 in file "C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+   596 ;; Parameters:    Size  Location     Type
+   597 ;;		None
+   598 ;; Auto vars:     Size  Location     Type
+   599 ;;		None
+   600 ;; Return value:  Size  Location     Type
+   601 ;;		None               void
+   602 ;; Registers used:
+   603 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+0, pclath, cstack
+   604 ;; Tracked objects:
+   605 ;;		On entry : 0/0
+   606 ;;		On exit  : 0/0
+   607 ;;		Unchanged: 0/0
+   608 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   609 ;;      Params:         0       0       0       0       0
+   610 ;;      Locals:         0       0       0       0       0
+   611 ;;      Temps:          0       1       0       0       0
+   612 ;;      Totals:         0       1       0       0       0
+   613 ;;Total ram usage:        1 bytes
+   614 ;; Hardware stack levels used:    1
+   615 ;; Hardware stack levels required when called:    4
+   616 ;; This function calls:
+   617 ;;		_lcd_cmd
+   618 ;;		_delay
+   619 ;;		_lcd_display
+   620 ;;		_lcd_data
+   621 ;; This function is called by:
+   622 ;;		_main
+   623 ;; This function uses a non-reentrant model
+   624 ;;
+   625                           psect	text279
+   626                           	file	"C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+   627                           	line	115
+   628                           	global	__size_of_gps_send
+   629  0108                     	__size_of_gps_send	equ	__end_of_gps_send-_gps_send
+   630                           	
+   631  0025                     _gps_send:	
+   632                           	opt	stack 7
+   633                           ; Regs used in _gps_send: [wreg-fsr0h+status,2-btemp+0+pclath+cstack]
+   634                           	line	116
+   635                           	
+   636  0025                     l2181:	
+   637                           ;gps coading.c: 116: lcd_cmd(0x01);
+   638  0025  3001               	movlw	(01h)
+   639  0026  120A  118A  2214   	fcall	_lcd_cmd
+              120A  118A         
+   640                           	line	117
+   641                           ;gps coading.c: 117: lcd_cmd(0x87);
+   642  002B  3087               	movlw	(087h)
+   643  002C  120A  118A  2214   	fcall	_lcd_cmd
+              120A  118A         
+   644                           	line	118
+   645                           	
+   646  0031                     l2183:	
+   647                           ;gps coading.c: 118: delay(100);
+   648  0031  3064               	movlw	low(064h)
+   649  0032  00F5               	movwf	(?_delay)
+   650  0033  3000               	movlw	high(064h)
+   651  0034  00F6               	movwf	((?_delay))+1
+   652  0035  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   653                           	line	119
+   654                           	
+   655  003A                     l2185:	
+   656                           ;gps coading.c: 119: lcd_display("gps");
+   657  003A  3009               	movlw	((STR_1-__stringbase))&0ffh
+   658  003B  120A  118A  224A   	fcall	_lcd_display
+              120A  118A         
+   659                           	line	121
+   660                           	
+   661  0040                     l2187:	
+   662                           ;gps coading.c: 121: delay(50000);delay(50000);
+   663  0040  3050               	movlw	low(0C350h)
+   664  0041  00F5               	movwf	(?_delay)
+   665  0042  30C3               	movlw	high(0C350h)
+   666  0043  00F6               	movwf	((?_delay))+1
+   667  0044  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   668                           	
+   669  0049                     l2189:	
+   670  0049  3050               	movlw	low(0C350h)
+   671  004A  00F5               	movwf	(?_delay)
+   672  004B  30C3               	movlw	high(0C350h)
+   673  004C  00F6               	movwf	((?_delay))+1
+   674  004D  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   675                           	line	122
+   676                           	
+   677  0052                     l2191:	
+   678                           ;gps coading.c: 122: lcd_cmd(0x01);
+   679  0052  3001               	movlw	(01h)
+   680  0053  120A  118A  2214   	fcall	_lcd_cmd
+              120A  118A         
+   681                           	line	123
+   682                           	
+   683  0058                     l2193:	
+   684                           ;gps coading.c: 123: delay(100);
+   685  0058  3064               	movlw	low(064h)
+   686  0059  00F5               	movwf	(?_delay)
+   687  005A  3000               	movlw	high(064h)
+   688  005B  00F6               	movwf	((?_delay))+1
+   689  005C  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   690                           	line	131
+   691                           	
+   692  0061                     l2195:	
+   693                           ;gps coading.c: 131: if(i>43)
+   694  0061  3000               	movlw	high(02Ch)
+   695  0062  1283               	bcf	status, 5	;RP0=0, select bank0
+   696  0063  1303               	bcf	status, 6	;RP1=0, select bank0
+   697  0064  0253               	subwf	(_i+1),w
+   698  0065  302C               	movlw	low(02Ch)
+   699  0066  1903               	skipnz
+   700  0067  0252               	subwf	(_i),w
+   701  0068  1C03               	skipc
+   702  0069  286B               	goto	u2451
+   703  006A  286C               	goto	u2450
+   704  006B                     u2451:
+   705  006B  292C               	goto	l603
+   706  006C                     u2450:
+   707                           	line	134
+   708                           	
+   709  006C                     l2197:	
+   710                           ;gps coading.c: 132: {
+   711                           ;gps coading.c: 134: lcd_cmd(0x80);
+   712  006C  3080               	movlw	(080h)
+   713  006D  120A  118A  2214   	fcall	_lcd_cmd
+              120A  118A         
+   714                           	line	135
+   715                           	
+   716  0072                     l2199:	
+   717                           ;gps coading.c: 135: delay(1000);
+   718  0072  30E8               	movlw	low(03E8h)
+   719  0073  00F5               	movwf	(?_delay)
+   720  0074  3003               	movlw	high(03E8h)
+   721  0075  00F6               	movwf	((?_delay))+1
+   722  0076  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   723                           	line	137
+   724                           	
+   725  007B                     l2201:	
+   726                           ;gps coading.c: 137: for(j=16;j<28;j++)
+   727  007B  3010               	movlw	low(010h)
+   728  007C  1283               	bcf	status, 5	;RP0=0, select bank0
+   729  007D  1303               	bcf	status, 6	;RP1=0, select bank0
+   730  007E  00D4               	movwf	(_j)
+   731  007F  3000               	movlw	high(010h)
+   732  0080  00D5               	movwf	((_j))+1
+   733                           	
+   734  0081                     l2203:	
+   735  0081  3000               	movlw	high(01Ch)
+   736  0082  0255               	subwf	(_j+1),w
+   737  0083  301C               	movlw	low(01Ch)
+   738  0084  1903               	skipnz
+   739  0085  0254               	subwf	(_j),w
+   740  0086  1C03               	skipc
+   741  0087  2889               	goto	u2461
+   742  0088  288A               	goto	u2460
+   743  0089                     u2461:
+   744  0089  288B               	goto	l604
+   745  008A                     u2460:
+   746                           	
+   747  008A                     l2205:	
+   748  008A  28B3               	goto	l605
+   749                           	line	138
+   750                           	
+   751  008B                     l604:	
+   752                           	line	140
+   753                           	
+   754  008B                     l2207:	
+   755                           ;gps coading.c: 138: {
+   756                           ;gps coading.c: 140: ser=(gpsdata[j]);
+   757  008B  0854               	movf	(_j),w
+   758  008C  3E20               	addlw	_gpsdata&0ffh
+   759  008D  0084               	movwf	fsr0
+   760  008E  1383               	bcf	status, 7	;select IRP bank0
+   761  008F  0800               	movf	indf,w
+   762  0090  00DE               	movwf	(??_gps_send+0)+0
+   763  0091  085E               	movf	(??_gps_send+0)+0,w
+   764  0092  00D7               	movwf	(_ser)
+   765                           	line	141
+   766                           	
+   767  0093                     l2209:	
+   768                           ;gps coading.c: 141: lcd_data(ser);
+   769  0093  0857               	movf	(_ser),w
+   770  0094  120A  118A  21DE   	fcall	_lcd_data
+              120A  118A         
+   771                           	line	143
+   772                           	
+   773  0099                     l2211:	
+   774                           ;gps coading.c: 143: delay(600);
+   775  0099  3058               	movlw	low(0258h)
+   776  009A  00F5               	movwf	(?_delay)
+   777  009B  3002               	movlw	high(0258h)
+   778  009C  00F6               	movwf	((?_delay))+1
+   779  009D  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   780                           	line	137
+   781                           	
+   782  00A2                     l2213:	
+   783  00A2  3001               	movlw	low(01h)
+   784  00A3  1283               	bcf	status, 5	;RP0=0, select bank0
+   785  00A4  1303               	bcf	status, 6	;RP1=0, select bank0
+   786  00A5  07D4               	addwf	(_j),f
+   787  00A6  1803               	skipnc
+   788  00A7  0AD5               	incf	(_j+1),f
+   789  00A8  3000               	movlw	high(01h)
+   790  00A9  07D5               	addwf	(_j+1),f
+   791                           	
+   792  00AA                     l2215:	
+   793  00AA  3000               	movlw	high(01Ch)
+   794  00AB  0255               	subwf	(_j+1),w
+   795  00AC  301C               	movlw	low(01Ch)
+   796  00AD  1903               	skipnz
+   797  00AE  0254               	subwf	(_j),w
+   798  00AF  1C03               	skipc
+   799  00B0  28B2               	goto	u2471
+   800  00B1  28B3               	goto	u2470
+   801  00B2                     u2471:
+   802  00B2  288B               	goto	l604
+   803  00B3                     u2470:
+   804                           	
+   805  00B3                     l605:	
+   806                           	line	145
+   807                           	
+   808  00B3                     l2217:	
+   809                           ;gps coading.c: 144: }
+   810                           ;gps coading.c: 145: lcd_cmd(0xc0);
+   811  00B3  30C0               	movlw	(0C0h)
+   812  00B4  120A  118A  2214   	fcall	_lcd_cmd
+              120A  118A         
+   813                           	line	147
+   814                           	
+   815  00B9                     l2219:	
+   816                           ;gps coading.c: 147: for(j=30;j<41;j++)
+   817  00B9  301E               	movlw	low(01Eh)
+   818  00BA  1283               	bcf	status, 5	;RP0=0, select bank0
+   819  00BB  1303               	bcf	status, 6	;RP1=0, select bank0
+   820  00BC  00D4               	movwf	(_j)
+   821  00BD  3000               	movlw	high(01Eh)
+   822  00BE  00D5               	movwf	((_j))+1
+   823                           	
+   824  00BF                     l2221:	
+   825  00BF  3000               	movlw	high(029h)
+   826  00C0  0255               	subwf	(_j+1),w
+   827  00C1  3029               	movlw	low(029h)
+   828  00C2  1903               	skipnz
+   829  00C3  0254               	subwf	(_j),w
+   830  00C4  1C03               	skipc
+   831  00C5  28C7               	goto	u2481
+   832  00C6  28C8               	goto	u2480
+   833  00C7                     u2481:
+   834  00C7  28C9               	goto	l606
+   835  00C8                     u2480:
+   836                           	
+   837  00C8                     l2223:	
+   838  00C8  28F1               	goto	l607
+   839                           	line	148
+   840                           	
+   841  00C9                     l606:	
+   842                           	line	150
+   843                           	
+   844  00C9                     l2225:	
+   845                           ;gps coading.c: 148: {
+   846                           ;gps coading.c: 150: ser=(gpsdata[j]);
+   847  00C9  0854               	movf	(_j),w
+   848  00CA  3E20               	addlw	_gpsdata&0ffh
+   849  00CB  0084               	movwf	fsr0
+   850  00CC  1383               	bcf	status, 7	;select IRP bank0
+   851  00CD  0800               	movf	indf,w
+   852  00CE  00DE               	movwf	(??_gps_send+0)+0
+   853  00CF  085E               	movf	(??_gps_send+0)+0,w
+   854  00D0  00D7               	movwf	(_ser)
+   855                           	line	151
+   856                           	
+   857  00D1                     l2227:	
+   858                           ;gps coading.c: 151: lcd_data(ser);
+   859  00D1  0857               	movf	(_ser),w
+   860  00D2  120A  118A  21DE   	fcall	_lcd_data
+              120A  118A         
+   861                           	line	153
+   862                           	
+   863  00D7                     l2229:	
+   864                           ;gps coading.c: 153: delay(600);
+   865  00D7  3058               	movlw	low(0258h)
+   866  00D8  00F5               	movwf	(?_delay)
+   867  00D9  3002               	movlw	high(0258h)
+   868  00DA  00F6               	movwf	((?_delay))+1
+   869  00DB  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   870                           	line	147
+   871                           	
+   872  00E0                     l2231:	
+   873  00E0  3001               	movlw	low(01h)
+   874  00E1  1283               	bcf	status, 5	;RP0=0, select bank0
+   875  00E2  1303               	bcf	status, 6	;RP1=0, select bank0
+   876  00E3  07D4               	addwf	(_j),f
+   877  00E4  1803               	skipnc
+   878  00E5  0AD5               	incf	(_j+1),f
+   879  00E6  3000               	movlw	high(01h)
+   880  00E7  07D5               	addwf	(_j+1),f
+   881                           	
+   882  00E8                     l2233:	
+   883  00E8  3000               	movlw	high(029h)
+   884  00E9  0255               	subwf	(_j+1),w
+   885  00EA  3029               	movlw	low(029h)
+   886  00EB  1903               	skipnz
+   887  00EC  0254               	subwf	(_j),w
+   888  00ED  1C03               	skipc
+   889  00EE  28F0               	goto	u2491
+   890  00EF  28F1               	goto	u2490
+   891  00F0                     u2491:
+   892  00F0  28C9               	goto	l606
+   893  00F1                     u2490:
+   894                           	
+   895  00F1                     l607:	
+   896                           	line	156
+   897                           	
+   898  00F1                     l2235:	
+   899                           ;gps coading.c: 154: }
+   900                           ;gps coading.c: 156: delay(50000);delay(50000);
+   901  00F1  3050               	movlw	low(0C350h)
+   902  00F2  00F5               	movwf	(?_delay)
+   903  00F3  30C3               	movlw	high(0C350h)
+   904  00F4  00F6               	movwf	((?_delay))+1
+   905  00F5  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   906  00FA  3050               	movlw	low(0C350h)
+   907  00FB  00F5               	movwf	(?_delay)
+   908  00FC  30C3               	movlw	high(0C350h)
+   909  00FD  00F6               	movwf	((?_delay))+1
+   910  00FE  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   911                           	line	157
+   912                           ;gps coading.c: 157: delay(50000);delay(50000);
+   913  0103  3050               	movlw	low(0C350h)
+   914  0104  00F5               	movwf	(?_delay)
+   915  0105  30C3               	movlw	high(0C350h)
+   916  0106  00F6               	movwf	((?_delay))+1
+   917  0107  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   918  010C  3050               	movlw	low(0C350h)
+   919  010D  00F5               	movwf	(?_delay)
+   920  010E  30C3               	movlw	high(0C350h)
+   921  010F  00F6               	movwf	((?_delay))+1
+   922  0110  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   923                           	line	159
+   924                           	
+   925  0115                     l2237:	
+   926                           ;gps coading.c: 159: data_cap=0x00;
+   927  0115  1003               	clrc
+   928  0116  3000               	movlw	0
+   929  0117  1803               	btfsc	status,0
+   930  0118  3001               	movlw	1
+   931  0119  1283               	bcf	status, 5	;RP0=0, select bank0
+   932  011A  1303               	bcf	status, 6	;RP1=0, select bank0
+   933  011B  00D6               	movwf	(_data_cap)
+   934                           	line	160
+   935                           	
+   936  011C                     l2239:	
+   937                           ;gps coading.c: 160: st=0x01;
+   938  011C  01DF               	clrf	(_st)
+   939  011D  1403               	bsf	status,0
+   940  011E  0DDF               	rlf	(_st),f
+   941                           	line	161
+   942                           	
+   943  011F                     l2241:	
+   944                           ;gps coading.c: 161: i=0x00;
+   945  011F  3000               	movlw	low(0)
+   946  0120  00D2               	movwf	(_i)
+   947  0121  3000               	movlw	high(0)
+   948  0122  00D3               	movwf	((_i))+1
+   949                           	line	163
+   950                           ;gps coading.c: 163: delay(35000);
+   951  0123  30B8               	movlw	low(088B8h)
+   952  0124  00F5               	movwf	(?_delay)
+   953  0125  3088               	movlw	high(088B8h)
+   954  0126  00F6               	movwf	((?_delay))+1
+   955  0127  120A  118A  228A   	fcall	_delay
+              120A  118A         
+   956                           	line	165
+   957                           	
+   958  012C                     l603:	
+   959                           	line	166
+   960                           	
+   961  012C                     l608:	
+   962  012C  0008               	return
+   963                           	opt stack 0
+   964                           GLOBAL	__end_of_gps_send
+   965  012D                     	__end_of_gps_send:
+   966 ;; =============== function _gps_send ends ============
+   967                           
+   968                           	signat	_gps_send,88
+   969                           	global	_lcd_display
+   970                           psect	text280,local,class=CODE,delta=2
+   971                           global __ptext280
+   972  024A                     __ptext280:
+   973                           
+   974 ;; *************** function _lcd_display *****************
+   975 ;; Defined at:
+   976 ;;		line 71 in file "C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+   977 ;; Parameters:    Size  Location     Type
+   978 ;;  m               1    wreg     PTR const unsigned char 
+   979 ;;		 -> STR_2(8), STR_1(4), 
+   980 ;; Auto vars:     Size  Location     Type
+   981 ;;  m               1    3[BANK0 ] PTR const unsigned char 
+   982 ;;		 -> STR_2(8), STR_1(4), 
+   983 ;;  k               2    4[BANK0 ] int 
+   984 ;; Return value:  Size  Location     Type
+   985 ;;		None               void
+   986 ;; Registers used:
+   987 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+0, pclath, cstack
+   988 ;; Tracked objects:
+   989 ;;		On entry : 0/0
+   990 ;;		On exit  : 0/0
+   991 ;;		Unchanged: 0/0
+   992 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   993 ;;      Params:         0       0       0       0       0
+   994 ;;      Locals:         0       3       0       0       0
+   995 ;;      Temps:          0       0       0       0       0
+   996 ;;      Totals:         0       3       0       0       0
+   997 ;;Total ram usage:        3 bytes
+   998 ;; Hardware stack levels used:    1
+   999 ;; Hardware stack levels required when called:    3
+  1000 ;; This function calls:
+  1001 ;;		_lcd_data
+  1002 ;; This function is called by:
+  1003 ;;		_gps_send
+  1004 ;;		_main
+  1005 ;; This function uses a non-reentrant model
+  1006 ;;
+  1007                           psect	text280
+  1008                           	file	"C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+  1009                           	line	71
+  1010                           	global	__size_of_lcd_display
+  1011  002B                     	__size_of_lcd_display	equ	__end_of_lcd_display-_lcd_display
+  1012                           	
+  1013  024A                     _lcd_display:	
+  1014                           	opt	stack 6
+  1015                           ; Regs used in _lcd_display: [wreg-fsr0h+status,2-btemp+0+pclath+cstack]
+  1016                           ;lcd_display@m stored from wreg
+  1017  024A  1283               	bcf	status, 5	;RP0=0, select bank0
+  1018  024B  1303               	bcf	status, 6	;RP1=0, select bank0
+  1019  024C  00DB               	movwf	(lcd_display@m)
+  1020                           	line	72
+  1021                           	
+  1022  024D                     l2173:	
+  1023                           ;gps coading.c: 72: for(int k=0;m[k]!=0;k++)
+  1024  024D  3000               	movlw	low(0)
+  1025  024E  00DC               	movwf	(lcd_display@k)
+  1026  024F  3000               	movlw	high(0)
+  1027  0250  00DD               	movwf	((lcd_display@k))+1
+  1028  0251  2A67               	goto	l588
+  1029                           	line	73
+  1030                           	
+  1031  0252                     l589:	
+  1032                           	line	74
+  1033                           	
+  1034  0252                     l2175:	
+  1035                           ;gps coading.c: 73: {
+  1036                           ;gps coading.c: 74: lcd_data(m[k]);
+  1037  0252  085C               	movf	(lcd_display@k),w
+  1038  0253  075B               	addwf	(lcd_display@m),w
+  1039  0254  0084               	movwf	fsr0
+  1040  0255  120A  118A  2013   	fcall	stringdir
+              120A  118A         
+  1041  025A  120A  118A  21DE   	fcall	_lcd_data
+              120A  118A         
+  1042                           	line	72
+  1043                           	
+  1044  025F                     l2177:	
+  1045  025F  3001               	movlw	low(01h)
+  1046  0260  1283               	bcf	status, 5	;RP0=0, select bank0
+  1047  0261  1303               	bcf	status, 6	;RP1=0, select bank0
+  1048  0262  07DC               	addwf	(lcd_display@k),f
+  1049  0263  1803               	skipnc
+  1050  0264  0ADD               	incf	(lcd_display@k+1),f
+  1051  0265  3000               	movlw	high(01h)
+  1052  0266  07DD               	addwf	(lcd_display@k+1),f
+  1053                           	
+  1054  0267                     l588:	
+  1055                           	
+  1056  0267                     l2179:	
+  1057  0267  085C               	movf	(lcd_display@k),w
+  1058  0268  075B               	addwf	(lcd_display@m),w
+  1059  0269  0084               	movwf	fsr0
+  1060  026A  120A  118A  2013   	fcall	stringdir
+              120A  118A         
+  1061  026F  3800               	iorlw	0
+  1062  0270  1D03               	skipz
+  1063  0271  2A73               	goto	u2441
+  1064  0272  2A74               	goto	u2440
+  1065  0273                     u2441:
+  1066  0273  2A52               	goto	l589
+  1067  0274                     u2440:
+  1068                           	
+  1069  0274                     l590:	
+  1070                           	line	76
+  1071                           	
+  1072  0274                     l591:	
+  1073  0274  0008               	return
+  1074                           	opt stack 0
+  1075                           GLOBAL	__end_of_lcd_display
+  1076  0275                     	__end_of_lcd_display:
+  1077 ;; =============== function _lcd_display ends ============
+  1078                           
+  1079                           	signat	_lcd_display,4216
+  1080                           	global	_lcd_data
+  1081                           psect	text281,local,class=CODE,delta=2
+  1082                           global __ptext281
+  1083  01DE                     __ptext281:
+  1084                           
+  1085 ;; *************** function _lcd_data *****************
+  1086 ;; Defined at:
+  1087 ;;		line 52 in file "C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+  1088 ;; Parameters:    Size  Location     Type
+  1089 ;;  dat             1    wreg     unsigned char 
+  1090 ;; Auto vars:     Size  Location     Type
+  1091 ;;  dat             1    2[BANK0 ] unsigned char 
+  1092 ;; Return value:  Size  Location     Type
+  1093 ;;		None               void
+  1094 ;; Registers used:
+  1095 ;;		wreg, status,2, status,0, btemp+0, pclath, cstack
+  1096 ;; Tracked objects:
+  1097 ;;		On entry : 0/0
+  1098 ;;		On exit  : 0/0
+  1099 ;;		Unchanged: 0/0
+  1100 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1101 ;;      Params:         0       0       0       0       0
+  1102 ;;      Locals:         0       1       0       0       0
+  1103 ;;      Temps:          0       2       0       0       0
+  1104 ;;      Totals:         0       3       0       0       0
+  1105 ;;Total ram usage:        3 bytes
+  1106 ;; Hardware stack levels used:    1
+  1107 ;; Hardware stack levels required when called:    2
+  1108 ;; This function calls:
+  1109 ;;		_delay
+  1110 ;; This function is called by:
+  1111 ;;		_lcd_display
+  1112 ;;		_gps_send
+  1113 ;; This function uses a non-reentrant model
+  1114 ;;
+  1115                           psect	text281
+  1116                           	file	"C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+  1117                           	line	52
+  1118                           	global	__size_of_lcd_data
+  1119  0036                     	__size_of_lcd_data	equ	__end_of_lcd_data-_lcd_data
+  1120                           	
+  1121  01DE                     _lcd_data:	
+  1122                           	opt	stack 6
+  1123                           ; Regs used in _lcd_data: [wreg+status,2-btemp+0+pclath+cstack]
+  1124                           ;lcd_data@dat stored from wreg
+  1125  01DE  1283               	bcf	status, 5	;RP0=0, select bank0
+  1126  01DF  1303               	bcf	status, 6	;RP1=0, select bank0
+  1127  01E0  00DA               	movwf	(lcd_data@dat)
+  1128                           	line	53
+  1129                           	
+  1130  01E1                     l2147:	
+  1131                           ;gps coading.c: 53: PORTD=(dat&0xf0);
+  1132  01E1  085A               	movf	(lcd_data@dat),w
+  1133  01E2  39F0               	andlw	0F0h
+  1134  01E3  0088               	movwf	(8)	;volatile
+  1135                           	line	54
+  1136                           	
+  1137  01E4                     l2149:	
+  1138                           ;gps coading.c: 54: RD1=1;
+  1139  01E4  1488               	bsf	(65/8),(65)&7
+  1140                           	line	55
+  1141                           	
+  1142  01E5                     l2151:	
+  1143                           ;gps coading.c: 55: RD2=0;
+  1144  01E5  1108               	bcf	(66/8),(66)&7
+  1145                           	line	56
+  1146                           	
+  1147  01E6                     l2153:	
+  1148                           ;gps coading.c: 56: RD3=1;
+  1149  01E6  1588               	bsf	(67/8),(67)&7
+  1150                           	line	57
+  1151                           	
+  1152  01E7                     l2155:	
+  1153                           ;gps coading.c: 57: delay(200);
+  1154  01E7  30C8               	movlw	low(0C8h)
+  1155  01E8  00F5               	movwf	(?_delay)
+  1156  01E9  3000               	movlw	high(0C8h)
+  1157  01EA  00F6               	movwf	((?_delay))+1
+  1158  01EB  120A  118A  228A   	fcall	_delay
+              120A  118A         
+  1159                           	line	58
+  1160                           	
+  1161  01F0                     l2157:	
+  1162                           ;gps coading.c: 58: RD3=0;
+  1163  01F0  1283               	bcf	status, 5	;RP0=0, select bank0
+  1164  01F1  1303               	bcf	status, 6	;RP1=0, select bank0
+  1165  01F2  1188               	bcf	(67/8),(67)&7
+  1166                           	line	59
+  1167                           	
+  1168  01F3                     l2159:	
+  1169                           ;gps coading.c: 59: temp=dat<<4;
+  1170  01F3  085A               	movf	(lcd_data@dat),w
+  1171  01F4  00D8               	movwf	(??_lcd_data+0)+0
+  1172  01F5  01D9               	clrf	(??_lcd_data+0)+0+1
+  1173  01F6  3004               	movlw	04h
+  1174  01F7  00FE               	movwf	btemp+0
+  1175  01F8                     u2435:
+  1176  01F8  1003               	clrc
+  1177  01F9  0DD8               	rlf	(??_lcd_data+0)+0,f
+  1178  01FA  0DD9               	rlf	(??_lcd_data+0)+1,f
+  1179  01FB  0BFE               	decfsz	btemp+0,f
+  1180  01FC  29F8               	goto	u2435
+  1181  01FD  0858               	movf	0+(??_lcd_data+0)+0,w
+  1182  01FE  00F7               	movwf	(_temp)
+  1183  01FF  0859               	movf	1+(??_lcd_data+0)+0,w
+  1184  0200  00F8               	movwf	(_temp+1)
+  1185                           	line	60
+  1186                           	
+  1187  0201                     l2161:	
+  1188                           ;gps coading.c: 60: PORTD=(temp&0xf0);
+  1189  0201  0877               	movf	(_temp),w
+  1190  0202  39F0               	andlw	0F0h
+  1191  0203  0088               	movwf	(8)	;volatile
+  1192                           	line	61
+  1193                           	
+  1194  0204                     l2163:	
+  1195                           ;gps coading.c: 61: RD1=1;
+  1196  0204  1488               	bsf	(65/8),(65)&7
+  1197                           	line	62
+  1198                           	
+  1199  0205                     l2165:	
+  1200                           ;gps coading.c: 62: RD2=0;
+  1201  0205  1108               	bcf	(66/8),(66)&7
+  1202                           	line	63
+  1203                           	
+  1204  0206                     l2167:	
+  1205                           ;gps coading.c: 63: RD3=1;
+  1206  0206  1588               	bsf	(67/8),(67)&7
+  1207                           	line	64
+  1208                           	
+  1209  0207                     l2169:	
+  1210                           ;gps coading.c: 64: delay(200);
+  1211  0207  30C8               	movlw	low(0C8h)
+  1212  0208  00F5               	movwf	(?_delay)
+  1213  0209  3000               	movlw	high(0C8h)
+  1214  020A  00F6               	movwf	((?_delay))+1
+  1215  020B  120A  118A  228A   	fcall	_delay
+              120A  118A         
+  1216                           	line	65
+  1217                           	
+  1218  0210                     l2171:	
+  1219                           ;gps coading.c: 65: RD3=0;
+  1220  0210  1283               	bcf	status, 5	;RP0=0, select bank0
+  1221  0211  1303               	bcf	status, 6	;RP1=0, select bank0
+  1222  0212  1188               	bcf	(67/8),(67)&7
+  1223                           	line	66
+  1224                           	
+  1225  0213                     l585:	
+  1226  0213  0008               	return
+  1227                           	opt stack 0
+  1228                           GLOBAL	__end_of_lcd_data
+  1229  0214                     	__end_of_lcd_data:
+  1230 ;; =============== function _lcd_data ends ============
+  1231                           
+  1232                           	signat	_lcd_data,4216
+  1233                           	global	_lcd_cmd
+  1234                           psect	text282,local,class=CODE,delta=2
+  1235                           global __ptext282
+  1236  0214                     __ptext282:
+  1237                           
+  1238 ;; *************** function _lcd_cmd *****************
+  1239 ;; Defined at:
+  1240 ;;		line 33 in file "C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+  1241 ;; Parameters:    Size  Location     Type
+  1242 ;;  com             1    wreg     unsigned char 
+  1243 ;; Auto vars:     Size  Location     Type
+  1244 ;;  com             1    2[BANK0 ] unsigned char 
+  1245 ;; Return value:  Size  Location     Type
+  1246 ;;		None               void
+  1247 ;; Registers used:
+  1248 ;;		wreg, status,2, status,0, btemp+0, pclath, cstack
+  1249 ;; Tracked objects:
+  1250 ;;		On entry : 0/0
+  1251 ;;		On exit  : 0/0
+  1252 ;;		Unchanged: 0/0
+  1253 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1254 ;;      Params:         0       0       0       0       0
+  1255 ;;      Locals:         0       1       0       0       0
+  1256 ;;      Temps:          0       2       0       0       0
+  1257 ;;      Totals:         0       3       0       0       0
+  1258 ;;Total ram usage:        3 bytes
+  1259 ;; Hardware stack levels used:    1
+  1260 ;; Hardware stack levels required when called:    2
+  1261 ;; This function calls:
+  1262 ;;		_delay
+  1263 ;; This function is called by:
+  1264 ;;		_gps_send
+  1265 ;;		_main
+  1266 ;;		_lcd_init
+  1267 ;; This function uses a non-reentrant model
+  1268 ;;
+  1269                           psect	text282
+  1270                           	file	"C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+  1271                           	line	33
+  1272                           	global	__size_of_lcd_cmd
+  1273  0036                     	__size_of_lcd_cmd	equ	__end_of_lcd_cmd-_lcd_cmd
+  1274                           	
+  1275  0214                     _lcd_cmd:	
+  1276                           	opt	stack 6
+  1277                           ; Regs used in _lcd_cmd: [wreg+status,2-btemp+0+pclath+cstack]
+  1278                           ;lcd_cmd@com stored from wreg
+  1279  0214  1283               	bcf	status, 5	;RP0=0, select bank0
+  1280  0215  1303               	bcf	status, 6	;RP1=0, select bank0
+  1281  0216  00DA               	movwf	(lcd_cmd@com)
+  1282                           	line	34
+  1283                           	
+  1284  0217                     l2121:	
+  1285                           ;gps coading.c: 34: PORTD=(com&0xf0);
+  1286  0217  085A               	movf	(lcd_cmd@com),w
+  1287  0218  39F0               	andlw	0F0h
+  1288  0219  0088               	movwf	(8)	;volatile
+  1289                           	line	35
+  1290                           	
+  1291  021A                     l2123:	
+  1292                           ;gps coading.c: 35: RD1=0;
+  1293  021A  1088               	bcf	(65/8),(65)&7
+  1294                           	line	36
+  1295                           	
+  1296  021B                     l2125:	
+  1297                           ;gps coading.c: 36: RD2=0;
+  1298  021B  1108               	bcf	(66/8),(66)&7
+  1299                           	line	37
+  1300                           	
+  1301  021C                     l2127:	
+  1302                           ;gps coading.c: 37: RD3=1;
+  1303  021C  1588               	bsf	(67/8),(67)&7
+  1304                           	line	38
+  1305                           	
+  1306  021D                     l2129:	
+  1307                           ;gps coading.c: 38: delay(200);
+  1308  021D  30C8               	movlw	low(0C8h)
+  1309  021E  00F5               	movwf	(?_delay)
+  1310  021F  3000               	movlw	high(0C8h)
+  1311  0220  00F6               	movwf	((?_delay))+1
+  1312  0221  120A  118A  228A   	fcall	_delay
+              120A  118A         
+  1313                           	line	39
+  1314                           	
+  1315  0226                     l2131:	
+  1316                           ;gps coading.c: 39: RD3=0;
+  1317  0226  1283               	bcf	status, 5	;RP0=0, select bank0
+  1318  0227  1303               	bcf	status, 6	;RP1=0, select bank0
+  1319  0228  1188               	bcf	(67/8),(67)&7
+  1320                           	line	40
+  1321                           	
+  1322  0229                     l2133:	
+  1323                           ;gps coading.c: 40: temp=com<<4;
+  1324  0229  085A               	movf	(lcd_cmd@com),w
+  1325  022A  00D8               	movwf	(??_lcd_cmd+0)+0
+  1326  022B  01D9               	clrf	(??_lcd_cmd+0)+0+1
+  1327  022C  3004               	movlw	04h
+  1328  022D  00FE               	movwf	btemp+0
+  1329  022E                     u2425:
+  1330  022E  1003               	clrc
+  1331  022F  0DD8               	rlf	(??_lcd_cmd+0)+0,f
+  1332  0230  0DD9               	rlf	(??_lcd_cmd+0)+1,f
+  1333  0231  0BFE               	decfsz	btemp+0,f
+  1334  0232  2A2E               	goto	u2425
+  1335  0233  0858               	movf	0+(??_lcd_cmd+0)+0,w
+  1336  0234  00F7               	movwf	(_temp)
+  1337  0235  0859               	movf	1+(??_lcd_cmd+0)+0,w
+  1338  0236  00F8               	movwf	(_temp+1)
+  1339                           	line	41
+  1340                           	
+  1341  0237                     l2135:	
+  1342                           ;gps coading.c: 41: PORTD=(temp&0xf0);
+  1343  0237  0877               	movf	(_temp),w
+  1344  0238  39F0               	andlw	0F0h
+  1345  0239  0088               	movwf	(8)	;volatile
+  1346                           	line	42
+  1347                           	
+  1348  023A                     l2137:	
+  1349                           ;gps coading.c: 42: RD1=0;
+  1350  023A  1088               	bcf	(65/8),(65)&7
+  1351                           	line	43
+  1352                           	
+  1353  023B                     l2139:	
+  1354                           ;gps coading.c: 43: RD2=0;
+  1355  023B  1108               	bcf	(66/8),(66)&7
+  1356                           	line	44
+  1357                           	
+  1358  023C                     l2141:	
+  1359                           ;gps coading.c: 44: RD3=1;
+  1360  023C  1588               	bsf	(67/8),(67)&7
+  1361                           	line	45
+  1362                           	
+  1363  023D                     l2143:	
+  1364                           ;gps coading.c: 45: delay(200);
+  1365  023D  30C8               	movlw	low(0C8h)
+  1366  023E  00F5               	movwf	(?_delay)
+  1367  023F  3000               	movlw	high(0C8h)
+  1368  0240  00F6               	movwf	((?_delay))+1
+  1369  0241  120A  118A  228A   	fcall	_delay
+              120A  118A         
+  1370                           	line	46
+  1371                           	
+  1372  0246                     l2145:	
+  1373                           ;gps coading.c: 46: RD3=0;
+  1374  0246  1283               	bcf	status, 5	;RP0=0, select bank0
+  1375  0247  1303               	bcf	status, 6	;RP1=0, select bank0
+  1376  0248  1188               	bcf	(67/8),(67)&7
+  1377                           	line	47
+  1378                           	
+  1379  0249                     l582:	
+  1380  0249  0008               	return
+  1381                           	opt stack 0
+  1382                           GLOBAL	__end_of_lcd_cmd
+  1383  024A                     	__end_of_lcd_cmd:
+  1384 ;; =============== function _lcd_cmd ends ============
+  1385                           
+  1386                           	signat	_lcd_cmd,4216
+  1387                           	global	_gps_init
+  1388                           psect	text283,local,class=CODE,delta=2
+  1389                           global __ptext283
+  1390  029C                     __ptext283:
+  1391                           
+  1392 ;; *************** function _gps_init *****************
+  1393 ;; Defined at:
+  1394 ;;		line 17 in file "C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+  1395 ;; Parameters:    Size  Location     Type
+  1396 ;;		None
+  1397 ;; Auto vars:     Size  Location     Type
+  1398 ;;		None
+  1399 ;; Return value:  Size  Location     Type
+  1400 ;;		None               void
+  1401 ;; Registers used:
+  1402 ;;		wreg
+  1403 ;; Tracked objects:
+  1404 ;;		On entry : 0/0
+  1405 ;;		On exit  : 0/0
+  1406 ;;		Unchanged: 0/0
+  1407 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1408 ;;      Params:         0       0       0       0       0
+  1409 ;;      Locals:         0       0       0       0       0
+  1410 ;;      Temps:          0       0       0       0       0
+  1411 ;;      Totals:         0       0       0       0       0
+  1412 ;;Total ram usage:        0 bytes
+  1413 ;; Hardware stack levels used:    1
+  1414 ;; Hardware stack levels required when called:    1
+  1415 ;; This function calls:
+  1416 ;;		Nothing
+  1417 ;; This function is called by:
+  1418 ;;		_main
+  1419 ;; This function uses a non-reentrant model
+  1420 ;;
+  1421                           psect	text283
+  1422                           	file	"C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+  1423                           	line	17
+  1424                           	global	__size_of_gps_init
+  1425  0011                     	__size_of_gps_init	equ	__end_of_gps_init-_gps_init
+  1426                           	
+  1427  029C                     _gps_init:	
+  1428                           	opt	stack 7
+  1429                           ; Regs used in _gps_init: [wreg]
+  1430                           	line	18
+  1431                           	
+  1432  029C                     l991:	
+  1433                           ;gps coading.c: 18: TXSTA=0X24;
+  1434  029C  3024               	movlw	(024h)
+  1435  029D  1683               	bsf	status, 5	;RP0=1, select bank1
+  1436  029E  1303               	bcf	status, 6	;RP1=0, select bank1
+  1437  029F  0098               	movwf	(152)^080h	;volatile
+  1438                           	line	19
+  1439                           ;gps coading.c: 19: RCSTA=0X90;
+  1440  02A0  3090               	movlw	(090h)
+  1441  02A1  1283               	bcf	status, 5	;RP0=0, select bank0
+  1442  02A2  1303               	bcf	status, 6	;RP1=0, select bank0
+  1443  02A3  0098               	movwf	(24)	;volatile
+  1444                           	line	20
+  1445                           ;gps coading.c: 20: SPBRG=25;
+  1446  02A4  3019               	movlw	(019h)
+  1447  02A5  1683               	bsf	status, 5	;RP0=1, select bank1
+  1448  02A6  1303               	bcf	status, 6	;RP1=0, select bank1
+  1449  02A7  0099               	movwf	(153)^080h	;volatile
+  1450                           	line	21
+  1451                           	
+  1452  02A8                     l993:	
+  1453                           ;gps coading.c: 21: BRGH=1;
+  1454  02A8  1518               	bsf	(1218/8)^080h,(1218)&7
+  1455                           	line	22
+  1456                           	
+  1457  02A9                     l995:	
+  1458                           ;gps coading.c: 22: GIE=1;
+  1459  02A9  178B               	bsf	(95/8),(95)&7
+  1460                           	line	23
+  1461                           	
+  1462  02AA                     l997:	
+  1463                           ;gps coading.c: 23: PEIE=1;
+  1464  02AA  170B               	bsf	(94/8),(94)&7
+  1465                           	line	24
+  1466                           	
+  1467  02AB                     l999:	
+  1468                           ;gps coading.c: 24: RCIE=1;
+  1469  02AB  168C               	bsf	(1125/8)^080h,(1125)&7
+  1470                           	line	26
+  1471                           	
+  1472  02AC                     l579:	
+  1473  02AC  0008               	return
+  1474                           	opt stack 0
+  1475                           GLOBAL	__end_of_gps_init
+  1476  02AD                     	__end_of_gps_init:
+  1477 ;; =============== function _gps_init ends ============
+  1478                           
+  1479                           	signat	_gps_init,88
+  1480                           	global	_delay
+  1481                           psect	text284,local,class=CODE,delta=2
+  1482                           global __ptext284
+  1483  028A                     __ptext284:
+  1484                           
+  1485 ;; *************** function _delay *****************
+  1486 ;; Defined at:
+  1487 ;;		line 10 in file "C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+  1488 ;; Parameters:    Size  Location     Type
+  1489 ;;  x               2    5[COMMON] unsigned int 
+  1490 ;; Auto vars:     Size  Location     Type
+  1491 ;;		None
+  1492 ;; Return value:  Size  Location     Type
+  1493 ;;		None               void
+  1494 ;; Registers used:
+  1495 ;;		wreg
+  1496 ;; Tracked objects:
+  1497 ;;		On entry : 0/0
+  1498 ;;		On exit  : 0/0
+  1499 ;;		Unchanged: 0/0
+  1500 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1501 ;;      Params:         2       0       0       0       0
+  1502 ;;      Locals:         0       0       0       0       0
+  1503 ;;      Temps:          0       0       0       0       0
+  1504 ;;      Totals:         2       0       0       0       0
+  1505 ;;Total ram usage:        2 bytes
+  1506 ;; Hardware stack levels used:    1
+  1507 ;; Hardware stack levels required when called:    1
+  1508 ;; This function calls:
+  1509 ;;		Nothing
+  1510 ;; This function is called by:
+  1511 ;;		_lcd_cmd
+  1512 ;;		_lcd_data
+  1513 ;;		_gps_send
+  1514 ;;		_main
+  1515 ;; This function uses a non-reentrant model
+  1516 ;;
+  1517                           psect	text284
+  1518                           	file	"C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+  1519                           	line	10
+  1520                           	global	__size_of_delay
+  1521  0012                     	__size_of_delay	equ	__end_of_delay-_delay
+  1522                           	
+  1523  028A                     _delay:	
+  1524                           	opt	stack 5
+  1525                           ; Regs used in _delay: [wreg]
+  1526                           	line	11
+  1527                           	
+  1528  028A                     l1951:	
+  1529                           ;gps coading.c: 11: while (x--);
+  1530  028A  2A8B               	goto	l573
+  1531                           	
+  1532  028B                     l574:	
+  1533                           	
+  1534  028B                     l573:	
+  1535                           	
+  1536  028B                     l1953:	
+  1537  028B  3001               	movlw	low(01h)
+  1538  028C  02F5               	subwf	(delay@x),f
+  1539  028D  3000               	movlw	high(01h)
+  1540  028E  1C03               	skipc
+  1541  028F  03F6               	decf	(delay@x+1),f
+  1542  0290  02F6               	subwf	(delay@x+1),f
+  1543  0291  30FF               	movlw	high(0FFFFh)
+  1544  0292  0676               	xorwf	((delay@x+1)),w
+  1545  0293  1D03               	skipz
+  1546  0294  2A97               	goto	u2285
+  1547  0295  30FF               	movlw	low(0FFFFh)
+  1548  0296  0675               	xorwf	((delay@x)),w
+  1549  0297                     u2285:
+  1550                           
+  1551  0297  1D03               	skipz
+  1552  0298  2A9A               	goto	u2281
+  1553  0299  2A9B               	goto	u2280
+  1554  029A                     u2281:
+  1555  029A  2A8B               	goto	l574
+  1556  029B                     u2280:
+  1557                           	
+  1558  029B                     l575:	
+  1559                           	line	12
+  1560                           	
+  1561  029B                     l576:	
+  1562  029B  0008               	return
+  1563                           	opt stack 0
+  1564                           GLOBAL	__end_of_delay
+  1565  029C                     	__end_of_delay:
+  1566 ;; =============== function _delay ends ============
+  1567                           
+  1568                           	signat	_delay,4216
+  1569                           	global	_rcx
+  1570                           psect	text285,local,class=CODE,delta=2
+  1571                           global __ptext285
+  1572  0195                     __ptext285:
+  1573                           
+  1574 ;; *************** function _rcx *****************
+  1575 ;; Defined at:
+  1576 ;;		line 93 in file "C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+  1577 ;; Parameters:    Size  Location     Type
+  1578 ;;		None
+  1579 ;; Auto vars:     Size  Location     Type
+  1580 ;;		None
+  1581 ;; Return value:  Size  Location     Type
+  1582 ;;		None               void
+  1583 ;; Registers used:
+  1584 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+  1585 ;; Tracked objects:
+  1586 ;;		On entry : 0/0
+  1587 ;;		On exit  : 0/0
+  1588 ;;		Unchanged: 0/0
+  1589 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1590 ;;      Params:         0       0       0       0       0
+  1591 ;;      Locals:         0       0       0       0       0
+  1592 ;;      Temps:          5       0       0       0       0
+  1593 ;;      Totals:         5       0       0       0       0
+  1594 ;;Total ram usage:        5 bytes
+  1595 ;; Hardware stack levels used:    1
+  1596 ;; This function calls:
+  1597 ;;		Nothing
+  1598 ;; This function is called by:
+  1599 ;;		Interrupt level 1
+  1600 ;; This function uses a non-reentrant model
+  1601 ;;
+  1602                           psect	text285
+  1603                           	file	"C:\Users\TECH\Desktop\madhu pic folder\gps&gsm\GPS\test coading\gps coading.c"
+  1604                           	line	93
+  1605                           	global	__size_of_rcx
+  1606  0049                     	__size_of_rcx	equ	__end_of_rcx-_rcx
+  1607                           	
+  1608  0195                     _rcx:	
+  1609                           	opt	stack 3
+  1610                           ; Regs used in _rcx: [wreg-fsr0h+status,2+status,0]
+  1611                           psect	intentry,class=CODE,delta=2
+  1612                           global __pintentry
+  1613  0004                     __pintentry:
+  1614                           global interrupt_function
+  1615  0004                     interrupt_function:
+  1616                           	global saved_w
+  1617  007E                     	saved_w	set	btemp+0
+  1618  0004  00FE               	movwf	saved_w
+  1619  0005  0803               	movf	status,w
+  1620  0006  00F1               	movwf	(??_rcx+1)
+  1621  0007  0804               	movf	fsr0,w
+  1622  0008  00F2               	movwf	(??_rcx+2)
+  1623  0009  080A               	movf	pclath,w
+  1624  000A  00F3               	movwf	(??_rcx+3)
+  1625  000B  087F               	movf	btemp+1,w
+  1626  000C  00F4               	movwf	(??_rcx+4)
+  1627  000D  120A  118A  2995   	ljmp	_rcx
+  1628                           psect	text285
+  1629                           	line	95
+  1630                           	
+  1631  0195                     i1l1957:	
+  1632                           ;gps coading.c: 95: if(RCIF==1)
+  1633  0195  1283               	bcf	status, 5	;RP0=0, select bank0
+  1634  0196  1303               	bcf	status, 6	;RP1=0, select bank0
+  1635  0197  1E8C               	btfss	(101/8),(101)&7
+  1636  0198  299A               	goto	u229_21
+  1637  0199  299B               	goto	u229_20
+  1638  019A                     u229_21:
+  1639  019A  29D3               	goto	i1l597
+  1640  019B                     u229_20:
+  1641                           	line	98
+  1642                           	
+  1643  019B                     i1l1959:	
+  1644                           ;gps coading.c: 96: {
+  1645                           ;gps coading.c: 98: RCIF=0;
+  1646  019B  128C               	bcf	(101/8),(101)&7
+  1647                           	line	99
+  1648                           	
+  1649  019C                     i1l1961:	
+  1650                           ;gps coading.c: 99: ser=RCREG;
+  1651  019C  081A               	movf	(26),w	;volatile
+  1652  019D  00F0               	movwf	(??_rcx+0)+0
+  1653  019E  0870               	movf	(??_rcx+0)+0,w
+  1654  019F  00D7               	movwf	(_ser)
+  1655                           	line	101
+  1656                           ;gps coading.c: 101: if((ser==0x52)&&(st==0x01))
+  1657  01A0  0857               	movf	(_ser),w
+  1658  01A1  3A52               	xorlw	052h
+  1659  01A2  1D03               	skipz
+  1660  01A3  29A5               	goto	u230_21
+  1661  01A4  29A6               	goto	u230_20
+  1662  01A5                     u230_21:
+  1663  01A5  29B4               	goto	i1l598
+  1664  01A6                     u230_20:
+  1665                           	
+  1666  01A6                     i1l1963:	
+  1667  01A6  085F               	movf	(_st),w
+  1668  01A7  3A01               	xorlw	01h
+  1669  01A8  1D03               	skipz
+  1670  01A9  29AB               	goto	u231_21
+  1671  01AA  29AC               	goto	u231_20
+  1672  01AB                     u231_21:
+  1673  01AB  29B4               	goto	i1l598
+  1674  01AC                     u231_20:
+  1675                           	line	103
+  1676                           	
+  1677  01AC                     i1l1965:	
+  1678                           ;gps coading.c: 102: {
+  1679                           ;gps coading.c: 103: data_cap=0x01;
+  1680  01AC  01D6               	clrf	(_data_cap)
+  1681  01AD  1403               	bsf	status,0
+  1682  01AE  0DD6               	rlf	(_data_cap),f
+  1683                           	line	104
+  1684                           	
+  1685  01AF                     i1l1967:	
+  1686                           ;gps coading.c: 104: st=0x00;
+  1687  01AF  1003               	clrc
+  1688  01B0  3000               	movlw	0
+  1689  01B1  1803               	btfsc	status,0
+  1690  01B2  3001               	movlw	1
+  1691  01B3  00DF               	movwf	(_st)
+  1692                           	line	105
+  1693                           	
+  1694  01B4                     i1l598:	
+  1695                           	line	106
+  1696                           ;gps coading.c: 105: }
+  1697                           ;gps coading.c: 106: if((data_cap==0x01)&&(i<45))
+  1698  01B4  0856               	movf	(_data_cap),w
+  1699  01B5  3A01               	xorlw	01h
+  1700  01B6  1D03               	skipz
+  1701  01B7  29B9               	goto	u232_21
+  1702  01B8  29BA               	goto	u232_20
+  1703  01B9                     u232_21:
+  1704  01B9  29D3               	goto	i1l599
+  1705  01BA                     u232_20:
+  1706                           	
+  1707  01BA                     i1l1969:	
+  1708  01BA  3000               	movlw	high(02Dh)
+  1709  01BB  0253               	subwf	(_i+1),w
+  1710  01BC  302D               	movlw	low(02Dh)
+  1711  01BD  1903               	skipnz
+  1712  01BE  0252               	subwf	(_i),w
+  1713  01BF  1803               	skipnc
+  1714  01C0  29C2               	goto	u233_21
+  1715  01C1  29C3               	goto	u233_20
+  1716  01C2                     u233_21:
+  1717  01C2  29D3               	goto	i1l599
+  1718  01C3                     u233_20:
+  1719                           	line	108
+  1720                           	
+  1721  01C3                     i1l1971:	
+  1722                           ;gps coading.c: 107: {
+  1723                           ;gps coading.c: 108: gpsdata[i]=ser;
+  1724  01C3  0857               	movf	(_ser),w
+  1725  01C4  00F0               	movwf	(??_rcx+0)+0
+  1726  01C5  0852               	movf	(_i),w
+  1727  01C6  3E20               	addlw	_gpsdata&0ffh
+  1728  01C7  0084               	movwf	fsr0
+  1729  01C8  0870               	movf	(??_rcx+0)+0,w
+  1730  01C9  1383               	bcf	status, 7	;select IRP bank0
+  1731  01CA  0080               	movwf	indf
+  1732                           	line	109
+  1733                           	
+  1734  01CB                     i1l1973:	
+  1735                           ;gps coading.c: 109: i=i+1;
+  1736  01CB  0852               	movf	(_i),w
+  1737  01CC  3E01               	addlw	low(01h)
+  1738  01CD  00D2               	movwf	(_i)
+  1739  01CE  0853               	movf	(_i+1),w
+  1740  01CF  1803               	skipnc
+  1741  01D0  3E01               	addlw	1
+  1742  01D1  3E00               	addlw	high(01h)
+  1743  01D2  00D3               	movwf	1+(_i)
+  1744                           	line	110
+  1745                           	
+  1746  01D3                     i1l599:	
+  1747                           	line	111
+  1748                           	
+  1749  01D3                     i1l597:	
+  1750                           	line	112
+  1751                           	
+  1752  01D3                     i1l600:	
+  1753  01D3  0874               	movf	(??_rcx+4),w
+  1754  01D4  00FF               	movwf	btemp+1
+  1755  01D5  0873               	movf	(??_rcx+3),w
+  1756  01D6  008A               	movwf	pclath
+  1757  01D7  0872               	movf	(??_rcx+2),w
+  1758  01D8  0084               	movwf	fsr0
+  1759  01D9  0871               	movf	(??_rcx+1),w
+  1760  01DA  0083               	movwf	status
+  1761  01DB  0EFE               	swapf	saved_w,f
+  1762  01DC  0E7E               	swapf	saved_w,w
+  1763  01DD  0009               	retfie
+  1764                           	opt stack 0
+  1765                           GLOBAL	__end_of_rcx
+  1766  01DE                     	__end_of_rcx:
+  1767 ;; =============== function _rcx ends ============
+  1768                           
+  1769                           	signat	_rcx,88
+  1770                           psect	text286,local,class=CODE,delta=2
+  1771                           global __ptext286
+  1772  0000                     __ptext286:
+  1773                           	global	btemp
+  1774  007E                     	btemp set 07Eh
+  1775                           
+  1776                           	DABS	1,126,2	;btemp
+  1777                           	global	wtemp0
+  1778  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.71a build 6446 
+Symbol Table                                                                                   Tue Nov 15 15:39:36 2022
+
+         lcd_data@dat 005A                     _i 0052                     _j 0054                     pc 0002  
+                  _st 005F                    fsr 0004                   l603 012C                   l611 018C  
+                 l604 008B                   l612 0191                   l605 00B3                   l613 0192  
+                 l606 00C9                   l614 0192                   l607 00F1                   l608 012C  
+                 l573 028B                   l574 028B                   l582 0249                   l590 0274  
+                 l575 029B                   l591 0274                   l576 029B                   l585 0213  
+                 l579 02AC                   l588 0267                   l589 0252                   l991 029C  
+                 l993 02A8                   l995 02A9                   _GIE 005F                   l997 02AA  
+                 l999 02AB                   _RD1 0041                   _RD2 0042                   _RD3 0043  
+                 _rcx 0195                   _ser 0057                   fsr0 0004                   indf 0000  
+        lcd_display@k 005C          lcd_display@m 005B                  l2121 0217                  l2201 007B  
+                l2131 0226                  l2123 021A                  l2211 0099                  l2203 0081  
+                l2141 023C                  l2133 0229                  l2125 021B                  l2221 00BF  
+                l2213 00A2                  l2205 008A                  l2143 023D                  l2135 0237  
+                l2127 021C                  l2151 01E5                  l2231 00E0                  l2223 00C8  
+                l2215 00AA                  l2207 008B                  l2145 0246                  l2137 023A  
+                l2129 021D                  l2161 0201                  l2153 01E6                  l2241 011F  
+                l2233 00E8                  l2225 00C9                  l2217 00B3                  l2209 0093  
+                l2139 023B                  l2171 0210                  l2163 0204                  l2155 01E7  
+                l2147 01E1                  l2235 00F1                  l2227 00D1                  l2219 00B9  
+                l2251 0156                  l2243 012D                  l2165 0205                  l2157 01F0  
+                l2149 01E4                  l2173 024D                  l2237 0115                  l2229 00D7  
+                l2181 0025                  l2261 0183                  l2253 015F                  l2245 0144  
+                l2167 0206                  l2159 01F3                  l2175 0252                  l2239 011C  
+                l2191 0052                  l2183 0031                  l2263 018C                  l2255 0168  
+                l2247 014A                  l2169 0207                  l2177 025F                  l2193 0058  
+                l2185 003A                  l2257 0171                  l2249 0150                  l2179 0267  
+                l2195 0061                  l2187 0040                  l2259 017A                  l2197 006C  
+                l2189 0049                  l2199 0072                  l1951 028A                  l1953 028B  
+                ?_rcx 0070                  STR_1 0021                  STR_2 0019                  _BRGH 04C2  
+                u2280 029B                  u2440 0274                  u2281 029A                  u2425 022E  
+                u2441 0273                  u2450 006C                  u2435 01F8                  u2451 006B  
+                u2460 008A                  u2285 0297                  u2461 0089                  u2470 00B3  
+                u2471 00B2                  u2480 00C8                  u2481 00C7                  u2490 00F1  
+                u2491 00F0                  _PEIE 005E                  _RCIE 0465                  _RCIF 0065  
+                _main 012D                  _temp 0077                  btemp 007E                  start 0010  
+               ??_rcx 0070                 ?_main 0070                 i1l600 01D3                 i1l597 01D3  
+               i1l598 01B4                 i1l599 01D3                 _RCREG 001A                 _RCSTA 0018  
+               _SPBRG 0099                 _PORTD 0008                 _TXSTA 0098       __end_of_lcd_cmd 024A  
+               _delay 028A                 pclath 000A                 status 0003                 wtemp0 007E  
+        __end_of_main 0195                ??_main 0077                ?_delay 0075                i1l1961 019C  
+              i1l1971 01C3                i1l1963 01A6                i1l1973 01CB                i1l1965 01AC  
+              i1l1957 0195                i1l1967 01AF                i1l1959 019B                i1l1969 01BA  
+              u230_20 01A6                u230_21 01A5                u231_20 01AC                u231_21 01AB  
+              u232_20 01BA                u232_21 01B9                u233_20 01C3                u233_21 01C2  
+              u229_20 019B                u229_21 019A      __end_of_lcd_data 0214  __size_of_lcd_display 002B  
+    __end_of_gps_init 02AD      __end_of_gps_send 012D                delay@x 0075             ??_lcd_cmd 0058  
+              clrloop 02AE                saved_w 007E        __pcstackCOMMON 0070          __pidataBANK0 02B5  
+       __end_of_delay 029C               ??_delay 0077            __pbssBANK0 0020            __pmaintext 012D  
+          __pintentry 0004             ?_lcd_data 0070             ?_gps_init 0070             ?_gps_send 0070  
+             _lcd_cmd 0214               _gpsdata 0020          __size_of_rcx 0049            ??_lcd_data 0058  
+end_of_initialization 0286            ??_gps_init 0075            ??_gps_send 005E            lcd_cmd@com 005A  
+       ??_lcd_display 0077   start_initialization 0275           __end_of_rcx 01DE   __end_of_lcd_display 0275  
+         __pdataBANK0 005F           __pbssCOMMON 0077         __pcstackBANK0 0058     __size_of_lcd_data 0036  
+   __size_of_gps_init 0011     __size_of_gps_send 0108             __ptext280 024A             __ptext281 01DE  
+           __ptext282 0214             __ptext283 029C             __ptext284 028A             __ptext285 0195  
+           __ptext286 0000             __ptext279 0025             __pstrings 0013              ?_lcd_cmd 0070  
+      __size_of_delay 0012     interrupt_function 0004           _lcd_display 024A           __stringbase 0018  
+    __size_of_lcd_cmd 0036              _data_cap 0056              _lcd_data 01DE              _gps_init 029C  
+            _gps_send 0025         __size_of_main 0068              clear_ram 02AD              intlevel1 0000  
+           stringcode 0013              stringdir 0013              stringtab 0013          ?_lcd_display 0070  

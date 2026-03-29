@@ -1,0 +1,27 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+EN::RD3	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	5;"	d	line:5	file:
+RS::RD1	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	3;"	d	line:3	file:
+RW::RD2	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	4;"	d	line:4	file:
+a	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	9;"	v	line:9
+b	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	9;"	v	line:9
+c	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	9;"	v	line:9
+d	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	9;"	v	line:9
+delay	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	11;"	f	line:11	signature:(unsigned int x)
+e	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	9;"	v	line:9
+f	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	9;"	v	line:9
+i	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	9;"	v	line:9
+lcd_command	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	16;"	f	line:16	signature:(unsigned char com)
+lcd_data	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	43;"	f	line:43	signature:(unsigned char data)
+lcd_display	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	60;"	f	line:60	signature:(unsigned char *m)
+lcd_init	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	33;"	f	line:33
+main	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	70;"	f	line:70
+temp	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	7;"	v	line:7
+temp1	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	7;"	v	line:7
+temp2	E:\Embedded_Program\LCD_Display_Code\Welcome_display\LCD.c	7;"	v	line:7

@@ -1,0 +1,4 @@
+_delay: CODE, 1960 0 20
+_main: CODE, 1980 0 25
+_delay1: CODE, 2005 0 43
+Total: 88

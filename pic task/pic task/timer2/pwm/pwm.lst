@@ -1,0 +1,703 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
+                                                                                               Thu Oct 20 19:59:26 2022
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNCALL	_main,_pwm
+    43                           	FNCALL	_main,_delay
+    44                           	FNROOT	_main
+    45                           	global	_i
+    46                           psect	nvCOMMON,class=COMMON,space=1
+    47                           global __pnvCOMMON
+    48  0074                     __pnvCOMMON:
+    49  0074                     _i:
+    50  0074                            ds      2
+    51                           
+    52                           	global	_CCP1CON
+    53  0017                     _CCP1CON	set	23
+    54                           	global	_CCPR1L
+    55  0015                     _CCPR1L	set	21
+    56                           	global	_T2CON
+    57  0012                     _T2CON	set	18
+    58                           	global	_CCP1X
+    59  00BD                     _CCP1X	set	189
+    60                           	global	_CCP1Y
+    61  00BC                     _CCP1Y	set	188
+    62                           	global	_PR2
+    63  0092                     _PR2	set	146
+    64                           	global	_TRISC
+    65  0087                     _TRISC	set	135
+    66                           	file	"pwm.as"
+    67                           	line	#
+    68                           psect cinit,class=CODE,delta=2
+    69                           global start_initialization
+    70  073A                     start_initialization:
+    71                           
+    72                           psect cinit,class=CODE,delta=2
+    73                           global end_of_initialization
+    74                           
+    75                           ;End of C runtime variable initialization code
+    76                           
+    77  073A                     end_of_initialization:
+    78  073A  0183               clrf status
+    79  073B  120A  118A  2F7D   ljmp _main	;jump to C main() function
+    80                           psect	cstackCOMMON,class=COMMON,space=1
+    81                           global __pcstackCOMMON
+    82  0070                     __pcstackCOMMON:
+    83                           	global	?_pwm
+    84  0070                     ?_pwm:	; 0 bytes @ 0x0
+    85                           	global	?_delay
+    86  0070                     ?_delay:	; 0 bytes @ 0x0
+    87                           	global	?_main
+    88  0070                     ?_main:	; 0 bytes @ 0x0
+    89                           	global	pwm@duty
+    90  0070                     pwm@duty:	; 2 bytes @ 0x0
+    91                           	global	delay@x
+    92  0070                     delay@x:	; 2 bytes @ 0x0
+    93  0070                     	ds	2
+    94                           	global	??_pwm
+    95  0072                     ??_pwm:	; 0 bytes @ 0x2
+    96                           	global	??_delay
+    97  0072                     ??_delay:	; 0 bytes @ 0x2
+    98  0072                     	ds	2
+    99                           	global	??_main
+   100  0074                     ??_main:	; 0 bytes @ 0x4
+   101 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 2 stack 0
+   102 ;;Auto spaces:   Size  Autos    Used
+   103 ;; COMMON          14      4       6
+   104 ;; BANK0           80      0       0
+   105 ;; BANK1           80      0       0
+   106 ;; BANK3           96      0       0
+   107 ;; BANK2           96      0       0
+   108                           
+   109 ;;
+   110 ;; Pointer list with targets:
+   111                           
+   112                           
+   113                           
+   114 ;;
+   115 ;; Critical Paths under _main in COMMON
+   116 ;;
+   117 ;;   _main->_pwm
+   118 ;;
+   119 ;; Critical Paths under _main in BANK0
+   120 ;;
+   121 ;;   None.
+   122 ;;
+   123 ;; Critical Paths under _main in BANK1
+   124 ;;
+   125 ;;   None.
+   126 ;;
+   127 ;; Critical Paths under _main in BANK3
+   128 ;;
+   129 ;;   None.
+   130 ;;
+   131 ;; Critical Paths under _main in BANK2
+   132 ;;
+   133 ;;   None.
+   134                           
+   135 ;;
+   136 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   137 ;;
+   138                           
+   139 ;;
+   140 ;;Call Graph Tables:
+   141 ;;
+   142 ;; ---------------------------------------------------------------------------------
+   143 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   144 ;; ---------------------------------------------------------------------------------
+   145 ;; (0) _main                                                 0     0      0      60
+   146 ;;                                _pwm
+   147 ;;                              _delay
+   148 ;; ---------------------------------------------------------------------------------
+   149 ;; (1) _delay                                                2     0      2      15
+   150 ;;                                              0 COMMON     2     0      2
+   151 ;; ---------------------------------------------------------------------------------
+   152 ;; (1) _pwm                                                  4     2      2      45
+   153 ;;                                              0 COMMON     4     2      2
+   154 ;; ---------------------------------------------------------------------------------
+   155 ;; Estimated maximum stack depth 1
+   156 ;; ---------------------------------------------------------------------------------
+   157                           
+   158 ;; Call Graph Graphs:
+   159                           
+   160 ;; _main (ROOT)
+   161 ;;   _pwm
+   162 ;;   _delay
+   163 ;;
+   164                           
+   165 ;; Address spaces:
+   166                           
+   167 ;;Name               Size   Autos  Total    Cost      Usage
+   168 ;;BITCOMMON            E      0       0       0        0.0%
+   169 ;;EEDATA             100      0       0       0        0.0%
+   170 ;;NULL                 0      0       0       0        0.0%
+   171 ;;CODE                 0      0       0       0        0.0%
+   172 ;;COMMON               E      4       6       1       42.9%
+   173 ;;BITSFR0              0      0       0       1        0.0%
+   174 ;;SFR0                 0      0       0       1        0.0%
+   175 ;;BITSFR1              0      0       0       2        0.0%
+   176 ;;SFR1                 0      0       0       2        0.0%
+   177 ;;STACK                0      0       1       2        0.0%
+   178 ;;ABS                  0      0       6       3        0.0%
+   179 ;;BITBANK0            50      0       0       4        0.0%
+   180 ;;BITSFR3              0      0       0       4        0.0%
+   181 ;;SFR3                 0      0       0       4        0.0%
+   182 ;;BANK0               50      0       0       5        0.0%
+   183 ;;BITSFR2              0      0       0       5        0.0%
+   184 ;;SFR2                 0      0       0       5        0.0%
+   185 ;;BITBANK1            50      0       0       6        0.0%
+   186 ;;BANK1               50      0       0       7        0.0%
+   187 ;;BITBANK3            60      0       0       8        0.0%
+   188 ;;BANK3               60      0       0       9        0.0%
+   189 ;;BITBANK2            60      0       0      10        0.0%
+   190 ;;BANK2               60      0       0      11        0.0%
+   191 ;;DATA                 0      0       7      12        0.0%
+   192                           
+   193                           	global	_main
+   194                           psect	maintext,global,class=CODE,delta=2
+   195                           global __pmaintext
+   196  077D                     __pmaintext:
+   197                           
+   198 ;; *************** function _main *****************
+   199 ;; Defined at:
+   200 ;;		line 14 in file "C:\Users\TECH\Desktop\madhu pic folder\timer2\pwm\pwm.c"
+   201 ;; Parameters:    Size  Location     Type
+   202 ;;		None
+   203 ;; Auto vars:     Size  Location     Type
+   204 ;;		None
+   205 ;; Return value:  Size  Location     Type
+   206 ;;		None               void
+   207 ;; Registers used:
+   208 ;;		wreg, status,2, status,0, btemp+0, pclath, cstack
+   209 ;; Tracked objects:
+   210 ;;		On entry : 17F/0
+   211 ;;		On exit  : 0/0
+   212 ;;		Unchanged: 0/0
+   213 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   214 ;;      Params:         0       0       0       0       0
+   215 ;;      Locals:         0       0       0       0       0
+   216 ;;      Temps:          0       0       0       0       0
+   217 ;;      Totals:         0       0       0       0       0
+   218 ;;Total ram usage:        0 bytes
+   219 ;; Hardware stack levels required when called:    1
+   220 ;; This function calls:
+   221 ;;		_pwm
+   222 ;;		_delay
+   223 ;; This function is called by:
+   224 ;;		Startup code after reset
+   225 ;; This function uses a non-reentrant model
+   226 ;;
+   227                           psect	maintext
+   228                           	file	"C:\Users\TECH\Desktop\madhu pic folder\timer2\pwm\pwm.c"
+   229                           	line	14
+   230                           	global	__size_of_main
+   231  0083                     	__size_of_main	equ	__end_of_main-_main
+   232                           	
+   233  077D                     _main:	
+   234                           	opt	stack 8
+   235                           ; Regs used in _main: [wreg+status,2-btemp+0+pclath+cstack]
+   236                           	line	15
+   237                           	
+   238  077D                     l1744:	
+   239                           ;pwm.c: 15: TRISC=0X00;
+   240  077D  1683               	bsf	status, 5	;RP0=1, select bank1
+   241  077E  1303               	bcf	status, 6	;RP1=0, select bank1
+   242  077F  0187               	clrf	(135)^080h	;volatile
+   243                           	line	16
+   244                           	
+   245  0780                     l1746:	
+   246                           ;pwm.c: 16: T2CON=0X7F;
+   247  0780  307F               	movlw	(07Fh)
+   248  0781  1283               	bcf	status, 5	;RP0=0, select bank0
+   249  0782  1303               	bcf	status, 6	;RP1=0, select bank0
+   250  0783  0092               	movwf	(18)	;volatile
+   251                           	line	17
+   252                           	
+   253  0784                     l1748:	
+   254                           ;pwm.c: 17: CCP1CON=0X0C;
+   255  0784  300C               	movlw	(0Ch)
+   256  0785  0097               	movwf	(23)	;volatile
+   257                           	line	18
+   258                           	
+   259  0786                     l1750:	
+   260                           ;pwm.c: 18: PR2=255;
+   261  0786  30FF               	movlw	(0FFh)
+   262  0787  1683               	bsf	status, 5	;RP0=1, select bank1
+   263  0788  1303               	bcf	status, 6	;RP1=0, select bank1
+   264  0789  0092               	movwf	(146)^080h	;volatile
+   265                           	line	19
+   266                           ;pwm.c: 19: while(1)
+   267                           	
+   268  078A                     l570:	
+   269                           	line	21
+   270                           	
+   271  078A                     l1752:	
+   272                           ;pwm.c: 20: {
+   273                           ;pwm.c: 21: for(i=0;i<=1023;i++)
+   274  078A  3000               	movlw	low(0)
+   275  078B  00F4               	movwf	(_i)
+   276  078C  3000               	movlw	high(0)
+   277  078D  00F5               	movwf	((_i))+1
+   278                           	
+   279  078E                     l1754:	
+   280  078E  0875               	movf	(_i+1),w
+   281  078F  3A80               	xorlw	80h
+   282  0790  00FE               	movwf	btemp+0
+   283  0791  3084               	movlw	(high(0400h))^80h
+   284  0792  027E               	subwf	btemp+0,w
+   285  0793  1D03               	skipz
+   286  0794  2F97               	goto	u2215
+   287  0795  3000               	movlw	low(0400h)
+   288  0796  0274               	subwf	(_i),w
+   289  0797                     u2215:
+   290                           
+   291  0797  1C03               	skipc
+   292  0798  2F9A               	goto	u2211
+   293  0799  2F9B               	goto	u2210
+   294  079A                     u2211:
+   295  079A  2F9C               	goto	l571
+   296  079B                     u2210:
+   297                           	
+   298  079B                     l1756:	
+   299  079B  2FC3               	goto	l572
+   300                           	line	22
+   301                           	
+   302  079C                     l571:	
+   303                           	line	23
+   304                           	
+   305  079C                     l1758:	
+   306                           ;pwm.c: 22: {
+   307                           ;pwm.c: 23: pwm(i);
+   308  079C  0875               	movf	(_i+1),w
+   309  079D  01F1               	clrf	(?_pwm+1)
+   310  079E  07F1               	addwf	(?_pwm+1)
+   311  079F  0874               	movf	(_i),w
+   312  07A0  01F0               	clrf	(?_pwm)
+   313  07A1  07F0               	addwf	(?_pwm)
+   314                           
+   315  07A2  120A  118A  2750   	fcall	_pwm
+              120A  118A         
+   316                           	line	24
+   317                           ;pwm.c: 24: delay(1000);
+   318  07A7  30E8               	movlw	low(03E8h)
+   319  07A8  00F0               	movwf	(?_delay)
+   320  07A9  3003               	movlw	high(03E8h)
+   321  07AA  00F1               	movwf	((?_delay))+1
+   322  07AB  120A  118A  273E   	fcall	_delay
+              120A  118A         
+   323                           	line	21
+   324                           	
+   325  07B0                     l1760:	
+   326  07B0  3001               	movlw	low(01h)
+   327  07B1  07F4               	addwf	(_i),f
+   328  07B2  1803               	skipnc
+   329  07B3  0AF5               	incf	(_i+1),f
+   330  07B4  3000               	movlw	high(01h)
+   331  07B5  07F5               	addwf	(_i+1),f
+   332                           	
+   333  07B6                     l1762:	
+   334  07B6  0875               	movf	(_i+1),w
+   335  07B7  3A80               	xorlw	80h
+   336  07B8  00FE               	movwf	btemp+0
+   337  07B9  3084               	movlw	(high(0400h))^80h
+   338  07BA  027E               	subwf	btemp+0,w
+   339  07BB  1D03               	skipz
+   340  07BC  2FBF               	goto	u2225
+   341  07BD  3000               	movlw	low(0400h)
+   342  07BE  0274               	subwf	(_i),w
+   343  07BF                     u2225:
+   344                           
+   345  07BF  1C03               	skipc
+   346  07C0  2FC2               	goto	u2221
+   347  07C1  2FC3               	goto	u2220
+   348  07C2                     u2221:
+   349  07C2  2F9C               	goto	l571
+   350  07C3                     u2220:
+   351                           	
+   352  07C3                     l572:	
+   353                           	line	26
+   354                           	
+   355  07C3                     l1764:	
+   356                           ;pwm.c: 25: }
+   357                           ;pwm.c: 26: for(i=1024;i>0;i--)
+   358  07C3  3000               	movlw	low(0400h)
+   359  07C4  00F4               	movwf	(_i)
+   360  07C5  3004               	movlw	high(0400h)
+   361  07C6  00F5               	movwf	((_i))+1
+   362                           	
+   363  07C7                     l1766:	
+   364  07C7  0875               	movf	(_i+1),w
+   365  07C8  3A80               	xorlw	80h
+   366  07C9  00FE               	movwf	btemp+0
+   367  07CA  3080               	movlw	(high(01h))^80h
+   368  07CB  027E               	subwf	btemp+0,w
+   369  07CC  1D03               	skipz
+   370  07CD  2FD0               	goto	u2235
+   371  07CE  3001               	movlw	low(01h)
+   372  07CF  0274               	subwf	(_i),w
+   373  07D0                     u2235:
+   374                           
+   375  07D0  1803               	skipnc
+   376  07D1  2FD3               	goto	u2231
+   377  07D2  2FD4               	goto	u2230
+   378  07D3                     u2231:
+   379  07D3  2FD5               	goto	l573
+   380  07D4                     u2230:
+   381                           	
+   382  07D4                     l1768:	
+   383  07D4  2FFC               	goto	l574
+   384                           	line	27
+   385                           	
+   386  07D5                     l573:	
+   387                           	line	28
+   388                           	
+   389  07D5                     l1770:	
+   390                           ;pwm.c: 27: {
+   391                           ;pwm.c: 28: pwm(i);
+   392  07D5  0875               	movf	(_i+1),w
+   393  07D6  01F1               	clrf	(?_pwm+1)
+   394  07D7  07F1               	addwf	(?_pwm+1)
+   395  07D8  0874               	movf	(_i),w
+   396  07D9  01F0               	clrf	(?_pwm)
+   397  07DA  07F0               	addwf	(?_pwm)
+   398                           
+   399  07DB  120A  118A  2750   	fcall	_pwm
+              120A  118A         
+   400                           	line	29
+   401                           ;pwm.c: 29: delay(1000);
+   402  07E0  30E8               	movlw	low(03E8h)
+   403  07E1  00F0               	movwf	(?_delay)
+   404  07E2  3003               	movlw	high(03E8h)
+   405  07E3  00F1               	movwf	((?_delay))+1
+   406  07E4  120A  118A  273E   	fcall	_delay
+              120A  118A         
+   407                           	line	26
+   408                           	
+   409  07E9                     l1772:	
+   410  07E9  30FF               	movlw	low(-1)
+   411  07EA  07F4               	addwf	(_i),f
+   412  07EB  1803               	skipnc
+   413  07EC  0AF5               	incf	(_i+1),f
+   414  07ED  30FF               	movlw	high(-1)
+   415  07EE  07F5               	addwf	(_i+1),f
+   416                           	
+   417  07EF                     l1774:	
+   418  07EF  0875               	movf	(_i+1),w
+   419  07F0  3A80               	xorlw	80h
+   420  07F1  00FE               	movwf	btemp+0
+   421  07F2  3080               	movlw	(high(01h))^80h
+   422  07F3  027E               	subwf	btemp+0,w
+   423  07F4  1D03               	skipz
+   424  07F5  2FF8               	goto	u2245
+   425  07F6  3001               	movlw	low(01h)
+   426  07F7  0274               	subwf	(_i),w
+   427  07F8                     u2245:
+   428                           
+   429  07F8  1803               	skipnc
+   430  07F9  2FFB               	goto	u2241
+   431  07FA  2FFC               	goto	u2240
+   432  07FB                     u2241:
+   433  07FB  2FD5               	goto	l573
+   434  07FC                     u2240:
+   435                           	
+   436  07FC                     l574:	
+   437                           	line	31
+   438                           	
+   439  07FC                     l575:	
+   440                           	line	19
+   441  07FC  2F8A               	goto	l570
+   442                           	
+   443  07FD                     l576:	
+   444                           	line	32
+   445                           	
+   446  07FD                     l577:	
+   447                           	global	start
+   448  07FD  120A  118A  2800   	ljmp	start
+   449                           	opt stack 0
+   450                           GLOBAL	__end_of_main
+   451  0800                     	__end_of_main:
+   452 ;; =============== function _main ends ============
+   453                           
+   454                           	signat	_main,88
+   455                           	global	_delay
+   456                           psect	text67,local,class=CODE,delta=2
+   457                           global __ptext67
+   458  073E                     __ptext67:
+   459                           
+   460 ;; *************** function _delay *****************
+   461 ;; Defined at:
+   462 ;;		line 10 in file "C:\Users\TECH\Desktop\madhu pic folder\timer2\pwm\pwm.c"
+   463 ;; Parameters:    Size  Location     Type
+   464 ;;  x               2    0[COMMON] unsigned int 
+   465 ;; Auto vars:     Size  Location     Type
+   466 ;;		None
+   467 ;; Return value:  Size  Location     Type
+   468 ;;		None               void
+   469 ;; Registers used:
+   470 ;;		wreg
+   471 ;; Tracked objects:
+   472 ;;		On entry : 0/0
+   473 ;;		On exit  : 0/0
+   474 ;;		Unchanged: 0/0
+   475 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   476 ;;      Params:         2       0       0       0       0
+   477 ;;      Locals:         0       0       0       0       0
+   478 ;;      Temps:          0       0       0       0       0
+   479 ;;      Totals:         2       0       0       0       0
+   480 ;;Total ram usage:        2 bytes
+   481 ;; Hardware stack levels used:    1
+   482 ;; This function calls:
+   483 ;;		Nothing
+   484 ;; This function is called by:
+   485 ;;		_main
+   486 ;; This function uses a non-reentrant model
+   487 ;;
+   488                           psect	text67
+   489                           	file	"C:\Users\TECH\Desktop\madhu pic folder\timer2\pwm\pwm.c"
+   490                           	line	10
+   491                           	global	__size_of_delay
+   492  0012                     	__size_of_delay	equ	__end_of_delay-_delay
+   493                           	
+   494  073E                     _delay:	
+   495                           	opt	stack 7
+   496                           ; Regs used in _delay: [wreg]
+   497                           	line	11
+   498                           	
+   499  073E                     l954:	
+   500                           ;pwm.c: 11: while(x--);
+   501  073E  2F3F               	goto	l564
+   502                           	
+   503  073F                     l565:	
+   504                           	
+   505  073F                     l564:	
+   506                           	
+   507  073F                     l956:	
+   508  073F  3001               	movlw	low(01h)
+   509  0740  02F0               	subwf	(delay@x),f
+   510  0741  3000               	movlw	high(01h)
+   511  0742  1C03               	skipc
+   512  0743  03F1               	decf	(delay@x+1),f
+   513  0744  02F1               	subwf	(delay@x+1),f
+   514  0745  30FF               	movlw	high(0FFFFh)
+   515  0746  0671               	xorwf	((delay@x+1)),w
+   516  0747  1D03               	skipz
+   517  0748  2F4B               	goto	u75
+   518  0749  30FF               	movlw	low(0FFFFh)
+   519  074A  0670               	xorwf	((delay@x)),w
+   520  074B                     u75:
+   521                           
+   522  074B  1D03               	skipz
+   523  074C  2F4E               	goto	u71
+   524  074D  2F4F               	goto	u70
+   525  074E                     u71:
+   526  074E  2F3F               	goto	l565
+   527  074F                     u70:
+   528                           	
+   529  074F                     l566:	
+   530                           	line	12
+   531                           	
+   532  074F                     l567:	
+   533  074F  0008               	return
+   534                           	opt stack 0
+   535                           GLOBAL	__end_of_delay
+   536  0750                     	__end_of_delay:
+   537 ;; =============== function _delay ends ============
+   538                           
+   539                           	signat	_delay,4216
+   540                           	global	_pwm
+   541                           psect	text68,local,class=CODE,delta=2
+   542                           global __ptext68
+   543  0750                     __ptext68:
+   544                           
+   545 ;; *************** function _pwm *****************
+   546 ;; Defined at:
+   547 ;;		line 4 in file "C:\Users\TECH\Desktop\madhu pic folder\timer2\pwm\pwm.c"
+   548 ;; Parameters:    Size  Location     Type
+   549 ;;  duty            2    0[COMMON] unsigned int 
+   550 ;; Auto vars:     Size  Location     Type
+   551 ;;		None
+   552 ;; Return value:  Size  Location     Type
+   553 ;;		None               void
+   554 ;; Registers used:
+   555 ;;		wreg, status,2, status,0
+   556 ;; Tracked objects:
+   557 ;;		On entry : 0/0
+   558 ;;		On exit  : 0/0
+   559 ;;		Unchanged: 0/0
+   560 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   561 ;;      Params:         2       0       0       0       0
+   562 ;;      Locals:         0       0       0       0       0
+   563 ;;      Temps:          2       0       0       0       0
+   564 ;;      Totals:         4       0       0       0       0
+   565 ;;Total ram usage:        4 bytes
+   566 ;; Hardware stack levels used:    1
+   567 ;; This function calls:
+   568 ;;		Nothing
+   569 ;; This function is called by:
+   570 ;;		_main
+   571 ;; This function uses a non-reentrant model
+   572 ;;
+   573                           psect	text68
+   574                           	file	"C:\Users\TECH\Desktop\madhu pic folder\timer2\pwm\pwm.c"
+   575                           	line	4
+   576                           	global	__size_of_pwm
+   577  002D                     	__size_of_pwm	equ	__end_of_pwm-_pwm
+   578                           	
+   579  0750                     _pwm:	
+   580                           	opt	stack 7
+   581                           ; Regs used in _pwm: [wreg+status,2+status,0]
+   582                           	line	5
+   583                           	
+   584  0750                     l950:	
+   585                           ;pwm.c: 5: CCP1Y=1&duty;
+   586  0750  1870               	btfsc	(pwm@duty),0
+   587  0751  2F53               	goto	u11
+   588  0752  2F57               	goto	u10
+   589                           	
+   590  0753                     u11:
+   591  0753  1283               	bcf	status, 5	;RP0=0, select bank0
+   592  0754  1303               	bcf	status, 6	;RP1=0, select bank0
+   593  0755  1617               	bsf	(188/8),(188)&7
+   594  0756  2F5A               	goto	u24
+   595  0757                     u10:
+   596  0757  1283               	bcf	status, 5	;RP0=0, select bank0
+   597  0758  1303               	bcf	status, 6	;RP1=0, select bank0
+   598  0759  1217               	bcf	(188/8),(188)&7
+   599  075A                     u24:
+   600                           	line	6
+   601                           	
+   602  075A                     l952:	
+   603                           ;pwm.c: 6: CCP1X=1&(duty>>1);
+   604  075A  0871               	movf	(pwm@duty+1),w
+   605  075B  00F3               	movwf	(??_pwm+0)+0+1
+   606  075C  0870               	movf	(pwm@duty),w
+   607  075D  00F2               	movwf	(??_pwm+0)+0
+   608  075E  3001               	movlw	01h
+   609  075F                     u35:
+   610  075F  1003               	clrc
+   611  0760  0CF3               	rrf	(??_pwm+0)+1,f
+   612  0761  0CF2               	rrf	(??_pwm+0)+0,f
+   613  0762  3EFF               	addlw	-1
+   614  0763  1D03               	skipz
+   615  0764  2F5F               	goto	u35
+   616  0765  1872               	btfsc	0+(??_pwm+0)+0,0
+   617  0766  2F68               	goto	u41
+   618  0767  2F6C               	goto	u40
+   619                           	
+   620  0768                     u41:
+   621  0768  1283               	bcf	status, 5	;RP0=0, select bank0
+   622  0769  1303               	bcf	status, 6	;RP1=0, select bank0
+   623  076A  1697               	bsf	(189/8),(189)&7
+   624  076B  2F6F               	goto	u54
+   625  076C                     u40:
+   626  076C  1283               	bcf	status, 5	;RP0=0, select bank0
+   627  076D  1303               	bcf	status, 6	;RP1=0, select bank0
+   628  076E  1297               	bcf	(189/8),(189)&7
+   629  076F                     u54:
+   630                           	line	7
+   631                           ;pwm.c: 7: CCPR1L=duty>>2;
+   632  076F  0871               	movf	(pwm@duty+1),w
+   633  0770  00F3               	movwf	(??_pwm+0)+0+1
+   634  0771  0870               	movf	(pwm@duty),w
+   635  0772  00F2               	movwf	(??_pwm+0)+0
+   636  0773  3002               	movlw	02h
+   637  0774                     u65:
+   638  0774  1003               	clrc
+   639  0775  0CF3               	rrf	(??_pwm+0)+1,f
+   640  0776  0CF2               	rrf	(??_pwm+0)+0,f
+   641  0777  3EFF               	addlw	-1
+   642  0778  1D03               	skipz
+   643  0779  2F74               	goto	u65
+   644  077A  0872               	movf	0+(??_pwm+0)+0,w
+   645  077B  0095               	movwf	(21)	;volatile
+   646                           	line	8
+   647                           	
+   648  077C                     l561:	
+   649  077C  0008               	return
+   650                           	opt stack 0
+   651                           GLOBAL	__end_of_pwm
+   652  077D                     	__end_of_pwm:
+   653 ;; =============== function _pwm ends ============
+   654                           
+   655                           	signat	_pwm,4216
+   656                           psect	text69,local,class=CODE,delta=2
+   657                           global __ptext69
+   658  0000                     __ptext69:
+   659                           	global	btemp
+   660  007E                     	btemp set 07Eh
+   661                           
+   662                           	DABS	1,126,2	;btemp
+   663                           	global	wtemp0
+   664  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.71a build 6446 
+Symbol Table                                                                                   Thu Oct 20 19:59:26 2022
+
+                   _i 0074                    u10 0757                    u11 0753                    u40 076C  
+                  u24 075A                    u41 0768                    u35 075F                    u54 076F  
+                  u70 074F                    u71 074E                    u65 0774                    u75 074B  
+                 l561 077C                   l570 078A                   l571 079C                   l564 073F  
+                 l572 07C3                   l565 073F                   l573 07D5                   l566 074F  
+                 l574 07FC                   l567 074F                   l575 07FC                   l576 07FD  
+                 l577 07FD                   l950 0750                   l952 075A                   l954 073E  
+                 l956 073F                   _PR2 0092                   _pwm 0750                  l1750 0786  
+                l1760 07B0                  l1752 078A                  l1744 077D                  l1770 07D5  
+                l1762 07B6                  l1754 078E                  l1746 0780                  l1772 07E9  
+                l1764 07C3                  l1756 079B                  l1748 0784                  l1774 07EF  
+                l1766 07C7                  l1758 079C                  l1768 07D4                  ?_pwm 0070  
+                u2210 079B                  u2211 079A                  u2220 07C3                  u2221 07C2  
+                u2230 07D4                  u2231 07D3                  u2215 0797                  u2240 07FC  
+                u2241 07FB                  u2225 07BF                  u2235 07D0                  u2245 07F8  
+                _main 077D                  btemp 007E                  start 0000                 ??_pwm 0072  
+               ?_main 0070                 _CCP1X 00BD                 _CCP1Y 00BC                 _T2CON 0012  
+               _TRISC 0087                 _delay 073E                 status 0003                 wtemp0 007E  
+        __end_of_main 0800                ??_main 0074                ?_delay 0070                _CCPR1L 0015  
+              delay@x 0070        __pcstackCOMMON 0070         __end_of_delay 0750               ??_delay 0072  
+          __pnvCOMMON 0074            __pmaintext 077D               _CCP1CON 0017          __size_of_pwm 002D  
+end_of_initialization 073A               pwm@duty 0070   start_initialization 073A           __end_of_pwm 077D  
+      __size_of_delay 0012              __ptext67 073E              __ptext68 0750              __ptext69 0000  
+       __size_of_main 0083  

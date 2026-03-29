@@ -1,0 +1,382 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.71a build 6446 
+                                                                                               Thu Sep 15 19:05:44 2022
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6446
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6446"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F877A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           	FNROOT	_main
+    43                           	global	_PORTB
+    44                           psect	maintext,global,class=CODE,delta=2
+    45                           global __pmaintext
+    46  07D4                     __pmaintext:
+    47  0006                     _PORTB	set	6
+    48                           	global	_RB0
+    49  0030                     _RB0	set	48
+    50                           	global	_RB1
+    51  0031                     _RB1	set	49
+    52                           	global	_RB2
+    53  0032                     _RB2	set	50
+    54                           	global	_RB3
+    55  0033                     _RB3	set	51
+    56                           	global	_RB4
+    57  0034                     _RB4	set	52
+    58                           	global	_TRISB
+    59  0086                     _TRISB	set	134
+    60                           	file	"2.2switch2led.as"
+    61                           	line	#
+    62                           psect cinit,class=CODE,delta=2
+    63                           global start_initialization
+    64  07D0                     start_initialization:
+    65                           
+    66                           psect cinit,class=CODE,delta=2
+    67                           global end_of_initialization
+    68                           
+    69                           ;End of C runtime variable initialization code
+    70                           
+    71  07D0                     end_of_initialization:
+    72  07D0  0183               clrf status
+    73  07D1  120A  118A  2FD4   ljmp _main	;jump to C main() function
+    74                           psect	cstackCOMMON,class=COMMON,space=1
+    75                           global __pcstackCOMMON
+    76  0000                     __pcstackCOMMON:
+    77                           	global	??_main
+    78  0000                     ??_main:	; 0 bytes @ 0x0
+    79                           	global	?_main
+    80  0000                     ?_main:	; 2 bytes @ 0x0
+    81 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+    82 ;;Auto spaces:   Size  Autos    Used
+    83 ;; COMMON          14      0       0
+    84 ;; BANK0           80      0       0
+    85 ;; BANK1           80      0       0
+    86 ;; BANK3           96      0       0
+    87 ;; BANK2           96      0       0
+    88                           
+    89 ;;
+    90 ;; Pointer list with targets:
+    91                           
+    92                           
+    93                           
+    94 ;;
+    95 ;; Critical Paths under _main in COMMON
+    96 ;;
+    97 ;;   None.
+    98 ;;
+    99 ;; Critical Paths under _main in BANK0
+   100 ;;
+   101 ;;   None.
+   102 ;;
+   103 ;; Critical Paths under _main in BANK1
+   104 ;;
+   105 ;;   None.
+   106 ;;
+   107 ;; Critical Paths under _main in BANK3
+   108 ;;
+   109 ;;   None.
+   110 ;;
+   111 ;; Critical Paths under _main in BANK2
+   112 ;;
+   113 ;;   None.
+   114                           
+   115 ;;
+   116 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   117 ;;
+   118                           
+   119 ;;
+   120 ;;Call Graph Tables:
+   121 ;;
+   122 ;; ---------------------------------------------------------------------------------
+   123 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   124 ;; ---------------------------------------------------------------------------------
+   125 ;; (0) _main                                                 0     0      0       0
+   126 ;; ---------------------------------------------------------------------------------
+   127 ;; Estimated maximum stack depth 0
+   128 ;; ---------------------------------------------------------------------------------
+   129                           
+   130 ;; Call Graph Graphs:
+   131                           
+   132 ;; _main (ROOT)
+   133 ;;
+   134                           
+   135 ;; Address spaces:
+   136                           
+   137 ;;Name               Size   Autos  Total    Cost      Usage
+   138 ;;BITCOMMON            E      0       0       0        0.0%
+   139 ;;EEDATA             100      0       0       0        0.0%
+   140 ;;NULL                 0      0       0       0        0.0%
+   141 ;;CODE                 0      0       0       0        0.0%
+   142 ;;COMMON               E      0       0       1        0.0%
+   143 ;;BITSFR0              0      0       0       1        0.0%
+   144 ;;SFR0                 0      0       0       1        0.0%
+   145 ;;BITSFR1              0      0       0       2        0.0%
+   146 ;;SFR1                 0      0       0       2        0.0%
+   147 ;;STACK                0      0       0       2        0.0%
+   148 ;;ABS                  0      0       0       3        0.0%
+   149 ;;BITBANK0            50      0       0       4        0.0%
+   150 ;;BITSFR3              0      0       0       4        0.0%
+   151 ;;SFR3                 0      0       0       4        0.0%
+   152 ;;BANK0               50      0       0       5        0.0%
+   153 ;;BITSFR2              0      0       0       5        0.0%
+   154 ;;SFR2                 0      0       0       5        0.0%
+   155 ;;BITBANK1            50      0       0       6        0.0%
+   156 ;;BANK1               50      0       0       7        0.0%
+   157 ;;BITBANK3            60      0       0       8        0.0%
+   158 ;;BANK3               60      0       0       9        0.0%
+   159 ;;BITBANK2            60      0       0      10        0.0%
+   160 ;;BANK2               60      0       0      11        0.0%
+   161 ;;DATA                 0      0       0      12        0.0%
+   162                           
+   163                           	global	_main
+   164                           psect	maintext
+   165                           
+   166 ;; *************** function _main *****************
+   167 ;; Defined at:
+   168 ;;		line 12 in file "C:\Users\TECH\Desktop\madhu pic folder\SWITCH\2.2switch3led\2.2switch2led.c"
+   169 ;; Parameters:    Size  Location     Type
+   170 ;;		None
+   171 ;; Auto vars:     Size  Location     Type
+   172 ;;		None
+   173 ;; Return value:  Size  Location     Type
+   174 ;;                  2  564[COMMON] int 
+   175 ;; Registers used:
+   176 ;;		wreg, status,2
+   177 ;; Tracked objects:
+   178 ;;		On entry : 17F/0
+   179 ;;		On exit  : 0/0
+   180 ;;		Unchanged: 0/0
+   181 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   182 ;;      Params:         0       0       0       0       0
+   183 ;;      Locals:         0       0       0       0       0
+   184 ;;      Temps:          0       0       0       0       0
+   185 ;;      Totals:         0       0       0       0       0
+   186 ;;Total ram usage:        0 bytes
+   187 ;; This function calls:
+   188 ;;		Nothing
+   189 ;; This function is called by:
+   190 ;;		Startup code after reset
+   191 ;; This function uses a non-reentrant model
+   192 ;;
+   193                           psect	maintext
+   194                           	file	"C:\Users\TECH\Desktop\madhu pic folder\SWITCH\2.2switch3led\2.2switch2led.c"
+   195                           	line	12
+   196                           	global	__size_of_main
+   197  002C                     	__size_of_main	equ	__end_of_main-_main
+   198                           	
+   199  07D4                     _main:	
+   200                           	opt	stack 8
+   201                           ; Regs used in _main: [wreg+status,2]
+   202                           	line	13
+   203                           	
+   204  07D4                     l947:	
+   205                           ;2.2switch2led.c: 13: TRISB=0X05;
+   206  07D4  3005               	movlw	(05h)
+   207  07D5  1683               	bsf	status, 5	;RP0=1, select bank1
+   208  07D6  1303               	bcf	status, 6	;RP1=0, select bank1
+   209  07D7  0086               	movwf	(134)^080h	;volatile
+   210                           	line	14
+   211                           	
+   212  07D8                     l949:	
+   213                           ;2.2switch2led.c: 14: PORTB=0X00;
+   214  07D8  1283               	bcf	status, 5	;RP0=0, select bank0
+   215  07D9  1303               	bcf	status, 6	;RP1=0, select bank0
+   216  07DA  0186               	clrf	(6)	;volatile
+   217                           	line	15
+   218                           ;2.2switch2led.c: 15: while(1)
+   219                           	
+   220  07DB                     l565:	
+   221                           	line	17
+   222                           	
+   223  07DB                     l951:	
+   224                           ;2.2switch2led.c: 16: {
+   225                           ;2.2switch2led.c: 17: if((RB0==1)&&(RB2==0))
+   226  07DB  1C06               	btfss	(48/8),(48)&7
+   227  07DC  2FDE               	goto	u21
+   228  07DD  2FDF               	goto	u20
+   229  07DE                     u21:
+   230  07DE  2FE5               	goto	l566
+   231  07DF                     u20:
+   232                           	
+   233  07DF                     l953:	
+   234  07DF  1906               	btfsc	(50/8),(50)&7
+   235  07E0  2FE2               	goto	u31
+   236  07E1  2FE3               	goto	u30
+   237  07E2                     u31:
+   238  07E2  2FE5               	goto	l566
+   239  07E3                     u30:
+   240                           	line	19
+   241                           	
+   242  07E3                     l955:	
+   243                           ;2.2switch2led.c: 18: {
+   244                           ;2.2switch2led.c: 19: RB1=1;
+   245  07E3  1486               	bsf	(49/8),(49)&7
+   246                           	line	20
+   247                           ;2.2switch2led.c: 20: }
+   248  07E4  2FE6               	goto	l567
+   249                           	line	21
+   250                           	
+   251  07E5                     l566:	
+   252                           	line	23
+   253                           ;2.2switch2led.c: 21: else
+   254                           ;2.2switch2led.c: 22: {
+   255                           ;2.2switch2led.c: 23: RB1=0;
+   256  07E5  1086               	bcf	(49/8),(49)&7
+   257                           	line	24
+   258                           	
+   259  07E6                     l567:	
+   260                           	line	25
+   261                           ;2.2switch2led.c: 24: }
+   262                           ;2.2switch2led.c: 25: if((RB2==1)&&(RB0==0))
+   263  07E6  1D06               	btfss	(50/8),(50)&7
+   264  07E7  2FE9               	goto	u41
+   265  07E8  2FEA               	goto	u40
+   266  07E9                     u41:
+   267  07E9  2FF0               	goto	l568
+   268  07EA                     u40:
+   269                           	
+   270  07EA                     l957:	
+   271  07EA  1806               	btfsc	(48/8),(48)&7
+   272  07EB  2FED               	goto	u51
+   273  07EC  2FEE               	goto	u50
+   274  07ED                     u51:
+   275  07ED  2FF0               	goto	l568
+   276  07EE                     u50:
+   277                           	line	27
+   278                           	
+   279  07EE                     l959:	
+   280                           ;2.2switch2led.c: 26: {
+   281                           ;2.2switch2led.c: 27: RB3=1;
+   282  07EE  1586               	bsf	(51/8),(51)&7
+   283                           	line	28
+   284                           ;2.2switch2led.c: 28: }
+   285  07EF  2FF1               	goto	l569
+   286                           	line	29
+   287                           	
+   288  07F0                     l568:	
+   289                           	line	31
+   290                           ;2.2switch2led.c: 29: else
+   291                           ;2.2switch2led.c: 30: {
+   292                           ;2.2switch2led.c: 31: RB3=0;
+   293  07F0  1186               	bcf	(51/8),(51)&7
+   294                           	line	32
+   295                           	
+   296  07F1                     l569:	
+   297                           	line	33
+   298                           ;2.2switch2led.c: 32: }
+   299                           ;2.2switch2led.c: 33: if((RB0==1)&&(RB2==1))
+   300  07F1  1C06               	btfss	(48/8),(48)&7
+   301  07F2  2FF4               	goto	u61
+   302  07F3  2FF5               	goto	u60
+   303  07F4                     u61:
+   304  07F4  2FFB               	goto	l570
+   305  07F5                     u60:
+   306                           	
+   307  07F5                     l961:	
+   308  07F5  1D06               	btfss	(50/8),(50)&7
+   309  07F6  2FF8               	goto	u71
+   310  07F7  2FF9               	goto	u70
+   311  07F8                     u71:
+   312  07F8  2FFB               	goto	l570
+   313  07F9                     u70:
+   314                           	line	35
+   315                           	
+   316  07F9                     l963:	
+   317                           ;2.2switch2led.c: 34: {
+   318                           ;2.2switch2led.c: 35: RB4=1;
+   319  07F9  1606               	bsf	(52/8),(52)&7
+   320                           	line	36
+   321                           ;2.2switch2led.c: 36: }
+   322  07FA  2FFC               	goto	l571
+   323                           	line	37
+   324                           	
+   325  07FB                     l570:	
+   326                           	line	39
+   327                           ;2.2switch2led.c: 37: else
+   328                           ;2.2switch2led.c: 38: {
+   329                           ;2.2switch2led.c: 39: RB4=0;
+   330  07FB  1206               	bcf	(52/8),(52)&7
+   331                           	line	40
+   332                           	
+   333  07FC                     l571:	
+   334                           	line	41
+   335                           	
+   336  07FC                     l572:	
+   337                           	line	15
+   338  07FC  2FDB               	goto	l565
+   339                           	
+   340  07FD                     l573:	
+   341                           	line	42
+   342                           	
+   343  07FD                     l574:	
+   344                           	global	start
+   345  07FD  120A  118A  2800   	ljmp	start
+   346                           	opt stack 0
+   347                           GLOBAL	__end_of_main
+   348  0800                     	__end_of_main:
+   349 ;; =============== function _main ends ============
+   350                           
+   351                           	signat	_main,90
+   352                           psect	maintext
+   353                           	global	btemp
+   354  007E                     	btemp set 07Eh
+   355                           
+   356                           	DABS	1,126,2	;btemp
+   357                           	global	wtemp0
+   358  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.71a build 6446 
+Symbol Table                                                                                   Thu Sep 15 19:05:44 2022
+
+                  u20 07DF                    u21 07DE                    u30 07E3                    u31 07E2  
+                  u40 07EA                    u41 07E9                    u50 07EE                    u51 07ED  
+                  u60 07F5                    u61 07F4                    u70 07F9                    u71 07F8  
+                 l570 07FB                   l571 07FC                   l572 07FC                   l573 07FD  
+                 l565 07DB                   l574 07FD                   l566 07E5                   l567 07E6  
+                 l568 07F0                   l569 07F1                   l951 07DB                   l961 07F5  
+                 l953 07DF                   l963 07F9                   l955 07E3                   l947 07D4  
+                 l957 07EA                   l949 07D8                   l959 07EE                   _RB0 0030  
+                 _RB1 0031                   _RB2 0032                   _RB3 0033                   _RB4 0034  
+                _main 07D4                  btemp 007E                  start 0000                 ?_main 0000  
+               _PORTB 0006                 _TRISB 0086                 status 0003                 wtemp0 007E  
+        __end_of_main 0800                ??_main 0000        __pcstackCOMMON 0000            __pmaintext 07D4  
+end_of_initialization 07D0   start_initialization 07D0         __size_of_main 002C  

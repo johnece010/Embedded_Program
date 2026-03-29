@@ -1,0 +1,23 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+C1::RB0	E:\Embedded_Program\pic task\pic task\keypad\keypsd test\keypad test.c	5;"	d	line:5	file:
+C2::RB1	E:\Embedded_Program\pic task\pic task\keypad\keypsd test\keypad test.c	6;"	d	line:6	file:
+C3::RB2	E:\Embedded_Program\pic task\pic task\keypad\keypsd test\keypad test.c	7;"	d	line:7	file:
+EN::RC2	E:\Embedded_Program\pic task\pic task\keypad\keypsd test\keypad test.c	4;"	d	line:4	file:
+R1::RB3	E:\Embedded_Program\pic task\pic task\keypad\keypsd test\keypad test.c	8;"	d	line:8	file:
+R2::RB4	E:\Embedded_Program\pic task\pic task\keypad\keypsd test\keypad test.c	9;"	d	line:9	file:
+R3::RB5	E:\Embedded_Program\pic task\pic task\keypad\keypsd test\keypad test.c	10;"	d	line:10	file:
+R4::RB6	E:\Embedded_Program\pic task\pic task\keypad\keypsd test\keypad test.c	11;"	d	line:11	file:
+RS::RC0	E:\Embedded_Program\pic task\pic task\keypad\keypsd test\keypad test.c	2;"	d	line:2	file:
+RW::RC1	E:\Embedded_Program\pic task\pic task\keypad\keypsd test\keypad test.c	3;"	d	line:3	file:
+delay	E:\Embedded_Program\pic task\pic task\keypad\keypsd test\keypad test.c	13;"	f	line:13	signature:(unsigned int x)
+lcd_command	E:\Embedded_Program\pic task\pic task\keypad\keypsd test\keypad test.c	17;"	f	line:17	signature:(unsigned char com)
+lcd_data	E:\Embedded_Program\pic task\pic task\keypad\keypsd test\keypad test.c	26;"	f	line:26	signature:(unsigned char data)
+lcd_init	E:\Embedded_Program\pic task\pic task\keypad\keypsd test\keypad test.c	35;"	f	line:35
+main	E:\Embedded_Program\pic task\pic task\keypad\keypsd test\keypad test.c	42;"	f	line:42

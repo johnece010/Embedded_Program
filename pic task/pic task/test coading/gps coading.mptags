@@ -1,0 +1,34 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+!_TAG_REVISION_NAME	MCHPTags	//
+!_TAG_REVISION_VERSION	6.0.1	//
+B	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	246;"	l	line:246
+EN::RD3	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	5;"	d	line:5	file:
+RS::RD1	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	3;"	d	line:3	file:
+RW::RD2	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	4;"	d	line:4	file:
+data_cap	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	8;"	v	line:8
+delay	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	10;"	f	line:10	signature:(unsigned int x)
+gps_init	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	17;"	f	line:17
+gps_send	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	115;"	f	line:115
+gpsdata	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	9;"	v	line:9
+gsm_command	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	171;"	f	line:171	signature:(const unsigned char *da)
+i	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	7;"	v	line:7
+j	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	7;"	v	line:7
+lcd_cmd	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	33;"	f	line:33	signature:(unsigned char com)
+lcd_data	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	52;"	f	line:52	signature:(unsigned char dat)
+lcd_display	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	71;"	f	line:71	signature:(const unsigned char *m)
+lcd_init	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	81;"	f	line:81
+main	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	260;"	f	line:260
+rcx	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	93;"	f	line:93	signature:(void)
+s	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	173;"	l	line:173
+ser	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	8;"	v	line:8
+serial	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	244;"	f	line:244	signature:(const unsigned char *a)
+sms1	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	193;"	f	line:193
+st	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	8;"	v	line:8
+sw::RB0	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	6;"	d	line:6	file:
+temp	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	7;"	v	line:7
+txs	E:\Embedded_Program\pic task\pic task\test coading\gps coading.c	184;"	f	line:184	signature:(unsigned char val)

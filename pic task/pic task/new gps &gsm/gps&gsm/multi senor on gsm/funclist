@@ -1,0 +1,15 @@
+_delay: CODE, 90 0 18
+_lcd_cmd: CODE, 3268 0 54
+_lcd_data: CODE, 3322 0 54
+_serial: CODE, 3223 0 45
+_lcd_display: CODE, 3141 0 39
+_main: CODE, 602 0 1446
+___lwdiv: CODE, 169 0 73
+_gsm_command: CODE, 3180 0 43
+___lwmod: CODE, 108 0 61
+_sms1: CODE, 3376 0 360
+_txs: CODE, 3075 0 12
+_sms2: CODE, 3736 0 360
+_lcd_init: CODE, 3104 0 37
+_sms3: CODE, 242 0 360
+Total: 2962

@@ -12,7 +12,7 @@ while(x--);
 
 main()
 {
-	TRISB=0x03;
+	TRISB=0x05;
 	PORTB=0x00;
 
 while(1)
